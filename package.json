@@ -11,6 +11,7 @@
     "init-db": "npx ts-node --project tsconfig.scripts.json scripts/init-db.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.18.0",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.3.0",

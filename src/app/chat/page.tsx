@@ -17,6 +17,7 @@ import CallsContent from '@/components/chat/CallsContent';
 import SavedMessages from '@/components/chat/SavedMessages';
 import Comit from '@/components/chat/Comit';
 import SubgroupsSidebar from '@/components/chat/SubgroupsSidebar';
+import MediaGallery from '@/components/chat/MediaGallery';
 
 interface Message {
   _id: string;
@@ -38,6 +39,7 @@ export default function ChatPage() {
   const [user, setUser] = useState<User | null>(null);
   const [showSidebar, setShowSidebar] = useState(true);
   const [showProfileSidebar, setShowProfileSidebar] = useState(false);
+  const [showMediaGallery, setShowMediaGallery] = useState(false);
   const [showComit, setShowComit] = useState(false);
   const [currentChat, setCurrentChat] = useState<string | null>(null);
   const [showSubgroups, setShowSubgroups] = useState(false);
@@ -1555,15 +1557,24 @@ export default function ChatPage() {
                   lastSeen="recently"
                   onMenuClick={toggleSidebar}
                   onProfileClick={toggleProfileSidebar}
+                  onStarClick={() => setShowMediaGallery(!showMediaGallery)}
+                  showMediaGallery={showMediaGallery}
                 />
                 <div className="message-list-container flex-grow overflow-auto">
-                  <MessageList
-                    messages={messages[currentChat] || []}
-                    currentUserId={user._id}
-                    conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
-                  />
+                  {showMediaGallery ? (
+                    <MediaGallery
+                      channelName={conversations.find(c => c._id === currentChat)?.name || 'Channel'}
+                      onClose={() => setShowMediaGallery(false)}
+                    />
+                  ) : (
+                    <MessageList
+                      messages={messages[currentChat] || []}
+                      currentUserId={user._id}
+                      conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
+                    />
+                  )}
                 </div>
-                <MessageInput onSendMessage={handleSendMessage} />
+                {!showMediaGallery && <MessageInput onSendMessage={handleSendMessage} />}
               </div>
             ) : (
               <>
@@ -1579,15 +1590,26 @@ export default function ChatPage() {
                   lastSeen="recently"
                   onMenuClick={toggleSidebar}
                   onProfileClick={toggleProfileSidebar}
+                  onStarClick={() => setShowMediaGallery(!showMediaGallery)}
+                  showMediaGallery={showMediaGallery}
                 />
                 <div className="message-list-container flex-grow overflow-auto">
-                  <MessageList
-                    messages={selectedSubgroup ? (messages[selectedSubgroup] || []) : (messages[currentChat] || [])}
-                    currentUserId={user._id}
-                    conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
-                  />
+                  {showMediaGallery ? (
+                    <MediaGallery
+                      channelName={selectedSubgroup 
+                        ? (selectedSubgroup.charAt(0).toUpperCase() + selectedSubgroup.slice(1)).replace(/-/g, ' ')
+                        : conversations.find(c => c._id === currentChat)?.name || 'Channel'}
+                      onClose={() => setShowMediaGallery(false)}
+                    />
+                  ) : (
+                    <MessageList
+                      messages={selectedSubgroup ? (messages[selectedSubgroup] || []) : (messages[currentChat] || [])}
+                      currentUserId={user._id}
+                      conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
+                    />
+                  )}
                 </div>
-                <MessageInput onSendMessage={handleSendMessage} />
+                {!showMediaGallery && <MessageInput onSendMessage={handleSendMessage} />}
               </>
             )}
           </>
@@ -1671,6 +1693,7 @@ export default function ChatPage() {
           }}
         />
       )}
+
     </div>
   );
 }

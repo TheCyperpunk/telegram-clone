@@ -9,6 +9,7 @@ import {
 } from 'react-icons/hi2';
 import { SparklesPreview } from '../ui/sparkles-preview';
 import { SparklesCore } from '../ui/sparkles';
+import SearchResults from './SearchResults';
 
 interface App {
   id: string;
@@ -27,7 +28,29 @@ interface ComitProps {
 export default function Comit({ onBack }: ComitProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [submittedQuery, setSubmittedQuery] = useState('');
+  const [showVideo, setShowVideo] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      setSubmittedQuery(searchQuery);
+      setShowSearchResults(true);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleCloseSearch = () => {
+    setShowSearchResults(false);
+    setSearchQuery('');
+    setSubmittedQuery('');
+  };
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -41,6 +64,14 @@ export default function Comit({ onBack }: ComitProps) {
 
     scrollContainer.addEventListener('scroll', handleScroll);
     return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Set global function for SparklesPreview to call
+    (window as any).openProfileVideo = () => setShowVideo(true);
+    return () => {
+      delete (window as any).openProfileVideo;
+    };
   }, []);
 
   // Apps organized by categories
@@ -1166,6 +1197,11 @@ export default function Comit({ onBack }: ComitProps) {
 
   const filteredCategories = getFilteredCategories();
 
+  // Show search results if user submitted a search
+  if (showSearchResults) {
+    return <SearchResults searchQuery={submittedQuery} onClose={handleCloseSearch} />;
+  }
+
   return (
     <div className="h-full bg-black flex flex-col relative overflow-hidden">
       {/* Full Page Sparkles Background */}
@@ -1282,23 +1318,30 @@ export default function Comit({ onBack }: ComitProps) {
                       className="flex-1 border-none outline-none bg-transparent text-white placeholder-gray-400 text-sm focus:outline-none focus:ring-0"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyPress={handleKeyPress}
                     />
                   </div>
                   <div className="pr-1">
-                    <button className="bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white px-5 py-1.5 font-medium hover:from-purple-600 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 rounded-full flex items-center justify-center h-8 text-sm">
+                    <button 
+                      onClick={handleSearch}
+                      className="bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white px-5 py-1.5 font-medium hover:from-purple-600 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 rounded-full flex items-center justify-center h-8 text-sm"
+                    >
                       Submit
                     </button>
                   </div>
                 </div>
                 
                 {/* Profile Image - Outside search bar */}
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-white flex-shrink-0">
+                <button 
+                  onClick={() => setShowVideo(true)}
+                  className="w-10 h-10 rounded-full overflow-hidden border border-white flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+                >
                   <img 
                     src="https://raw.githubusercontent.com/TheCyperpunk/littilelilly-photos/main/Screenshot%202025-10-18%20174437.png"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </button>
               </div>
 
               <button className="p-2 hover:bg-white/10 rounded-full transition-colors ml-3">
@@ -1311,6 +1354,8 @@ export default function Comit({ onBack }: ComitProps) {
               <SparklesPreview 
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
+                onSubmit={handleSearch}
+                onKeyPress={handleKeyPress}
               />
               {/* Back Button Overlay */}
               <button 
@@ -2343,6 +2388,27 @@ export default function Comit({ onBack }: ComitProps) {
           </div>
         )}
       </div>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <div className="fixed inset-0 z-50 bg-black">
+          {/* Back Button */}
+          <button
+            onClick={() => setShowVideo(false)}
+            className="absolute top-4 left-4 z-[60] p-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm"
+          >
+            <HiOutlineArrowLeft size={24} className="text-white" />
+          </button>
+
+          <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/PmPrgy5933M?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&loop=1&playlist=PmPrgy5933M&iv_load_policy=3&disablekb=1&fs=0&vq=hd720"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            style={{ pointerEvents: 'none' }}
+          />
+        </div>
+      )}
     </div>
   );
 }

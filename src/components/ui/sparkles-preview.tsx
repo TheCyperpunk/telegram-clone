@@ -6,9 +6,11 @@ import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 interface SparklesPreviewProps {
   searchQuery: string;
   onSearchChange: (value: string) => void;
+  onSubmit?: () => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export function SparklesPreview({ searchQuery, onSearchChange }: SparklesPreviewProps) {
+export function SparklesPreview({ searchQuery, onSearchChange, onSubmit, onKeyPress }: SparklesPreviewProps) {
   return (
     <div className="h-80 w-full bg-black flex flex-col items-center justify-center overflow-hidden relative px-4">
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white relative z-20 mb-8">
@@ -26,23 +28,30 @@ export function SparklesPreview({ searchQuery, onSearchChange }: SparklesPreview
               className="flex-1 border-none outline-none bg-transparent text-white placeholder-gray-400 text-sm focus:outline-none focus:ring-0"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
+              onKeyPress={onKeyPress}
             />
           </div>
           <div className="pr-1">
-            <button className="bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white px-6 py-2 font-medium hover:from-purple-600 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 rounded-full flex items-center justify-center h-10">
+            <button 
+              onClick={onSubmit}
+              className="bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white px-6 py-2 font-medium hover:from-purple-600 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 rounded-full flex items-center justify-center h-10"
+            >
               Submit
             </button>
           </div>
         </div>
         
         {/* Profile Image - Outside search bar */}
-        <div className="w-12 h-12 rounded-full overflow-hidden border border-white flex-shrink-0">
+        <button 
+          onClick={() => (window as any).openProfileVideo?.()}
+          className="w-12 h-12 rounded-full overflow-hidden border border-white flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+        >
           <img 
             src="https://raw.githubusercontent.com/TheCyperpunk/littilelilly-photos/main/Screenshot%202025-10-18%20174437.png"
             alt="Profile"
             className="w-full h-full object-cover"
           />
-        </div>
+        </button>
       </div>
       
       <div className="absolute inset-0 w-full h-full">

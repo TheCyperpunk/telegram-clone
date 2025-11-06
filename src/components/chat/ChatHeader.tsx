@@ -16,6 +16,7 @@ interface ChatHeaderProps {
   onProfileClick?: () => void;
   onStarClick?: () => void;
   showMediaGallery?: boolean;
+  conversationType?: 'private' | 'group' | 'channel' | 'bot';
 }
 
 export default function ChatHeader({ 
@@ -29,7 +30,8 @@ export default function ChatHeader({
   onMenuClick,
   onProfileClick,
   onStarClick,
-  showMediaGallery = false
+  showMediaGallery = false,
+  conversationType = 'private'
 }: ChatHeaderProps) {
   const handleStarClick = () => {
     if (onStarClick) {
@@ -77,7 +79,7 @@ export default function ChatHeader({
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <h3 className="font-semibold text-gray-900 text-sm">{name}</h3>
-              {!showMediaGallery && (
+              {!showMediaGallery && conversationType === 'channel' && (
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
@@ -126,15 +128,19 @@ export default function ChatHeader({
               <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-blue-600 hover:scale-110">
                 <HiOutlineMagnifyingGlass size={18} />
               </button>
-              <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-yellow-600 hover:scale-110">
-                <HiOutlineBell size={18} />
-              </button>
-              <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-green-600 hover:scale-110">
-                <HiOutlinePhone size={18} />
-              </button>
-              <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-blue-600 hover:scale-110">
-                <HiOutlineVideoCamera size={18} />
-              </button>
+              {conversationType !== 'channel' && conversationType !== 'bot' && (
+                <>
+                  <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-yellow-600 hover:scale-110">
+                    <HiOutlineBell size={18} />
+                  </button>
+                  <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-green-600 hover:scale-110">
+                    <HiOutlinePhone size={18} />
+                  </button>
+                  <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-blue-600 hover:scale-110">
+                    <HiOutlineVideoCamera size={18} />
+                  </button>
+                </>
+              )}
               <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:scale-110">
                 <HiOutlineEllipsisVertical size={18} />
               </button>

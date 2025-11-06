@@ -7,6 +7,7 @@ import MessageList from '@/components/chat/MessageList';
 import MessageInput from '@/components/chat/MessageInput';
 import Sidebar from '@/components/chat/Sidebar';
 import { FiMenu } from 'react-icons/fi';
+import { HiOutlineArrowRightOnRectangle } from 'react-icons/hi2';
 import EnhancedSidebar from '@/components/chat/EnhancedSidebar';
 import NavigationTabs from '@/components/chat/NavigationTabs';
 import Stories from '@/components/chat/Stories';
@@ -25,6 +26,30 @@ interface Message {
   senderId: string;
   createdAt: Date;
   isRead?: boolean;
+  attachments?: {
+    id: string;
+    name: string;
+    type: string;
+    size: number;
+    url: string;
+  }[];
+  audioMessage?: {
+    url: string;
+    duration: number;
+  };
+  voiceMessage?: {
+    url: string;
+    duration: number;
+    waveform?: number[];
+  };
+  linkPreview?: {
+    url: string;
+    title?: string;
+    description?: string;
+    image?: string;
+    siteName?: string;
+  };
+  views?: number;
 }
 
 interface User {
@@ -650,6 +675,647 @@ export default function ChatPage() {
         senderId: 'tech-bot',
         createdAt: new Date(Date.now() - 1740000),
         isRead: false
+      }
+    ],
+    // Tech News Channel (ID: 3)
+    '3': [
+      {
+        _id: 'tech1',
+        content: `🚀 Breaking: OpenAI announces GPT-5 with revolutionary multimodal capabilities!
+
+The new model can process text, images, audio, and video simultaneously, marking a significant leap in AI technology. Early benchmarks show 40% improvement over GPT-4 in reasoning tasks.
+
+Read the full announcement and technical details in the image below.`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 133200,
+        attachments: [
+          {
+            id: 'tech-img-1',
+            name: 'gpt5-announcement.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'tech2',
+        content: `🎥 GPT-5 Demo Video - Must Watch!
+
+This 10-minute demo showcases real-world applications including:
+• Real-time video analysis
+• Advanced code generation
+• Multi-language translation
+• Creative content creation
+
+Watch the full demo below:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'tech-vid-1',
+            name: 'gpt5-demo.mp4',
+            type: 'video/mp4',
+            size: 15678900,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'tech3',
+        content: '',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 52300,
+        attachments: [
+          {
+            id: 'tech-pdf-1',
+            name: 'iOS18-Features.pdf',
+            type: 'application/pdf',
+            size: 3456789,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'tech4',
+        content: '',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 45800,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+          duration: 135,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'tech5',
+        content: '💻 Microsoft unveils new Surface lineup at tech conference',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 28500,
+        attachments: [
+          {
+            id: 'tech-img-2',
+            name: 'surface-lineup.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'tech6',
+        content: '',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 45800,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+          duration: 135,
+          waveform: [30, 45, 60, 75, 50, 40, 55, 70, 65, 50, 45, 60, 80, 70, 55, 45, 50, 65, 75, 60, 50, 45, 55, 70, 65, 50, 60, 75, 70, 55, 45, 50, 60, 70, 65, 55, 50, 60, 70, 65]
+        }
+      },
+      {
+        _id: 'tech7',
+        content: 'What are your thoughts on the latest AI developments? Share your opinions in the comments!',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 28500
+      },
+      {
+        _id: 'tech8',
+        content: 'https://twitter.com/Zeon1818/status/1743277884213805253?s=35',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 32100
+      }
+    ],
+    // Design Inspiration Channel (ID: 10)
+    '10': [
+      {
+        _id: 'design1',
+        content: `🎨 Weekly Design Inspiration: Minimalist UI Trends 2024
+
+This week we explore the rise of minimalist design in modern applications. Key trends include:
+
+• Clean typography with generous whitespace
+• Subtle animations and micro-interactions
+• Monochromatic color schemes
+• Focus on user experience over decoration
+
+Swipe through the images below for examples from top designers.`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 1800000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'design-img-1',
+            name: 'minimalist-ui-trends.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'design-img-2',
+            name: 'modern-dashboard.jpg',
+            type: 'image/jpeg',
+            size: 2134567,
+            url: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'design2',
+        content: 'Beautiful color palette for modern web apps 🌈\n\nPrimary: #667eea\nSecondary: #764ba2\nAccent: #f093fb\n\nPerfect for gradients!',
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'design-img-3',
+            name: 'color-palette.png',
+            type: 'image/png',
+            size: 987654,
+            url: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'design3',
+        content: '📐 Figma Design System Template - Download now!',
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'design-file-1',
+            name: 'design-system-template.fig',
+            type: 'application/octet-stream',
+            size: 5678900,
+            url: 'https://www.figma.com/file/example'
+          }
+        ]
+      },
+      {
+        _id: 'design4',
+        content: '✨ Top 10 UI/UX portfolios showcase video',
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'design-vid-1',
+            name: 'portfolio-showcase.mp4',
+            type: 'video/mp4',
+            size: 12345678,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'design5',
+        content: '🎧 Design podcast: Interview with top UI designers',
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        audioMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+          duration: 240
+        }
+      }
+    ],
+    // Photography Tips Channel (ID: 14)
+    '14': [
+      {
+        _id: 'photo1',
+        content: `📸 Golden Hour Photography Masterclass
+
+Learn the secrets of capturing stunning golden hour shots! This comprehensive guide covers:
+
+🌅 Best times for golden hour photography
+📷 Optimal camera settings and techniques
+🎨 Composition tips for dramatic lighting
+✨ Post-processing workflow
+
+Check out these beautiful examples below to inspire your next shoot!`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 2700000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'photo-img-1',
+            name: 'golden-hour-sunset.jpg',
+            type: 'image/jpeg',
+            size: 3456789,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-2',
+            name: 'golden-hour-landscape.jpg',
+            type: 'image/jpeg',
+            size: 2987654,
+            url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'photo2',
+        content: 'Perfect camera settings for sunset shots:\n\n📷 ISO: 100-400\n⏱️ Shutter: 1/250s\n🔍 Aperture: f/8-f/11\n\nTry these and share your results!',
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'photo-pdf-1',
+            name: 'camera-settings-guide.pdf',
+            type: 'application/pdf',
+            size: 1234567,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'photo3',
+        content: '🎥 Video tutorial: Portrait photography lighting techniques',
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'photo-vid-1',
+            name: 'portrait-lighting-tutorial.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'photo4',
+        content: '🌅 Amazing sunrise shots from our community members!',
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'photo-img-3',
+            name: 'sunrise-1.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-4',
+            name: 'sunrise-2.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-5',
+            name: 'sunrise-3.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+    // Cooking Recipes Channel (ID: 16)
+    '16': [
+      {
+        _id: 'cook1',
+        content: `🍝 Easy Pasta Carbonara Recipe (15 mins)
+
+Authentic Italian carbonara made simple! This classic Roman dish requires just 5 ingredients:
+
+✓ Spaghetti
+✓ Eggs
+✓ Pancetta
+✓ Pecorino Romano
+✓ Black pepper
+
+No cream needed! Follow our step-by-step guide for restaurant-quality results at home. Perfect for busy weeknights!`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'cook-img-1',
+            name: 'pasta-carbonara.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'cook2',
+        content: 'Ingredients:\n• 400g spaghetti\n• 200g pancetta\n• 4 eggs\n• 100g parmesan\n• Black pepper\n\nFull recipe video below!',
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'cook-vid-1',
+            name: 'carbonara-recipe.mp4',
+            type: 'video/mp4',
+            size: 14567890,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'cook3',
+        content: '🥗 Healthy meal prep ideas for the week!',
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'cook-pdf-1',
+            name: 'meal-prep-guide.pdf',
+            type: 'application/pdf',
+            size: 2345678,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'cook-img-2',
+            name: 'meal-prep-containers.jpg',
+            type: 'image/jpeg',
+            size: 1567890,
+            url: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'cook4',
+        content: '🍰 Baking tips: How to make the perfect chocolate cake',
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'cook-img-3',
+            name: 'chocolate-cake-step1.jpg',
+            type: 'image/jpeg',
+            size: 1234567,
+            url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cook-img-4',
+            name: 'chocolate-cake-final.jpg',
+            type: 'image/jpeg',
+            size: 1456789,
+            url: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+    // Fitness & Health Channel (ID: 15)
+    '15': [
+      {
+        _id: 'fit1',
+        content: `💪 30-Day Workout Challenge Starts Tomorrow!
+
+Join thousands of members in our most popular fitness challenge! 
+
+🎯 What you'll achieve:
+• Build strength and endurance
+• Lose weight and tone muscles
+• Develop healthy habits
+• Join a supportive community
+
+No equipment needed! All workouts can be done at home. Download the full challenge calendar below.`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 1800000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'fit-img-1',
+            name: '30-day-challenge-poster.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fit2',
+        content: 'Day 1 Workout Plan:\n\n🏃 Warm-up: 5 min jog\n💪 Push-ups: 3x15\n🦵 Squats: 3x20\n🧘 Plank: 3x60s\n\nLet\'s do this together! 🔥',
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'fit-pdf-1',
+            name: 'day1-workout-plan.pdf',
+            type: 'application/pdf',
+            size: 987654,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'fit3',
+        content: '🎥 Full body workout video (No equipment needed)',
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'fit-vid-1',
+            name: 'fullbody-workout.mp4',
+            type: 'video/mp4',
+            size: 16789012,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'fit4',
+        content: '🥤 Nutrition tip: Best post-workout smoothie recipes',
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'fit-pdf-2',
+            name: 'smoothie-recipes.pdf',
+            type: 'application/pdf',
+            size: 1567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'fit-img-2',
+            name: 'healthy-smoothies.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fit5',
+        content: '🎧 Workout motivation podcast',
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        audioMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+          duration: 300
+        }
+      }
+    ],
+    // Job Opportunities Channel (ID: 11)
+    '11': [
+      {
+        _id: 'job1',
+        content: `💼 Senior React Developer - Remote ($120k-$150k)
+
+🏢 Company: Leading Tech Startup (Series B)
+📍 Location: Fully Remote (US/EU)
+💰 Salary: $120k-$150k + equity
+
+Requirements:
+• 5+ years React experience
+• TypeScript proficiency
+• Experience with Next.js
+• Strong problem-solving skills
+
+Benefits: Health insurance, unlimited PTO, home office stipend
+
+Download the full job description PDF below. Apply by end of week!`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'job-pdf-1',
+            name: 'react-developer-jd.pdf',
+            type: 'application/pdf',
+            size: 876543,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'job2',
+        content: '🚀 Top Tech Companies Hiring Now!',
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'job-img-1',
+            name: 'hiring-companies.jpg',
+            type: 'image/jpeg',
+            size: 1567890,
+            url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+    // Crypto Updates Channel (ID: 12)
+    '12': [
+      {
+        _id: 'crypto1',
+        content: `₿ Bitcoin breaks $50,000! Market analysis inside
+
+🚀 BTC surges past $50k for the first time since 2021!
+
+Key factors driving the rally:
+• Institutional adoption increasing
+• Bitcoin ETF approvals
+• Halving event approaching
+• Weakening US dollar
+
+Analysts predict potential run to $75k by Q2 2024. See the detailed price chart and technical analysis below.`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 1800000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'crypto-img-1',
+            name: 'bitcoin-chart.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'crypto2',
+        content: '📈 Top 10 Cryptocurrencies to Watch',
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'crypto-vid-1',
+            name: 'crypto-analysis.mp4',
+            type: 'video/mp4',
+            size: 13456789,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      }
+    ],
+    // Startup News Channel (ID: 51)
+    '51': [
+      {
+        _id: 'startup1',
+        content: `🚀 Top 10 Startups to Watch in 2024
+
+Our annual list of the most promising startups disrupting their industries:
+
+1. AI-powered healthcare diagnostics
+2. Sustainable energy solutions
+3. Fintech innovations
+4. EdTech platforms
+5. Climate tech ventures
+
+These companies have raised over $500M combined and are solving real-world problems. Full profiles and investment details in the image below!`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 2700000),
+        isRead: false,
+        attachments: [
+          {
+            id: 'startup-img-1',
+            name: 'top-startups-2024.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'startup2',
+        content: '💰 Funding Rounds This Week',
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'startup-pdf-1',
+            name: 'funding-report.pdf',
+            type: 'application/pdf',
+            size: 1567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
       }
     ]
   });
@@ -1449,6 +2115,27 @@ export default function ChatPage() {
     setSelectedSubgroup(subgroupId);
   };
 
+  const handleLeaveChannel = () => {
+    if (currentChat) {
+      const channelName = conversations.find(c => c._id === currentChat)?.name || 'channel';
+      if (confirm(`Are you sure you want to leave ${channelName}?`)) {
+        // Clear current chat
+        setCurrentChat(null);
+        // You can add API call here to leave channel on backend
+        alert(`You have left ${channelName}`);
+      }
+    }
+  };
+
+  const handleStartBot = () => {
+    if (currentChat) {
+      const botName = conversations.find(c => c._id === currentChat)?.name || 'bot';
+      // Send /start command to bot
+      handleSendMessage('/start');
+      alert(`Started conversation with ${botName}`);
+    }
+  };
+
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -1559,6 +2246,7 @@ export default function ChatPage() {
                   onProfileClick={toggleProfileSidebar}
                   onStarClick={() => setShowMediaGallery(!showMediaGallery)}
                   showMediaGallery={showMediaGallery}
+                  conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
                 />
                 <div className="message-list-container flex-grow overflow-auto">
                   {showMediaGallery ? (
@@ -1574,7 +2262,29 @@ export default function ChatPage() {
                     />
                   )}
                 </div>
-                {!showMediaGallery && <MessageInput onSendMessage={handleSendMessage} />}
+                {!showMediaGallery && (
+                  conversations.find(c => c._id === currentChat)?.type === 'channel' ? (
+                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                      <button
+                        onClick={handleLeaveChannel}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                      >
+                        Leave Channel
+                      </button>
+                    </div>
+                  ) : conversations.find(c => c._id === currentChat)?.type === 'bot' ? (
+                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                      <button
+                        onClick={handleStartBot}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                      >
+                        Start
+                      </button>
+                    </div>
+                  ) : (
+                    <MessageInput onSendMessage={handleSendMessage} />
+                  )
+                )}
               </div>
             ) : (
               <>
@@ -1592,6 +2302,7 @@ export default function ChatPage() {
                   onProfileClick={toggleProfileSidebar}
                   onStarClick={() => setShowMediaGallery(!showMediaGallery)}
                   showMediaGallery={showMediaGallery}
+                  conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
                 />
                 <div className="message-list-container flex-grow overflow-auto">
                   {showMediaGallery ? (
@@ -1609,7 +2320,29 @@ export default function ChatPage() {
                     />
                   )}
                 </div>
-                {!showMediaGallery && <MessageInput onSendMessage={handleSendMessage} />}
+                {!showMediaGallery && (
+                  conversations.find(c => c._id === currentChat)?.type === 'channel' ? (
+                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                      <button
+                        onClick={handleLeaveChannel}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                      >
+                        Leave Channel
+                      </button>
+                    </div>
+                  ) : conversations.find(c => c._id === currentChat)?.type === 'bot' ? (
+                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                      <button
+                        onClick={handleStartBot}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                      >
+                        Start
+                      </button>
+                    </div>
+                  ) : (
+                    <MessageInput onSendMessage={handleSendMessage} />
+                  )
+                )}
               </>
             )}
           </>

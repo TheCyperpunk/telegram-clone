@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FiMail, FiLock, FiUser, FiGithub, FiTwitter } from 'react-icons/fi';
+import Image from 'next/image';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -61,8 +62,19 @@ export default function Home() {
       <div className="w-full max-w-md">
         {/* User Icon */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
-            <FiUser className="text-white" size={32} />
+          <div 
+            className="inline-flex items-center justify-center w-24 h-24 bg-white bg-opacity-20 rounded-full mb-4 overflow-hidden"
+            style={{
+              animation: 'float 3s ease-in-out infinite'
+            }}
+          >
+            <Image 
+              src="https://raw.githubusercontent.com/TheCyperpunk/xmo-image/main/Gemini_Generated_Image_tz4cu0tz4cu0tz4c.png"
+              alt="XMO Logo"
+              width={96}
+              height={96}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
         
@@ -70,7 +82,7 @@ export default function Home() {
         <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-2xl border border-white border-opacity-20 p-8">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+            <h1 className="text-3xl font-bold text-white mb-2">Welcome to XMO</h1>
             <p className="text-white text-opacity-70">Please sign in to continue</p>
           </div>
           

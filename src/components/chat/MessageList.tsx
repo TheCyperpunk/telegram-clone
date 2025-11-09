@@ -135,17 +135,22 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                 )}
                 
                 <div
-                  className={`relative max-w-md overflow-hidden ${
+                  className={`relative ${
+                    // Wider container for document attachments in channels
+                    conversationType === 'channel' && message.attachments?.some(isDocumentAttachment) 
+                      ? 'max-w-lg' 
+                      : 'max-w-md'
+                  } overflow-hidden ${
                     // Voice messages have their own styling, no background needed
                     message.voiceMessage && !message.content
                       ? ''
                       : conversationType === 'channel' && !isOwn
-                        ? 'bg-white text-gray-800 shadow-md rounded-lg'
+                        ? 'bg-white text-gray-800 shadow-md rounded-xl border border-gray-200'
                         : isOwn 
                           ? 'bg-blue-500 text-white' 
                           : 'bg-white text-gray-800 border border-gray-200'
                   } ${
-                    // Add padding only for text content, not for media
+                    // Add padding for text content and document attachments
                     message.content && !message.attachments?.some(a => isImageAttachment(a) || isVideoAttachment(a)) 
                       ? 'px-4 py-3' 
                       : message.audioMessage 
@@ -154,12 +159,14 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                           ? 'p-0' 
                           : message.attachments?.some(a => isImageAttachment(a) || isVideoAttachment(a))
                             ? 'p-0'
-                            : 'p-0'
+                            : message.attachments?.some(isDocumentAttachment)
+                              ? 'px-4 py-3'
+                              : 'p-0'
                   } ${
                     message.voiceMessage && !message.content
                       ? ''
                       : conversationType === 'channel' && !isOwn
-                        ? 'rounded-lg'
+                        ? 'rounded-xl'
                         : isOwn 
                           ? isConsecutive 
                             ? 'rounded-2xl rounded-br-md' 
@@ -172,7 +179,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                   
                   {/* Sender name for group chats and channels */}
                   {!isOwn && !isConsecutive && (conversationType === 'group' || conversationType === 'channel') && (
-                    <div className="text-xs font-semibold text-blue-600 mb-1">
+                    <div className={`text-xs font-semibold text-blue-600 mb-1 ${conversationType === 'channel' ? 'text-left pl-4' : ''}`}>
                       {getSenderDisplayName(message.senderId)}
                     </div>
                   )}
@@ -189,7 +196,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                   
                   {/* Images - Grid layout for multiple images */}
                   {message.attachments && message.attachments.filter(isImageAttachment).length > 0 && (
-                    <div className={conversationType === 'channel' ? 'border-2 border-gray-200 rounded-2xl overflow-hidden' : ''}>
+                    <div className={conversationType === 'channel' ? 'rounded-b-xl overflow-hidden' : ''}>
                       <div className={`${
                         message.attachments.filter(isImageAttachment).length === 1 ? '' : 
                         message.attachments.filter(isImageAttachment).length === 2 ? 'grid grid-cols-2 gap-1' :
@@ -257,7 +264,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                   {message.attachments && message.attachments.filter(isVideoAttachment).length > 0 && (
                     <div className="space-y-2">
                       {message.attachments.filter(isVideoAttachment).map((attachment, idx) => (
-                        <div key={attachment.id} className={conversationType === 'channel' ? 'border-2 border-gray-200 rounded-2xl overflow-hidden' : ''}>
+                        <div key={attachment.id} className={conversationType === 'channel' ? 'rounded-xl overflow-hidden' : ''}>
                           <div className="relative bg-black">
                             <video 
                               src={attachment.url}
@@ -318,9 +325,9 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                   
                   {/* Message content - show only if no images/videos (otherwise it's inside the container) */}
                   {message.content && !message.voiceMessage && 
-                   !(message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0) && (
-                    <div className={conversationType === 'channel' ? 'border-2 border-gray-200 rounded-2xl overflow-hidden bg-white' : ''}>
-                      <p className={`text-sm leading-none whitespace-pre-wrap ${conversationType === 'channel' ? 'text-gray-900 px-3 pt-2 pb-1' : isOwn ? 'text-white' : 'text-gray-900'}`}>
+                   !(message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a) || isDocumentAttachment(a)).length > 0) && (
+                    <>
+                      <p className={`text-sm leading-none whitespace-pre-wrap ${conversationType === 'channel' ? 'text-gray-900' : isOwn ? 'text-white' : 'text-gray-900'}`}>
                         {message.content.split(/(\bhttps?:\/\/[^\s]+)/g).map((part, index) => {
                           if (part.match(/^https?:\/\//)) {
                             return (
@@ -340,7 +347,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                       </p>
                       {/* Views and timestamp inside text/link container for channels */}
                       {conversationType === 'channel' && (message.views !== undefined || message.createdAt) && (
-                        <div className="flex items-center justify-end gap-2 px-3 py-1.5 bg-white">
+                        <div className="flex items-center justify-end gap-2 mt-2">
                           {message.views !== undefined && (
                             <div className="flex items-center gap-1 text-xs text-gray-500">
                               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -357,7 +364,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                           )}
                         </div>
                       )}
-                    </div>
+                    </>
                   )}
                   
                   {/* Voice message - no title, just player */}
@@ -402,30 +409,16 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                     </div>
                   )}
                   
-                  {/* Document attachments (PDFs, etc) with single border and metadata inside */}
+                  {/* Document attachments (PDFs, etc) - no outer container, no text */}
                   {message.attachments && message.attachments.filter(isDocumentAttachment).length > 0 && (
-                    <div className={`${message.content ? 'mt-2' : ''} space-y-2`}>
+                    <div className="space-y-2">
                       {message.attachments.filter(isDocumentAttachment).map(attachment => (
-                        <div key={attachment.id} className="inline-block bg-white rounded-2xl shadow-sm border border-gray-200 p-3">
-                          <FileAttachment file={attachment} />
-                          {/* Time and views inside the single border */}
-                          {conversationType === 'channel' && (
-                            <div className="flex items-center justify-end gap-2 mt-2">
-                              {message.views && (
-                                <div className="flex items-center gap-1 text-xs text-gray-500">
-                                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-                                  </svg>
-                                  <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
-                                </div>
-                              )}
-                              <div className="text-xs text-gray-500">
-                                {new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                              </div>
-                            </div>
-                          )}
-                        </div>
+                        <FileAttachment 
+                          key={attachment.id} 
+                          file={attachment}
+                          timestamp={conversationType === 'channel' ? new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : undefined}
+                          views={conversationType === 'channel' ? message.views : undefined}
+                        />
                       ))}
                     </div>
                   )}

@@ -19,7 +19,7 @@ export default function LinkPreview({ preview }: LinkPreviewProps) {
 
   return (
     <div 
-      className="border border-gray-300 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors mb-2"
+      className="rounded-xl overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors mb-2 border border-gray-200"
       onClick={handleClick}
     >
       {/* Image preview */}

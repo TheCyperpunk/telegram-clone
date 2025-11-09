@@ -100,6 +100,23 @@ export default function MediaGallery({ channelName, onClose }: MediaGalleryProps
   return (
     <div className="bg-white h-full flex flex-col">
       <div className="flex-1 overflow-y-auto">
+        {/* Channel Header with Background Image */}
+        <div className="relative h-48 bg-gradient-to-r from-blue-500 to-purple-600">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: 'url(https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=1200&h=400&auto=format&fit=crop&q=60)'
+            }}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30" />
+          <div className="relative z-10 h-full flex items-end">
+            <div className="p-6 ml-8">
+              <h1 className="text-2xl font-bold text-white mb-2">{channelName}</h1>
+              <p className="text-white text-sm opacity-90">📺 VERIFIED CHANNEL</p>
+            </div>
+          </div>
+        </div>
+
         {/* Stats Section */}
         <div className="px-6 py-4">
           <div className="flex items-center justify-center gap-8 mb-4">

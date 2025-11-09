@@ -13,9 +13,11 @@ interface FileAttachmentProps {
   };
   onRemove?: () => void;
   showRemove?: boolean;
+  timestamp?: string;
+  views?: number;
 }
 
-export default function FileAttachment({ file, onRemove, showRemove = false }: FileAttachmentProps) {
+export default function FileAttachment({ file, onRemove, showRemove = false, timestamp, views }: FileAttachmentProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const formatFileSize = (bytes: number): string => {
@@ -82,36 +84,42 @@ export default function FileAttachment({ file, onRemove, showRemove = false }: F
           </div>
         </div>
       ) : (
-        <div className="inline-flex items-start gap-3 max-w-sm">
-          {/* File icon/thumbnail - no border, just background */}
+        <div className="inline-flex items-center gap-4 min-w-[280px]">
+          {/* File icon - no background container */}
           <div className="flex-shrink-0">
-            {isPDF ? (
-              <div className="w-[72px] h-[72px] bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
-                <FiFileText size={36} className="text-red-500" />
-              </div>
-            ) : (
-              <div className="w-[72px] h-[72px] bg-gray-100 rounded-xl flex items-center justify-center">
-                <div className="text-blue-500">
-                  {getFileIcon()}
-                </div>
-              </div>
-            )}
+            <FiFileText size={48} className="text-red-500" />
           </div>
           
           {/* File info with OPEN WITH button */}
-          <div className="flex-1 min-w-0 pt-1">
-            <div className="text-[15px] font-normal text-gray-900 mb-1 truncate leading-tight">
+          <div className="flex-1 min-w-0">
+            <div className="text-[15px] font-medium text-gray-900 mb-1 truncate">
               {file.name}
             </div>
-            <div className="text-[13px] text-gray-500 leading-tight mb-1.5">
+            <div className="text-[13px] text-gray-500 mb-2">
               {formatFileSize(file.size)}
             </div>
-            <button 
-              className="text-[13px] text-blue-500 hover:text-blue-600 font-medium uppercase tracking-wide"
-              onClick={handleDownload}
-            >
-              OPEN WITH
-            </button>
+            <div className="flex items-center justify-between">
+              <button 
+                className="text-[13px] text-blue-500 hover:text-blue-600 font-medium uppercase tracking-wide"
+                onClick={handleDownload}
+              >
+                OPEN WITH
+              </button>
+              {timestamp && (
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  {views && (
+                    <div className="flex items-center gap-1">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                        <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                      </svg>
+                      <span>{views >= 1000 ? `${(views / 1000).toFixed(1)}K` : views}</span>
+                    </div>
+                  )}
+                  <span>{timestamp}</span>
+                </div>
+              )}
+            </div>
           </div>
           
           {/* Remove button if needed */}

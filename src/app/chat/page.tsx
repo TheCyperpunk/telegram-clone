@@ -1317,6 +1317,4352 @@ These companies have raised over $500M combined and are solving real-world probl
           }
         ]
       }
+    ],
+
+    // Photography Tips Channel (ID: 52)
+    '52': [
+      {
+        _id: 'photo1',
+        content: `📸 Golden Hour Photography Masterclass
+
+Learn the secrets of capturing stunning golden hour photos! This comprehensive guide covers:
+• Best camera settings for warm light
+• Composition techniques for dramatic shots
+• Post-processing tips for enhanced colors
+
+Check out these amazing examples:`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 45200,
+        attachments: [
+          {
+            id: 'photo-img-1',
+            name: 'golden-hour-1.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-2',
+            name: 'golden-hour-2.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-3',
+            name: 'golden-hour-3.jpg',
+            type: 'image/jpeg',
+            size: 2156789,
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'photo2',
+        content: '',
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: true,
+        views: 32100,
+        attachments: [
+          {
+            id: 'photo-pdf-1',
+            name: 'photography-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      }
+    ],
+
+    // Fitness & Health Channel (ID: 53)
+    '53': [
+      {
+        _id: 'fitness1',
+        content: `💪 30-Day Workout Challenge Starts Tomorrow!
+
+Join thousands of fitness enthusiasts in our most popular challenge yet! 
+
+What's included:
+• Daily workout videos (15-45 minutes)
+• Nutrition meal plans
+• Progress tracking sheets
+• Community support group
+
+Are you ready to transform your life? 🔥`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 1800000),
+        isRead: false,
+        views: 78900,
+        attachments: [
+          {
+            id: 'fitness-vid-1',
+            name: 'workout-preview.mp4',
+            type: 'video/mp4',
+            size: 12345678,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'fitness2',
+        content: '',
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: true,
+        views: 23400,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+          duration: 180,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      }
+    ],
+
+    // Cooking Recipes Channel (ID: 54)
+    '54': [
+      {
+        _id: 'cooking1',
+        content: `🍝 Easy Pasta Recipes for Beginners
+
+Master these 5 simple pasta dishes that anyone can make! Perfect for busy weeknights or impressing guests.
+
+Featured recipes:
+• Classic Carbonara (15 mins)
+• Aglio e Olio (10 mins)  
+• Pesto Pasta (12 mins)
+• Marinara Magic (20 mins)
+• Creamy Mushroom (18 mins)
+
+Full recipe collection: https://cookingmadeasy.com/pasta-basics`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 2700000),
+        isRead: false,
+        views: 56700,
+        attachments: [
+          {
+            id: 'cooking-img-1',
+            name: 'pasta-collection.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cooking-img-2',
+            name: 'carbonara-recipe.jpg',
+            type: 'image/jpeg',
+            size: 1654321,
+            url: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'cooking2',
+        content: `🥗 Healthy Meal Prep Ideas for the Week
+
+Save time and eat healthy with these meal prep recipes! Prepare everything on Sunday and enjoy nutritious meals all week long.
+
+Meal prep essentials:
+• Mediterranean Quinoa Bowls - Protein-packed lunch
+• Grilled Chicken & Veggies - Versatile dinner base
+• Overnight Oats - 5 flavor variations
+• Mason Jar Salads - Fresh and crisp all week
+• Energy Balls - Healthy snack option
+• Portion control and storage tips
+
+Meal prep guide and shopping list: https://healthyeating.com/meal-prep-101`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: false,
+        views: 89400,
+        attachments: [
+          {
+            id: 'cooking-img-3',
+            name: 'meal-prep-containers.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cooking-img-4',
+            name: 'quinoa-bowls.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'cooking3',
+        content: '',
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'cooking-vid-1',
+            name: 'baking-bread-tutorial.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'cooking4',
+        content: `🍰 Decadent Desserts: From Simple to Spectacular
+
+Satisfy your sweet tooth with these irresistible dessert recipes! From quick treats to show-stopping creations.
+
+Sweet sensations:
+• Classic Chocolate Lava Cake (25 mins)
+• No-Bake Cheesecake (15 mins + chill time)
+• Tiramisu - Italian perfection
+• Crème Brûlée - Restaurant-quality at home
+• Fruit Tarts - Beautiful and delicious
+• Baking tips and temperature guide
+
+Dessert recipe collection and techniques:`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'cooking-pdf-1',
+            name: 'dessert-masterclass.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'cooking5',
+        content: `🌮 Global Cuisine: Mexican Street Food at Home
+
+Bring the vibrant flavors of Mexico to your kitchen! Learn to make authentic street food favorites with easy-to-find ingredients.
+
+Mexican favorites:
+• Tacos al Pastor - Marinated pork perfection
+• Elote (Mexican Street Corn) - Grilled and creamy
+• Quesadillas - Crispy and cheesy
+• Guacamole - Fresh and authentic
+• Salsa Verde & Roja - Homemade sauces
+• Churros - Sweet cinnamon treats
+
+Spice guide and ingredient substitutions:`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 78900,
+        attachments: [
+          {
+            id: 'cooking-img-5',
+            name: 'tacos-al-pastor.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cooking-img-6',
+            name: 'mexican-street-corn.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cooking-img-7',
+            name: 'fresh-guacamole.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'cooking6',
+        content: '',
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+          duration: 225,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'cooking7',
+        content: `🍜 Asian Comfort Food: Ramen, Pho & More
+
+Master the art of Asian noodle soups! These warming, flavorful dishes are easier to make than you think.
+
+Noodle soup favorites:
+• Tonkotsu Ramen - Rich pork bone broth
+• Vietnamese Pho - Aromatic beef noodle soup
+• Thai Tom Yum - Spicy and sour perfection
+• Korean Jjajangmyeon - Black bean noodles
+• Broth-making techniques and shortcuts
+• Toppings and garnish ideas
+
+Asian pantry essentials and where to buy:`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'cooking-vid-2',
+            name: 'ramen-from-scratch.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'cooking8',
+        content: `🥘 One-Pot Wonders: Minimal Cleanup, Maximum Flavor
+
+Delicious meals with easy cleanup! These one-pot recipes are perfect for busy weeknights when you don't want to do dishes.
+
+One-pot favorites:
+• Chicken & Rice Casserole - Comfort food classic
+• Vegetarian Chili - Hearty and healthy
+• Seafood Paella - Spanish showstopper
+• Beef Stew - Slow-cooked perfection
+• Creamy Tuscan Chicken - Restaurant-quality
+• Dutch oven and slow cooker tips
+
+Time-saving cooking techniques:`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'cooking-img-8',
+            name: 'one-pot-paella.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cooking-img-9',
+            name: 'chicken-casserole.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'cooking9',
+        content: `🌱 Plant-Based Cooking: Vegan Recipes That Everyone Will Love
+
+Discover delicious plant-based meals that even meat-lovers will enjoy! Healthy, sustainable, and incredibly flavorful.
+
+Vegan favorites:
+• Cauliflower Buffalo Wings - Crispy and spicy
+• Jackfruit Pulled "Pork" - Surprisingly meaty texture
+• Cashew Mac & Cheese - Creamy comfort food
+• Lentil Bolognese - Hearty pasta sauce
+• Buddha Bowls - Colorful and nutritious
+• Protein sources and nutritional tips
+
+Plant-based pantry guide and substitutions:`,
+        senderId: 'cooking-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 76800,
+        attachments: [
+          {
+            id: 'cooking-img-10',
+            name: 'vegan-buddha-bowl.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'cooking-img-11',
+            name: 'cauliflower-wings.jpg',
+            type: 'image/jpeg',
+            size: 2012345,
+            url: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Travel Destinations Channel (ID: 55)
+    '55': [
+      {
+        _id: 'travel1',
+        content: `🌴 Hidden Gems in Southeast Asia
+
+Discover breathtaking destinations away from the crowds! Our travel experts have curated the most stunning hidden spots across Southeast Asia.
+
+Must-visit locations:
+• Secret beaches in Philippines 🏖️
+• Mountain villages in Vietnam 🏔️
+• Temple ruins in Cambodia 🏛️
+• Floating markets in Thailand 🛶
+
+Complete travel guide with maps and tips below:`,
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 89200,
+        attachments: [
+          {
+            id: 'travel-img-1',
+            name: 'hidden-beach.jpg',
+            type: 'image/jpeg',
+            size: 2987654,
+            url: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-2',
+            name: 'mountain-village.jpg',
+            type: 'image/jpeg',
+            size: 2654321,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-3',
+            name: 'temple-ruins.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-4',
+            name: 'floating-market.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'travel2',
+        content: '',
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: true,
+        views: 34500,
+        attachments: [
+          {
+            id: 'travel-pdf-1',
+            name: 'southeast-asia-guide.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'travel3',
+        content: `🗼 European City Break: Paris, Rome & Barcelona
+
+Experience the magic of Europe's most iconic cities! From art and architecture to cuisine and culture, these destinations offer unforgettable experiences.
+
+City highlights:
+• Paris - Eiffel Tower, Louvre, Montmartre charm
+• Rome - Colosseum, Vatican, ancient history
+• Barcelona - Gaudí architecture, beaches, tapas culture
+• Best time to visit and avoiding crowds
+• Budget tips and money-saving strategies
+• Must-try local dishes and restaurants
+
+European travel itinerary and booking guide: https://eurotravel.com/city-breaks`,
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: false,
+        views: 112300,
+        attachments: [
+          {
+            id: 'travel-img-5',
+            name: 'paris-eiffel-tower.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-6',
+            name: 'rome-colosseum.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'travel4',
+        content: '',
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'travel-vid-1',
+            name: 'japan-travel-vlog.mp4',
+            type: 'video/mp4',
+            size: 21234567,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'travel5',
+        content: `🏔️ Adventure Travel: Trekking & Outdoor Experiences
+
+For the thrill-seekers and nature lovers! Discover the world's most spectacular trekking routes and outdoor adventures.
+
+Epic adventures:
+• Inca Trail to Machu Picchu (Peru) - Ancient ruins trek
+• Everest Base Camp (Nepal) - Himalayan adventure
+• Patagonia W Trek (Chile/Argentina) - Glaciers and mountains
+• Kilimanjaro Summit (Tanzania) - Africa's highest peak
+• Torres del Paine (Chile) - Dramatic landscapes
+• Annapurna Circuit (Nepal) - Cultural immersion
+
+Preparation guide and gear recommendations:`,
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'travel-img-7',
+            name: 'machu-picchu-trek.jpg',
+            type: 'image/jpeg',
+            size: 2789012,
+            url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-8',
+            name: 'mountain-trekking.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-9',
+            name: 'patagonia-landscape.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'travel6',
+        content: '',
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+          duration: 255,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      },
+      {
+        _id: 'travel7',
+        content: `🏝️ Island Paradise: Maldives, Bali & Seychelles
+
+Escape to tropical paradise! These stunning island destinations offer crystal-clear waters, pristine beaches, and ultimate relaxation.
+
+Island getaway highlights:
+• Maldives - Overwater bungalows and marine life
+• Bali - Temples, rice terraces, and beach clubs
+• Seychelles - Granite boulders and turquoise waters
+• Best resorts and budget accommodations
+• Water activities - Diving, snorkeling, surfing
+• Local culture and cuisine experiences
+
+Island hopping itineraries and resort booking:`,
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'travel-vid-2',
+            name: 'maldives-resort-tour.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'travel8',
+        content: `🎒 Budget Travel Tips: See the World Without Breaking the Bank
+
+Travel doesn't have to be expensive! Learn how to explore amazing destinations on a budget with our money-saving strategies.
+
+Budget travel hacks:
+• Flight deals - Use price alerts and flexible dates
+• Accommodation - Hostels, Airbnb, house-sitting
+• Food - Street food, local markets, self-catering
+• Transportation - Public transit, walking tours
+• Free activities - Museums, parks, festivals
+• Travel credit cards - Points and rewards
+• Off-season travel - Lower prices, fewer crowds
+
+Budget destination recommendations and cost breakdowns:`,
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'travel-pdf-2',
+            name: 'budget-travel-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'travel9',
+        content: `🌍 Solo Travel Guide: Empowering Adventures Alone
+
+Traveling solo is one of life's most rewarding experiences! Discover the joys of independent travel and destinations perfect for solo adventurers.
+
+Solo travel essentials:
+• Safety tips and precautions for solo travelers
+• Best destinations for solo travel (Iceland, New Zealand, Japan)
+• Meeting other travelers - Hostels, tours, apps
+• Overcoming loneliness and embracing solitude
+• Solo female travel considerations
+• Building confidence through independent exploration
+
+Solo traveler community and safety resources:`,
+        senderId: 'travel-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 76800,
+        attachments: [
+          {
+            id: 'travel-img-10',
+            name: 'solo-traveler-mountain.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'travel-img-11',
+            name: 'solo-travel-beach.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Book Club Channel (ID: 56)
+    '56': [
+      {
+        _id: 'book1',
+        content: `📚 This Month's Pick: "Atomic Habits" by James Clear
+
+Join our discussion of this life-changing book about building good habits and breaking bad ones.
+
+Key takeaways we'll explore:
+• The 1% better principle
+• Habit stacking techniques
+• Environment design for success
+• The plateau of latent potential
+
+Discussion starts this weekend! Audio summary below:`,
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: false,
+        views: 23400,
+        attachments: [
+          {
+            id: 'book-img-1',
+            name: 'atomic-habits-cover.jpg',
+            type: 'image/jpeg',
+            size: 1234567,
+            url: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'book2',
+        content: '',
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        views: 18700,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+          duration: 240,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'book3',
+        content: `📖 Classic Literature Deep Dive: "Pride and Prejudice"
+
+Rediscover Jane Austen's masterpiece! We're exploring themes of class, marriage, and social commentary that remain relevant 200+ years later.
+
+Discussion themes:
+• Elizabeth Bennet - Proto-feminist heroine
+• Social class and marriage in Regency England
+• Austen's wit and satirical commentary
+• Character development and growth
+• Modern adaptations and cultural impact
+• Why this book endures through generations
+
+Reading guide and historical context: https://classiclit.com/pride-prejudice-guide`,
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: false,
+        views: 45600,
+        attachments: [
+          {
+            id: 'book-img-2',
+            name: 'pride-prejudice-cover.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'book-img-3',
+            name: 'jane-austen-portrait.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'book4',
+        content: `🌟 Sci-Fi Spotlight: "Project Hail Mary" by Andy Weir
+
+From the author of "The Martian" comes another thrilling space adventure! Join us for a discussion of this page-turner about humanity's last hope.
+
+What we loved:
+• Compelling protagonist and character development
+• Hard science fiction done right
+• Unexpected friendship and humor
+• Problem-solving and ingenuity
+• Emotional depth beneath the science
+• Satisfying plot twists and resolution
+
+Book club meeting this Thursday at 7 PM EST:`,
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'book-pdf-1',
+            name: 'scifi-reading-list.pdf',
+            type: 'application/pdf',
+            size: 3456789,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'book5',
+        content: '',
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 34200,
+        attachments: [
+          {
+            id: 'book-vid-1',
+            name: 'author-interview-highlights.mp4',
+            type: 'video/mp4',
+            size: 17654321,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'book6',
+        content: `🔍 Mystery & Thriller Month: Agatha Christie Marathon
+
+Celebrate the Queen of Mystery! We're reading three classic Christie novels and discussing her enduring influence on the mystery genre.
+
+Christie classics to read:
+• "Murder on the Orient Express" - Iconic locked-room mystery
+• "And Then There Were None" - Masterclass in suspense
+• "The Murder of Roger Ackroyd" - Revolutionary plot twist
+• Hercule Poirot vs Miss Marple - Character analysis
+• Christie's influence on modern crime fiction
+• Adaptations across film and TV
+
+Mystery writing techniques and plot structure:`,
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 78900,
+        attachments: [
+          {
+            id: 'book-img-4',
+            name: 'agatha-christie-collection.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'book-img-5',
+            name: 'mystery-books-shelf.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'book-img-6',
+            name: 'vintage-mystery-covers.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'book7',
+        content: '',
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 23400,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+          duration: 210,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'book8',
+        content: `📚 Diverse Voices: Contemporary Authors You Should Read
+
+Expand your reading horizons with these powerful contemporary voices offering fresh perspectives and compelling storytelling.
+
+Must-read contemporary authors:
+• Chimamanda Ngozi Adichie - "Americanah" (Nigerian perspective)
+• Ocean Vuong - "On Earth We're Briefly Gorgeous" (Poetic prose)
+• Min Jin Lee - "Pachinko" (Korean diaspora epic)
+• Colson Whitehead - "The Underground Railroad" (Historical reimagining)
+• Jesmyn Ward - "Sing, Unburied, Sing" (Southern Gothic)
+• Tommy Orange - "There There" (Native American voices)
+
+Diversity in literature and representation matters:`,
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'book-vid-2',
+            name: 'diverse-authors-panel.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'book9',
+        content: `💡 Book Recommendations by Mood
+
+Can't decide what to read next? Let your current mood guide you! Here are our curated recommendations for every emotional state.
+
+Reading by mood:
+• Need comfort? - "The House in the Cerulean Sea" (wholesome fantasy)
+• Feeling adventurous? - "The Name of the Wind" (epic fantasy)
+• Want to cry? - "A Little Life" (emotional devastation)
+• Need inspiration? - "Educated" (memoir of transformation)
+• Craving suspense? - "Gone Girl" (psychological thriller)
+• Seeking wisdom? - "Meditations" by Marcus Aurelius (philosophy)
+
+Book recommendation quiz and reading tracker:`,
+        senderId: 'book-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'book-img-7',
+            name: 'cozy-reading-nook.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'book-img-8',
+            name: 'book-stack-coffee.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Music Discovery Channel (ID: 57)
+    '57': [
+      {
+        _id: 'music1',
+        content: `🎵 New Indie Artists You Should Know
+
+Discover fresh sounds from emerging indie artists making waves in 2024! Our curated playlist features the most promising new talents.
+
+Featured artists:
+• Luna Waves - Dreamy synthpop
+• The Midnight Garden - Folk rock
+• Neon Pulse - Electronic indie
+• Velvet Skies - Alternative rock
+
+Listen to our exclusive playlist: https://spotify.com/indie-discoveries-2024`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 4500000),
+        isRead: false,
+        views: 34200,
+        attachments: [
+          {
+            id: 'music-img-1',
+            name: 'indie-artists-2024.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'music-img-2',
+            name: 'playlist-cover.jpg',
+            type: 'image/jpeg',
+            size: 1654321,
+            url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'music2',
+        content: `🎸 Genre Spotlight: The Rise of Hyperpop
+
+Hyperpop is exploding in popularity, blending electronic music with pop sensibilities and experimental production. Dive into this boundary-pushing genre!
+
+Hyperpop essentials:
+• 100 gecs - Chaotic energy and glitchy production
+• Charli XCX - Pop perfection meets avant-garde
+• SOPHIE - Revolutionary production (RIP)
+• A.G. Cook - PC Music mastermind
+• Dorian Electra - Genre-fluid experimentation
+• Arca - Experimental electronic artistry
+
+Hyperpop playlist and production techniques: https://musictheory.com/hyperpop-guide`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'music-img-3',
+            name: 'hyperpop-artists.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'music-img-4',
+            name: 'electronic-music-production.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'music3',
+        content: '',
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 56700,
+        attachments: [
+          {
+            id: 'music-vid-1',
+            name: 'live-session-acoustic.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'music4',
+        content: `🌍 World Music Exploration: Global Sounds to Discover
+
+Expand your musical horizons with incredible artists from around the world. From Afrobeats to K-pop, discover the diverse sounds shaping global music.
+
+Global music highlights:
+• Burna Boy - Afrobeats superstar (Nigeria)
+• Rosalía - Flamenco fusion innovator (Spain)
+• BTS - K-pop global phenomenon (South Korea)
+• Anoushka Shankar - Sitar virtuoso (India/UK)
+• Bomba Estéreo - Cumbia electronica (Colombia)
+• Tinariwen - Desert blues masters (Mali)
+
+World music playlist and cultural context:`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'music-pdf-1',
+            name: 'world-music-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'music5',
+        content: `🎧 Music Production 101: Creating Your First Track
+
+Want to make your own music? Start your production journey with this beginner-friendly guide to music creation and essential tools.
+
+Production essentials:
+• DAW choices - Ableton Live, FL Studio, Logic Pro
+• MIDI controllers - Keyboard and pad controllers
+• Audio interface - Quality sound input/output
+• Studio monitors - Accurate sound reproduction
+• VST plugins - Synths, effects, and samples
+• Music theory basics - Scales, chords, progressions
+
+Production tutorials and free resources:`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'music-img-5',
+            name: 'music-production-studio.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'music-img-6',
+            name: 'daw-interface.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'music-img-7',
+            name: 'midi-controller-setup.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'music6',
+        content: '',
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+          duration: 245,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      },
+      {
+        _id: 'music7',
+        content: `🎤 Concert & Festival Guide: Must-See Live Shows 2024
+
+Live music is back and better than ever! Don't miss these incredible concerts and festivals happening this year.
+
+Festival lineup highlights:
+• Coachella - April (Indio, CA) - Headliners: Bad Bunny, Blackpink
+• Glastonbury - June (UK) - Elton John, Arctic Monkeys
+• Lollapalooza - August (Chicago) - Billie Eilish, The 1975
+• Tomorrowland - July (Belgium) - EDM paradise
+• Austin City Limits - October (Texas) - Diverse lineup
+• Primavera Sound - June (Barcelona) - Indie heaven
+
+Ticket info and festival survival tips:`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'music-vid-2',
+            name: 'festival-highlights-2024.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'music8',
+        content: `📻 Throwback Thursday: 90s Hip-Hop Golden Era
+
+Take a trip back to the golden age of hip-hop! Explore the albums and artists that defined a generation and continue to influence music today.
+
+90s hip-hop essentials:
+• Nas - "Illmatic" (1994) - Lyrical masterpiece
+• The Notorious B.I.G. - "Ready to Die" (1994)
+• Wu-Tang Clan - "Enter the Wu-Tang" (1993)
+• A Tribe Called Quest - "The Low End Theory" (1991)
+• Dr. Dre - "The Chronic" (1992) - G-funk revolution
+• Lauryn Hill - "The Miseducation" (1998)
+
+Hip-hop history and cultural impact analysis:`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'music-img-8',
+            name: '90s-hiphop-culture.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'music-img-9',
+            name: 'vinyl-collection.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'music9',
+        content: `🎹 Jazz Appreciation: Modern Masters Keeping the Tradition Alive
+
+Jazz continues to evolve while honoring its rich history. Discover contemporary jazz artists pushing boundaries and redefining the genre.
+
+Modern jazz innovators:
+• Kamasi Washington - Spiritual jazz epic scale
+• Robert Glasper - Jazz meets hip-hop and R&B
+• Esperanza Spalding - Bass virtuoso and vocalist
+• Thundercat - Funk fusion bass mastery
+• Snarky Puppy - Collective improvisation excellence
+• Nubya Garcia - UK jazz scene leader
+
+Jazz playlist and improvisation techniques:`,
+        senderId: 'music-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'music-img-10',
+            name: 'jazz-performance.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'music-img-11',
+            name: 'jazz-instruments.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Gaming News Channel (ID: 58)
+    '58': [
+      {
+        _id: 'gaming1',
+        content: `🎮 Top 5 Games Releasing This Month
+
+Get ready for an incredible month of gaming! Here are the most anticipated releases that will dominate your free time.
+
+Must-play releases:
+1. Cyber Legends 2077 - Futuristic RPG
+2. Ocean Explorer - Underwater adventure
+3. Racing Thunder - High-speed action
+4. Mystery Manor - Puzzle adventure
+5. Space Conquest - Strategy simulation
+
+Full reviews and gameplay footage:`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 6300000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'gaming-vid-1',
+            name: 'top-games-preview.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'gaming1b',
+        content: '',
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 6290000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'gaming-img-1',
+            name: 'cyber-legends.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'gaming-img-2',
+            name: 'ocean-explorer.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'gaming2',
+        content: `🏆 Esports Championship Finals: Epic Showdown
+
+The biggest esports tournament of the year concludes this weekend! Watch the world's best teams compete for glory and a $5 million prize pool.
+
+Championship highlights:
+• League of Legends World Championship - Finals Sunday
+• CS:GO Major - Semifinals Saturday
+• Valorant Champions Tour - Grand Finals
+• Dota 2 International - Bracket Stage
+• Fortnite World Cup - Solo & Duo Finals
+
+Live stream schedule and viewing guide: https://esports.com/championships`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: false,
+        views: 112300,
+        attachments: [
+          {
+            id: 'gaming-img-3',
+            name: 'esports-championship.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'gaming-img-4',
+            name: 'esports-arena.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'gaming3',
+        content: `🕹️ Retro Gaming Revival: Classic Consoles Making a Comeback
+
+Nostalgia meets modern technology! Discover the classic games being remastered and the retro consoles experiencing a renaissance.
+
+Retro gaming trends:
+• Nintendo Switch Online - Expanding classic library
+• PlayStation Plus Premium - PS1/PS2 classics
+• Sega Genesis Mini 2 - 60 classic games included
+• Atari 2600+ - Modern remake of the legend
+• PC remasters - Enhanced graphics and performance
+• Speedrunning community - Classic game competitions
+
+Retro game recommendations and emulation guide:`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 78900,
+        attachments: [
+          {
+            id: 'gaming-pdf-1',
+            name: 'retro-gaming-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'gaming4',
+        content: '',
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'gaming-vid-2',
+            name: 'gaming-setup-tour.mp4',
+            type: 'video/mp4',
+            size: 21234567,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'gaming5',
+        content: `🎯 Gaming Hardware Guide: Building the Ultimate Setup
+
+Level up your gaming experience with the latest hardware recommendations. From budget builds to high-end rigs, we've got you covered.
+
+Hardware recommendations 2024:
+• GPU: RTX 4080 / AMD RX 7900 XTX
+• CPU: Intel i9-14900K / AMD Ryzen 9 7950X3D
+• RAM: 32GB DDR5 6000MHz
+• Storage: 2TB NVMe Gen 4 SSD
+• Monitor: 1440p 240Hz or 4K 144Hz
+• Peripherals: Mechanical keyboard, gaming mouse
+
+Build guides and performance benchmarks:`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'gaming-img-5',
+            name: 'gaming-pc-build.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'gaming-img-6',
+            name: 'gaming-peripherals.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'gaming-img-7',
+            name: 'rgb-gaming-setup.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'gaming6',
+        content: '',
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-18.mp3',
+          duration: 270,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'gaming7',
+        content: `🌟 Indie Game Spotlight: Hidden Gems Worth Playing
+
+Support independent developers and discover unique gaming experiences! These indie titles prove you don't need AAA budgets to create masterpieces.
+
+Must-play indie games:
+• "Hollow Knight: Silksong" - Metroidvania perfection
+• "Hades II" - Roguelike excellence continues
+• "Stray Gods" - Musical RPG innovation
+• "Sea of Stars" - Turn-based RPG nostalgia
+• "Cocoon" - Puzzle adventure artistry
+• "Pizza Tower" - Fast-paced platforming chaos
+
+Indie game recommendations and developer interviews:`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'gaming-vid-3',
+            name: 'indie-game-showcase.mp4',
+            type: 'video/mp4',
+            size: 17654321,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'gaming8',
+        content: `🎮 Console Wars 2024: PS5 vs Xbox Series X vs Nintendo Switch
+
+The battle for gaming supremacy continues! Compare the latest consoles and exclusive titles to decide which platform is right for you.
+
+Console comparison:
+• PlayStation 5 - Exclusive powerhouses (Spider-Man 2, God of War)
+• Xbox Series X - Game Pass value champion
+• Nintendo Switch - Portable innovation (Zelda, Mario)
+• Performance specs and backwards compatibility
+• Online services and subscription models
+• Upcoming exclusive releases
+
+Console buying guide and game library analysis:`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'gaming-img-8',
+            name: 'console-comparison.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'gaming-img-9',
+            name: 'ps5-exclusives.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1622297845775-5ff3fef71d13?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'gaming9',
+        content: `🚀 VR Gaming Revolution: The Future is Immersive
+
+Virtual reality gaming has evolved beyond gimmicks into truly transformative experiences. Explore the latest VR titles and hardware pushing boundaries.
+
+VR gaming highlights:
+• Meta Quest 3 - Standalone VR leader
+• PlayStation VR2 - Console VR excellence
+• Valve Index - PC VR precision
+• "Half-Life: Alyx" - VR storytelling masterpiece
+• "Beat Saber" - Rhythm game phenomenon
+• Fitness VR - Gaming meets exercise
+
+VR setup guides and game recommendations:`,
+        senderId: 'gaming-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 76800,
+        attachments: [
+          {
+            id: 'gaming-img-10',
+            name: 'vr-gaming-setup.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1617802690658-1173a812650d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'gaming-img-11',
+            name: 'vr-headset-comparison.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Fashion Trends Channel (ID: 59)
+    '59': [
+      {
+        _id: 'fashion1',
+        content: `👗 Spring 2024 Fashion Forecast
+
+Get ahead of the trends with our comprehensive spring fashion guide! From runway to street style, we've got you covered.
+
+Key trends to watch:
+• Pastel power - Soft hues dominate
+• Oversized blazers - Power dressing returns
+• Sustainable fabrics - Eco-conscious fashion
+• Vintage revival - 90s nostalgia continues
+• Bold accessories - Statement pieces shine
+
+Style inspiration gallery:`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: false,
+        views: 45600,
+        attachments: [
+          {
+            id: 'fashion-img-1',
+            name: 'spring-trends-1.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-2',
+            name: 'spring-trends-2.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-3',
+            name: 'spring-trends-3.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fashion2',
+        content: `✨ Sustainable Fashion Revolution: Eco-Friendly Style Guide
+
+Fashion meets sustainability! Discover how to build a stylish wardrobe while minimizing your environmental impact and supporting ethical brands.
+
+Sustainable fashion principles:
+• Quality over quantity - Invest in timeless pieces
+• Secondhand shopping - Thrift and vintage treasures
+• Ethical brands - Support fair labor practices
+• Natural fabrics - Organic cotton, linen, hemp
+• Circular fashion - Rent, swap, and recycle
+• Capsule wardrobe - 30-40 versatile pieces
+
+Eco-friendly brand directory and styling tips: https://sustainablefashion.com/guide`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: false,
+        views: 78900,
+        attachments: [
+          {
+            id: 'fashion-img-4',
+            name: 'sustainable-fashion.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-5',
+            name: 'eco-friendly-wardrobe.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fashion3',
+        content: '',
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 56700,
+        attachments: [
+          {
+            id: 'fashion-vid-1',
+            name: 'runway-highlights-2024.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'fashion4',
+        content: `👔 Men's Fashion Essentials: Building the Perfect Wardrobe
+
+Elevate your style game with these timeless menswear pieces and modern trends. From casual to formal, master the art of dressing well.
+
+Wardrobe essentials:
+• Tailored suit - Navy or charcoal gray
+• White Oxford shirt - Classic versatility
+• Dark denim jeans - Well-fitted and quality
+• Leather dress shoes - Oxfords or brogues
+• Casual sneakers - Clean white or minimalist
+• Leather jacket - Timeless cool factor
+• Quality watch - Investment piece
+
+Styling guides and fit recommendations:`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'fashion-pdf-1',
+            name: 'mens-style-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'fashion5',
+        content: `💄 Beauty Trends 2024: Makeup & Skincare Innovations
+
+Stay ahead of the beauty curve with the latest makeup techniques, skincare breakthroughs, and wellness trends transforming the industry.
+
+Beauty trends to try:
+• Clean beauty movement - Non-toxic ingredients
+• Skin minimalism - "No-makeup" makeup look
+• Bold lips return - Classic red and berry tones
+• Glass skin - Korean skincare influence
+• Sustainable packaging - Refillable products
+• Personalized skincare - AI-powered routines
+
+Product recommendations and tutorial videos:`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'fashion-img-6',
+            name: 'beauty-trends-2024.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-7',
+            name: 'skincare-routine.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-8',
+            name: 'makeup-trends.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fashion6',
+        content: '',
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3',
+          duration: 230,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      },
+      {
+        _id: 'fashion7',
+        content: `👠 Accessory Trends: Statement Pieces That Transform Outfits
+
+The right accessories can elevate any look from basic to extraordinary. Discover this season's must-have pieces and how to style them.
+
+Trending accessories:
+• Chunky gold jewelry - Bold chains and hoops
+• Mini bags - Micro purses make a statement
+• Platform shoes - 70s revival continues
+• Oversized sunglasses - Retro glamour
+• Silk scarves - Versatile styling options
+• Bucket hats - Street style staple
+
+Accessory styling tips and shopping guide:`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'fashion-vid-2',
+            name: 'accessory-styling-guide.mp4',
+            type: 'video/mp4',
+            size: 15678901,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'fashion8',
+        content: `🌟 Celebrity Style Breakdown: Red Carpet to Street Style
+
+Get inspired by celebrity fashion choices and learn how to recreate their iconic looks on any budget.
+
+Style icons to watch:
+• Zendaya - Risk-taking fashion chameleon
+• Timothée Chalamet - Modern menswear icon
+• Rihanna - Trendsetter extraordinaire
+• Harry Styles - Gender-fluid fashion pioneer
+• Blake Lively - Classic Hollywood glamour
+• Bad Bunny - Bold streetwear influence
+
+Celebrity look-alikes and budget alternatives:`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'fashion-img-9',
+            name: 'celebrity-red-carpet.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-10',
+            name: 'street-style-inspiration.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-11',
+            name: 'celebrity-casual-looks.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fashion9',
+        content: `🛍️ Fashion Week Highlights: Global Runway Trends
+
+From Paris to New York, Milan to London - discover the trends that will define fashion for the next season straight from the world's top runways.
+
+Fashion Week key takeaways:
+• Paris - Romantic maximalism and couture craftsmanship
+• New York - Practical luxury and American sportswear
+• Milan - Italian elegance meets modern innovation
+• London - Avant-garde experimentation and sustainability
+• Tokyo - Street style fusion and technical fabrics
+
+Designer collections and trend forecasts:`,
+        senderId: 'fashion-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'fashion-img-12',
+            name: 'fashion-week-paris.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fashion-img-13',
+            name: 'runway-collection.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Art & Culture Channel (ID: 62)
+    '62': [
+      {
+        _id: 'art1',
+        content: `🎨 Virtual Museum Tours This Weekend
+
+Explore world-class art collections from the comfort of your home! We've partnered with leading museums to bring you exclusive virtual experiences.
+
+Featured exhibitions:
+• Louvre - Renaissance Masters
+• MoMA - Contemporary Abstracts  
+• Tate Modern - Digital Art Revolution
+• Guggenheim - Impressionist Collection
+
+Join live guided tours with expert curators:`,
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 8100000),
+        isRead: false,
+        views: 28900,
+        attachments: [
+          {
+            id: 'art-img-1',
+            name: 'virtual-tour-1.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-2',
+            name: 'virtual-tour-2.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'art2',
+        content: `🏛️ Ancient Civilizations: Rediscovered Treasures
+
+Archaeological discoveries continue to reshape our understanding of ancient cultures. Explore the latest findings that reveal the sophistication of our ancestors.
+
+Recent discoveries:
+• Egyptian tomb with intact hieroglyphic scrolls
+• Mayan astronomical calculator in Guatemala
+• Roman villa with pristine mosaics in Britain
+• Viking trading post artifacts in Greenland
+• Mesopotamian cuneiform tablets revealing new stories
+• Chinese Terracotta Army expansion discovery
+
+Archaeological insights and cultural significance: https://ancientcultures.com/discoveries`,
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'art-img-3',
+            name: 'ancient-artifacts.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-4',
+            name: 'archaeological-site.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-5',
+            name: 'hieroglyphic-scrolls.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1471919743851-c4df8b6ee133?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'art3',
+        content: '',
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 45600,
+        attachments: [
+          {
+            id: 'art-vid-1',
+            name: 'renaissance-art-documentary.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'art4',
+        content: `🎭 Theater Revival: Broadway's Triumphant Return
+
+The theater world is experiencing a renaissance! From innovative productions to classic revivals, Broadway and global theater scenes are more vibrant than ever.
+
+Must-see productions:
+• "Hamilton" - Revolutionary musical storytelling
+• "The Lion King" - Spectacular visual artistry
+• "Phantom of the Opera" - Timeless romantic drama
+• "Chicago" - Jazz-age musical perfection
+• "Wicked" - Reimagined fairy tale magic
+• New experimental works pushing boundaries
+
+Behind-the-scenes insights and ticket booking guide:`,
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 89200,
+        attachments: [
+          {
+            id: 'art-pdf-1',
+            name: 'theater-season-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'art5',
+        content: `🎼 Classical Music Masterpieces: A Journey Through Time
+
+Discover the emotional power and technical brilliance of classical compositions that have moved audiences for centuries. From Baroque to Contemporary.
+
+Essential listening:
+• Bach - Brandenburg Concertos (Baroque precision)
+• Mozart - Symphony No. 40 (Classical elegance)
+• Beethoven - Symphony No. 9 (Romantic power)
+• Chopin - Nocturnes (Romantic intimacy)
+• Debussy - Clair de Lune (Impressionist beauty)
+• Stravinsky - The Rite of Spring (Modern revolution)
+
+Composer biographies and listening guides:`,
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 56700,
+        attachments: [
+          {
+            id: 'art-img-6',
+            name: 'classical-composers.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-7',
+            name: 'orchestra-performance.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'art6',
+        content: '',
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 38900,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3',
+          duration: 240,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'art7',
+        content: `🖼️ Contemporary Art Movements: Pushing Boundaries
+
+Modern artists continue to challenge conventions and explore new mediums. Discover the movements shaping today's art world and tomorrow's masterpieces.
+
+Current art movements:
+• Digital Art & NFTs - Blockchain-based creativity
+• Bio Art - Living organisms as artistic medium
+• Street Art Evolution - From graffiti to galleries
+• Interactive Installations - Audience participation art
+• Eco Art - Environmental consciousness in creation
+• AI-Generated Art - Machine learning creativity
+
+Gallery exhibitions and artist spotlights:`,
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 73400,
+        attachments: [
+          {
+            id: 'art-img-8',
+            name: 'contemporary-art-gallery.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-9',
+            name: 'digital-art-installation.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-10',
+            name: 'street-art-mural.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'art8',
+        content: `📚 Literary Classics: Timeless Stories That Shape Culture
+
+Literature has the power to transport us across time and space. Explore the books that have influenced generations and continue to resonate today.
+
+Essential reading list:
+• "1984" by George Orwell - Dystopian masterpiece
+• "To Kill a Mockingbird" by Harper Lee - Social justice
+• "One Hundred Years of Solitude" by García Márquez - Magical realism
+• "Pride and Prejudice" by Jane Austen - Social commentary
+• "The Great Gatsby" by F. Scott Fitzgerald - American Dream
+• "Beloved" by Toni Morrison - Historical trauma and healing
+
+Book club discussions and author interviews:`,
+        senderId: 'art-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'art-img-11',
+            name: 'classic-literature.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'art-img-12',
+            name: 'library-books.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Movie Reviews Channel (ID: 60)
+    '60': [
+      {
+        _id: 'movie1',
+        content: `🎬 Oscar Nominations 2024 Predictions
+
+Awards season is heating up! Our film critics have analyzed this year's contenders and made their predictions for the major categories.
+
+Top contenders:
+• Best Picture: "The Artist's Journey"
+• Best Director: Christopher Nolan
+• Best Actor: Ryan Gosling
+• Best Actress: Margot Robbie
+• Best Cinematography: "Dune: Part Two"
+
+Full analysis and trailer compilation:`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: false,
+        views: 52300,
+        attachments: [
+          {
+            id: 'movie-vid-1',
+            name: 'oscar-predictions-2024.mp4',
+            type: 'video/mp4',
+            size: 16789012,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          },
+          {
+            id: 'movie-img-1',
+            name: 'oscar-nominees.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'movie2',
+        content: `🎥 Summer Blockbuster Preview: Must-Watch Films
+
+Get ready for an epic summer at the movies! From superhero spectacles to heartfelt dramas, this season promises unforgettable cinematic experiences.
+
+Summer 2024 releases:
+• "Guardians of the Galaxy Vol. 4" - May 3rd (Action/Comedy)
+• "Mission: Impossible 8" - June 28th (Action/Thriller)
+• "Barbie 2" - July 19th (Comedy/Fantasy)
+• "Oppenheimer: The Aftermath" - August 9th (Historical Drama)
+• "Spider-Man: Beyond the Multiverse" - August 23rd (Superhero)
+
+Ticket pre-sales and theater finder: https://movietickets.com/summer2024`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: false,
+        views: 89400,
+        attachments: [
+          {
+            id: 'movie-img-2',
+            name: 'summer-blockbusters.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'movie-img-3',
+            name: 'movie-theater-crowd.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'movie-img-4',
+            name: 'blockbuster-posters.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'movie3',
+        content: `⭐ Film Critic's Choice: Hidden Gems You Missed
+
+Not all great films get blockbuster marketing. Discover these critically acclaimed indie films and international cinema masterpieces that deserve your attention.
+
+Underrated masterpieces:
+• "The Quiet Revolution" - French drama (9.2/10)
+• "Echoes of Tomorrow" - Sci-fi indie (8.8/10)
+• "Paper Dreams" - Japanese animation (9.5/10)
+• "The Last Lighthouse" - Irish drama (8.9/10)
+• "Midnight in Mumbai" - Bollywood thriller (9.0/10)
+
+Where to stream and festival screenings:`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'movie-pdf-1',
+            name: 'indie-film-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'movie4',
+        content: '',
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 56700,
+        attachments: [
+          {
+            id: 'movie-vid-2',
+            name: 'cinematography-masterclass.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'movie5',
+        content: `🍿 Classic Cinema Retrospective: Timeless Masterpieces
+
+Journey through film history with these iconic movies that shaped cinema and continue to inspire filmmakers today.
+
+Essential classics to watch:
+• "The Godfather" (1972) - Crime drama perfection
+• "2001: A Space Odyssey" (1968) - Sci-fi visionary
+• "Citizen Kane" (1941) - Technical innovation
+• "Seven Samurai" (1954) - Epic storytelling
+• "Casablanca" (1942) - Romantic classic
+• "Psycho" (1960) - Thriller masterclass
+
+Film history context and director insights:`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 78300,
+        attachments: [
+          {
+            id: 'movie-img-5',
+            name: 'classic-cinema-collection.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'movie-img-6',
+            name: 'vintage-film-reels.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'movie6',
+        content: '',
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3',
+          duration: 250,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'movie7',
+        content: `🎭 Director Spotlight: Visionary Filmmakers Shaping Modern Cinema
+
+Explore the unique styles and groundbreaking works of directors who are redefining what cinema can be in the 21st century.
+
+Contemporary masters:
+• Denis Villeneuve - Sci-fi epic storytelling (Dune, Arrival)
+• Greta Gerwig - Character-driven narratives (Barbie, Lady Bird)
+• Jordan Peele - Social horror innovation (Get Out, Nope)
+• Bong Joon-ho - Genre-blending mastery (Parasite)
+• Chloé Zhao - Intimate epic scale (Nomadland, Eternals)
+• Taika Waititi - Comedy with heart (Thor, Jojo Rabbit)
+
+Director filmographies and upcoming projects:`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'movie-img-7',
+            name: 'modern-directors.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'movie-img-8',
+            name: 'film-set-behind-scenes.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'movie-img-9',
+            name: 'director-at-work.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'movie8',
+        content: `📺 Streaming Wars: Best Original Content This Month
+
+Navigate the overwhelming world of streaming services with our curated picks of the best original films and series available now.
+
+Top streaming picks:
+• Netflix: "The Crown" Season 6 finale
+• Apple TV+: "Foundation" Season 3 premiere
+• Disney+: "Loki" Season 2 conclusion
+• Amazon Prime: "The Boys" Season 4
+• HBO Max: "The Last of Us" Season 2
+• Paramount+: "Star Trek: Strange New Worlds"
+
+Subscription value analysis and free trial guide:`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'movie-vid-3',
+            name: 'streaming-highlights-reel.mp4',
+            type: 'video/mp4',
+            size: 17654321,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'movie9',
+        content: `🎞️ Film Genre Deep Dive: Evolution of Horror Cinema
+
+From silent era scares to modern psychological terror, explore how horror has evolved and why it remains one of cinema's most enduring genres.
+
+Horror evolution timeline:
+• Classic Gothic (1920s-1940s) - Universal Monsters
+• Psychological Horror (1960s-1970s) - Hitchcock era
+• Slasher Films (1980s) - Halloween, Friday the 13th
+• J-Horror Influence (1990s-2000s) - The Ring, The Grudge
+• Elevated Horror (2010s-present) - Get Out, Hereditary
+• Folk Horror Revival - Midsommar, The Witch
+
+Horror film recommendations and analysis:`,
+        senderId: 'movie-admin',
+        createdAt: new Date(Date.now() - 37800000),
+        isRead: true,
+        views: 73400,
+        attachments: [
+          {
+            id: 'movie-img-10',
+            name: 'horror-cinema-evolution.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'movie-img-11',
+            name: 'classic-horror-posters.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Science Daily Channel (ID: 61)
+    '61': [
+      {
+        _id: 'science1',
+        content: `🔬 Breakthrough in Quantum Computing
+
+Scientists at MIT have achieved a major milestone in quantum computing, successfully demonstrating quantum supremacy with a 1000-qubit processor.
+
+Key achievements:
+• 1000-qubit quantum processor
+• 99.9% fidelity in quantum operations
+• Breakthrough in error correction
+• Potential for real-world applications
+
+This could revolutionize cryptography, drug discovery, and AI development.
+
+Research paper and technical details:`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: false,
+        views: 73400,
+        attachments: [
+          {
+            id: 'science-pdf-1',
+            name: 'quantum-computing-breakthrough.pdf',
+            type: 'application/pdf',
+            size: 6789012,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'science-img-1',
+            name: 'quantum-processor.jpg',
+            type: 'image/jpeg',
+            size: 2789012,
+            url: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'science2',
+        content: `🧬 CRISPR Gene Therapy Success: Curing Genetic Blindness
+
+Groundbreaking clinical trial results show CRISPR gene editing successfully restored vision in patients with inherited blindness, marking a new era in genetic medicine.
+
+Clinical trial results:
+• 15 patients with Leber congenital amaurosis treated
+• 80% showed significant vision improvement
+• No serious adverse effects reported
+• Treatment effects lasting 12+ months
+• FDA fast-track approval expected
+• Potential for treating 1000+ genetic diseases
+
+Gene therapy revolution and future applications: https://geneticmedicine.org/crispr-breakthrough`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: false,
+        views: 89200,
+        attachments: [
+          {
+            id: 'science-img-2',
+            name: 'crispr-gene-editing.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'science-img-3',
+            name: 'genetic-therapy-lab.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'science3',
+        content: '',
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'science-vid-1',
+            name: 'mars-rover-discovery.mp4',
+            type: 'video/mp4',
+            size: 21234567,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'science4',
+        content: `🌍 Climate Science Update: Antarctic Ice Sheet Stability
+
+New satellite data reveals concerning changes in Antarctic ice dynamics, with implications for global sea level rise projections and climate modeling.
+
+Key findings:
+• West Antarctic ice sheet losing 150 billion tons annually
+• Thwaites Glacier retreat accelerating (doomsday glacier)
+• Sea level rise projections increased by 30cm by 2100
+• Tipping point may be closer than previously thought
+• Ocean warming driving ice shelf collapse
+• Urgent need for emission reductions
+
+Climate research data and mitigation strategies:`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'science-pdf-2',
+            name: 'antarctic-ice-study.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'science5',
+        content: `🧠 Neuroscience Breakthrough: Memory Transfer Between Brains
+
+Researchers have successfully transferred memories between lab mice using optogenetics, opening new possibilities for treating memory disorders and understanding consciousness.
+
+Experimental results:
+• Memory engrams successfully identified and isolated
+• Optogenetic stimulation recreated specific memories
+• 70% accuracy in memory transfer between subjects
+• No damage to existing neural pathways
+• Potential applications for Alzheimer's treatment
+• Ethical considerations for human applications
+
+Memory research implications and future studies:`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 78300,
+        attachments: [
+          {
+            id: 'science-img-4',
+            name: 'brain-neural-network.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'science-img-5',
+            name: 'optogenetics-lab.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'science-img-6',
+            name: 'memory-engram-visualization.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'science6',
+        content: '',
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
+          duration: 285,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'science7',
+        content: `⚛️ Nuclear Fusion Milestone: Net Energy Gain Achieved
+
+The National Ignition Facility has achieved nuclear fusion ignition, producing more energy than was directly input into the reaction - a historic breakthrough for clean energy.
+
+Fusion breakthrough details:
+• 2.05 megajoules of energy output vs 2.05 MJ input
+• First controlled fusion reaction with net energy gain
+• Proof of concept for fusion power generation
+• Potential for unlimited clean energy
+• Still decades from commercial viability
+• International collaboration accelerating research
+
+Fusion energy timeline and investment opportunities:`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'science-img-7',
+            name: 'fusion-reactor-chamber.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'science-img-8',
+            name: 'laser-fusion-setup.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'science8',
+        content: `🚀 Space Exploration: James Webb Telescope Discovers Earth-like Exoplanet
+
+The James Webb Space Telescope has identified an Earth-sized exoplanet in the habitable zone with signs of water vapor and potentially life-supporting conditions.
+
+Exoplanet discovery:
+• TOI-715b located 137 light-years away
+• Earth-sized planet in habitable zone
+• Water vapor detected in atmosphere
+• Moderate temperatures suitable for liquid water
+• Rocky composition similar to Earth
+• Follow-up observations planned for biosignatures
+
+Astrobiology implications and search for life:`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'science-vid-2',
+            name: 'exoplanet-discovery-animation.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'science9',
+        content: `🦠 Antibiotic Resistance Solution: AI Discovers New Drug Class
+
+Artificial intelligence has identified a completely new class of antibiotics effective against drug-resistant bacteria, potentially solving the antibiotic resistance crisis.
+
+AI drug discovery breakthrough:
+• Novel antibiotic class targeting resistant bacteria
+• 99% effectiveness against MRSA and other superbugs
+• AI screened 100 million molecular compounds
+• Minimal side effects in preliminary trials
+• Fast-track development approved by FDA
+• Could save millions of lives annually
+
+Pharmaceutical AI revolution and drug development:`,
+        senderId: 'science-admin',
+        createdAt: new Date(Date.now() - 39600000),
+        isRead: true,
+        views: 76800,
+        attachments: [
+          {
+            id: 'science-img-9',
+            name: 'ai-drug-discovery.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'science-img-10',
+            name: 'antibiotic-research-lab.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Productivity Hacks Channel (ID: 63)
+    '63': [
+      {
+        _id: 'productivity1',
+        content: `⏰ Time Management Tips from CEOs
+
+Learn how top executives manage their time and maximize productivity. These proven strategies can transform your daily routine.
+
+CEO strategies revealed:
+• The 2-minute rule (Tim Cook)
+• Time blocking method (Elon Musk)
+• Priority matrix (Warren Buffett)
+• Energy management (Oprah Winfrey)
+• Digital minimalism (Bill Gates)
+
+Exclusive CEO interviews and productivity toolkit:`,
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: false,
+        views: 89100,
+        attachments: [
+          {
+            id: 'productivity-img-1',
+            name: 'ceo-productivity-tips.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'productivity-img-2',
+            name: 'time-blocking-template.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'productivity2',
+        content: '',
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+          duration: 195,
+          waveform: [40, 55, 70, 85, 75, 60, 50, 65, 80, 90, 85, 70, 55, 45, 60, 75, 85, 95, 80, 65, 50, 55, 70, 85, 90, 80, 65, 55, 45, 60, 75, 85, 80, 70, 60, 50, 65, 80, 75, 60]
+        }
+      },
+      {
+        _id: 'productivity3',
+        content: `🧠 Deep Work: Mastering Focus in a Distracted World
+
+In our hyperconnected age, the ability to focus deeply has become a superpower. Learn how to cultivate deep work habits and eliminate distractions.
+
+Deep work principles:
+• Create distraction-free environments
+• Schedule deep work blocks (90-120 minutes)
+• Use the Pomodoro Technique for shorter tasks
+• Implement digital detox periods
+• Practice single-tasking vs multitasking
+• Build focus stamina gradually
+
+Focus enhancement techniques and apps: https://deepwork.com/focus-guide`,
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: false,
+        views: 76800,
+        attachments: [
+          {
+            id: 'productivity-img-3',
+            name: 'deep-work-setup.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'productivity-img-4',
+            name: 'focus-techniques.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'productivity4',
+        content: '',
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 52300,
+        attachments: [
+          {
+            id: 'productivity-pdf-1',
+            name: 'productivity-systems-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'productivity5',
+        content: `📱 Digital Minimalism: Reclaim Your Attention
+
+Technology should serve you, not control you. Learn how to optimize your digital tools and eliminate digital clutter for maximum productivity.
+
+Digital minimalism strategies:
+• Audit your apps and uninstall time-wasters
+• Turn off non-essential notifications
+• Use website blockers during focus time
+• Implement phone-free zones and times
+• Practice the 30-30-30 rule for screen breaks
+• Batch process emails and messages
+
+Recommended productivity apps and digital wellness tools:`,
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'productivity-vid-1',
+            name: 'digital-minimalism-setup.mp4',
+            type: 'video/mp4',
+            size: 15678901,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'productivity6',
+        content: `🎯 Goal Setting & Achievement System
+
+Transform your dreams into reality with a proven goal-setting framework. Learn how to set, track, and achieve ambitious goals consistently.
+
+SMART-ER goal framework:
+• Specific - Clear and well-defined objectives
+• Measurable - Quantifiable progress indicators
+• Achievable - Realistic yet challenging
+• Relevant - Aligned with your values and vision
+• Time-bound - Clear deadlines and milestones
+• Exciting - Goals that motivate and inspire you
+• Reviewed - Regular progress check-ins
+
+90-day sprint planning and habit tracking systems:`,
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 67200,
+        attachments: [
+          {
+            id: 'productivity-img-5',
+            name: 'goal-setting-framework.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'productivity-img-6',
+            name: 'habit-tracker-template.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'productivity-img-7',
+            name: '90-day-sprint-planner.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'productivity7',
+        content: '',
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 41800,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3',
+          duration: 260,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'productivity8',
+        content: `⚡ Energy Management: Peak Performance All Day
+
+Productivity isn't just about time management—it's about energy management. Learn how to optimize your physical and mental energy for sustained high performance.
+
+Energy optimization strategies:
+• Identify your chronotype (morning lark vs night owl)
+• Schedule demanding tasks during peak energy hours
+• Use ultradian rhythms (90-120 minute cycles)
+• Take strategic breaks and micro-recoveries
+• Optimize nutrition for sustained energy
+• Exercise for cognitive enhancement
+• Prioritize sleep quality over quantity
+
+Circadian rhythm optimization and energy tracking:`,
+        senderId: 'productivity-admin',
+        createdAt: new Date(Date.now() - 37800000),
+        isRead: true,
+        views: 78500,
+        attachments: [
+          {
+            id: 'productivity-img-8',
+            name: 'energy-management-chart.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'productivity-img-9',
+            name: 'circadian-rhythm-guide.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Pet Care Channel (ID: 64)
+    '64': [
+      {
+        _id: 'pet1',
+        content: `🐕 Essential Tips for New Dog Owners
+
+Bringing home a new puppy? Here's everything you need to know for the first month to ensure your furry friend is happy and healthy.
+
+Essential checklist:
+• Puppy-proofing your home
+• Feeding schedules and nutrition
+• Training basics and house rules
+• Vaccination timeline
+• Socialization tips
+
+Complete new owner guide and training videos:`,
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: false,
+        views: 34200,
+        attachments: [
+          {
+            id: 'pet-img-1',
+            name: 'puppy-care-guide.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'pet-img-2',
+            name: 'puppy-training.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'pet1b',
+        content: '',
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 14390000),
+        isRead: false,
+        views: 34200,
+        attachments: [
+          {
+            id: 'pet-vid-1',
+            name: 'puppy-training-basics.mp4',
+            type: 'video/mp4',
+            size: 14567890,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'pet2',
+        content: `🐱 Cat Care Essentials: Creating a Happy Feline Home
+
+Cats have unique needs and behaviors. Learn how to provide the best care for your feline friend and understand their mysterious ways!
+
+Cat care fundamentals:
+• Litter box setup and maintenance (1 box per cat + 1 extra)
+• Proper nutrition - Age-appropriate food choices
+• Environmental enrichment - Scratching posts, toys, perches
+• Regular grooming and nail trimming
+• Understanding cat body language and communication
+• Indoor vs outdoor considerations
+
+Cat behavior guide and health tips: https://felinecare.com/essentials`,
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'pet-img-3',
+            name: 'cat-care-essentials.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'pet-img-4',
+            name: 'cat-enrichment-setup.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'pet3',
+        content: `🏥 Pet Health: Preventive Care and Warning Signs
+
+Prevention is the best medicine! Learn how to keep your pets healthy and recognize early warning signs of common health issues.
+
+Preventive care schedule:
+• Annual wellness exams and vaccinations
+• Monthly flea, tick, and heartworm prevention
+• Dental care - Daily brushing and annual cleanings
+• Weight management and exercise routines
+• Spaying/neutering benefits and timing
+• Senior pet care considerations (7+ years)
+
+Emergency warning signs to watch for:
+• Difficulty breathing or excessive panting
+• Vomiting or diarrhea lasting more than 24 hours
+• Loss of appetite for more than 2 days
+• Lethargy or unusual behavior changes
+• Difficulty urinating or defecating
+
+Veterinary care guide and emergency resources:`,
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'pet-pdf-1',
+            name: 'pet-health-checklist.pdf',
+            type: 'application/pdf',
+            size: 3456789,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'pet4',
+        content: '',
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 45600,
+        attachments: [
+          {
+            id: 'pet-vid-2',
+            name: 'pet-grooming-tutorial.mp4',
+            type: 'video/mp4',
+            size: 16789012,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'pet5',
+        content: `🎾 Exercise and Mental Stimulation for Happy Pets
+
+Physical exercise and mental stimulation are crucial for your pet's well-being. Discover fun activities to keep your furry friends engaged and healthy!
+
+Exercise needs by pet type:
+• Dogs: 30 minutes to 2+ hours daily (breed dependent)
+• Cats: 10-15 minutes of active play, 2-3 sessions daily
+• Small pets: Species-specific exercise requirements
+
+Mental stimulation ideas:
+• Puzzle feeders and treat-dispensing toys
+• Hide and seek games with treats
+• Training sessions - teach new tricks
+• Rotating toy selection to maintain interest
+• Interactive play with laser pointers (cats)
+• Snuffle mats for natural foraging behavior
+
+DIY enrichment activities and exercise routines:`,
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 73200,
+        attachments: [
+          {
+            id: 'pet-img-5',
+            name: 'dog-exercise-activities.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'pet-img-6',
+            name: 'cat-puzzle-toys.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'pet-img-7',
+            name: 'diy-pet-enrichment.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'pet6',
+        content: '',
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 38900,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',
+          duration: 220,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      },
+      {
+        _id: 'pet7',
+        content: `🍖 Pet Nutrition: Feeding Your Pet for Optimal Health
+
+Proper nutrition is the foundation of good health. Learn how to choose the right food and establish healthy feeding habits for your pets.
+
+Nutrition guidelines:
+• Life stage feeding - Puppy/kitten, adult, senior formulas
+• Quality ingredients - Look for named meat sources
+• Portion control - Measure food to prevent obesity
+• Feeding schedules - Consistent meal times
+• Treats should be less than 10% of daily calories
+• Fresh water available 24/7
+
+Foods to avoid (toxic to pets):
+• Chocolate, grapes, raisins, onions, garlic
+• Xylitol (artificial sweetener)
+• Avocado, macadamia nuts
+• Alcohol and caffeine
+
+Feeding guides and nutrition calculators:`,
+        senderId: 'pet-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'pet-img-8',
+            name: 'pet-nutrition-guide.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'pet-img-9',
+            name: 'healthy-pet-food.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Real Estate Channel (ID: 65)
+    '65': [
+      {
+        _id: 'realestate1',
+        content: `🏠 Housing Market Trends Q1 2024
+
+The real estate market continues to evolve with new trends emerging. Our analysts break down what buyers and sellers need to know.
+
+Market highlights:
+• Average home prices up 3.2%
+• Inventory levels improving
+• Interest rates stabilizing
+• First-time buyer programs expanding
+• Sustainable housing demand rising
+
+Comprehensive market report and regional analysis:`,
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'realestate-pdf-1',
+            name: 'q1-2024-market-report.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'realestate-img-1',
+            name: 'housing-trends-chart.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'realestate2',
+        content: `💰 First-Time Home Buyer's Complete Guide
+
+Ready to buy your first home? Navigate the complex process with confidence using our step-by-step guide designed specifically for first-time buyers.
+
+Essential steps for first-time buyers:
+• Check your credit score and improve if needed
+• Calculate how much house you can afford
+• Get pre-approved for a mortgage
+• Find a qualified real estate agent
+• Start house hunting with realistic expectations
+• Make competitive offers in today's market
+• Navigate the inspection and closing process
+
+Mortgage calculator and buyer resources: https://firsttimehomebuyer.com/guide`,
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: false,
+        views: 89400,
+        attachments: [
+          {
+            id: 'realestate-img-2',
+            name: 'first-time-buyer-checklist.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'realestate-img-3',
+            name: 'mortgage-process.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'realestate3',
+        content: '',
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 56700,
+        attachments: [
+          {
+            id: 'realestate-vid-1',
+            name: 'home-inspection-walkthrough.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'realestate4',
+        content: `🏡 Investment Property Analysis: What to Look For
+
+Real estate investing can build long-term wealth when done right. Learn how to analyze potential investment properties like a pro.
+
+Key investment metrics:
+• Cash flow analysis - Income vs expenses
+• Cap rate calculation - Annual return percentage
+• Cash-on-cash return - ROI on invested capital
+• 1% rule - Monthly rent should equal 1% of price
+• Location analysis - Growth potential and demographics
+• Property condition and renovation costs
+
+Investment property calculator and market analysis tools:`,
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 73200,
+        attachments: [
+          {
+            id: 'realestate-img-4',
+            name: 'investment-property-analysis.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'realestate-img-5',
+            name: 'rental-property-roi.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'realestate5',
+        content: '',
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 45300,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3',
+          duration: 280,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'realestate6',
+        content: `🏘️ Neighborhood Analysis: Finding the Perfect Location
+
+Location is everything in real estate! Learn how to research and evaluate neighborhoods to make informed buying or investing decisions.
+
+What to research about neighborhoods:
+• School district ratings and performance
+• Crime statistics and safety trends
+• Property value appreciation history
+• Local amenities and walkability scores
+• Future development plans and zoning
+• Transportation and commute options
+• Demographics and community vibe
+
+Neighborhood research tools and resources:`,
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'realestate-pdf-2',
+            name: 'neighborhood-analysis-checklist.pdf',
+            type: 'application/pdf',
+            size: 3456789,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'realestate7',
+        content: `📈 Real Estate Market Predictions 2024-2025
+
+What's ahead for the real estate market? Our experts analyze current trends and provide forecasts for the next 18 months.
+
+Market predictions:
+• Interest rates expected to stabilize around 6.5-7%
+• Inventory levels will continue improving gradually
+• Price growth to slow but remain positive (2-4%)
+• First-time buyer activity to increase with new programs
+• Luxury market showing resilience in major metros
+• Commercial real estate facing continued challenges
+
+Regional market breakdowns and investment opportunities:`,
+        senderId: 'realestate-admin',
+        createdAt: new Date(Date.now() - 37800000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'realestate-img-6',
+            name: 'market-predictions-chart.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'realestate-img-7',
+            name: 'regional-market-map.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'realestate-img-8',
+            name: 'interest-rate-trends.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Mental Health Channel (ID: 69)
+    '69': [
+      {
+        _id: 'mental1',
+        content: `🧠 Stress Management Techniques That Actually Work
+
+In today's fast-paced world, stress has become a constant companion. Here are evidence-based techniques that can help you regain control and find inner peace.
+
+Proven stress-busters:
+• Deep breathing exercises (4-7-8 technique)
+• Progressive muscle relaxation
+• Mindfulness meditation (just 10 minutes daily)
+• Journaling for emotional release
+• Nature walks and outdoor therapy
+• Digital detox periods
+
+Remember: It's okay to not be okay. Seeking help is a sign of strength, not weakness. 💙
+
+Guided meditation and relaxation resources:`,
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 89200,
+        attachments: [
+          {
+            id: 'mental-img-1',
+            name: 'stress-relief-techniques.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'mental-img-2',
+            name: 'meditation-guide.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'mental-img-3',
+            name: 'nature-therapy.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'mental2',
+        content: '',
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: false,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+          duration: 300,
+          waveform: [20, 35, 50, 65, 55, 40, 30, 45, 60, 70, 65, 50, 35, 25, 40, 55, 65, 75, 60, 45, 30, 35, 50, 65, 70, 60, 45, 35, 25, 40, 55, 65, 60, 50, 40, 30, 45, 60, 55, 40]
+        }
+      },
+      {
+        _id: 'mental3',
+        content: `💚 Building Healthy Boundaries: A Self-Care Essential
+
+Learning to say "no" and setting boundaries isn't selfish—it's necessary for your mental well-being. Here's how to protect your energy and prioritize your needs.
+
+Boundary-setting strategies:
+• Identify your limits and values
+• Practice saying "no" without guilt
+• Communicate clearly and kindly
+• Start small with low-stakes situations
+• Remember: You can't pour from an empty cup
+
+Helpful resources and boundary scripts: https://mentalhealth.org/boundaries-guide`,
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        views: 67300,
+        attachments: [
+          {
+            id: 'mental-img-4',
+            name: 'healthy-boundaries.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'mental-img-5',
+            name: 'self-care-routine.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'mental4',
+        content: `🌱 Understanding Anxiety: You're Not Alone
+
+Anxiety affects millions of people worldwide. Understanding what you're experiencing is the first step toward healing and recovery.
+
+Common anxiety symptoms:
+• Racing thoughts and worry spirals
+• Physical symptoms (rapid heartbeat, sweating)
+• Avoidance behaviors
+• Sleep disturbances
+• Difficulty concentrating
+
+Coping strategies that help:
+• Grounding techniques (5-4-3-2-1 method)
+• Breathing exercises
+• Regular exercise and movement
+• Limiting caffeine and alcohol
+• Professional therapy (CBT, DBT)
+
+Crisis resources and professional help guide:`,
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 78900,
+        attachments: [
+          {
+            id: 'mental-pdf-1',
+            name: 'anxiety-management-guide.pdf',
+            type: 'application/pdf',
+            size: 3456789,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'mental-img-6',
+            name: 'anxiety-coping-strategies.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'mental5',
+        content: `🎯 Daily Mental Health Check-In
+
+Take a moment to pause and check in with yourself. Your mental health matters every single day, not just during Mental Health Awareness Month.
+
+Quick self-assessment questions:
+• How am I feeling right now?
+• What do I need most today?
+• Have I been kind to myself lately?
+• What's one thing I'm grateful for?
+• Do I need to reach out for support?
+
+Remember: Progress isn't always linear. Some days will be harder than others, and that's completely normal. 🤗
+
+Interactive mood tracking and wellness tips:`,
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 52400,
+        attachments: [
+          {
+            id: 'mental-vid-1',
+            name: 'daily-mindfulness-routine.mp4',
+            type: 'video/mp4',
+            size: 12345678,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'mental6',
+        content: `💙 Sleep and Mental Health: The Vital Connection
+
+Quality sleep is fundamental to mental well-being. Poor sleep can worsen anxiety, depression, and stress levels, while good sleep hygiene can significantly improve your mood and cognitive function.
+
+Sleep hygiene tips:
+• Maintain consistent sleep schedule
+• Create a relaxing bedtime routine
+• Limit screen time before bed
+• Keep bedroom cool and dark
+• Avoid caffeine late in the day
+• Practice relaxation techniques
+
+Sleep improvement strategies and bedtime routines:`,
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 41200,
+        attachments: [
+          {
+            id: 'mental-img-7',
+            name: 'sleep-hygiene-tips.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'mental-img-8',
+            name: 'bedtime-routine.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'mental-img-9',
+            name: 'peaceful-bedroom.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'mental7',
+        content: '',
+        senderId: 'mental-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 34800,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+          duration: 420,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      }
+    ],
+
+    // Gardening Tips Channel (ID: 66)
+    '66': [
+      {
+        _id: 'garden1',
+        content: `🌱 Best Plants for Indoor Spaces
+
+Transform your home into a green oasis! These low-maintenance plants are perfect for beginners and thrive in indoor environments.
+
+Top indoor plants for beginners:
+• Snake Plant - Tolerates low light and neglect
+• Pothos - Fast-growing and air-purifying
+• ZZ Plant - Drought-tolerant and glossy leaves
+• Peace Lily - Beautiful white flowers
+• Rubber Tree - Statement plant with large leaves
+• Spider Plant - Easy propagation and pet-friendly
+
+Complete care guides and placement tips:`,
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'garden-img-1',
+            name: 'indoor-plants-collection.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'garden-img-2',
+            name: 'snake-plant-care.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1463320726281-696a485928c7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'garden-img-3',
+            name: 'pothos-propagation.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'garden2',
+        content: `🥕 Vegetable Garden Planning for Spring
+
+Ready to grow your own food? Here's how to plan and plant a productive vegetable garden that will feed your family all season long.
+
+Spring planting schedule:
+• Cool season crops - Lettuce, spinach, peas (March)
+• Warm season prep - Tomatoes, peppers (start indoors)
+• Root vegetables - Carrots, radishes, beets
+• Herbs - Basil, cilantro, parsley
+• Succession planting - Plant lettuce every 2 weeks
+
+Garden layout planning and companion planting guide: https://vegetablegarden.com/spring-planning`,
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: false,
+        views: 89200,
+        attachments: [
+          {
+            id: 'garden-img-4',
+            name: 'vegetable-garden-layout.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'garden-img-5',
+            name: 'spring-seedlings.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'garden3',
+        content: '',
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: true,
+        views: 45600,
+        attachments: [
+          {
+            id: 'garden-pdf-1',
+            name: 'organic-gardening-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'garden4',
+        content: `🌸 Container Gardening: Small Space, Big Harvest
+
+Don't have a yard? No problem! Container gardening lets you grow beautiful plants and fresh food in any small space.
+
+Container gardening essentials:
+• Choose the right containers - Drainage is key
+• Select appropriate plants for container size
+• Use quality potting mix (never garden soil)
+• Watering schedule - Containers dry out faster
+• Fertilizing routine - Monthly liquid fertilizer
+• Seasonal plant rotation
+
+Container garden setup and plant recommendations:`,
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 78300,
+        attachments: [
+          {
+            id: 'garden-vid-1',
+            name: 'container-garden-setup.mp4',
+            type: 'video/mp4',
+            size: 16789012,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'garden5',
+        content: `🦋 Creating a Pollinator-Friendly Garden
+
+Support local wildlife while enjoying beautiful blooms! These plants will attract bees, butterflies, and other beneficial pollinators to your garden.
+
+Pollinator favorites:
+• Lavender - Aromatic and drought-tolerant
+• Bee Balm - Native wildflower favorite
+• Sunflowers - Seeds feed birds too
+• Marigolds - Natural pest deterrent
+• Zinnias - Colorful and easy to grow
+• Native wildflowers - Best for local pollinators
+
+Pollinator garden design and seasonal blooming schedule:`,
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 56700,
+        attachments: [
+          {
+            id: 'garden-img-6',
+            name: 'pollinator-garden.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'garden-img-7',
+            name: 'butterfly-on-flower.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'garden-img-8',
+            name: 'bee-on-lavender.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'garden6',
+        content: '',
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 34200,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+          duration: 195,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
+        }
+      },
+      {
+        _id: 'garden7',
+        content: `💧 Smart Watering Techniques for Healthy Plants
+
+Proper watering is the key to gardening success! Learn when, how, and how much to water different types of plants for optimal growth.
+
+Watering wisdom:
+• Deep, infrequent watering is better than shallow, frequent
+• Water early morning to reduce evaporation
+• Check soil moisture with finger test
+• Mulch to retain moisture and suppress weeds
+• Different plants have different water needs
+• Adjust watering based on weather and season
+
+Irrigation systems and water-saving tips:`,
+        senderId: 'garden-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 67400,
+        attachments: [
+          {
+            id: 'garden-img-9',
+            name: 'drip-irrigation-system.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'garden-img-10',
+            name: 'watering-techniques.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Car Enthusiasts Channel (ID: 67)
+    '67': [
+      {
+        _id: 'car1',
+        content: `🚗 Electric Vehicles Comparison 2024
+
+The EV revolution is here! We've tested the latest electric vehicles to bring you the most comprehensive comparison of range, performance, and value.
+
+Top EV picks for 2024:
+• Tesla Model S Plaid - 405 mile range
+• BMW iX - Luxury SUV with 324 mile range
+• Ford Mustang Mach-E - 314 mile range
+• Hyundai Ioniq 6 - 305 mile range
+• Mercedes EQS - Premium sedan 453 mile range
+
+Full test drive reviews and charging infrastructure guide:`,
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 78900,
+        attachments: [
+          {
+            id: 'car-img-1',
+            name: 'ev-comparison-2024.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'car-img-2',
+            name: 'tesla-model-s.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'car-img-3',
+            name: 'charging-station.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1593941707882-a5bac6861d75?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'car2',
+        content: '',
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: false,
+        views: 56700,
+        attachments: [
+          {
+            id: 'car-vid-1',
+            name: 'ev-test-drive-review.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'car3',
+        content: `🏁 Classic Car Restoration: 1967 Mustang Project
+
+Follow our 6-month restoration journey of a barn-find 1967 Ford Mustang Fastback. From rust bucket to road warrior!
+
+Restoration highlights:
+• Engine rebuild - 289 V8 restoration
+• Body work - Rust repair and paint
+• Interior restoration - Original pony interior
+• Suspension upgrade - Modern handling
+• Electrical system overhaul
+
+Before and after photos + restoration tips: https://classiccarrestoration.com/mustang67`,
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        views: 89200,
+        attachments: [
+          {
+            id: 'car-img-4',
+            name: 'mustang-before-restoration.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'car-img-5',
+            name: 'mustang-after-restoration.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'car4',
+        content: '',
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 45600,
+        attachments: [
+          {
+            id: 'car-pdf-1',
+            name: 'car-maintenance-guide.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'car5',
+        content: `🏎️ Track Day Essentials: Preparing Your Car for the Circuit
+
+Ready to take your car to the track? Here's everything you need to know about track day preparation, safety requirements, and performance modifications.
+
+Track day checklist:
+• Safety inspection - Brakes, tires, fluids
+• Helmet and safety gear requirements
+• Performance modifications - Brake pads, tires
+• Insurance considerations
+• Track etiquette and flag signals
+• Post-track inspection routine
+
+Track day survival guide and performance tips:`,
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 67300,
+        attachments: [
+          {
+            id: 'car-img-6',
+            name: 'track-day-preparation.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'car-img-7',
+            name: 'racing-helmet-gear.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'car6',
+        content: '',
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 34200,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
+          duration: 240,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'car7',
+        content: `🔧 DIY Car Maintenance: Save Money and Learn Your Car
+
+Don't let simple maintenance break the bank! Learn these essential DIY skills that every car owner should know.
+
+DIY maintenance basics:
+• Oil change procedure and intervals
+• Brake pad replacement guide
+• Air filter and cabin filter changes
+• Tire rotation and pressure checks
+• Battery maintenance and replacement
+• Fluid level monitoring
+
+Tool recommendations and step-by-step guides:`,
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 52800,
+        attachments: [
+          {
+            id: 'car-vid-2',
+            name: 'diy-oil-change-tutorial.mp4',
+            type: 'video/mp4',
+            size: 15678901,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'car8',
+        content: `🏆 Car Show Highlights: Best of 2024
+
+From classic muscle cars to cutting-edge supercars, here are the standout vehicles from this year's major automotive shows.
+
+Show stoppers:
+• McLaren 750S - Track-focused supercar
+• Porsche 911 GT3 RS - Ultimate track weapon
+• Chevrolet Corvette Z06 - American supercar
+• Ferrari 296 GTB - Hybrid V6 masterpiece
+• Lamborghini Revuelto - V12 hybrid beast
+
+Exclusive show photos and specs:`,
+        senderId: 'car-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'car-img-8',
+            name: 'mclaren-750s.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'car-img-9',
+            name: 'porsche-gt3-rs.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'car-img-10',
+            name: 'ferrari-296-gtb.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // Language Learning Channel (ID: 68)
+    '68': [
+      {
+        _id: 'lang1',
+        content: `🇪🇸 Spanish for Beginners - Lesson 5: Family & Relationships
+
+¡Hola estudiantes! Today we're learning essential vocabulary for talking about family and relationships. This is one of the most useful topics for everyday conversations.
+
+Vocabulary highlights:
+• La familia - family
+• Los padres - parents
+• Los hermanos - siblings
+• El esposo/la esposa - husband/wife
+• Los abuelos - grandparents
+• Los primos - cousins
+
+Practice exercises and pronunciation guide: https://spanishlearning.com/lesson5`,
+        senderId: 'lang-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 67800,
+        attachments: [
+          {
+            id: 'lang-img-1',
+            name: 'spanish-family-vocabulary.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'lang-img-2',
+            name: 'family-tree-spanish.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'lang2',
+        content: '',
+        senderId: 'lang-admin',
+        createdAt: new Date(Date.now() - 5400000),
+        isRead: false,
+        views: 45200,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+          duration: 180,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'lang3',
+        content: `📚 Language Learning Tips: How to Stay Motivated
+
+Learning a new language is a marathon, not a sprint! Here are proven strategies to maintain momentum and achieve fluency.
+
+Motivation boosters:
+• Set small, achievable daily goals
+• Use spaced repetition for vocabulary
+• Find a language exchange partner
+• Watch movies with subtitles
+• Join online communities
+• Celebrate small victories
+
+Study resources and apps comparison:`,
+        senderId: 'lang-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: true,
+        views: 89100,
+        attachments: [
+          {
+            id: 'lang-img-3',
+            name: 'study-schedule-template.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'lang3b',
+        content: '',
+        senderId: 'lang-admin',
+        createdAt: new Date(Date.now() - 8990000),
+        isRead: true,
+        views: 89100,
+        attachments: [
+          {
+            id: 'lang-pdf-1',
+            name: 'language-learning-guide.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'lang4',
+        content: `🎬 Learn Spanish Through Movies & TV Shows
+
+Immerse yourself in authentic Spanish content! Here are beginner-friendly shows and movies that will boost your listening skills and cultural understanding.
+
+Recommended for beginners:
+• Extra en Español - Comedy series
+• Destinos - Educational drama
+• El Libro de la Vida - Animated movie
+• Coco - Disney movie (Spanish dub)
+• Casa de Papel - Advanced thriller
+
+Movie night learning techniques:`,
+        senderId: 'lang-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 56300,
+        attachments: [
+          {
+            id: 'lang-vid-1',
+            name: 'spanish-pronunciation-guide.mp4',
+            type: 'video/mp4',
+            size: 15678901,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'lang5',
+        content: `🗣️ Common Spanish Phrases for Travel
+
+Planning a trip to a Spanish-speaking country? These essential phrases will help you navigate airports, hotels, restaurants, and local interactions with confidence.
+
+Must-know travel phrases:
+• ¿Habla inglés? - Do you speak English?
+• No hablo español muy bien - I don't speak Spanish very well
+• ¿Cuánto cuesta? - How much does it cost?
+• ¿Dónde está el baño? - Where is the bathroom?
+• La cuenta, por favor - The check, please
+• ¿Me puede ayudar? - Can you help me?
+
+Printable phrasebook and cultural tips:`,
+        senderId: 'lang-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 73400,
+        attachments: [
+          {
+            id: 'lang-img-4',
+            name: 'travel-phrases-spanish.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'lang-img-5',
+            name: 'spanish-speaking-countries.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+
+    // DIY Projects Channel (ID: 70)
+    '70': [
+      {
+        _id: 'diy1',
+        content: `🔨 Weekend Home Improvement Ideas
+
+Transform your space with these amazing DIY projects! Perfect for beginners and experienced makers alike. Each project includes step-by-step instructions and material lists.
+
+Featured projects this weekend:
+• Floating shelves installation (2 hours)
+• Custom coffee table build (4 hours)
+• Bathroom vanity makeover (6 hours)
+• Kitchen backsplash upgrade (3 hours)
+• Outdoor deck staining (1 day)
+
+Complete tutorial videos and blueprints below:`,
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 3600000),
+        isRead: false,
+        views: 45600,
+        attachments: [
+          {
+            id: 'diy-vid-1',
+            name: 'floating-shelves-tutorial.mp4',
+            type: 'video/mp4',
+            size: 15678901,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'diy1b',
+        content: '',
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 3590000),
+        isRead: false,
+        views: 45600,
+        attachments: [
+          {
+            id: 'diy-img-1',
+            name: 'floating-shelves-before-after.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-2',
+            name: 'coffee-table-build.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-3',
+            name: 'bathroom-vanity-makeover.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'diy2',
+        content: `🪚 Essential Tools Every DIY Beginner Needs
+
+Starting your DIY journey? Here's the complete toolkit that will handle 90% of home improvement projects. We've tested hundreds of tools to bring you the best value recommendations.
+
+Must-have tools:
+• Cordless drill with bits set
+• Circular saw or miter saw
+• Level (24-inch recommended)
+• Measuring tape (25-foot)
+• Safety equipment (glasses, gloves)
+• Stud finder and screwdriver set
+
+Tool buying guide and safety tips: https://diytools.com/beginner-guide`,
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 7200000),
+        isRead: false,
+        views: 32100,
+        attachments: [
+          {
+            id: 'diy-img-4',
+            name: 'essential-tools-collection.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-5',
+            name: 'tool-organization-tips.jpg',
+            type: 'image/jpeg',
+            size: 1876543,
+            url: 'https://images.unsplash.com/photo-1609205807107-171c2e71e7e7?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'diy3',
+        content: '',
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: true,
+        views: 28700,
+        attachments: [
+          {
+            id: 'diy-pdf-1',
+            name: 'diy-project-blueprints.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'diy4',
+        content: `🎨 Budget-Friendly Room Makeover Challenge
+
+Transform any room for under $200! Our community members share their incredible before-and-after transformations using creative DIY solutions.
+
+Popular makeover ideas:
+• Paint accent walls with geometric patterns
+• Upcycle furniture with chalk paint
+• Create custom artwork and wall decor
+• Install peel-and-stick wallpaper
+• Add plants and lighting upgrades
+
+Join our monthly makeover challenge and win prizes! 🏆`,
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 56800,
+        attachments: [
+          {
+            id: 'diy-img-6',
+            name: 'room-makeover-before.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-7',
+            name: 'room-makeover-after.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-8',
+            name: 'geometric-wall-pattern.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-9',
+            name: 'upcycled-furniture.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'diy5',
+        content: '',
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 19500,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+          duration: 210,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'diy6',
+        content: `🌱 Outdoor DIY Projects for Spring
+
+Get your outdoor space ready for the season! These projects will enhance your backyard, patio, or garden area with style and functionality.
+
+Spring outdoor projects:
+• Build a raised garden bed
+• Create a fire pit area
+• Install outdoor string lighting
+• Construct a pergola or gazebo
+• Design a water feature
+• Build outdoor furniture
+
+Weather-resistant materials guide and seasonal tips:`,
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 41200,
+        attachments: [
+          {
+            id: 'diy-vid-2',
+            name: 'raised-garden-bed-build.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'diy6b',
+        content: '',
+        senderId: 'diy-admin',
+        createdAt: new Date(Date.now() - 21590000),
+        isRead: true,
+        views: 41200,
+        attachments: [
+          {
+            id: 'diy-img-10',
+            name: 'fire-pit-construction.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'diy-img-11',
+            name: 'outdoor-string-lights.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
     ]
   });
   const [activeSection, setActiveSection] = useState('chats');

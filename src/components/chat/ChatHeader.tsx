@@ -1,7 +1,7 @@
 'use client';
 
 import { FiMenu } from 'react-icons/fi';
-import { HiOutlinePhone, HiOutlineVideoCamera, HiOutlineEllipsisVertical, HiOutlineMagnifyingGlass, HiOutlineBell, HiStar, HiXMark } from 'react-icons/hi2';
+import { HiOutlinePhone, HiOutlineVideoCamera, HiOutlineEllipsisVertical, HiOutlineMagnifyingGlass, HiOutlineBell, HiStar, HiArrowLeft } from 'react-icons/hi2';
 import Image from 'next/image';
 
 interface ChatHeaderProps {
@@ -45,15 +45,27 @@ export default function ChatHeader({
           className="flex items-center cursor-pointer hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors duration-200"
           onClick={onProfileClick}
         >
-          <button 
-            className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors duration-200 md:hidden mr-2"
-            onClick={(e) => {
-              e.stopPropagation();
-              onMenuClick();
-            }}
-          >
-            <FiMenu size={18} className="text-gray-600" />
-          </button>
+          {showMediaGallery ? (
+            <button 
+              className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors duration-200 mr-2"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleStarClick();
+              }}
+            >
+              <HiArrowLeft size={20} className="text-gray-600" />
+            </button>
+          ) : (
+            <button 
+              className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors duration-200 md:hidden mr-2"
+              onClick={(e) => {
+                e.stopPropagation();
+                onMenuClick();
+              }}
+            >
+              <FiMenu size={18} className="text-gray-600" />
+            </button>
+          )}
           
           <div className="relative mr-3">
             {avatar ? (
@@ -85,9 +97,51 @@ export default function ChatHeader({
                     e.stopPropagation();
                     handleStarClick();
                   }}
-                  className="px-2 py-1 ml-1 bg-yellow-100 hover:bg-yellow-200 rounded-lg transition-all duration-200 text-yellow-600 hover:text-yellow-700 hover:scale-105 shadow-sm hover:shadow-md border border-yellow-200"
+                  className="relative group"
                 >
-                  <HiStar size={14} />
+                  <div className="relative">
+                    {/* Sparkle effects */}
+                    <div className="absolute -top-1 -left-1 w-1 h-1 bg-purple-400 rounded-full animate-ping opacity-75"></div>
+                    <div className="absolute -top-1 -right-1 w-1 h-1 bg-blue-400 rounded-full animate-ping opacity-75" style={{animationDelay: '0.3s'}}></div>
+                    <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-pink-400 rounded-full animate-ping opacity-75" style={{animationDelay: '0.6s'}}></div>
+                    <div className="absolute -bottom-1 -right-1 w-1 h-1 bg-cyan-400 rounded-full animate-ping opacity-75" style={{animationDelay: '0.9s'}}></div>
+                    
+                    {/* Main star with gradient */}
+                    <div className="relative p-1 hover:scale-125 transition-transform duration-300 ease-out">
+                      <svg 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300 animate-pulse"
+                      >
+                        <defs>
+                          <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#60A5FA" />
+                            <stop offset="50%" stopColor="#A78BFA" />
+                            <stop offset="100%" stopColor="#EC4899" />
+                          </linearGradient>
+                        </defs>
+                        {/* Star border/stroke */}
+                        <path 
+                          d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                          fill="none"
+                          stroke="url(#starGradient)"
+                          strokeWidth="1.5"
+                          strokeLinejoin="round"
+                          className="opacity-80"
+                        />
+                        {/* Star fill */}
+                        <path 
+                          d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                          fill="url(#starGradient)"
+                          className="group-hover:animate-spin"
+                          style={{animationDuration: '2s'}}
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </button>
               )}
               {!showMediaGallery && memberCount && (
@@ -116,14 +170,7 @@ export default function ChatHeader({
         </div>
         
         <div className="flex items-center gap-2">
-          {showMediaGallery ? (
-            <button 
-              onClick={handleStarClick}
-              className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-red-600 hover:scale-110"
-            >
-              <HiXMark size={18} />
-            </button>
-          ) : (
+          {!showMediaGallery && (
             <>
               <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 text-gray-600 hover:text-blue-600 hover:scale-110">
                 <HiOutlineMagnifyingGlass size={18} />

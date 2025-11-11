@@ -800,6 +800,342 @@ Watch the full demo below:`,
         createdAt: new Date(Date.now() - 36000000),
         isRead: true,
         views: 32100
+      },
+      {
+        _id: 'tech9',
+        content: `🤖 Google Gemini Ultra Surpasses GPT-4 in Benchmark Tests
+
+Google's latest AI model, Gemini Ultra, has achieved groundbreaking results across multiple benchmarks:
+
+📊 Key Performance Metrics:
+• 90.0% on MMLU (Massive Multitask Language Understanding)
+• 59.4% on MATH (challenging math problems)
+• 62.4% on HumanEval (code generation)
+• Native multimodal processing (text, image, audio, video)
+
+🎯 Unique Features:
+• 1 million token context window
+• Real-time video understanding
+• Advanced reasoning capabilities
+• Seamless integration with Google Workspace
+
+Available now in Google AI Studio and Vertex AI.
+
+Full technical report and benchmarks:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 39600000),
+        isRead: false,
+        views: 156700,
+        attachments: [
+          {
+            id: 'tech-img-3',
+            name: 'gemini-ultra-benchmarks.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'tech-img-4',
+            name: 'gemini-performance-chart.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'tech10',
+        content: `🚗 Tesla's Full Self-Driving v12 - Neural Network Revolution
+
+Tesla has released FSD v12, marking a complete shift to end-to-end neural networks:
+
+🧠 What's New:
+• No more hand-coded rules - pure AI decision making
+• Trained on millions of hours of driving data
+• Smoother, more human-like driving behavior
+• Improved handling of edge cases
+• Better city street navigation
+
+📹 Watch the comprehensive review and real-world testing:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 43200000),
+        isRead: true,
+        views: 134500,
+        attachments: [
+          {
+            id: 'tech-vid-2',
+            name: 'tesla-fsd-v12-review.mp4',
+            type: 'video/mp4',
+            size: 23456789,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'tech11',
+        content: `💾 Quantum Computing Breakthrough: IBM's 1000+ Qubit Processor
+
+IBM has unveiled the Condor processor with 1,121 qubits, pushing quantum computing into a new era:
+
+⚛️ Technical Achievements:
+• 1,121 superconducting qubits
+• Improved error correction
+• 3x faster gate operations
+• Enhanced coherence times
+• Modular architecture for scaling
+
+🔬 Potential Applications:
+• Drug discovery and molecular simulation
+• Financial modeling and risk analysis
+• Cryptography and security
+• Climate modeling
+• Materials science
+
+Download the full technical whitepaper:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 46800000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'tech-pdf-2',
+            name: 'ibm-quantum-condor-whitepaper.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'tech12',
+        content: '',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 50400000),
+        isRead: true,
+        views: 98700,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+          duration: 195,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'tech13',
+        content: `🍎 Apple Vision Pro: Spatial Computing Era Begins
+
+Apple's Vision Pro launches next month, redefining mixed reality:
+
+✨ Groundbreaking Features:
+• Dual 4K micro-OLED displays (23 million pixels)
+• M2 + R1 chip for real-time processing
+• Eye tracking with 12 cameras
+• Spatial audio with 6 microphones
+• Pass-through AR with 12ms latency
+• visionOS with 600+ optimized apps
+
+💰 Pricing & Availability:
+• Starting at $3,499
+• Pre-orders open January 19
+• Ships February 2
+• US launch first, global rollout Q2
+
+Hands-on review and app ecosystem overview:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 54000000),
+        isRead: true,
+        views: 187600,
+        attachments: [
+          {
+            id: 'tech-vid-3',
+            name: 'vision-pro-hands-on.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'tech14',
+        content: `🔋 Solid-State Battery Breakthrough: 1000-Mile Range EVs Coming
+
+Toyota announces major breakthrough in solid-state battery technology:
+
+⚡ Revolutionary Specs:
+• 1,000+ mile range on single charge
+• 10-minute fast charging (0-80%)
+• 50% lighter than lithium-ion
+• No thermal runaway risk
+• 20+ year lifespan
+• -40°C to 100°C operating range
+
+🚗 Production Timeline:
+• Prototype vehicles: 2025
+• Limited production: 2027
+• Mass production: 2028-2030
+• Expected to revolutionize EV adoption
+
+Technical specifications and chemistry details:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 57600000),
+        isRead: true,
+        views: 203400,
+        attachments: [
+          {
+            id: 'tech-img-5',
+            name: 'solid-state-battery-tech.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'tech-img-6',
+            name: 'ev-range-comparison.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'tech15',
+        content: `🌐 Starlink Achieves 5 Million Subscribers Worldwide
+
+SpaceX's satellite internet service hits major milestone:
+
+📡 Network Stats:
+• 5 million active subscribers
+• 5,000+ satellites in orbit
+• 100+ Mbps average speeds
+• 20-40ms latency
+• Coverage in 60+ countries
+• 99.9% uptime
+
+🚀 Expansion Plans:
+• Gen2 satellites with laser links
+• Direct-to-cell service (partnership with T-Mobile)
+• Maritime and aviation connectivity
+• Starship launches for rapid deployment
+
+Impact on global internet accessibility and digital divide:
+
+Read the full report:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 61200000),
+        isRead: true,
+        views: 145600,
+        attachments: [
+          {
+            id: 'tech-pdf-3',
+            name: 'starlink-global-impact-report.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'tech16',
+        content: `🧬 CRISPR Gene Therapy Cures Sickle Cell Disease
+
+FDA approves first CRISPR-based treatment for genetic disease:
+
+🔬 Medical Breakthrough:
+• First FDA-approved CRISPR therapy
+• 95% success rate in clinical trials
+• One-time treatment, lifelong cure
+• Edits patient's own stem cells
+• No donor matching required
+
+💊 Treatment Process:
+• Stem cells harvested from patient
+• CRISPR editing performed ex vivo
+• Modified cells reinfused
+• 4-6 week hospital stay
+• Full recovery in 3-6 months
+
+🏥 Availability & Cost:
+• Approved for ages 12+
+• $2.2 million per treatment
+• Insurance coverage varies
+• Expanding to beta-thalassemia
+
+This marks the beginning of the gene therapy revolution.
+
+Clinical trial results and patient testimonials:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 64800000),
+        isRead: true,
+        views: 167800,
+        attachments: [
+          {
+            id: 'tech-vid-4',
+            name: 'crispr-therapy-explained.mp4',
+            type: 'video/mp4',
+            size: 17654321,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'tech17',
+        content: '',
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 68400000),
+        isRead: true,
+        views: 87600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+          duration: 210,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'tech18',
+        content: `🤝 Microsoft & OpenAI Partnership Expands: $10B Investment
+
+Microsoft deepens commitment to AI leadership with massive investment:
+
+💰 Investment Details:
+• $10 billion over multiple years
+• Azure exclusive cloud provider
+• Integration across Microsoft products
+• Joint AI research initiatives
+• Revenue sharing agreement
+
+🎯 Strategic Goals:
+• Copilot in all Microsoft 365 apps
+• Azure AI infrastructure expansion
+• Enterprise AI solutions
+• Gaming AI integration (Xbox)
+• Bing search enhancement
+
+📊 Market Impact:
+• Microsoft stock +35% YTD
+• Azure AI revenue up 200%
+• 1M+ businesses using Copilot
+• Competition with Google intensifies
+
+Analysis and future implications:`,
+        senderId: 'tech-admin',
+        createdAt: new Date(Date.now() - 72000000),
+        isRead: true,
+        views: 134500,
+        attachments: [
+          {
+            id: 'tech-img-7',
+            name: 'microsoft-openai-partnership.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'tech-img-8',
+            name: 'ai-market-share.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
       }
     ],
     // Design Inspiration Channel (ID: 10)
@@ -886,14 +1222,325 @@ Swipe through the images below for examples from top designers.`,
       },
       {
         _id: 'design5',
-        content: '🎧 Design podcast: Interview with top UI designers',
+        content: '',
         senderId: 'design-admin',
         createdAt: new Date(Date.now() - 25200000),
         isRead: true,
-        audioMessage: {
+        voiceMessage: {
           url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-          duration: 240
+          duration: 240,
+          waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
         }
+      },
+      {
+        _id: 'design6',
+        content: `🌟 Glassmorphism Design Trend: The Future of UI
+
+Glassmorphism is taking over modern UI design! This aesthetic combines transparency, blur effects, and vibrant colors for stunning visual depth.
+
+Key characteristics:
+• Frosted glass effect with backdrop blur
+• Semi-transparent backgrounds with subtle borders
+• Layered depth and hierarchy
+• Vibrant color gradients underneath
+• Soft shadows for elevation
+• Works beautifully in dark mode
+
+Popular use cases:
+• Dashboard cards and widgets
+• Navigation bars and menus
+• Modal dialogs and overlays
+• Mobile app interfaces
+• Landing page hero sections
+
+Design tools and resources: https://glassmorphism.com`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: false,
+        views: 123400,
+        attachments: [
+          {
+            id: 'design-img-4',
+            name: 'glassmorphism-examples.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'design-img-5',
+            name: 'glass-ui-components.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'design7',
+        content: `🎯 Typography Masterclass: Choosing the Perfect Font Pairing
+
+Typography can make or break your design! Learn how to pair fonts like a professional designer.
+
+Font pairing principles:
+• Contrast is key - Pair serif with sans-serif
+• Limit to 2-3 fonts maximum per project
+• Establish clear hierarchy (headings, body, captions)
+• Consider readability and accessibility
+• Match font personality to brand identity
+
+Top font combinations 2024:
+• Playfair Display + Source Sans Pro
+• Montserrat + Merriweather
+• Raleway + Lora
+• Inter + Crimson Text
+• Poppins + Lato
+
+Typography resources:
+• Google Fonts library
+• Adobe Fonts collection
+• Font pairing tools (Fontjoy, Typewolf)
+• Web typography best practices
+
+Complete typography guide and font pairing examples:`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 145600,
+        attachments: [
+          {
+            id: 'design-pdf-1',
+            name: 'typography-masterclass.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'design8',
+        content: '',
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 98700,
+        attachments: [
+          {
+            id: 'design-vid-2',
+            name: 'animation-principles-tutorial.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'design9',
+        content: `🎨 Color Psychology in UI Design: Emotions & User Behavior
+
+Colors evoke emotions and influence user decisions! Master color psychology to create impactful designs.
+
+Color meanings and applications:
+• Blue - Trust, security, professionalism (Banks, tech)
+• Red - Urgency, passion, excitement (Sales, food)
+• Green - Growth, health, nature (Wellness, finance)
+• Yellow - Optimism, warmth, attention (Warnings, highlights)
+• Purple - Luxury, creativity, wisdom (Premium brands)
+• Orange - Energy, enthusiasm, friendliness (CTAs, social)
+• Black - Sophistication, elegance, power (Luxury, fashion)
+• White - Simplicity, cleanliness, minimalism (Tech, healthcare)
+
+Color theory essentials:
+• Color wheel and complementary colors
+• Analogous and triadic color schemes
+• 60-30-10 rule for color distribution
+• Accessibility and contrast ratios (WCAG)
+• Cultural considerations in color choice
+
+Color palette generators and tools:`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 39600000),
+        isRead: true,
+        views: 134500,
+        attachments: [
+          {
+            id: 'design-img-6',
+            name: 'color-psychology-chart.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'design-img-7',
+            name: 'color-wheel-guide.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'design-img-8',
+            name: 'ui-color-examples.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'design10',
+        content: '',
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 43200000),
+        isRead: true,
+        views: 87600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3',
+          duration: 210,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'design11',
+        content: `📱 Mobile-First Design: Best Practices for 2024
+
+Mobile devices account for 60%+ of web traffic! Design mobile-first for better user experiences.
+
+Mobile-first principles:
+• Start with smallest screen, scale up (progressive enhancement)
+• Touch-friendly targets (minimum 44x44px)
+• Thumb-friendly navigation zones
+• Simplified navigation and content hierarchy
+• Fast loading times and performance optimization
+• Responsive images and adaptive layouts
+
+Mobile UX essentials:
+• Bottom navigation for easy thumb reach
+• Swipe gestures and intuitive interactions
+• Minimal form fields with smart defaults
+• Clear CTAs and visual feedback
+• Offline functionality considerations
+• Native app patterns vs web conventions
+
+Testing and optimization:
+• Test on real devices, not just emulators
+• Various screen sizes and orientations
+• Different network conditions (3G, 4G, 5G)
+• Accessibility features (VoiceOver, TalkBack)
+
+Mobile design patterns and component library:`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 46800000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'design-vid-3',
+            name: 'mobile-first-design-guide.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'design12',
+        content: `✨ Micro-interactions: The Secret to Delightful UX
+
+Small animations and interactions create memorable user experiences! Master micro-interactions for engaging designs.
+
+Types of micro-interactions:
+• Button hover states and click feedback
+• Loading animations and progress indicators
+• Form validation and error messages
+• Toggle switches and checkbox animations
+• Pull-to-refresh and swipe gestures
+• Notification badges and alerts
+• Skeleton screens and content loading
+• Success confirmations and celebrations
+
+Design principles:
+• Keep animations under 300ms for responsiveness
+• Use easing functions for natural motion
+• Provide clear visual feedback
+• Don't overdo it - subtlety is key
+• Ensure accessibility (respect prefers-reduced-motion)
+
+Tools for creating micro-interactions:
+• Framer Motion (React animations)
+• Lottie (JSON-based animations)
+• CSS animations and transitions
+• GSAP (GreenSock Animation Platform)
+• Principle (prototyping tool)
+
+Micro-interaction examples and code snippets:`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 50400000),
+        isRead: true,
+        views: 156700,
+        attachments: [
+          {
+            id: 'design-img-9',
+            name: 'micro-interactions-examples.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'design-img-10',
+            name: 'animation-principles.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'design13',
+        content: `🎭 Dark Mode Design: Creating Beautiful Night Themes
+
+Dark mode is no longer optional! Learn to design stunning dark themes that users love.
+
+Dark mode benefits:
+• Reduced eye strain in low-light environments
+• Battery savings on OLED screens
+• Modern, premium aesthetic
+• Better focus on content
+• Accessibility for light-sensitive users
+
+Design considerations:
+• Don't just invert colors - redesign thoughtfully
+• Use true black (#000000) sparingly
+• Prefer dark grays (#121212, #1E1E1E)
+• Reduce contrast for comfortable reading
+• Adjust color saturation and brightness
+• Test in various lighting conditions
+
+Color adjustments:
+• Desaturate bright colors slightly
+• Increase elevation with lighter surfaces
+• Use shadows and borders carefully
+• Maintain sufficient contrast ratios (WCAG)
+• Consider color blindness accessibility
+
+Implementation tips:
+• CSS custom properties for theme switching
+• System preference detection (prefers-color-scheme)
+• User toggle with persistent preference
+• Smooth transitions between modes
+
+Dark mode design system and color palettes:`,
+        senderId: 'design-admin',
+        createdAt: new Date(Date.now() - 54000000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'design-pdf-2',
+            name: 'dark-mode-design-guide.pdf',
+            type: 'application/pdf',
+            size: 3789012,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
       }
     ],
     // Photography Tips Channel (ID: 14)
@@ -1226,6 +1873,342 @@ Download the full job description PDF below. Apply by end of week!`,
             url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60'
           }
         ]
+      },
+      {
+        _id: 'job3',
+        content: `🎯 Product Manager - AI/ML Products ($140k-$180k)
+
+🏢 Company: Fortune 500 Tech Giant
+📍 Location: San Francisco, CA / Hybrid
+💰 Salary: $140k-$180k + bonus + RSUs
+
+Key Responsibilities:
+• Lead AI product roadmap and strategy
+• Work with ML engineers and data scientists
+• Define product requirements and KPIs
+• Stakeholder management and communication
+• Market research and competitive analysis
+• Go-to-market strategy execution
+
+Requirements:
+• 7+ years product management experience
+• Technical background (CS/Engineering preferred)
+• Experience with AI/ML products
+• Strong analytical and communication skills
+• MBA preferred but not required
+
+Benefits: Full health coverage, 401k matching, stock options, learning budget
+
+Apply now: https://careers.techgiant.com/pm-ai-ml`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: false,
+        views: 89400,
+        attachments: [
+          {
+            id: 'job-img-2',
+            name: 'product-manager-role.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'job-img-3',
+            name: 'ai-ml-products.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'job4',
+        content: '',
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'job-vid-1',
+            name: 'interview-tips-2024.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'job5',
+        content: `💻 Full Stack Engineer - Fintech Startup ($100k-$140k)
+
+🏢 Company: Fast-Growing Fintech Startup (Series A)
+📍 Location: Remote (Americas timezone)
+💰 Salary: $100k-$140k + equity (0.1-0.5%)
+
+Tech Stack:
+• Frontend: React, TypeScript, Tailwind CSS
+• Backend: Node.js, Express, PostgreSQL
+• Cloud: AWS (Lambda, RDS, S3)
+• DevOps: Docker, Kubernetes, CI/CD
+
+What You'll Do:
+• Build and maintain payment processing systems
+• Develop customer-facing web applications
+• Optimize database queries and API performance
+• Collaborate with product and design teams
+• Participate in code reviews and architecture decisions
+
+Requirements:
+• 3+ years full stack development experience
+• Strong JavaScript/TypeScript skills
+• Experience with SQL databases
+• Understanding of security best practices
+• Fintech or payment systems experience (bonus)
+
+Perks: Remote-first culture, flexible hours, annual retreats, latest tech gear
+
+Full job description and application:`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'job-pdf-2',
+            name: 'fullstack-engineer-jd.pdf',
+            type: 'application/pdf',
+            size: 1234567,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'job6',
+        content: `📊 Data Scientist - Healthcare Analytics ($130k-$170k)
+
+🏢 Company: Healthcare Technology Leader
+📍 Location: Boston, MA / Remote Hybrid
+💰 Salary: $130k-$170k + comprehensive benefits
+
+Role Overview:
+Build predictive models and analytics solutions to improve patient outcomes and healthcare delivery.
+
+Key Responsibilities:
+• Develop machine learning models for patient risk prediction
+• Analyze large healthcare datasets (EHR, claims data)
+• Create data visualizations and dashboards
+• Collaborate with clinical teams and stakeholders
+• Present findings to executive leadership
+
+Required Skills:
+• PhD or Master's in Statistics, CS, or related field
+• 5+ years data science experience
+• Python (pandas, scikit-learn, TensorFlow)
+• SQL and big data technologies (Spark, Hadoop)
+• Healthcare domain knowledge preferred
+• Strong communication and storytelling skills
+
+Benefits: Comprehensive health insurance, 401k match, professional development, impact-driven mission
+
+Healthcare analytics career opportunities:`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 98700,
+        attachments: [
+          {
+            id: 'job-img-4',
+            name: 'data-science-healthcare.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'job-img-5',
+            name: 'analytics-dashboard.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'job-img-6',
+            name: 'healthcare-tech.jpg',
+            type: 'image/jpeg',
+            size: 2012345,
+            url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'job7',
+        content: '',
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 76800,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+          duration: 195,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'job8',
+        content: `🎨 UX/UI Designer - SaaS Platform ($90k-$130k)
+
+🏢 Company: B2B SaaS Startup (Growing Fast!)
+📍 Location: Remote (Global)
+💰 Salary: $90k-$130k based on experience
+
+What You'll Design:
+• Enterprise dashboard and analytics interfaces
+• Mobile-responsive web applications
+• Design system and component library
+• User onboarding flows and experiences
+• Marketing website and landing pages
+
+Your Toolkit:
+• Figma (primary design tool)
+• User research and usability testing
+• Prototyping and interaction design
+• Design systems and atomic design
+• Collaboration with developers
+
+Requirements:
+• 4+ years UX/UI design experience
+• Strong portfolio showcasing SaaS products
+• Experience with enterprise software design
+• Understanding of frontend development (HTML/CSS)
+• Excellent communication skills
+
+Why Join Us:
+• Shape product direction and user experience
+• Work with talented cross-functional team
+• Remote-first company culture
+• Professional growth opportunities
+• Competitive salary and equity
+
+Portfolio review and application process:`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'job-vid-2',
+            name: 'design-portfolio-tips.mp4',
+            type: 'video/mp4',
+            size: 17654321,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'job9',
+        content: `⚙️ DevOps Engineer - Cloud Infrastructure ($110k-$150k)
+
+🏢 Company: Enterprise Cloud Solutions Provider
+📍 Location: Austin, TX / Remote Flexible
+💰 Salary: $110k-$150k + performance bonus
+
+Infrastructure You'll Manage:
+• Multi-cloud environments (AWS, Azure, GCP)
+• Kubernetes clusters and container orchestration
+• CI/CD pipelines (Jenkins, GitLab CI, GitHub Actions)
+• Infrastructure as Code (Terraform, CloudFormation)
+• Monitoring and observability (Prometheus, Grafana, ELK)
+
+Key Responsibilities:
+• Design and implement scalable cloud architectures
+• Automate deployment and infrastructure provisioning
+• Ensure system reliability and uptime (99.9% SLA)
+• Security hardening and compliance
+• Incident response and troubleshooting
+• Mentor junior engineers
+
+Required Experience:
+• 5+ years DevOps/SRE experience
+• Strong Linux/Unix administration skills
+• Scripting (Python, Bash, Go)
+• Container technologies (Docker, Kubernetes)
+• Cloud certifications (AWS/Azure/GCP) preferred
+
+Benefits: Flexible work arrangements, learning budget, conference attendance, stock options
+
+DevOps career path and certifications guide:`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'job-pdf-3',
+            name: 'devops-career-guide.pdf',
+            type: 'application/pdf',
+            size: 3456789,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'job10',
+        content: `🚀 Engineering Manager - Mobile Apps ($150k-$200k)
+
+🏢 Company: Top Consumer Tech Company
+📍 Location: Seattle, WA / Hybrid
+💰 Salary: $150k-$200k + equity + bonus
+
+Lead Our Mobile Team:
+• Manage team of 8-12 iOS and Android engineers
+• Drive technical roadmap and architecture decisions
+• Foster culture of innovation and excellence
+• Partner with product and design leadership
+• Recruit and develop top engineering talent
+
+Mobile Tech Stack:
+• iOS: Swift, SwiftUI, UIKit
+• Android: Kotlin, Jetpack Compose
+• Cross-platform: React Native (some projects)
+• Backend integration: GraphQL, REST APIs
+• Analytics: Firebase, Amplitude
+
+What We're Looking For:
+• 8+ years software engineering experience
+• 3+ years engineering management experience
+• Deep mobile development expertise (iOS/Android)
+• Track record of shipping successful apps
+• Strong leadership and mentoring skills
+• Excellent communication and stakeholder management
+
+Why This Role:
+• Lead products used by millions of users
+• Work with cutting-edge mobile technologies
+• Competitive compensation and benefits
+• Career growth opportunities
+• Collaborative and inclusive culture
+
+Application and interview process details:`,
+        senderId: 'job-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 134500,
+        attachments: [
+          {
+            id: 'job-img-7',
+            name: 'engineering-manager-role.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'job-img-8',
+            name: 'mobile-development-team.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
       }
     ],
     // Crypto Updates Channel (ID: 12)
@@ -1271,6 +2254,282 @@ Analysts predict potential run to $75k by Q2 2024. See the detailed price chart 
             url: 'https://www.w3schools.com/html/mov_bbb.mp4'
           }
         ]
+      },
+      {
+        _id: 'crypto3',
+        content: `🔗 Ethereum 2.0 Update: The Merge Success & What's Next
+
+Ethereum's transition to Proof-of-Stake is complete! Here's what this means for the network and ETH holders.
+
+Ethereum 2.0 highlights:
+• 99.95% reduction in energy consumption
+• Improved network security and decentralization
+• Staking rewards: 4-5% APY for validators
+• Faster transaction finality
+• Foundation for future scaling (sharding)
+• Deflationary tokenomics with EIP-1559
+• Layer 2 solutions gaining traction (Arbitrum, Optimism)
+
+ETH price targets and network statistics: https://ethereum.org/roadmap`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: false,
+        views: 145600,
+        attachments: [
+          {
+            id: 'crypto-img-2',
+            name: 'ethereum-merge-infographic.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'crypto-img-3',
+            name: 'eth-staking-rewards.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'crypto4',
+        content: `💎 DeFi Deep Dive: Yield Farming & Liquidity Mining Explained
+
+Decentralized Finance is revolutionizing traditional banking! Learn how to earn passive income through DeFi protocols.
+
+DeFi opportunities:
+• Liquidity pools - Provide liquidity, earn fees
+• Yield farming - Maximize returns across protocols
+• Staking - Lock tokens for rewards
+• Lending platforms (Aave, Compound)
+• DEX trading (Uniswap, PancakeSwap)
+• Impermanent loss explained
+• Risk management strategies
+
+Complete DeFi guide and protocol comparison:`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 123400,
+        attachments: [
+          {
+            id: 'crypto-pdf-1',
+            name: 'defi-complete-guide.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'crypto5',
+        content: '',
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 98700,
+        attachments: [
+          {
+            id: 'crypto-vid-2',
+            name: 'nft-market-analysis.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'crypto6',
+        content: `🎨 NFT Market Update: Blue-Chip Collections & Emerging Trends
+
+The NFT space is evolving beyond JPEGs! Discover the latest trends in digital ownership and collectibles.
+
+NFT market insights:
+• Blue-chip collections (BAYC, CryptoPunks, Azuki)
+• Gaming NFTs and play-to-earn mechanics
+• Music NFTs and artist royalties
+• Real-world asset tokenization (RWAs)
+• NFT marketplaces (OpenSea, Blur, Magic Eden)
+• Utility-focused NFTs vs pure collectibles
+• NFT lending and financialization
+
+NFT floor prices and volume analytics:`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 134500,
+        attachments: [
+          {
+            id: 'crypto-img-4',
+            name: 'nft-blue-chip-collections.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'crypto-img-5',
+            name: 'nft-marketplace-stats.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1644361566696-3d442b5b482a?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'crypto-img-6',
+            name: 'gaming-nfts.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'crypto7',
+        content: '',
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 87600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
+          duration: 225,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'crypto8',
+        content: `⚡ Layer 2 Solutions: Scaling Ethereum for Mass Adoption
+
+Layer 2 networks are solving Ethereum's scalability challenges! Lower fees, faster transactions, same security.
+
+Layer 2 ecosystem:
+• Optimistic Rollups (Arbitrum, Optimism)
+• ZK-Rollups (zkSync, StarkNet, Polygon zkEVM)
+• Sidechains vs Layer 2 differences
+• Bridge security and cross-chain transfers
+• Gas fee comparisons - L1 vs L2
+• DApp migration to Layer 2
+• Future of Ethereum scaling (Danksharding)
+
+Layer 2 TVL rankings and ecosystem growth:`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'crypto-vid-3',
+            name: 'layer2-explained.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'crypto9',
+        content: `🔐 Crypto Security Best Practices: Protect Your Assets
+
+Security is paramount in crypto! Learn essential practices to keep your digital assets safe from hackers and scams.
+
+Security essentials:
+• Hardware wallets vs software wallets (Ledger, Trezor)
+• Seed phrase security - Never share, offline storage
+• Multi-signature wallets for large holdings
+• Identifying phishing attacks and scams
+• Smart contract audits - DYOR before investing
+• Two-factor authentication (2FA) setup
+• Cold storage for long-term holdings
+• Common attack vectors and how to avoid them
+
+Wallet security checklist and recovery guide:`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 156700,
+        attachments: [
+          {
+            id: 'crypto-img-7',
+            name: 'hardware-wallet-guide.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'crypto-img-8',
+            name: 'security-best-practices.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'crypto10',
+        content: `🌐 Web3 Revolution: The Decentralized Internet
+
+Web3 is transforming how we interact online! Explore the technologies building the next generation of the internet.
+
+Web3 fundamentals:
+• Decentralized identity and authentication
+• IPFS and decentralized storage (Filecoin, Arweave)
+• DAOs - Decentralized Autonomous Organizations
+• Token-gated communities and social tokens
+• Web3 social media (Lens Protocol, Farcaster)
+• Decentralized domain names (ENS, Unstoppable Domains)
+• The creator economy in Web3
+
+Web3 ecosystem map and adoption metrics:`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'crypto-pdf-2',
+            name: 'web3-ecosystem-guide.pdf',
+            type: 'application/pdf',
+            size: 4789012,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'crypto11',
+        content: `📊 Altcoin Season: Top Performers & Hidden Gems
+
+Altcoins are heating up! Discover which alternative cryptocurrencies are leading the market and potential moonshots.
+
+Altcoin highlights:
+• Solana (SOL) - High-speed blockchain ecosystem
+• Polygon (MATIC) - Ethereum scaling leader
+• Chainlink (LINK) - Oracle network dominance
+• Avalanche (AVAX) - DeFi and gaming platform
+• Cosmos (ATOM) - Interoperability protocol
+• Emerging L1s - Aptos, Sui, Sei
+• Meme coins vs utility tokens
+
+Altcoin market cap rankings and performance:`,
+        senderId: 'crypto-admin',
+        createdAt: new Date(Date.now() - 37800000),
+        isRead: true,
+        views: 145600,
+        attachments: [
+          {
+            id: 'crypto-img-9',
+            name: 'altcoin-performance-chart.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'crypto-img-10',
+            name: 'top-altcoins-2024.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
       }
     ],
     // Startup News Channel (ID: 51)
@@ -1314,6 +2573,251 @@ These companies have raised over $500M combined and are solving real-world probl
             type: 'application/pdf',
             size: 1567890,
             url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'startup3',
+        content: `🤖 AI Startup Boom: The Next Wave of Innovation
+
+Artificial Intelligence startups are attracting record-breaking investments! Here's what's driving the AI revolution in 2024.
+
+AI startup highlights:
+• OpenAI competitors raising billions in funding
+• Generative AI tools for enterprise (Anthropic, Cohere)
+• AI-powered coding assistants and developer tools
+• Healthcare AI diagnostics and drug discovery
+• Autonomous vehicles reaching new milestones
+• AI chip manufacturers (beyond NVIDIA)
+• Ethical AI and safety-focused startups
+
+AI market analysis and investment trends: https://techcrunch.com/ai-startups-2024`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: false,
+        views: 134500,
+        attachments: [
+          {
+            id: 'startup-img-2',
+            name: 'ai-startup-landscape.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'startup-img-3',
+            name: 'ai-investment-chart.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'startup4',
+        content: '',
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'startup-vid-1',
+            name: 'founder-interview-series.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'startup5',
+        content: `💡 Startup Founder's Guide: From Idea to Series A
+
+Essential insights for aspiring entrepreneurs! Learn the key steps to building a successful startup from scratch.
+
+Startup journey roadmap:
+• Validating your idea - Market research and MVP
+• Building your founding team - Co-founders and early hires
+• Product-market fit - Iterating based on feedback
+• Fundraising strategies - Pre-seed to Series A
+• Pitch deck essentials - What investors want to see
+• Legal structure and equity distribution
+• Growth hacking and customer acquisition
+
+Complete startup playbook and resources:`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'startup-pdf-2',
+            name: 'startup-founders-playbook.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'startup6',
+        content: `🌱 Climate Tech: Startups Saving the Planet
+
+Climate technology is the fastest-growing startup sector! These companies are tackling climate change with innovative solutions.
+
+Climate tech innovations:
+• Carbon capture and storage technologies
+• Renewable energy optimization (solar, wind)
+• Electric vehicle charging infrastructure
+• Sustainable agriculture and food tech
+• Circular economy and recycling solutions
+• Green hydrogen production
+• Climate risk assessment platforms
+
+Investment opportunities and impact metrics:`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 98700,
+        attachments: [
+          {
+            id: 'startup-img-4',
+            name: 'climate-tech-startups.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'startup-img-5',
+            name: 'renewable-energy-innovation.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'startup-img-6',
+            name: 'sustainable-tech.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'startup7',
+        content: '',
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 67800,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+          duration: 240,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'startup8',
+        content: `💳 Fintech Revolution: Banking's Digital Transformation
+
+Financial technology startups are reshaping how we manage money! From neobanks to crypto, here's what's disrupting finance.
+
+Fintech trends 2024:
+• Neobanks and digital-only banking (Chime, Revolut)
+• Buy Now Pay Later (BNPL) evolution
+• Embedded finance and Banking-as-a-Service
+• Cryptocurrency and blockchain infrastructure
+• AI-powered personal finance management
+• Cross-border payments and remittances
+• RegTech and compliance automation
+
+Fintech investment landscape and regulatory updates:`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'startup-vid-2',
+            name: 'fintech-trends-2024.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'startup9',
+        content: `🎓 EdTech Innovations: The Future of Learning
+
+Education technology is transforming how we learn! These startups are making education more accessible, personalized, and effective.
+
+EdTech breakthroughs:
+• AI tutors and personalized learning paths
+• Virtual reality classrooms and immersive learning
+• Microlearning and skill-based platforms
+• Corporate training and upskilling solutions
+• Language learning apps (Duolingo, Babbel)
+• STEM education for kids and teens
+• Credentialing and certification platforms
+
+EdTech market growth and adoption rates:`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'startup-img-7',
+            name: 'edtech-innovation.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'startup-img-8',
+            name: 'online-learning-platform.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'startup10',
+        content: `🏥 HealthTech: Digital Health Revolution
+
+Healthcare technology startups are improving patient outcomes and reducing costs! From telemedicine to AI diagnostics, health is going digital.
+
+HealthTech innovations:
+• Telemedicine platforms (Teladoc, Amwell)
+• AI-powered diagnostics and imaging analysis
+• Wearable health monitors and IoT devices
+• Mental health apps and digital therapy
+• Genomics and personalized medicine
+• Healthcare data analytics and interoperability
+• Remote patient monitoring systems
+
+HealthTech funding trends and regulatory landscape:`,
+        senderId: 'startup-admin',
+        createdAt: new Date(Date.now() - 37800000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'startup-img-9',
+            name: 'healthtech-startups.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'startup-img-10',
+            name: 'digital-health-devices.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&auto=format&fit=crop&q=60'
           }
         ]
       }
@@ -1375,6 +2879,252 @@ Check out these amazing examples:`,
             url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
           }
         ]
+      },
+      {
+        _id: 'photo3',
+        content: `📷 Camera Settings 101: Understanding the Exposure Triangle
+
+Master the fundamentals of photography! Learn how aperture, shutter speed, and ISO work together to create perfectly exposed images.
+
+Exposure triangle essentials:
+• Aperture (f-stop) - Depth of field control
+• Shutter Speed - Motion blur and freeze action
+• ISO - Light sensitivity and grain
+• Balancing all three for perfect exposure
+• Manual mode vs auto modes
+• Common scenarios and recommended settings
+• Practice exercises for beginners
+
+Complete camera settings cheat sheet: https://photography101.com/exposure-guide`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 10800000),
+        isRead: false,
+        views: 89400,
+        attachments: [
+          {
+            id: 'photo-img-4',
+            name: 'exposure-triangle-diagram.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-5',
+            name: 'aperture-comparison.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'photo4',
+        content: '',
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 14400000),
+        isRead: true,
+        views: 67800,
+        attachments: [
+          {
+            id: 'photo-vid-1',
+            name: 'portrait-photography-tutorial.mp4',
+            type: 'video/mp4',
+            size: 19876543,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'photo5',
+        content: `🌃 Night Photography: Capturing the Stars and City Lights
+
+Unlock the magic of night photography! From astrophotography to urban nightscapes, learn to shoot in low light conditions.
+
+Night photography techniques:
+• Long exposure fundamentals (30 sec to minutes)
+• Star trails and Milky Way photography
+• Light painting techniques
+• City lights and urban nightscapes
+• Tripod essentials and stability
+• Focus techniques in the dark
+• Noise reduction in post-processing
+
+Night photography gear guide and location tips:`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 18000000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'photo-img-6',
+            name: 'milky-way-photography.jpg',
+            type: 'image/jpeg',
+            size: 2678901,
+            url: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-7',
+            name: 'city-night-lights.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-8',
+            name: 'star-trails-example.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'photo6',
+        content: '',
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 21600000),
+        isRead: true,
+        views: 45600,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+          duration: 210,
+          waveform: [30, 45, 60, 75, 65, 50, 40, 55, 70, 80, 75, 60, 45, 35, 50, 65, 75, 85, 70, 55, 40, 45, 60, 75, 80, 70, 55, 45, 35, 50, 65, 75, 70, 60, 50, 40, 55, 70, 65, 50]
+        }
+      },
+      {
+        _id: 'photo7',
+        content: `🎨 Composition Rules: Creating Visually Stunning Images
+
+Transform your photos from snapshots to masterpieces! Learn the essential composition techniques used by professional photographers.
+
+Composition techniques:
+• Rule of Thirds - Classic composition guide
+• Leading Lines - Guiding the viewer's eye
+• Framing - Using natural frames
+• Symmetry and Patterns - Visual harmony
+• Negative Space - Less is more
+• Depth and Layers - Creating dimension
+• Breaking the rules creatively
+
+Composition examples and practice challenges:`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 25200000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'photo-vid-2',
+            name: 'composition-techniques-demo.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'photo8',
+        content: `📱 Mobile Photography: Pro Results from Your Smartphone
+
+You don't need expensive gear to take amazing photos! Master smartphone photography with these professional techniques.
+
+Mobile photography tips:
+• Understanding your phone's camera features
+• HDR, Portrait Mode, and Night Mode explained
+• Third-party camera apps (ProCam, Halide)
+• Mobile editing apps (Lightroom Mobile, VSCO, Snapseed)
+• Composition tips for phone photography
+• Accessories: Lenses, tripods, gimbals
+• Instagram-worthy photo techniques
+
+Mobile photography workflow and editing guide:`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 28800000),
+        isRead: true,
+        views: 112300,
+        attachments: [
+          {
+            id: 'photo-pdf-2',
+            name: 'mobile-photography-masterclass.pdf',
+            type: 'application/pdf',
+            size: 4789012,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'photo9',
+        content: `🎞️ Post-Processing Workflow: From RAW to Stunning Final Image
+
+Editing is where good photos become great! Learn professional post-processing techniques in Lightroom and Photoshop.
+
+Post-processing essentials:
+• RAW vs JPEG - Why shoot RAW?
+• Lightroom workflow - Import to export
+• Basic adjustments - Exposure, contrast, white balance
+• Color grading and tone curves
+• Local adjustments - Dodging and burning
+• Sharpening and noise reduction
+• Photoshop for advanced editing
+• Presets and batch processing
+
+Complete editing tutorial and preset collection:`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 32400000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'photo-img-9',
+            name: 'before-after-editing.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-10',
+            name: 'lightroom-interface.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'photo10',
+        content: `🏞️ Landscape Photography: Capturing Nature's Beauty
+
+Create breathtaking landscape photos! From mountains to seascapes, learn the techniques for stunning outdoor photography.
+
+Landscape photography tips:
+• Best times to shoot - Golden hour, blue hour
+• Weather conditions and dramatic skies
+• Foreground interest and depth
+• Hyperfocal distance for sharp landscapes
+• Filters: Polarizer, ND, graduated ND
+• Panorama stitching techniques
+• Location scouting and planning
+
+Landscape photography gear and location guide:`,
+        senderId: 'photo-admin',
+        createdAt: new Date(Date.now() - 36000000),
+        isRead: true,
+        views: 98700,
+        attachments: [
+          {
+            id: 'photo-img-11',
+            name: 'mountain-landscape.jpg',
+            type: 'image/jpeg',
+            size: 2789012,
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'photo-img-12',
+            name: 'seascape-long-exposure.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
       }
     ],
 
@@ -1419,6 +3169,262 @@ Are you ready to transform your life? 🔥`,
           duration: 180,
           waveform: [25, 40, 55, 70, 60, 45, 35, 50, 65, 75, 70, 55, 40, 30, 45, 60, 70, 80, 65, 50, 35, 40, 55, 70, 75, 65, 50, 40, 30, 45, 60, 70, 65, 55, 45, 35, 50, 65, 60, 45]
         }
+      },
+      {
+        _id: 'fitness3',
+        content: `🏃‍♀️ Beginner's Guide to Running: From Couch to 5K
+
+Start your running journey the right way! This comprehensive guide will take you from complete beginner to running your first 5K in just 8 weeks.
+
+Running essentials:
+• Week-by-week training plan with rest days
+• Proper running form and breathing techniques
+• Choosing the right running shoes
+• Preventing common injuries (shin splints, runner's knee)
+• Warm-up and cool-down routines
+• Nutrition and hydration strategies
+
+Download the complete 8-week training plan: https://runningstart.com/couch-to-5k`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 9000000),
+        isRead: false,
+        views: 112300,
+        attachments: [
+          {
+            id: 'fitness-img-1',
+            name: 'running-form-guide.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fitness-img-2',
+            name: 'running-shoes-comparison.jpg',
+            type: 'image/jpeg',
+            size: 2123456,
+            url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fitness4',
+        content: `🧘‍♀️ Yoga for Flexibility and Stress Relief
+
+Discover the transformative power of yoga! Perfect for beginners and experienced practitioners alike.
+
+Yoga benefits and practices:
+• Morning yoga flow (20 minutes) - Energize your day
+• Evening relaxation sequence - Better sleep
+• Flexibility improvement poses
+• Stress reduction and mindfulness
+• Breathing exercises (Pranayama)
+• Yoga for back pain relief
+
+Yoga mat recommendations and pose modifications:`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 12600000),
+        isRead: true,
+        views: 94500,
+        attachments: [
+          {
+            id: 'fitness-vid-2',
+            name: 'morning-yoga-flow.mp4',
+            type: 'video/mp4',
+            size: 17654321,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'fitness5',
+        content: `🥗 Nutrition 101: Eating for Optimal Health
+
+Fuel your body right! Learn the fundamentals of nutrition and create a sustainable, healthy eating plan.
+
+Nutrition fundamentals:
+• Macronutrients explained - Protein, carbs, fats
+• Micronutrients and vitamins - What you need
+• Meal timing and frequency
+• Hydration guidelines - How much water?
+• Reading nutrition labels correctly
+• Healthy snack ideas and meal prep
+• Supplements: What works and what doesn't
+
+Evidence-based nutrition guide and meal planning:`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 16200000),
+        isRead: true,
+        views: 103400,
+        attachments: [
+          {
+            id: 'fitness-pdf-1',
+            name: 'nutrition-guide-complete.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'fitness6',
+        content: `💪 Strength Training for Beginners: Build Muscle Safely
+
+Start building strength the right way! This guide covers everything you need to know about resistance training.
+
+Strength training basics:
+• Progressive overload principles
+• Major compound exercises (squats, deadlifts, bench press)
+• Proper form and technique videos
+• Sets, reps, and rest periods explained
+• Home workouts vs gym training
+• Recovery and muscle growth
+• Common mistakes to avoid
+
+Full-body workout routine and exercise library:`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 19800000),
+        isRead: true,
+        views: 87600,
+        attachments: [
+          {
+            id: 'fitness-img-3',
+            name: 'strength-training-exercises.jpg',
+            type: 'image/jpeg',
+            size: 2567890,
+            url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fitness-img-4',
+            name: 'proper-squat-form.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fitness-img-5',
+            name: 'deadlift-technique.jpg',
+            type: 'image/jpeg',
+            size: 2012345,
+            url: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fitness7',
+        content: '',
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 23400000),
+        isRead: true,
+        views: 56700,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+          duration: 195,
+          waveform: [35, 50, 65, 80, 70, 55, 45, 60, 75, 85, 80, 65, 50, 40, 55, 70, 80, 90, 75, 60, 45, 50, 65, 80, 85, 75, 60, 50, 40, 55, 70, 80, 75, 65, 55, 45, 60, 75, 70, 55]
+        }
+      },
+      {
+        _id: 'fitness8',
+        content: `😴 Sleep Optimization: The Foundation of Health
+
+Quality sleep is crucial for fitness, recovery, and overall health. Learn how to optimize your sleep for better results.
+
+Sleep optimization strategies:
+• Sleep hygiene best practices
+• Ideal sleep duration by age
+• Creating the perfect sleep environment
+• Pre-sleep routine for better rest
+• Managing stress and anxiety
+• Sleep tracking and analysis
+• Supplements: Melatonin, magnesium, and more
+
+Sleep improvement guide and bedtime routine:`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 27000000),
+        isRead: true,
+        views: 76800,
+        attachments: [
+          {
+            id: 'fitness-img-6',
+            name: 'sleep-environment-setup.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fitness-img-7',
+            name: 'sleep-tracking-data.jpg',
+            type: 'image/jpeg',
+            size: 1987654,
+            url: 'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'fitness9',
+        content: `🏊‍♂️ HIIT Workouts: Maximum Results in Minimum Time
+
+High-Intensity Interval Training delivers incredible results in short workout sessions. Perfect for busy schedules!
+
+HIIT workout benefits:
+• 20-minute full-body HIIT routine
+• Tabata protocol explained (20 sec on, 10 sec off)
+• Fat burning and metabolic boost
+• No equipment needed - Bodyweight exercises
+• HIIT vs steady-state cardio
+• Recovery between sessions
+• Beginner, intermediate, and advanced variations
+
+Complete HIIT workout library and timer app:`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 30600000),
+        isRead: true,
+        views: 98700,
+        attachments: [
+          {
+            id: 'fitness-vid-3',
+            name: 'hiit-workout-demo.mp4',
+            type: 'video/mp4',
+            size: 18765432,
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4'
+          }
+        ]
+      },
+      {
+        _id: 'fitness10',
+        content: `🧠 Mental Health & Fitness: The Mind-Body Connection
+
+Physical fitness and mental health are deeply connected. Learn how to nurture both for complete wellness.
+
+Mental wellness strategies:
+• Exercise for anxiety and depression relief
+• Mindfulness and meditation practices
+• Stress management techniques
+• Building healthy habits and routines
+• Social connection and community
+• Setting realistic fitness goals
+• Overcoming motivation challenges
+
+Mental health resources and support:`,
+        senderId: 'fitness-admin',
+        createdAt: new Date(Date.now() - 34200000),
+        isRead: true,
+        views: 89400,
+        attachments: [
+          {
+            id: 'fitness-img-8',
+            name: 'meditation-practice.jpg',
+            type: 'image/jpeg',
+            size: 2234567,
+            url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'fitness-img-9',
+            name: 'mindfulness-exercises.jpg',
+            type: 'image/jpeg',
+            size: 2012345,
+            url: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
       }
     ],
 

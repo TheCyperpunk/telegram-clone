@@ -1,0 +1,27 @@
+Better Post Order for Distribution:
+
+1. Image (4) - Aurora
+2. Video (1) - Documentary  
+3. Link (5) - Apple Vision
+4. Audio (2) - Jazz
+5. Multi-Images (23) - Bali 10 photos
+6. File (3) - Excel
+7. Image (8) - NYC Skyline
+8. APK (6) - Meditation App
+9. Video (9) - Cooking
+10. File (7) - PDF ML
+11. Image (12) - Wildlife Lion
+12. Link (14) - AI Startup
+13. Multi-Videos (24) - Concert 6 videos
+14. Audio (11) - Classical
+15. File (10) - PowerPoint
+16. Image (16) - Santorini
+17. Video (15) - Fitness
+18. File (13) - ZIP Dev Kit
+19. Multi-Images (25) - Tokyo Food 8 photos
+20. Audio (17) - EDM
+21. APK (18) - Game
+22. Link (20) - NASA Space
+23. Image (21) - Sushi Food
+24. File (19) - Word Doc
+25. Video (22) - Dubai Drone

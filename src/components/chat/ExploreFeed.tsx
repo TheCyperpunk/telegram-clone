@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FiHeart, FiMessageSquare, FiShare2, FiMoreHorizontal, FiMusic, FiVideo, FiFileText, FiMoreVertical, FiCamera, FiPlay, FiCopy } from 'react-icons/fi';
+import ContentDetailPage from './ContentDetailPage';
 import ExploreFilterTabs from './ExploreFilterTabs';
 import FeedsContent from './FeedsContent';
 import PagesContent from './PagesContent';
@@ -283,14 +284,317 @@ interface Post {
   source?: string; // For articles
   height: number; // For masonry layout
   aspectRatio: 'square' | 'portrait' | 'landscape' | 'tall' | 'wide'; // Different aspect ratios
+  platform?: string; // For social media platforms
+  videoId?: string; // For video platforms
 }
 
-// Generate 120 posts with different types and dimensions
+// Social media content from FeedsContent
+const socialMediaContent = [
+  // YouTube Videos (Long videos - wide aspect ratio)
+  {
+    id: 'youtube-1',
+    username: 'tech_reviewer',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&auto=format&fit=crop&q=60',
+    caption: '🎥 Amazing Tech Review!',
+    likes: 15234,
+    comments: 892,
+    shares: 2341,
+    time: '1 hour ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '8:45',
+    videoId: 'iDqSKfIQ-q4',
+    platform: 'youtube'
+  },
+  {
+    id: 'youtube-2',
+    username: 'music_lover',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&auto=format&fit=crop&q=60',
+    caption: '🎵 Epic Music Video!',
+    likes: 23456,
+    comments: 1234,
+    shares: 3456,
+    time: '2 hours ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '4:32',
+    videoId: 'nb_fFj_0rq8',
+    platform: 'youtube'
+  },
+  
+  // YouTube Shorts (Short videos - tall aspect ratio)
+  {
+    id: 'youtube-short-1',
+    username: 'trending_shorts',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&auto=format&fit=crop&q=60',
+    caption: '🔥 Trending Short!',
+    likes: 45678,
+    comments: 2341,
+    shares: 5678,
+    time: '30 minutes ago',
+    type: 'short_video' as PostType,
+    height: 450,
+    aspectRatio: 'tall' as const,
+    duration: '0:45',
+    videoId: 'mWbxOjykArw',
+    platform: 'youtube'
+  },
+  {
+    id: 'youtube-short-2',
+    username: 'dance_vibes',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=400&auto=format&fit=crop&q=60',
+    caption: '💃 Smooth Moves!',
+    likes: 52341,
+    comments: 2987,
+    shares: 6543,
+    time: '2 hours ago',
+    type: 'short_video' as PostType,
+    height: 450,
+    aspectRatio: 'tall' as const,
+    duration: '0:58',
+    videoId: 'QWpDDHw0PMc',
+    platform: 'youtube'
+  },
+
+  // Vimeo Videos (Professional content - wide aspect ratio)
+  {
+    id: 'vimeo-1',
+    username: 'creative_pro',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 Professional Video Production',
+    likes: 8934,
+    comments: 456,
+    shares: 1234,
+    time: '3 hours ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '6:12',
+    videoId: '347119375',
+    platform: 'vimeo'
+  },
+  {
+    id: 'vimeo-2',
+    username: 'motion_designer',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1574267432644-f610f5b7e4d1?w=800&auto=format&fit=crop&q=60',
+    caption: '⚡ Motion Graphics Demo',
+    likes: 15678,
+    comments: 923,
+    shares: 3456,
+    time: '6 hours ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '3:45',
+    videoId: '897818060',
+    platform: 'vimeo'
+  },
+
+  // Dailymotion Videos (Wide aspect ratio)
+  {
+    id: 'dailymotion-1',
+    username: 'dailymotion_pro',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 Amazing Dailymotion Content!',
+    likes: 7892,
+    comments: 345,
+    shares: 1123,
+    time: '2 hours ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '5:23',
+    videoId: 'x9fo68m',
+    platform: 'dailymotion'
+  },
+  {
+    id: 'dailymotion-2',
+    username: 'cinema_francais',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 French Cinema Excellence',
+    likes: 15678,
+    comments: 892,
+    shares: 3456,
+    time: '6 hours ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '7:18',
+    videoId: 'x9oafl0',
+    platform: 'dailymotion'
+  },
+
+  // Rutube Shorts (Portrait aspect ratio)
+  {
+    id: 'rutube-short-1',
+    username: 'rutubeshorts',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&auto=format&fit=crop&q=60',
+    caption: '🎬 Amazing Rutube Short!',
+    likes: 38456,
+    comments: 723,
+    shares: 1012,
+    time: '4 days ago',
+    type: 'short_video' as PostType,
+    height: 420,
+    aspectRatio: 'tall' as const,
+    duration: '0:52',
+    videoId: 'f1e0d8d0b4a3f02601317691df089f37',
+    platform: 'rutube'
+  },
+  {
+    id: 'rutube-short-2',
+    username: 'rutubeviral',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&auto=format&fit=crop&q=60',
+    caption: '🔥 Viral Short!',
+    likes: 67890,
+    comments: 1234,
+    shares: 2345,
+    time: '5 days ago',
+    type: 'short_video' as PostType,
+    height: 420,
+    aspectRatio: 'tall' as const,
+    duration: '0:38',
+    videoId: '051066708b2e900f8e1de8765c300387',
+    platform: 'rutube'
+  },
+
+  // VK Videos (Landscape aspect ratio)
+  {
+    id: 'vk-video-1',
+    username: 'vkcreator',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1574267432644-f610f5b7e4d1?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 Amazing VK Video!',
+    likes: 34567,
+    comments: 678,
+    shares: 890,
+    time: '20 hours ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '4:15',
+    videoId: '-59336195_456239378',
+    platform: 'vk'
+  },
+  {
+    id: 'vk-video-2',
+    username: 'vktrending',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&auto=format&fit=crop&q=60',
+    caption: '🔥 Trending Now!',
+    likes: 63789,
+    comments: 1234,
+    shares: 2345,
+    time: '1 day ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '3:42',
+    videoId: '-222693769_456239541',
+    platform: 'vk'
+  },
+
+  // Bilibili Videos (Wide aspect ratio)
+  {
+    id: 'bilibili-1',
+    username: 'bilibilicreator',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 Amazing Bilibili Video!',
+    likes: 56789,
+    comments: 1234,
+    shares: 2345,
+    time: '1 day ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '6:30',
+    videoId: 'BV1bzCcBoE26',
+    platform: 'bilibili'
+  },
+
+  // Instagram Reels (Portrait aspect ratio)
+  {
+    id: 'instagram-reel-1',
+    username: 'travelexplorer',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+    caption: '🌴 Paradise Found!',
+    likes: 67890,
+    comments: 1345,
+    shares: 2134,
+    time: '19 hours ago',
+    type: 'short_video' as PostType,
+    height: 400,
+    aspectRatio: 'portrait' as const,
+    duration: '0:30',
+    videoId: 'C4FvChHvcqi',
+    platform: 'instagram'
+  },
+
+  // Regular Photos (Various aspect ratios)
+  {
+    id: 'photo-1',
+    username: 'photo_pro',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=1200&auto=format&fit=crop&q=60',
+    caption: '🏔️ Aurora Borealis over Icelandic Mountains',
+    likes: 12456,
+    comments: 234,
+    shares: 567,
+    time: '5 hours ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const
+  },
+  {
+    id: 'photo-2',
+    username: 'city_lights',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1400&h=700&auto=format&fit=crop&q=60',
+    caption: '🌃 Manhattan Skyline at Dusk',
+    likes: 8765,
+    comments: 123,
+    shares: 345,
+    time: '8 hours ago',
+    type: 'photo' as PostType,
+    height: 160,
+    aspectRatio: 'wide' as const
+  },
+  {
+    id: 'photo-3',
+    username: 'travel_diaries',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=1200&auto=format&fit=crop&q=60',
+    caption: '🇬🇷 Sunset in Santorini',
+    likes: 15432,
+    comments: 456,
+    shares: 789,
+    time: '12 hours ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const
+  }
+];
+
+// Generate posts with mixed social media content
 const generatePosts = (): Post[] => {
   const postTypes: PostType[] = ['photo', 'photos', 'video', 'short_video', 'music', 'article'];
   const timeAgo = ['Just now', '5m ago', '10m ago', '15m ago', '30m ago', '1h ago', '2h ago', '3h ago', 'Yesterday', '2d ago'];
   
-  return Array.from({ length: 120 }, (_, i) => {
+  const regularPosts = Array.from({ length: 80 }, (_, i) => {
     const type = postTypes[i % 6];
     const randomUsername = usernames[Math.floor(Math.random() * usernames.length)];
     const randomCaption = captions[Math.floor(Math.random() * captions.length)];
@@ -333,7 +637,6 @@ const generatePosts = (): Post[] => {
       post.duration = `0:${Math.floor(Math.random() * 46) + 15}`;
     } else if (type === 'music') {
       post.title = `Track ${i + 1} - ${randomUsername}'s Playlist`;
-      // Music doesn't need duration as per request
     } else if (type === 'article') {
       post.title = `${randomCaption.split(' ').slice(0, 3).join(' ')}...`;
       post.source = `${randomUsername}.blog`;
@@ -341,6 +644,17 @@ const generatePosts = (): Post[] => {
     
     return post;
   });
+
+  // Mix social media content with regular posts randomly
+  const allPosts = [...regularPosts, ...socialMediaContent];
+  
+  // Shuffle the array to mix content randomly
+  for (let i = allPosts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allPosts[i], allPosts[j]] = [allPosts[j], allPosts[i]];
+  }
+  
+  return allPosts;
 };
 
 interface ExploreFeedProps {
@@ -351,6 +665,8 @@ interface ExploreFeedProps {
 export default function ExploreFeed({ activeFilter: externalFilter, onFilterChange: externalOnFilterChange }: ExploreFeedProps = {}) {
   const [posts, setPosts] = useState<Post[]>(generatePosts());
   const [internalFilter, setInternalFilter] = useState('explore');
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [showDetailPage, setShowDetailPage] = useState(false);
   
   const activeFilter = externalFilter || internalFilter;
   const handleFilterChange = externalOnFilterChange || setInternalFilter;
@@ -362,6 +678,21 @@ export default function ExploreFeed({ activeFilter: externalFilter, onFilterChan
       return `${(num / 1000).toFixed(1)}K`;
     }
     return num.toString();
+  };
+
+  const handlePostClick = (post: Post) => {
+    setSelectedPost(post);
+    setShowDetailPage(true);
+  };
+
+  const handleBackFromDetail = () => {
+    setShowDetailPage(false);
+    setSelectedPost(null);
+  };
+
+  const handleUserClick = (username: string) => {
+    // Handle user profile navigation
+    console.log('Navigate to user profile:', username);
   };
 
   const renderContent = () => {
@@ -377,8 +708,8 @@ export default function ExploreFeed({ activeFilter: externalFilter, onFilterChan
             <div className="w-full py-4">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
-                  {posts.map(post => (
-                    <PinterestCard key={post.id} post={post} formatNumber={formatNumber} />
+                  {posts.map((post) => (
+                    <PinterestCard key={post.id} post={post} formatNumber={formatNumber} onPostClick={handlePostClick} />
                   ))}
                 </div>
               </div>
@@ -388,20 +719,30 @@ export default function ExploreFeed({ activeFilter: externalFilter, onFilterChan
     }
   };
   
-  return (
-    <div className="explore-feed-container h-full w-full flex flex-col">
+  // Show detail page if a post is selected
+  if (showDetailPage && selectedPost) {
+    return (
+      <ContentDetailPage 
+        post={selectedPost}
+        onBack={handleBackFromDetail}
+        onUserClick={handleUserClick}
+      />
+    );
+  }
 
-      {/* Filter Tabs */}
-      <ExploreFilterTabs onFilterChange={handleFilterChange} activeFilter={activeFilter} />
-      
-      {/* Content */}
+  return (
+    <div className="explore-feed h-full flex flex-col bg-gray-50">
+      <ExploreFilterTabs 
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterChange}
+      />
       {renderContent()}
     </div>
   );
 }
 
 // Pinterest Card Component
-function PinterestCard({ post, formatNumber }: { post: Post, formatNumber: (num: number) => string }) {
+function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, formatNumber: (num: number) => string, onPostClick?: (post: Post) => void }) {
   const [isHovered, setIsHovered] = useState(false);
   
   return (
@@ -409,21 +750,109 @@ function PinterestCard({ post, formatNumber }: { post: Post, formatNumber: (num:
       className="pinterest-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer mb-4 break-inside-avoid"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => onPostClick?.(post)}
     >
-      {/* Image Container */}
+      {/* Image/Video Container */}
       <div className="relative group">
         <div style={{ height: `${post.height}px` }} className="relative overflow-hidden">
-          <Image 
-            src={post.image} 
-            alt={post.caption} 
-            fill 
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          {/* Render actual video players for social media content */}
+          {(post as any).platform === 'youtube' && (post.type === 'video' || post.type === 'short_video') ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${(post as any).videoId}?autoplay=0&rel=0&modestbranding=1`}
+              title="YouTube video player"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          ) : (post as any).platform === 'vimeo' && (post.type === 'video') ? (
+            <iframe
+              src={`https://player.vimeo.com/video/${(post as any).videoId}?autoplay=0&muted=0`}
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Vimeo Video"
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          ) : (post as any).platform === 'dailymotion' && (post.type === 'video') ? (
+            <iframe
+              src={`https://www.dailymotion.com/embed/video/${(post as any).videoId}?autoplay=0&mute=1`}
+              frameBorder="0"
+              allowFullScreen
+              allow="fullscreen; picture-in-picture"
+              title="Dailymotion Video"
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          ) : (post as any).platform === 'rutube' && (post.type === 'short_video') ? (
+            <iframe
+              src={`https://rutube.ru/play/embed/${(post as any).videoId}?autoplay=0`}
+              frameBorder="0"
+              allowFullScreen
+              allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              title="Rutube Short"
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          ) : (post as any).platform === 'vk' && (post.type === 'video') ? (
+            <iframe
+              src={`https://vk.com/video_ext.php?oid=${(post as any).videoId.split('_')[0]}&id=${(post as any).videoId.split('_')[1]}&hd=2&autoplay=0`}
+              frameBorder="0"
+              allowFullScreen
+              allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              title="VK Video"
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          ) : (post as any).platform === 'bilibili' && (post.type === 'video') ? (
+            <iframe
+              src={`https://player.bilibili.com/player.html?bvid=${(post as any).videoId}&autoplay=0&muted=1`}
+              scrolling="no"
+              frameBorder="0"
+              allowFullScreen
+              title="Bilibili Video"
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          ) : (post as any).platform === 'instagram' && (post.type === 'short_video') ? (
+            <div 
+              className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+              onClick={() => window.open(`https://www.instagram.com/reel/${(post as any).videoId}/`, '_blank')}
+            >
+              <div className="text-center text-white">
+                <svg className="w-12 h-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <p className="text-sm font-semibold">Instagram Reel</p>
+                <p className="text-xs opacity-75">Click to view on Instagram</p>
+              </div>
+            </div>
+          ) : (
+            // Default image for regular posts and fallback
+            <>
+              <Image 
+                src={post.image} 
+                alt={post.caption} 
+                fill 
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              
+              {/* Play button overlay for videos */}
+              {(post.type === 'video' || post.type === 'short_video') && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all duration-300">
+                    <FiPlay size={24} className="text-white ml-1" />
+                  </div>
+                </div>
+              )}
+            </>
+          )}
           
           {/* Hover Overlay */}
-          <div className={`absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
             {/* Top Actions - Three Dot Menu */}
-            <div className="absolute top-3 right-3">
+            <div className="absolute top-3 right-3 pointer-events-auto">
               <button 
                 className="p-2 rounded-full bg-white bg-opacity-90 shadow-md hover:scale-110 transition-all duration-200 text-gray-700"
                 onClick={(e) => {
@@ -465,6 +894,79 @@ function PinterestCard({ post, formatNumber }: { post: Post, formatNumber: (num:
                 <>
                   <FiFileText size={12} className="mr-1" />
                   <span>Article</span>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Platform Badge for Social Media Content */}
+          {(post as any).platform && (
+            <div className={`absolute bottom-3 right-3 px-2 py-1 rounded-full flex items-center text-xs font-bold shadow-lg ${
+              (post as any).platform === 'youtube' ? 'bg-red-600 text-white' :
+              (post as any).platform === 'vimeo' ? 'bg-blue-500 text-white' :
+              (post as any).platform === 'dailymotion' ? 'bg-white text-black' :
+              (post as any).platform === 'rutube' ? 'bg-gradient-to-r from-blue-900 to-red-500 text-white' :
+              (post as any).platform === 'vk' ? 'bg-blue-500 text-white' :
+              (post as any).platform === 'bilibili' ? 'bg-gradient-to-r from-blue-300 via-blue-500 to-blue-700 text-white' :
+              (post as any).platform === 'instagram' ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' :
+              'bg-gray-600 text-white'
+            }`}>
+              {(post as any).platform === 'youtube' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  <span>YT</span>
+                </>
+              )}
+              {(post as any).platform === 'vimeo' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/>
+                  </svg>
+                  <span>VM</span>
+                </>
+              )}
+              {(post as any).platform === 'dailymotion' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.551 11.485c-1.02 0-1.734.714-1.734 1.734s.714 1.734 1.734 1.734 1.734-.714 1.734-1.734-.714-1.734-1.734-1.734zM24 4.571v14.857C24 21.714 22.286 24 20 24H4c-2.286 0-4-2.286-4-4V4c0-2.286 1.714-4 4-4h16c2.286 0 4 1.714 4 4v.571zM9.143 12c0-2.571 2.286-4.571 4.857-4.571S18.857 9.429 18.857 12s-2.286 4.571-4.857 4.571S9.143 14.571 9.143 12z"/>
+                  </svg>
+                  <span>DM</span>
+                </>
+              )}
+              {(post as any).platform === 'rutube' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                  <span>RT</span>
+                </>
+              )}
+              {(post as any).platform === 'vk' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/>
+                  </svg>
+                  <span>VK</span>
+                </>
+              )}
+              {(post as any).platform === 'bilibili' && (
+                <>
+                  <img 
+                    src="https://img.utdstc.com/icon/ba9/33d/ba933d0e003c9f53e0fb3de2b0f1a8def6898ce2384850ca3adb1cc332d78241:200" 
+                    alt="Bilibili" 
+                    className="w-3 h-3 mr-1 rounded-sm"
+                  />
+                  <span>BL</span>
+                </>
+              )}
+              {(post as any).platform === 'instagram' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  <span>IG</span>
                 </>
               )}
             </div>

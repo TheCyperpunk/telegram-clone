@@ -28,6 +28,49 @@ interface ContentDetailPageProps {
   onUserClick?: (username: string) => void;
 }
 
+const FALLBACK_GRADIENTS = [
+  'from-pink-500 via-red-500 to-yellow-500',
+  'from-indigo-500 via-purple-500 to-pink-500',
+  'from-blue-500 via-cyan-500 to-teal-500',
+  'from-amber-500 via-orange-500 to-rose-500',
+  'from-emerald-500 via-green-500 to-lime-500',
+];
+
+const FALLBACK_IMAGE =
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=60';
+
+const FALLBACK_IMAGES = [
+  'https://picsum.photos/seed/pin-1/600/900',
+  'https://picsum.photos/seed/pin-2/600/900',
+  'https://picsum.photos/seed/pin-3/600/900',
+  'https://picsum.photos/seed/pin-4/600/900',
+  'https://picsum.photos/seed/pin-5/600/900',
+  'https://picsum.photos/seed/pin-6/600/900',
+  'https://picsum.photos/seed/pin-7/600/900',
+  'https://picsum.photos/seed/pin-8/600/900',
+  'https://picsum.photos/seed/pin-9/600/900',
+  'https://picsum.photos/seed/pin-10/600/900',
+];
+
+const MASONRY_TOPICS = [
+  'nature',
+  'city',
+  'landscape',
+  'architecture',
+  'technology',
+  'travel',
+  'abstract',
+  'people',
+  'art',
+  'night',
+];
+
+const getMasonryImage = (index: number) => {
+  const topic = MASONRY_TOPICS[index % MASONRY_TOPICS.length];
+  // Using source.unsplash.com so each sig index gives a different photo but stays stable per card
+  return `https://source.unsplash.com/400x600/?${topic}&sig=${index}`;
+};
+
 // Generate related content similar to Pinterest
 const generateRelatedContent = (currentPost: Post) => {
   const contentData = [
@@ -2367,7 +2410,7 @@ const generateRelatedContent = (currentPost: Post) => {
 
   const relatedPosts = contentData.map((item, i) => ({
     id: `related-${i}`,
-    ...item
+    ...item,
   }));
   
   return relatedPosts;
@@ -2376,6 +2419,11 @@ const generateRelatedContent = (currentPost: Post) => {
 export default function ContentDetailPage({ post, onBack, onUserClick }: ContentDetailPageProps) {
   const [relatedContent] = useState(() => generateRelatedContent(post));
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (id: string) => {
+    setFailedImages(prev => ({ ...prev, [id]: true }));
+  };
 
   // Filter content based on active filter
   const filteredContent = activeFilter === 'all' 
@@ -2422,6 +2470,92 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       default:
         return 'h-[400px]';
     }
+  };
+
+  const getContentDimensions = (item: any, index: number) => {
+    // Determine aspect ratio based on title keywords
+    const title = item.title?.toLowerCase() || '';
+    const isVideo = title.includes('video') || title.includes('film');
+    const isShort = title.includes('short') || title.includes('reel') || title.includes('tiktok');
+    const isPortrait = title.includes('portrait') || title.includes('story');
+    const isLandscape = title.includes('landscape') || title.includes('panorama');
+    const isAudio = title.includes('music') || title.includes('song') || title.includes('audio');
+    const isArticle = title.includes('article') || title.includes('blog') || title.includes('news');
+    const isMultiple = title.includes('collection') || title.includes('gallery') || title.includes('album');
+
+    let height = item.height || 280;
+    let colSpan = 1;
+    let rowSpan = 1;
+
+    // Short videos and reels - tall portrait format
+    if (isShort) {
+      height = 420;
+      colSpan = 1;
+      rowSpan = 2;
+    }
+    // Long videos - portrait format
+    else if (isVideo && !isShort) {
+      height = 380;
+      colSpan = 1;
+      rowSpan = 1.8;
+    }
+    // Portrait photos - tall format
+    else if (isPortrait) {
+      height = 360;
+      colSpan = 1;
+      rowSpan = 1.6;
+    }
+    // Landscape photos - wide format
+    else if (isLandscape) {
+      height = 240;
+      colSpan = 1.5;
+      rowSpan = 1;
+    }
+    // Audio/Music - square format
+    else if (isAudio) {
+      height = 280;
+      colSpan = 1;
+      rowSpan = 1;
+    }
+    // Articles - tall format with content
+    else if (isArticle) {
+      height = 340;
+      colSpan = 1;
+      rowSpan = 1.5;
+    }
+    // Multiple photos - larger grid item
+    else if (isMultiple) {
+      height = 300;
+      colSpan = 1.2;
+      rowSpan = 1.2;
+    }
+    // Regular photos - varied sizes for visual interest
+    else {
+      const variation = index % 5;
+      if (variation === 0) {
+        height = 320;
+        colSpan = 1;
+        rowSpan = 1.2;
+      } else if (variation === 1) {
+        height = 280;
+        colSpan = 1;
+        rowSpan = 1;
+      } else if (variation === 2) {
+        height = 300;
+        colSpan = 1;
+        rowSpan = 1.1;
+      } else if (variation === 3) {
+        height = 260;
+        colSpan = 1;
+        rowSpan = 0.9;
+      } else {
+        height = 340;
+        colSpan = 1;
+        rowSpan = 1.3;
+      }
+    }
+
+    return { height, colSpan, rowSpan };
   };
 
   const renderMainContent = () => {
@@ -2707,129 +2841,34 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
               </div>
             </div>
             
-            {/* Instagram Reel Style Card */}
-            <div className="max-w-md mx-auto mb-8">
-              <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-2xl p-8 text-center text-white shadow-lg">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Instagram Reel</h3>
-                <p className="text-sm opacity-90 mb-1">Click to view on Instagram</p>
-                <div className="text-lg font-semibold mt-2">0:30</div>
-              </div>
-            </div>
-
-            {/* Authentic Pinterest-style Masonry Grid */}
+            {/* Masonry Grid using CSS columns to avoid empty gaps */}
             <div className="columns-5 gap-3 space-y-3">
-              {filteredContent.map((item, index) => (
-                <div key={item.id} className="break-inside-avoid mb-3">
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group">
+              {filteredContent.map((item, index) => {
+                const { height } = getContentDimensions(item, index);
+                // Derive a unique placeholder image per card using picsum + item id
+                const src = `https://picsum.photos/seed/${item.id}/600/900`;
+
+                return (
+                  <div 
+                    key={item.id} 
+                    className="mb-3 break-inside-avoid bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                  >
                     <div 
                       style={{ 
-                        height: `${item.height + (index % 10 === 0 ? 80 : index % 10 === 1 ? 120 : index % 10 === 2 ? 40 : index % 10 === 3 ? 100 : index % 10 === 4 ? 140 : index % 10 === 5 ? 60 : index % 10 === 6 ? 110 : index % 10 === 7 ? 50 : index % 10 === 8 ? 90 : 70)}px` 
+                        height: `${height}px`
                       }} 
-                      className="relative overflow-hidden"
+                      className="relative overflow-hidden bg-gray-100"
                     >
-                      <Image 
-                        src={item.image} 
-                        alt={item.title} 
-                        fill 
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      <img 
+                        src={src}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
-                      
-                      {/* Video Play Button - Centered */}
-                      {(item.title?.toLowerCase().includes('video') || item.title?.toLowerCase().includes('film')) && (
-                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-14 h-14 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
-                            <FiPlay className="w-6 h-6 text-gray-800 ml-1" />
-                          </div>
-                        </div>
-                      )}
-                      
-                      {/* Duration Badge - Top Left */}
-                      {(index % 4 === 0 || item.title?.toLowerCase().includes('video')) && (
-                        <div className="absolute top-3 left-3 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium">
-                          {`${Math.floor(Math.random() * 15) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`}
-                        </div>
-                      )}
-                      
-                      {/* Platform Badges - Top Right */}
-                      <div className="absolute top-3 right-3 flex flex-col gap-2">
-                        {index % 6 === 0 && (
-                          <div className="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                            YT
-                          </div>
-                        )}
-                        {index % 6 === 1 && (
-                          <div className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                            VM
-                          </div>
-                        )}
-                        {index % 6 === 2 && (
-                          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                            IG
-                          </div>
-                        )}
-                        {index % 6 === 3 && (
-                          <div className="bg-black text-white text-xs px-2 py-1 rounded-full font-semibold">
-                            TT
-                          </div>
-                        )}
-                        {index % 6 === 4 && (
-                          <div className="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full font-semibold">
-                            SC
-                          </div>
-                        )}
-                        {index % 6 === 5 && (
-                          <div className="bg-gradient-to-br from-purple-600 to-blue-600 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                            PT
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Photo Count - Bottom Left */}
-                      {index % 5 === 2 && (
-                        <div className="absolute bottom-3 left-3 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md flex items-center gap-1">
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                          </svg>
-                          {Math.floor(Math.random() * 6) + 2}
-                        </div>
-                      )}
-                      
-                      {/* Action Pills - Bottom Right */}
-                      <div className="absolute bottom-3 right-3 flex gap-2">
-                        {index % 7 === 1 && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium">
-                            DM
-                          </div>
-                        )}
-                        {index % 7 === 3 && (
-                          <div className="bg-white bg-opacity-90 text-gray-800 text-xs px-2 py-1 rounded-md font-medium">
-                            Save
-                          </div>
-                        )}
-                        {index % 7 === 5 && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium">
-                            ♬
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Gradient Overlay for Better Text Visibility */}
-                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    
-                    {/* Content Info */}
-                    <div className="p-4">
-                      <h4 className="font-semibold text-sm mb-1 line-clamp-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{item.title}</h4>
-                      <p className="text-gray-500 text-xs font-medium">@{item.username}</p>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

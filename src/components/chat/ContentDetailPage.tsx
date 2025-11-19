@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FiArrowLeft, FiShare2, FiMoreVertical, FiPlay, FiPause, FiDownload, FiVideo, FiMusic, FiImage, FiFileText, FiLayers, FiSkipBack, FiSkipForward, FiRepeat, FiVolume2 } from 'react-icons/fi';
+import { FiArrowLeft, FiShare2, FiMoreVertical, FiPlay, FiDownload } from 'react-icons/fi';
 
 interface Post {
   id: string;
@@ -28,6 +28,7 @@ interface ContentDetailPageProps {
   onUserClick?: (username: string) => void;
 }
 
+// Generate related content similar to Pinterest
 const generateRelatedContent = (currentPost: Post) => {
   const contentData = [
     {
@@ -2364,106 +2365,10 @@ const generateRelatedContent = (currentPost: Post) => {
     }
   ];
 
-  const typePool: Post['type'][] = ['photo','photos','video','short_video','music','article'];
-  const ratioPool: Post['aspectRatio'][] = ['square','portrait','landscape','tall','wide'];
-  const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
-  const baseHeight = (ratio: Post['aspectRatio']) => {
-    if (ratio === 'tall') return 420;
-    if (ratio === 'portrait') return 360;
-    if (ratio === 'square') return 300;
-    if (ratio === 'landscape') return 260;
-    return 240;
-  };
-  const typeAdjust = (type: Post['type']) => {
-    if (type === 'video') return 40;
-    if (type === 'short_video') return -10;
-    if (type === 'photos') return 20;
-    if (type === 'article') return -30;
-    if (type === 'music') return 0;
-    return 0;
-  };
-  const randomJitter = () => (Math.floor(Math.random() * 5) - 2) * 10;
-  const usedImages = new Set<string>();
-
-  const relatedPosts = contentData.map((item, i) => {
-    const imagePools: Record<Post['type'], string[]> = {
-      video: [
-        'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&auto=format&fit=crop&q=60'
-      ],
-      short_video: [
-        'https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1516910817561-2b65f9d9b705?w=400&auto=format&fit=crop&q=60'
-      ],
-      photo: [
-        'https://images.unsplash.com/photo-1504198458649-3128b932f49b?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1491553895911-ef3e126ac2c8?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1494475673543-6a6a27143b16?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1470777631036-6aa4b6ce76d2?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1500530855697-fae08d3e03f3?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1470770841072-df572b5305d9?w=400&auto=format&fit=crop&q=60'
-      ],
-      photos: [
-        'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1517976487492-5762e508b87b?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1519681393784-5e9b0c42d2a9?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1517810164320-1390a1f0f0c0?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1483721310020-03333e577078?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1501854147061-7f1cc3221009?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&auto=format&fit=crop&q=60'
-      ],
-      music: [
-        'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1511671782779-c97d3d27a0f3?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1513863326355-0f3f0de1b3c1?w=400&auto=format&fit=crop&q=60'
-      ],
-      article: [
-        'https://images.unsplash.com/photo-1519337265831-281ec6cc8514?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1473862179213-91c2fbb0e2b8?w=400&auto=format&fit=crop&q=60',
-        'https://images.unsplash.com/photo-1518081461904-9ac3fdc51ce2?w=400&auto=format&fit=crop&q=60'
-      ]
-    };
-    const type = pick(typePool);
-    const ratio = pick(ratioPool);
-    const dimsByRatio: Record<Post['aspectRatio'], {w:number,h:number}> = {
-      square: { w: 500, h: 500 },
-      portrait: { w: 500, h: 700 },
-      tall: { w: 500, h: 800 },
-      landscape: { w: 700, h: 450 },
-      wide: { w: 800, h: 400 }
-    };
-    const dims = dimsByRatio[ratio] ?? { w: 600, h: 400 };
-    const seed = `${type}-${ratio}-${i}-${Math.random().toString(36).slice(2,7)}`;
-    const image = `https://picsum.photos/seed/${seed}/${dims.w}/${dims.h}`;
-    usedImages.add(image);
-    const height = Math.max(180, baseHeight(ratio) + typeAdjust(type) + randomJitter());
-    const duration = (type === 'video' || type === 'short_video')
-      ? `${Math.floor(Math.random() * 9) + (type === 'video' ? 2 : 0)}:${Math.floor(Math.random() * 60).toString().padStart(2,'0')}`
-      : undefined;
-    const count = type === 'photos' ? Math.floor(Math.random() * 5) + 2 : undefined;
-    return {
-      id: `related-${i}`,
-      ...item,
-      image,
-      type,
-      aspectRatio: ratio,
-      height,
-      duration,
-      count
-    } as any;
-  });
+  const relatedPosts = contentData.map((item, i) => ({
+    id: `related-${i}`,
+    ...item
+  }));
   
   return relatedPosts;
 };
@@ -2471,16 +2376,29 @@ const generateRelatedContent = (currentPost: Post) => {
 export default function ContentDetailPage({ post, onBack, onUserClick }: ContentDetailPageProps) {
   const [relatedContent] = useState(() => generateRelatedContent(post));
   const [activeFilter, setActiveFilter] = useState<string>('all');
-  const [activePost, setActivePost] = useState<Post>(post);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [progress, setProgress] = useState<number>(30);
 
   // Filter content based on active filter
-  const filteredContent = activeFilter === 'all'
-    ? relatedContent
-    : relatedContent.filter((item: any) => {
-        if (activeFilter === 'photo') return item.type === 'photo' || item.type === 'photos';
-        return item.type === activeFilter;
+  const filteredContent = activeFilter === 'all' 
+    ? relatedContent 
+    : relatedContent.filter(item => {
+        switch (activeFilter) {
+          case 'photo':
+            return !item.title?.toLowerCase().includes('video') && 
+                   !item.title?.toLowerCase().includes('film') &&
+                   !item.title?.toLowerCase().includes('music');
+          case 'video':
+          case 'short_video':
+            return item.title?.toLowerCase().includes('video') || 
+                   item.title?.toLowerCase().includes('film');
+          case 'article':
+            return item.title?.toLowerCase().includes('article') || 
+                   item.title?.toLowerCase().includes('blog');
+          case 'music':
+            return item.title?.toLowerCase().includes('music') || 
+                   item.title?.toLowerCase().includes('song');
+          default:
+            return true;
+        }
       });
 
   const formatNumber = (num: number): string => {
@@ -2490,8 +2408,7 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
   };
 
   const getMainContentHeight = () => {
-    if (activePost.type === 'music') return 'h-[460px]';
-    switch (activePost.aspectRatio) {
+    switch (post.aspectRatio) {
       case 'tall':
         return 'h-[600px]';
       case 'portrait':
@@ -2511,11 +2428,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     const contentHeight = getMainContentHeight();
     
     // Video content with embedded players
-    if (activePost.platform === 'youtube' && (activePost.type === 'video' || activePost.type === 'short_video')) {
+    if (post.platform === 'youtube' && (post.type === 'video' || post.type === 'short_video')) {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://www.youtube.com/embed/${activePost.videoId}?autoplay=0&rel=0&modestbranding=1`}
+            src={`https://www.youtube.com/embed/${post.videoId}?autoplay=0&rel=0&modestbranding=1`}
             title="YouTube video player"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
@@ -2526,11 +2443,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (activePost.platform === 'vimeo' && activePost.type === 'video') {
+    if (post.platform === 'vimeo' && post.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://player.vimeo.com/video/${activePost.videoId}?autoplay=0&muted=0`}
+            src={`https://player.vimeo.com/video/${post.videoId}?autoplay=0&muted=0`}
             frameBorder="0"
             allowFullScreen
             allow="autoplay; fullscreen; picture-in-picture"
@@ -2542,11 +2459,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (activePost.platform === 'dailymotion' && activePost.type === 'video') {
+    if (post.platform === 'dailymotion' && post.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://www.dailymotion.com/embed/video/${activePost.videoId}?autoplay=0&mute=1`}
+            src={`https://www.dailymotion.com/embed/video/${post.videoId}?autoplay=0&mute=1`}
             frameBorder="0"
             allowFullScreen
             allow="fullscreen; picture-in-picture"
@@ -2558,11 +2475,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (activePost.platform === 'rutube' && activePost.type === 'short_video') {
+    if (post.platform === 'rutube' && post.type === 'short_video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://rutube.ru/play/embed/${activePost.videoId}?autoplay=0`}
+            src={`https://rutube.ru/play/embed/${post.videoId}?autoplay=0`}
             frameBorder="0"
             allowFullScreen
             allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -2574,11 +2491,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (activePost.platform === 'vk' && activePost.type === 'video') {
+    if (post.platform === 'vk' && post.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://vk.com/video_ext.php?oid=${activePost.videoId?.split('_')[0]}&id=${activePost.videoId?.split('_')[1]}&hd=2&autoplay=0`}
+            src={`https://vk.com/video_ext.php?oid=${post.videoId?.split('_')[0]}&id=${post.videoId?.split('_')[1]}&hd=2&autoplay=0`}
             frameBorder="0"
             allowFullScreen
             allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -2590,11 +2507,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (activePost.platform === 'bilibili' && activePost.type === 'video') {
+    if (post.platform === 'bilibili' && post.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://player.bilibili.com/player.html?bvid=${activePost.videoId}&autoplay=0&muted=1`}
+            src={`https://player.bilibili.com/player.html?bvid=${post.videoId}&autoplay=0&muted=1`}
             scrolling="no"
             frameBorder="0"
             allowFullScreen
@@ -2607,11 +2524,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     }
 
     // Instagram Reel
-    if (activePost.platform === 'instagram' && activePost.type === 'short_video') {
+    if (post.platform === 'instagram' && post.type === 'short_video') {
       return (
         <div 
           className={`w-full ${contentHeight} bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-all duration-300`}
-          onClick={() => window.open(`https://www.instagram.com/reel/${activePost.videoId}/`, '_blank')}
+          onClick={() => window.open(`https://www.instagram.com/reel/${post.videoId}/`, '_blank')}
         >
           <div className="text-center text-white">
             <svg className="w-20 h-20 mx-auto mb-4" viewBox="0 0 24 24" fill="currentColor">
@@ -2619,19 +2536,19 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
             </svg>
             <p className="text-xl font-bold mb-2">Instagram Reel</p>
             <p className="text-sm opacity-75">Click to view on Instagram</p>
-            {activePost.duration && <p className="text-lg font-semibold mt-2">{activePost.duration}</p>}
+            {post.duration && <p className="text-lg font-semibold mt-2">{post.duration}</p>}
           </div>
         </div>
       );
     }
 
     // Regular photo content
-    if (activePost.type === 'photo' || activePost.type === 'photos') {
+    if (post.type === 'photo' || post.type === 'photos') {
       return (
         <div className={`w-full ${contentHeight} relative rounded-2xl overflow-hidden bg-gray-100`}>
           <Image 
-            src={activePost.image} 
-            alt={activePost.caption} 
+            src={post.image} 
+            alt={post.caption} 
             fill 
             className="object-cover"
           />
@@ -2640,14 +2557,14 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     }
 
     // Article content
-    if (activePost.type === 'article') {
+    if (post.type === 'article') {
       return (
         <div className={`w-full ${contentHeight} bg-white rounded-2xl border border-gray-200 overflow-hidden`}>
           {/* Article Image */}
           <div className="w-full h-48 relative bg-gray-100">
             <Image 
-              src={activePost.image} 
-              alt={activePost.title || activePost.caption} 
+              src={post.image} 
+              alt={post.title || post.caption} 
               fill 
               className="object-cover"
             />
@@ -2659,12 +2576,12 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
                 A
               </div>
               <div className="ml-3">
-                <h3 className="font-bold text-lg">{activePost.title}</h3>
-                <p className="text-gray-500 text-sm">{activePost.source}</p>
+                <h3 className="font-bold text-lg">{post.title}</h3>
+                <p className="text-gray-500 text-sm">{post.source}</p>
               </div>
             </div>
             <div className="prose max-w-none">
-              <p className="text-gray-700 leading-relaxed">{activePost.caption}</p>
+              <p className="text-gray-700 leading-relaxed">{post.caption}</p>
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600">This is a preview of the article. Click to read the full content on the original website.</p>
               </div>
@@ -2675,34 +2592,16 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     }
 
     // Music content
-    if (activePost.type === 'music') {
+    if (post.type === 'music') {
       return (
-        <div className={`w-full ${contentHeight} rounded-2xl bg-gradient-to-br from-sky-900 via-slate-800 to-indigo-800 p-10 text-white`}>
-          <div className="flex items-start gap-8">
-            <div className="w-32 h-32 rounded-full bg-white/10 flex items-center justify-center ring-8 ring-blue-400/20">
-              <div className="w-28 h-28 rounded-full overflow-hidden relative">
-                <Image src={activePost.image} alt={activePost.title || 'album'} fill className="object-cover" />
-              </div>
+        <div className={`w-full ${contentHeight} bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center text-white`}>
+          <div className="text-center">
+            <div className="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+              <FiPlay size={48} className="ml-2" />
             </div>
-            <div className="flex-1">
-              <h3 className="text-3xl md:text-4xl font-bold">{activePost.title || 'Track'} - @{activePost.username}'s Playlist</h3>
-              <div className="mt-4">
-                <div className="h-2 w-full rounded-full bg-white/20">
-                  <div className="h-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-400" style={{ width: `${progress}%` }}></div>
-                </div>
-                <div className="flex justify-between text-sm text-white/70 mt-1">
-                  <span>1:23</span>
-                  <span>{activePost.duration || '5:00'}</span>
-                </div>
-              </div>
-              <div className="mt-6 flex items-center gap-6">
-                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiSkipBack /></button>
-                <button className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center shadow" onClick={() => setIsPlaying(v => !v)}>{isPlaying ? <FiPause /> : <FiPlay />}</button>
-                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiSkipForward /></button>
-                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiRepeat /></button>
-                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiVolume2 /></button>
-              </div>
-            </div>
+            <h3 className="text-2xl font-bold mb-2">{post.title}</h3>
+            <p className="text-lg opacity-75">@{post.username}</p>
+            {post.duration && <p className="text-sm opacity-50 mt-2">{post.duration}</p>}
           </div>
         </div>
       );
@@ -2712,21 +2611,21 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     return (
       <div className={`w-full ${contentHeight} relative rounded-2xl overflow-hidden bg-gray-100`}>
         <Image 
-          src={activePost.image} 
-          alt={activePost.caption} 
+          src={post.image} 
+          alt={post.caption} 
           fill 
           className="object-cover"
         />
-        {(activePost.type === 'video' || activePost.type === 'short_video') && (
+        {(post.type === 'video' || post.type === 'short_video') && (
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
             <div className="w-20 h-20 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300 cursor-pointer">
               <FiPlay size={32} className="text-gray-800 ml-1" />
             </div>
           </div>
         )}
-        {activePost.duration && (
+        {post.duration && (
           <div className="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-            {activePost.duration}
+            {post.duration}
           </div>
         )}
       </div>
@@ -2747,17 +2646,17 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
             </button>
             <div className="flex items-center">
               <Image 
-                src={activePost.avatar} 
-                alt={activePost.username} 
+                src={post.avatar} 
+                alt={post.username} 
                 width={32} 
                 height={32} 
                 className="rounded-full"
               />
               <div className="ml-3">
-                <p className="font-semibold cursor-pointer hover:underline" onClick={() => onUserClick?.(activePost.username)}>
-                  @{activePost.username}
+                <p className="font-semibold cursor-pointer hover:underline" onClick={() => onUserClick?.(post.username)}>
+                  @{post.username}
                 </p>
-                <p className="text-gray-500 text-sm">{activePost.time}</p>
+                <p className="text-gray-500 text-sm">{post.time}</p>
               </div>
             </div>
           </div>
@@ -2799,38 +2698,38 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
           {/* Unified Pinterest-style Masonry Grid - Mixed Together */}
           <div className="mt-8">
             {/* Main Content Card - Pinterest Style */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm mb-8 max-w-3xl mx-auto">
+            <div className="bg-white rounded-2xl p-6 shadow-sm mb-8 max-w-2xl mx-auto">
               {renderMainContent()}
+              
+              {/* Content Info Below Main Content */}
+              <div className="mt-6">
+                <h1 className="text-2xl font-bold text-gray-900">{post.title || post.caption}</h1>
+              </div>
+            </div>
+            
+            {/* Instagram Reel Style Card */}
+            <div className="max-w-md mx-auto mb-8">
+              <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-2xl p-8 text-center text-white shadow-lg">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Instagram Reel</h3>
+                <p className="text-sm opacity-90 mb-1">Click to view on Instagram</p>
+                <div className="text-lg font-semibold mt-2">0:30</div>
+              </div>
             </div>
 
             {/* Authentic Pinterest-style Masonry Grid */}
             <div className="columns-5 gap-3 space-y-3">
               {filteredContent.map((item, index) => (
                 <div key={item.id} className="break-inside-avoid mb-3">
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group" onClick={() => {
-                    const nextPost: Post = {
-                      id: item.id,
-                      username: item.username || 'guest',
-                      avatar: `https://picsum.photos/seed/avatar-${item.id}/64/64`,
-                      image: item.image,
-                      caption: item.title || '',
-                      likes: 0,
-                      comments: 0,
-                      shares: 0,
-                      time: 'Just now',
-                      type: (item as any).type,
-                      title: item.title,
-                      duration: (item as any).duration,
-                      source: 'Playlist',
-                      height: (item as any).height,
-                      aspectRatio: (item as any).aspectRatio,
-                      platform: (item as any).platform,
-                      videoId: (item as any).videoId,
-                    };
-                    setActivePost(nextPost);
-                  }}>
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group">
                     <div 
-                      style={{ height: `${(item as any).height}px` }}
+                      style={{ 
+                        height: `${item.height + (index % 10 === 0 ? 80 : index % 10 === 1 ? 120 : index % 10 === 2 ? 40 : index % 10 === 3 ? 100 : index % 10 === 4 ? 140 : index % 10 === 5 ? 60 : index % 10 === 6 ? 110 : index % 10 === 7 ? 50 : index % 10 === 8 ? 90 : 70)}px` 
+                      }} 
                       className="relative overflow-hidden"
                     >
                       <Image 
@@ -2841,63 +2740,93 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
                       />
                       
                       {/* Video Play Button - Centered */}
-                      {((item as any).type === 'video' || (item as any).type === 'short_video') && (
-                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-100">
+                      {(item.title?.toLowerCase().includes('video') || item.title?.toLowerCase().includes('film')) && (
+                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="w-14 h-14 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
                             <FiPlay className="w-6 h-6 text-gray-800 ml-1" />
                           </div>
                         </div>
                       )}
                       
-                      {/* Unified Top-Left Type Badges */}
-                      <div className="absolute top-3 left-3 flex flex-col gap-1">
-                        {((item as any).type === 'video') && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
-                            <FiVideo className="w-3 h-3" />
-                            {((item as any).duration) ?? `${Math.floor(Math.random() * 9) + 2}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`}
+                      {/* Duration Badge - Top Left */}
+                      {(index % 4 === 0 || item.title?.toLowerCase().includes('video')) && (
+                        <div className="absolute top-3 left-3 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium">
+                          {`${Math.floor(Math.random() * 15) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`}
+                        </div>
+                      )}
+                      
+                      {/* Platform Badges - Top Right */}
+                      <div className="absolute top-3 right-3 flex flex-col gap-2">
+                        {index % 6 === 0 && (
+                          <div className="bg-red-600 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            YT
                           </div>
                         )}
-                        {((item as any).type === 'short_video') && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
-                            <FiPlay className="w-3 h-3" />
-                            {((item as any).duration) ?? `${Math.floor(Math.random() * 9) + 0}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`}
+                        {index % 6 === 1 && (
+                          <div className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            VM
                           </div>
                         )}
-                        {((item as any).type === 'article') && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-semibold flex items-center gap-1">
-                            <FiFileText className="w-3 h-3" />
-                            <span>Article</span>
+                        {index % 6 === 2 && (
+                          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            IG
                           </div>
                         )}
-                        {((item as any).type === 'music') && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
-                            <FiMusic className="w-3 h-3" />
+                        {index % 6 === 3 && (
+                          <div className="bg-black text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            TT
                           </div>
                         )}
-                        {((item as any).type === 'photos') && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
-                            <FiLayers className="w-3 h-3" />
-                            {`1/${(item as any).count ?? Math.floor(Math.random() * 4) + 2}`}
+                        {index % 6 === 4 && (
+                          <div className="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full font-semibold">
+                            SC
                           </div>
                         )}
-                        {((item as any).type === 'photo') && (
-                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
-                            <FiImage className="w-3 h-3" />
+                        {index % 6 === 5 && (
+                          <div className="bg-gradient-to-br from-purple-600 to-blue-600 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            PT
                           </div>
                         )}
                       </div>
                       
+                      {/* Photo Count - Bottom Left */}
+                      {index % 5 === 2 && (
+                        <div className="absolute bottom-3 left-3 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                          </svg>
+                          {Math.floor(Math.random() * 6) + 2}
+                        </div>
+                      )}
                       
-                      
-                      
-                      
-                      
+                      {/* Action Pills - Bottom Right */}
+                      <div className="absolute bottom-3 right-3 flex gap-2">
+                        {index % 7 === 1 && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium">
+                            DM
+                          </div>
+                        )}
+                        {index % 7 === 3 && (
+                          <div className="bg-white bg-opacity-90 text-gray-800 text-xs px-2 py-1 rounded-md font-medium">
+                            Save
+                          </div>
+                        )}
+                        {index % 7 === 5 && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium">
+                            ♬
+                          </div>
+                        )}
+                      </div>
                       
                       {/* Gradient Overlay for Better Text Visibility */}
                       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     
-                    
+                    {/* Content Info */}
+                    <div className="p-4">
+                      <h4 className="font-semibold text-sm mb-1 line-clamp-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{item.title}</h4>
+                      <p className="text-gray-500 text-xs font-medium">@{item.username}</p>
+                    </div>
                   </div>
                 </div>
               ))}

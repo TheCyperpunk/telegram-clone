@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FiArrowLeft, FiHeart, FiMessageSquare, FiShare2, FiMoreVertical, FiPlay, FiDownload, FiBookmark } from 'react-icons/fi';
+import { FiArrowLeft, FiShare2, FiMoreVertical, FiPlay, FiPause, FiDownload, FiVideo, FiMusic, FiImage, FiFileText, FiLayers, FiSkipBack, FiSkipForward, FiRepeat, FiVolume2 } from 'react-icons/fi';
 
 interface Post {
   id: string;
@@ -28,33 +28,2460 @@ interface ContentDetailPageProps {
   onUserClick?: (username: string) => void;
 }
 
-// Generate related content similar to Pinterest
 const generateRelatedContent = (currentPost: Post) => {
-  const relatedPosts = Array.from({ length: 20 }, (_, i) => ({
-    id: `related-${i}`,
-    image: `https://images.unsplash.com/photo-${1500000000000 + i}?w=400&h=${200 + Math.floor(Math.random() * 300)}&auto=format&fit=crop&q=60`,
-    title: [
-      'Amazing sunset photography',
-      'Street art collection',
-      'Modern architecture',
-      'Nature landscapes',
-      'Urban exploration',
-      'Creative portraits',
-      'Travel destinations',
-      'Food photography',
-      'Minimalist design',
-      'Abstract patterns'
-    ][i % 10],
-    username: ['photographer_pro', 'art_lover', 'travel_diary', 'food_explorer', 'design_guru'][i % 5],
-    height: 200 + Math.floor(Math.random() * 300)
-  }));
+  const contentData = [
+    {
+      title: 'Amazing sunset photography',
+      username: 'photographer_pro',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Street art collection',
+      username: 'art_lover',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Modern architecture',
+      username: 'travel_diary',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Nature landscapes',
+      username: 'nature_explorer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Urban exploration',
+      username: 'design_guru',
+      image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&auto=format&fit=crop&q=60',
+      height: 380
+    },
+    {
+      title: 'Creative portraits',
+      username: 'portrait_master',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 420
+    },
+    {
+      title: 'Travel destinations',
+      username: 'art_lover',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Food photography',
+      username: 'food_explorer',
+      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Minimalist design',
+      username: 'design_guru',
+      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Abstract patterns',
+      username: 'design_guru',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Street photography magic',
+      username: 'photographer_pro',
+      image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Vintage meets modern',
+      username: 'vintage_lover',
+      image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Digital art exploration',
+      username: 'digital_artist',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 400
+    },
+    {
+      title: 'Geometric patterns everywhere',
+      username: 'pattern_lover',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Color palette inspiration',
+      username: 'color_master',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Workspace goals achieved',
+      username: 'workspace_pro',
+      image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Fashion forward thinking',
+      username: 'fashion_guru',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 380
+    },
+    {
+      title: 'Product design perfection',
+      username: 'product_designer',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Typography in the wild',
+      username: 'type_lover',
+      image: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Sustainable design matters',
+      username: 'eco_designer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    // Additional content to fill empty space
+    {
+      title: 'Coffee culture vibes',
+      username: 'coffee_addict',
+      image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&auto=format&fit=crop&q=60',
+      height: 250
+    },
+    {
+      title: 'City skyline views',
+      username: 'urban_explorer',
+      image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Mountain adventures',
+      username: 'mountain_lover',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 380
+    },
+    {
+      title: 'Ocean waves serenity',
+      username: 'ocean_dreamer',
+      image: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Book lover paradise',
+      username: 'bookworm_life',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Gaming setup goals',
+      username: 'gamer_zone',
+      image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Fashion inspiration',
+      username: 'style_guru',
+      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Travel memories',
+      username: 'wanderlust_soul',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Creative workspace',
+      username: 'creator_studio',
+      image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Nature photography',
+      username: 'wildlife_pro',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Urban street art',
+      username: 'street_artist',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Modern lifestyle',
+      username: 'lifestyle_inspo',
+      image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Artistic expression',
+      username: 'art_enthusiast',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Weekend adventures',
+      username: 'weekend_vibes',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 370
+    },
+    {
+      title: 'Inspiration everywhere',
+      username: 'creative_mind',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Daily moments',
+      username: 'moment_catcher',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Dream destinations',
+      username: 'dream_traveler',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Creative process',
+      username: 'process_sharer',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Life in color',
+      username: 'colorful_life',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Simple pleasures',
+      username: 'simple_joys',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Creative vision',
+      username: 'visionary_art',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Urban jungle',
+      username: 'city_wild',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Peaceful moments',
+      username: 'serenity_seeker',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Adventure awaits',
+      username: 'adventure_time',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Art and soul',
+      username: 'soulful_art',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Beautiful chaos',
+      username: 'chaos_beauty',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Dream big',
+      username: 'dream_chaser',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Stay curious',
+      username: 'curious_mind',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Find your path',
+      username: 'path_finder',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Create magic',
+      username: 'magic_maker',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Explore more',
+      username: 'explorer_heart',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Never stop',
+      username: 'unstoppable',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Keep going',
+      username: 'persistent_soul',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Inspire others',
+      username: 'inspiration_source',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Make it happen',
+      username: 'action_taker',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Live fully',
+      username: 'life_lover',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Love deeply',
+      username: 'heart_full',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Laugh often',
+      username: 'joy_spreader',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 250
+    },
+    {
+      title: 'Learn always',
+      username: 'eternal_student',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Grow daily',
+      username: 'growth_mindset',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Shine bright',
+      username: 'light_shiner',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Be yourself',
+      username: 'authentic_self',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Stay positive',
+      username: 'positive_vibes',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Spread kindness',
+      username: 'kindness_hero',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Embrace change',
+      username: 'change_embracer',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Find balance',
+      username: 'balance_seeker',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Trust the journey',
+      username: 'journey_truster',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Enjoy the ride',
+      username: 'ride_enjoyer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Celebrate small wins',
+      username: 'win_celebrator',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Dream without limits',
+      username: 'limitless_dreamer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Make today count',
+      username: 'day_maker',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Choose happiness',
+      username: 'happiness_chooser',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Create your story',
+      username: 'story_creator',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Write your future',
+      username: 'future_writer',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Paint your dreams',
+      username: 'dream_painter',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Build your world',
+      username: 'world_builder',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Design your life',
+      username: 'life_designer',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Craft your legacy',
+      username: 'legacy_crafter',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Shape your destiny',
+      username: 'destiny_shaper',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Define your purpose',
+      username: 'purpose_definer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Live with passion',
+      username: 'passion_liver',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Love what you do',
+      username: 'work_lover',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Do what you love',
+      username: 'love_doer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Follow your heart',
+      username: 'heart_follower',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Listen to your soul',
+      username: 'soul_listener',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Trust your instincts',
+      username: 'instinct_truster',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Believe in yourself',
+      username: 'self_believer',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Never give up',
+      username: 'never_giveup',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Keep pushing forward',
+      username: 'forward_pusher',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Rise above challenges',
+      username: 'challenge_riser',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Overcome obstacles',
+      username: 'obstacle_overcomer',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Turn pain into power',
+      username: 'pain_transformer',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Find strength in struggle',
+      username: 'struggle_strength',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Grow through pain',
+      username: 'pain_grower',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Learn from failure',
+      username: 'failure_learner',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Embrace imperfections',
+      username: 'imperfection_embracer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Find beauty in flaws',
+      username: 'flaw_beauty',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'See magic in ordinary',
+      username: 'ordinary_magic',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Appreciate little things',
+      username: 'little_appreciator',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Gratitude attitude',
+      username: 'gratitude_giver',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Count your blessings',
+      username: 'blessing_counter',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Stay humble',
+      username: 'humble_stayer',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Be kind always',
+      username: 'kindness_spreader',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Help others grow',
+      username: 'growth_helper',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Lift others up',
+      username: 'uplift_lifter',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Share your light',
+      username: 'light_sharer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Make a difference',
+      username: 'difference_maker',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Leave your mark',
+      username: 'mark_leaver',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Change the world',
+      username: 'world_changer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Start with you',
+      username: 'self_starter',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Lead by example',
+      username: 'example_leader',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Inspire change',
+      username: 'change_inspirer',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Be the reason',
+      username: 'reason_be',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Someone smiles today',
+      username: 'smile_creator',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Make hearts happy',
+      username: 'heart_happiness',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Spread love always',
+      username: 'love_spreader',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Peace begins with you',
+      username: 'peace_beginner',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Joy is contagious',
+      username: 'joy_contagious',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Hope never dies',
+      username: 'hope_keeper',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Faith moves mountains',
+      username: 'faith_mover',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Love conquers all',
+      username: 'love_conqueror',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Unity is strength',
+      username: 'unity_builder',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Together we rise',
+      username: 'together_riser',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Stronger together',
+      username: 'strength_together',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'One world one love',
+      username: 'world_love',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'We are one',
+      username: 'oneness_be',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Humanity first',
+      username: 'humanity_first',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Compassion matters',
+      username: 'compassion_giver',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Empathy heals',
+      username: 'empathy_healer',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Understanding connects',
+      username: 'understanding_connector',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Acceptance liberates',
+      username: 'acceptance_liberator',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Forgiveness frees',
+      username: 'forgiveness_freer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Let go and grow',
+      username: 'letting_goer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Release and renew',
+      username: 'release_renewer',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Surrender and soar',
+      username: 'surrender_soarer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Trust the process',
+      username: 'process_truster',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Honor the journey',
+      username: 'journey_honorer',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Cherish every moment',
+      username: 'moment_cherisher',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Live in the now',
+      username: 'now_liver',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Be present always',
+      username: 'presence_be',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Mindfulness matters',
+      username: 'mindfulness_master',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Conscious living',
+      username: 'conscious_liver',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Intentional choices',
+      username: 'intentional_chooser',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Purposeful actions',
+      username: 'purposeful_actor',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Meaningful connections',
+      username: 'connection_maker',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Authentic relationships',
+      username: 'authentic_relator',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Deep conversations',
+      username: 'deep_talker',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Heart to hearts',
+      username: 'heart_sharer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Soul connections',
+      username: 'soul_connector',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'True friendships',
+      username: 'true_friend',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Lifelong bonds',
+      username: 'bond_builder',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Unbreakable ties',
+      username: 'tie_strengthener',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Family forever',
+      username: 'family_forever',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Home is where',
+      username: 'home_finder',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Heart belongs',
+      username: 'heart_belonger',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Love grows here',
+      username: 'love_grower',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Together is better',
+      username: 'together_better',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'United we stand',
+      username: 'unity_stand',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Divided we fall',
+      username: 'division_avoider',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Stand for something',
+      username: 'stand_taker',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Fall for anything',
+      username: 'principle_keeper',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Speak your truth',
+      username: 'truth_speaker',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Live your values',
+      username: 'value_liver',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Walk your talk',
+      username: 'walk_talker',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Practice what you preach',
+      username: 'practice_preacher',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Actions speak louder',
+      username: 'action_speaker',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Be the change',
+      username: 'change_be',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'You wish to see',
+      username: 'wish_seer',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Start the ripple',
+      username: 'ripple_starter',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Create the wave',
+      username: 'wave_creator',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Influence positively',
+      username: 'positive_influencer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Impact greatly',
+      username: 'great_impactor',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Leave footprints',
+      username: 'footprint_leaver',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Of kindness',
+      username: 'kindness_footprint',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Build bridges',
+      username: 'bridge_builder',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Not walls',
+      username: 'wall_breaker',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Open doors',
+      username: 'door_opener',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Close divides',
+      username: 'divide_closer',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Heal the world',
+      username: 'world_healer',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Make it better',
+      username: 'better_maker',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Plant seeds',
+      username: 'seed_planter',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Of hope',
+      username: 'hope_seeder',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Water with love',
+      username: 'love_waterer',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Watch them grow',
+      username: 'growth_watcher',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Nurture dreams',
+      username: 'dream_nurturer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Support visions',
+      username: 'vision_supporter',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Empower others',
+      username: 'power_empowerer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Enable potential',
+      username: 'potential_enabler',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Unlock greatness',
+      username: 'greatness_unlocker',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Reveal brilliance',
+      username: 'brilliance_revealer',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Shine the light',
+      username: 'light_shiner',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'On hidden talents',
+      username: 'talent_revealer',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Celebrate uniqueness',
+      username: 'uniqueness_celebrator',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Honor differences',
+      username: 'difference_honorer',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Embrace diversity',
+      username: 'diversity_embracer',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Welcome all',
+      username: 'all_welcomer',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Include everyone',
+      username: 'everyone_includer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Belonging matters',
+      username: 'belonging_matterer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Connection is key',
+      username: 'connection_key',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Community counts',
+      username: 'community_counter',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Together we thrive',
+      username: 'together_thriver',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Stronger united',
+      username: 'united_strong',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Divided we struggle',
+      username: 'division_struggler',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Unity brings peace',
+      username: 'peace_bringer',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Peace creates harmony',
+      username: 'harmony_creator',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Harmony breeds joy',
+      username: 'joy_breeder',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Joy spreads love',
+      username: 'love_spreader',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Love heals all',
+      username: 'all_healer',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Healing begins within',
+      username: 'within_beginner',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Inner peace first',
+      username: 'peace_first',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Self-love matters',
+      username: 'selflove_matterer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Care for yourself',
+      username: 'self_carer',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Nurture your soul',
+      username: 'soul_nurturer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Feed your spirit',
+      username: 'spirit_feeder',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Rest when needed',
+      username: 'rest_taker',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Pause and breathe',
+      username: 'pause_breather',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Slow down often',
+      username: 'slow_downer',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Reflect regularly',
+      username: 'regular_reflector',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Journal your thoughts',
+      username: 'thought_journal',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Process your feelings',
+      username: 'feeling_processor',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Understand yourself',
+      username: 'self_understander',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Know your worth',
+      username: 'worth_knower',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Value your voice',
+      username: 'voice_valuer',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Honor your story',
+      username: 'story_honorer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Own your truth',
+      username: 'truth_owner',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Stand in your power',
+      username: 'power_stander',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Claim your space',
+      username: 'space_claimer',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Take your place',
+      username: 'place_taker',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Show up fully',
+      username: 'full_shower',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Be unapologetically',
+      username: 'unapologetic_be',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'You in all your glory',
+      username: 'glory_be',
+      image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Shine your light bright',
+      username: 'bright_shiner',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'The world needs',
+      username: 'world_needer',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Exactly who you are',
+      username: 'exact_be',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Perfectly imperfect',
+      username: 'perfectly_imperfect',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    // Extended content to fill both columns completely
+    {
+      title: 'Coffee culture vibes',
+      username: 'coffee_addict',
+      image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Vintage meets modern',
+      username: 'vintage_lover',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Product design perfection',
+      username: 'product_designer',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Typography in the wild',
+      username: 'type_lover',
+      image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=400&auto=format&fit=crop&q=60',
+      height: 380
+    },
+    {
+      title: 'Find strength in struggle',
+      username: 'struggle_strength',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'You wish to see',
+      username: 'wish_seer',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Be the change',
+      username: 'change_be',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Learn from failure',
+      username: 'failure_learner',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Create the wave',
+      username: 'wave_creator',
+      image: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Embrace imperfections',
+      username: 'imperfection_embracer',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Influence positively',
+      username: 'positive_influencer',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Creative portraits',
+      username: 'portrait_master',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Ocean dreams',
+      username: 'ocean_dreamer',
+      image: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Mountain sunrise',
+      username: 'mountain_watcher',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Urban exploration',
+      username: 'urban_explorer',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Nature therapy',
+      username: 'nature_healer',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Digital art journey',
+      username: 'digital_artist',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Street photography',
+      username: 'street_photographer',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Minimalist living',
+      username: 'minimalist_life',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Food photography',
+      username: 'food_stylist',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Travel memories',
+      username: 'memory_keeper',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Fashion forward',
+      username: 'fashion_trend',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Wellness journey',
+      username: 'wellness_warrior',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Tech innovations',
+      username: 'tech_enthusiast',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Home decor ideas',
+      username: 'decor_inspo',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Fitness motivation',
+      username: 'fit_inspiration',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Book recommendations',
+      username: 'bookworm_life',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'DIY projects',
+      username: 'diy_crafter',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Garden inspiration',
+      username: 'garden_dreamer',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Pet photography',
+      username: 'pet_photographer',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Sunset chaser',
+      username: 'sunset_hunter',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Creative writing',
+      username: 'word_weaver',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Music production',
+      username: 'beat_creator',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Handmade crafts',
+      username: 'craft_lover',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Interior design',
+      username: 'space_designer',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Lifestyle blogger',
+      username: 'life_blogger',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Art collector',
+      username: 'art_curator',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Vintage finds',
+      username: 'vintage_hunter',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Sustainable living',
+      username: 'eco_warrior',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Mindful moments',
+      username: 'mindfulness_guru',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Adventure stories',
+      username: 'story_teller',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Culinary adventures',
+      username: 'food_explorer',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Morning rituals',
+      username: 'morning_person',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Night owl creativity',
+      username: 'night_creator',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Weekend vibes',
+      username: 'weekend_warrior',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Holiday memories',
+      username: 'holiday_maker',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Rainy day comfort',
+      username: 'rain_lover',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Spring awakening',
+      username: 'spring_enthusiast',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Summer adventures',
+      username: 'summer_lover',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Autumn colors',
+      username: 'autumn_fan',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Winter wonderland',
+      username: 'winter_magic',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'City lights',
+      username: 'city_explorer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Countryside escape',
+      username: 'country_life',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Beach therapy',
+      username: 'beach_bum',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Forest bathing',
+      username: 'forest_wanderer',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Desert dreams',
+      username: 'desert_roamer',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'River reflections',
+      username: 'river_thinker',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Lake serenity',
+      username: 'lake_lover',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Sky gazing',
+      username: 'sky_watcher',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Cloud watching',
+      username: 'cloud_dreamer',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Star gazing',
+      username: 'star_seeker',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Moon magic',
+      username: 'moon_child',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Golden hour',
+      username: 'golden_hunter',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Blue hour beauty',
+      username: 'blue_hour_fan',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Macro wonders',
+      username: 'macro_master',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Abstract expressions',
+      username: 'abstract_thinker',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Color theory',
+      username: 'color_expert',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Texture exploration',
+      username: 'texture_lover',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Pattern play',
+      username: 'pattern_designer',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Light and shadow',
+      username: 'light_chaser',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Reflection stories',
+      username: 'reflection_seeker',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Motion capture',
+      username: 'motion_artist',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 360
+    },
+    {
+      title: 'Still life art',
+      username: 'still_life_pro',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Documentary moments',
+      username: 'docu_storyteller',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Candid captures',
+      username: 'candid_master',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Portrait stories',
+      username: 'portrait_teller',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Landscape poetry',
+      username: 'landscape_poet',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Architectural details',
+      username: 'architecture_lover',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Industrial beauty',
+      username: 'industrial_fan',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Vintage aesthetics',
+      username: 'vintage_aesthete',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Modern simplicity',
+      username: 'modern_minimal',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Eclectic style',
+      username: 'eclectic_vibes',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    // Additional content for perfect balance
+    {
+      title: 'Meaningful connections',
+      username: 'connection_maker',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Authentic relationships',
+      username: 'authentic_relator',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Be unapologetically',
+      username: 'unapologetic_be',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'You in all your glory',
+      username: 'glory_be',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Follow your heart',
+      username: 'heart_follower',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Do what you love',
+      username: 'love_doer',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Street photography',
+      username: 'street_photographer',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Urban exploration',
+      username: 'urban_explorer',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Coffee moments',
+      username: 'coffee_moments',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Daily inspiration',
+      username: 'daily_inspo',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Creative process',
+      username: 'creative_process',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Mindful living',
+      username: 'mindful_living',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Weekend vibes',
+      username: 'weekend_vibes',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Morning rituals',
+      username: 'morning_rituals',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Evening calm',
+      username: 'evening_calm',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Nature therapy',
+      username: 'nature_therapy',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Digital detox',
+      username: 'digital_detox',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Simple pleasures',
+      username: 'simple_pleasures',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Gratitude practice',
+      username: 'gratitude_practice',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Self reflection',
+      username: 'self_reflection',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Personal growth',
+      username: 'personal_growth',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Life lessons',
+      username: 'life_lessons',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Wisdom sharing',
+      username: 'wisdom_sharing',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Story telling',
+      username: 'story_telling',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Memory keeping',
+      username: 'memory_keeping',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Dream chasing',
+      username: 'dream_chasing',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Goal setting',
+      username: 'goal_setting',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Future planning',
+      username: 'future_planning',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Vision boarding',
+      username: 'vision_boarding',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Manifestation',
+      username: 'manifestation',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Positive energy',
+      username: 'positive_energy',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Good vibes',
+      username: 'good_vibes',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Happy moments',
+      username: 'happy_moments',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Joy spreading',
+      username: 'joy_spreading',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Smile maker',
+      username: 'smile_maker',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    // Massive content addition to completely fill both columns
+    {
+      title: 'City skyline views',
+      username: 'urban_explorer',
+      image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Ocean waves',
+      username: 'ocean_lover',
+      image: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Adventure awaits',
+      username: 'adventure_time',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Art and soul',
+      username: 'soulful_art',
+      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Coffee culture',
+      username: 'coffee_addict',
+      image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&auto=format&fit=crop&q=60',
+      height: 260
+    },
+    {
+      title: 'Street art collection',
+      username: 'art_lover',
+      image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Urban jungle',
+      username: 'city_wild',
+      image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Stay positive',
+      username: 'positive_vibes',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Dream big',
+      username: 'dream_chaser',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Create magic',
+      username: 'magic_maker',
+      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Find balance',
+      username: 'balance_seeker',
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Peaceful moments',
+      username: 'serenity_seeker',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Beautiful chaos',
+      username: 'chaos_beauty',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Life in color',
+      username: 'colorful_life',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Simple joys',
+      username: 'simple_joys',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Creative vision',
+      username: 'visionary_art',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Dream destinations',
+      username: 'dream_traveler',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Wanderlust',
+      username: 'wanderlust_soul',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Explore more',
+      username: 'explorer_heart',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Never stop',
+      username: 'unstoppable',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Keep going',
+      username: 'persistent_soul',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Inspire others',
+      username: 'inspiration_source',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    },
+    {
+      title: 'Make it happen',
+      username: 'action_taker',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Live fully',
+      username: 'life_lover',
+      image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Love deeply',
+      username: 'heart_full',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Laugh often',
+      username: 'joy_spreader',
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Learn always',
+      username: 'eternal_student',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Grow daily',
+      username: 'growth_mindset',
+      image: 'https://images.unsplash.com/photo-1513475382585-dfb367046420?w=400&auto=format&fit=crop&q=60',
+      height: 320
+    },
+    {
+      title: 'Shine bright',
+      username: 'light_shiner',
+      image: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=400&auto=format&fit=crop&q=60',
+      height: 280
+    },
+    {
+      title: 'Stay curious',
+      username: 'curious_mind',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&auto=format&fit=crop&q=60',
+      height: 350
+    },
+    {
+      title: 'Find your path',
+      username: 'path_finder',
+      image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&auto=format&fit=crop&q=60',
+      height: 300
+    },
+    {
+      title: 'Trust the journey',
+      username: 'journey_truster',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=60',
+      height: 310
+    },
+    {
+      title: 'Enjoy the ride',
+      username: 'ride_enjoyer',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60',
+      height: 270
+    },
+    {
+      title: 'Celebrate small wins',
+      username: 'win_celebrator',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+      height: 330
+    },
+    {
+      title: 'Perfectly imperfect',
+      username: 'perfectly_imperfect',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+      height: 290
+    },
+    {
+      title: 'Exact moments',
+      username: 'exact_be',
+      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&auto=format&fit=crop&q=60',
+      height: 340
+    }
+  ];
+
+  const typePool: Post['type'][] = ['photo','photos','video','short_video','music','article'];
+  const ratioPool: Post['aspectRatio'][] = ['square','portrait','landscape','tall','wide'];
+  const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
+  const baseHeight = (ratio: Post['aspectRatio']) => {
+    if (ratio === 'tall') return 420;
+    if (ratio === 'portrait') return 360;
+    if (ratio === 'square') return 300;
+    if (ratio === 'landscape') return 260;
+    return 240;
+  };
+  const typeAdjust = (type: Post['type']) => {
+    if (type === 'video') return 40;
+    if (type === 'short_video') return -10;
+    if (type === 'photos') return 20;
+    if (type === 'article') return -30;
+    if (type === 'music') return 0;
+    return 0;
+  };
+  const randomJitter = () => (Math.floor(Math.random() * 5) - 2) * 10;
+  const usedImages = new Set<string>();
+
+  const relatedPosts = contentData.map((item, i) => {
+    const imagePools: Record<Post['type'], string[]> = {
+      video: [
+        'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&auto=format&fit=crop&q=60'
+      ],
+      short_video: [
+        'https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1516910817561-2b65f9d9b705?w=400&auto=format&fit=crop&q=60'
+      ],
+      photo: [
+        'https://images.unsplash.com/photo-1504198458649-3128b932f49b?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1491553895911-ef3e126ac2c8?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1494475673543-6a6a27143b16?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1470777631036-6aa4b6ce76d2?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1500530855697-fae08d3e03f3?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1470770841072-df572b5305d9?w=400&auto=format&fit=crop&q=60'
+      ],
+      photos: [
+        'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1517976487492-5762e508b87b?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1519681393784-5e9b0c42d2a9?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1517810164320-1390a1f0f0c0?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1483721310020-03333e577078?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1501854147061-7f1cc3221009?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&auto=format&fit=crop&q=60'
+      ],
+      music: [
+        'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1511671782779-c97d3d27a0f3?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1513863326355-0f3f0de1b3c1?w=400&auto=format&fit=crop&q=60'
+      ],
+      article: [
+        'https://images.unsplash.com/photo-1519337265831-281ec6cc8514?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1473862179213-91c2fbb0e2b8?w=400&auto=format&fit=crop&q=60',
+        'https://images.unsplash.com/photo-1518081461904-9ac3fdc51ce2?w=400&auto=format&fit=crop&q=60'
+      ]
+    };
+    const type = pick(typePool);
+    const ratio = pick(ratioPool);
+    const dimsByRatio: Record<Post['aspectRatio'], {w:number,h:number}> = {
+      square: { w: 500, h: 500 },
+      portrait: { w: 500, h: 700 },
+      tall: { w: 500, h: 800 },
+      landscape: { w: 700, h: 450 },
+      wide: { w: 800, h: 400 }
+    };
+    const dims = dimsByRatio[ratio] ?? { w: 600, h: 400 };
+    const seed = `${type}-${ratio}-${i}-${Math.random().toString(36).slice(2,7)}`;
+    const image = `https://picsum.photos/seed/${seed}/${dims.w}/${dims.h}`;
+    usedImages.add(image);
+    const height = Math.max(180, baseHeight(ratio) + typeAdjust(type) + randomJitter());
+    const duration = (type === 'video' || type === 'short_video')
+      ? `${Math.floor(Math.random() * 9) + (type === 'video' ? 2 : 0)}:${Math.floor(Math.random() * 60).toString().padStart(2,'0')}`
+      : undefined;
+    const count = type === 'photos' ? Math.floor(Math.random() * 5) + 2 : undefined;
+    return {
+      id: `related-${i}`,
+      ...item,
+      image,
+      type,
+      aspectRatio: ratio,
+      height,
+      duration,
+      count
+    } as any;
+  });
+  
   return relatedPosts;
 };
 
 export default function ContentDetailPage({ post, onBack, onUserClick }: ContentDetailPageProps) {
-  const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const [relatedContent] = useState(() => generateRelatedContent(post));
+  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [activePost, setActivePost] = useState<Post>(post);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(30);
+
+  // Filter content based on active filter
+  const filteredContent = activeFilter === 'all'
+    ? relatedContent
+    : relatedContent.filter((item: any) => {
+        if (activeFilter === 'photo') return item.type === 'photo' || item.type === 'photos';
+        return item.type === activeFilter;
+      });
 
   const formatNumber = (num: number): string => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
@@ -63,7 +2490,8 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
   };
 
   const getMainContentHeight = () => {
-    switch (post.aspectRatio) {
+    if (activePost.type === 'music') return 'h-[460px]';
+    switch (activePost.aspectRatio) {
       case 'tall':
         return 'h-[600px]';
       case 'portrait':
@@ -83,11 +2511,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     const contentHeight = getMainContentHeight();
     
     // Video content with embedded players
-    if (post.platform === 'youtube' && (post.type === 'video' || post.type === 'short_video')) {
+    if (activePost.platform === 'youtube' && (activePost.type === 'video' || activePost.type === 'short_video')) {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://www.youtube.com/embed/${post.videoId}?autoplay=0&rel=0&modestbranding=1`}
+            src={`https://www.youtube.com/embed/${activePost.videoId}?autoplay=0&rel=0&modestbranding=1`}
             title="YouTube video player"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
@@ -98,11 +2526,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (post.platform === 'vimeo' && post.type === 'video') {
+    if (activePost.platform === 'vimeo' && activePost.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://player.vimeo.com/video/${post.videoId}?autoplay=0&muted=0`}
+            src={`https://player.vimeo.com/video/${activePost.videoId}?autoplay=0&muted=0`}
             frameBorder="0"
             allowFullScreen
             allow="autoplay; fullscreen; picture-in-picture"
@@ -114,11 +2542,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (post.platform === 'dailymotion' && post.type === 'video') {
+    if (activePost.platform === 'dailymotion' && activePost.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://www.dailymotion.com/embed/video/${post.videoId}?autoplay=0&mute=1`}
+            src={`https://www.dailymotion.com/embed/video/${activePost.videoId}?autoplay=0&mute=1`}
             frameBorder="0"
             allowFullScreen
             allow="fullscreen; picture-in-picture"
@@ -130,11 +2558,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (post.platform === 'rutube' && post.type === 'short_video') {
+    if (activePost.platform === 'rutube' && activePost.type === 'short_video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://rutube.ru/play/embed/${post.videoId}?autoplay=0`}
+            src={`https://rutube.ru/play/embed/${activePost.videoId}?autoplay=0`}
             frameBorder="0"
             allowFullScreen
             allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -146,11 +2574,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (post.platform === 'vk' && post.type === 'video') {
+    if (activePost.platform === 'vk' && activePost.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://vk.com/video_ext.php?oid=${post.videoId?.split('_')[0]}&id=${post.videoId?.split('_')[1]}&hd=2&autoplay=0`}
+            src={`https://vk.com/video_ext.php?oid=${activePost.videoId?.split('_')[0]}&id=${activePost.videoId?.split('_')[1]}&hd=2&autoplay=0`}
             frameBorder="0"
             allowFullScreen
             allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -162,11 +2590,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       );
     }
 
-    if (post.platform === 'bilibili' && post.type === 'video') {
+    if (activePost.platform === 'bilibili' && activePost.type === 'video') {
       return (
         <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
           <iframe
-            src={`https://player.bilibili.com/player.html?bvid=${post.videoId}&autoplay=0&muted=1`}
+            src={`https://player.bilibili.com/player.html?bvid=${activePost.videoId}&autoplay=0&muted=1`}
             scrolling="no"
             frameBorder="0"
             allowFullScreen
@@ -179,11 +2607,11 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     }
 
     // Instagram Reel
-    if (post.platform === 'instagram' && post.type === 'short_video') {
+    if (activePost.platform === 'instagram' && activePost.type === 'short_video') {
       return (
         <div 
           className={`w-full ${contentHeight} bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-all duration-300`}
-          onClick={() => window.open(`https://www.instagram.com/reel/${post.videoId}/`, '_blank')}
+          onClick={() => window.open(`https://www.instagram.com/reel/${activePost.videoId}/`, '_blank')}
         >
           <div className="text-center text-white">
             <svg className="w-20 h-20 mx-auto mb-4" viewBox="0 0 24 24" fill="currentColor">
@@ -191,19 +2619,19 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
             </svg>
             <p className="text-xl font-bold mb-2">Instagram Reel</p>
             <p className="text-sm opacity-75">Click to view on Instagram</p>
-            {post.duration && <p className="text-lg font-semibold mt-2">{post.duration}</p>}
+            {activePost.duration && <p className="text-lg font-semibold mt-2">{activePost.duration}</p>}
           </div>
         </div>
       );
     }
 
     // Regular photo content
-    if (post.type === 'photo' || post.type === 'photos') {
+    if (activePost.type === 'photo' || activePost.type === 'photos') {
       return (
         <div className={`w-full ${contentHeight} relative rounded-2xl overflow-hidden bg-gray-100`}>
           <Image 
-            src={post.image} 
-            alt={post.caption} 
+            src={activePost.image} 
+            alt={activePost.caption} 
             fill 
             className="object-cover"
           />
@@ -212,22 +2640,34 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     }
 
     // Article content
-    if (post.type === 'article') {
+    if (activePost.type === 'article') {
       return (
-        <div className={`w-full ${contentHeight} bg-white rounded-2xl border border-gray-200 p-6 overflow-y-auto`}>
-          <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-              A
-            </div>
-            <div className="ml-3">
-              <h3 className="font-bold text-lg">{post.title}</h3>
-              <p className="text-gray-500 text-sm">{post.source}</p>
-            </div>
+        <div className={`w-full ${contentHeight} bg-white rounded-2xl border border-gray-200 overflow-hidden`}>
+          {/* Article Image */}
+          <div className="w-full h-48 relative bg-gray-100">
+            <Image 
+              src={activePost.image} 
+              alt={activePost.title || activePost.caption} 
+              fill 
+              className="object-cover"
+            />
           </div>
-          <div className="prose max-w-none">
-            <p className="text-gray-700 leading-relaxed">{post.caption}</p>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600">This is a preview of the article. Click to read the full content on the original website.</p>
+          {/* Article Content */}
+          <div className="p-6">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                A
+              </div>
+              <div className="ml-3">
+                <h3 className="font-bold text-lg">{activePost.title}</h3>
+                <p className="text-gray-500 text-sm">{activePost.source}</p>
+              </div>
+            </div>
+            <div className="prose max-w-none">
+              <p className="text-gray-700 leading-relaxed">{activePost.caption}</p>
+              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">This is a preview of the article. Click to read the full content on the original website.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -235,16 +2675,34 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     }
 
     // Music content
-    if (post.type === 'music') {
+    if (activePost.type === 'music') {
       return (
-        <div className={`w-full ${contentHeight} bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center text-white`}>
-          <div className="text-center">
-            <div className="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-              <FiPlay size={48} className="ml-2" />
+        <div className={`w-full ${contentHeight} rounded-2xl bg-gradient-to-br from-sky-900 via-slate-800 to-indigo-800 p-10 text-white`}>
+          <div className="flex items-start gap-8">
+            <div className="w-32 h-32 rounded-full bg-white/10 flex items-center justify-center ring-8 ring-blue-400/20">
+              <div className="w-28 h-28 rounded-full overflow-hidden relative">
+                <Image src={activePost.image} alt={activePost.title || 'album'} fill className="object-cover" />
+              </div>
             </div>
-            <h3 className="text-2xl font-bold mb-2">{post.title}</h3>
-            <p className="text-lg opacity-75">@{post.username}</p>
-            {post.duration && <p className="text-sm opacity-50 mt-2">{post.duration}</p>}
+            <div className="flex-1">
+              <h3 className="text-3xl md:text-4xl font-bold">{activePost.title || 'Track'} - @{activePost.username}'s Playlist</h3>
+              <div className="mt-4">
+                <div className="h-2 w-full rounded-full bg-white/20">
+                  <div className="h-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-400" style={{ width: `${progress}%` }}></div>
+                </div>
+                <div className="flex justify-between text-sm text-white/70 mt-1">
+                  <span>1:23</span>
+                  <span>{activePost.duration || '5:00'}</span>
+                </div>
+              </div>
+              <div className="mt-6 flex items-center gap-6">
+                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiSkipBack /></button>
+                <button className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center shadow" onClick={() => setIsPlaying(v => !v)}>{isPlaying ? <FiPause /> : <FiPlay />}</button>
+                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiSkipForward /></button>
+                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiRepeat /></button>
+                <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center"><FiVolume2 /></button>
+              </div>
+            </div>
           </div>
         </div>
       );
@@ -254,21 +2712,21 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     return (
       <div className={`w-full ${contentHeight} relative rounded-2xl overflow-hidden bg-gray-100`}>
         <Image 
-          src={post.image} 
-          alt={post.caption} 
+          src={activePost.image} 
+          alt={activePost.caption} 
           fill 
           className="object-cover"
         />
-        {(post.type === 'video' || post.type === 'short_video') && (
+        {(activePost.type === 'video' || activePost.type === 'short_video') && (
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
             <div className="w-20 h-20 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300 cursor-pointer">
               <FiPlay size={32} className="text-gray-800 ml-1" />
             </div>
           </div>
         )}
-        {post.duration && (
+        {activePost.duration && (
           <div className="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-            {post.duration}
+            {activePost.duration}
           </div>
         )}
       </div>
@@ -276,10 +2734,10 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-screen flex flex-col bg-gray-50">
       {/* Header with back button and user info */}
       <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center">
             <button 
               onClick={onBack}
@@ -289,17 +2747,17 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
             </button>
             <div className="flex items-center">
               <Image 
-                src={post.avatar} 
-                alt={post.username} 
+                src={activePost.avatar} 
+                alt={activePost.username} 
                 width={32} 
                 height={32} 
                 className="rounded-full"
               />
               <div className="ml-3">
-                <p className="font-semibold cursor-pointer hover:underline" onClick={() => onUserClick?.(post.username)}>
-                  @{post.username}
+                <p className="font-semibold cursor-pointer hover:underline" onClick={() => onUserClick?.(activePost.username)}>
+                  @{activePost.username}
                 </p>
-                <p className="text-gray-500 text-sm">{post.time}</p>
+                <p className="text-gray-500 text-sm">{activePost.time}</p>
               </div>
             </div>
           </div>
@@ -318,118 +2776,132 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
         </div>
       </div>
 
-      {/* Main Content Layout */}
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column - Main Content */}
-          <div className="w-full">
-            <div className="sticky top-24">
-              {renderMainContent()}
-              
-              {/* Content Info Below Main Content */}
-              <div className="mt-6 space-y-4">
-                {/* Title */}
-                <h1 className="text-2xl font-bold">{post.title || post.caption}</h1>
-                
-                {/* Stats */}
-                <div className="flex items-center space-x-8">
-                  <div className="text-center">
-                    <p className="text-xl font-bold">{formatNumber(post.likes)}</p>
-                    <p className="text-gray-500 text-sm">Likes</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl font-bold">{formatNumber(post.comments)}</p>
-                    <p className="text-gray-500 text-sm">Comments</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl font-bold">{formatNumber(post.shares)}</p>
-                    <p className="text-gray-500 text-sm">Shares</p>
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  <button 
-                    onClick={() => setLiked(!liked)}
-                    className={`w-full flex items-center justify-center py-3 px-4 rounded-full font-semibold transition-all duration-300 ${
-                      liked 
-                        ? 'bg-red-500 text-white hover:bg-red-600' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    <FiHeart size={20} className={`mr-2 ${liked ? 'fill-current' : ''}`} />
-                    Like
-                  </button>
-                  
-                  <button className="w-full flex items-center justify-center py-3 px-4 rounded-full font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300">
-                    <FiMessageSquare size={20} className="mr-2" />
-                    Comment
-                  </button>
-                  
-                  <button 
-                    onClick={() => setBookmarked(!bookmarked)}
-                    className={`w-full flex items-center justify-center py-3 px-4 rounded-full font-semibold transition-all duration-300 ${
-                      bookmarked 
-                        ? 'bg-blue-500 text-white hover:bg-blue-600' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    <FiBookmark size={20} className={`mr-2 ${bookmarked ? 'fill-current' : ''}`} />
-                    Save
-                  </button>
-                </div>
-              </div>
-            </div>
+      {/* Pinterest-style Layout with Main Content on Left */}
+      <div className="overflow-auto flex-1 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          {/* Content Type Filter Tabs */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {['all', 'photo', 'video', 'short_video', 'article', 'music'].map((type) => (
+              <button
+                key={type}
+                onClick={() => setActiveFilter(type)}
+                className={`px-4 py-2 rounded-full border transition-colors text-sm font-medium ${
+                  activeFilter === type
+                    ? 'bg-blue-500 text-white border-blue-500'
+                    : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
+                {type === 'short_video' ? 'Shorts' : type.charAt(0).toUpperCase() + type.slice(1)}
+              </button>
+            ))}
           </div>
 
-          {/* Right Column - Related Content (Pinterest Style) */}
-          <div className="w-full">
-            <h3 className="text-lg font-semibold mb-4">More to explore</h3>
-            <div className="columns-2 gap-4 space-y-4">
-              {relatedContent.map((item) => (
-                <div key={item.id} className="break-inside-avoid mb-4">
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <div style={{ height: `${item.height}px` }} className="relative overflow-hidden">
+          {/* Unified Pinterest-style Masonry Grid - Mixed Together */}
+          <div className="mt-8">
+            {/* Main Content Card - Pinterest Style */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm mb-8 max-w-3xl mx-auto">
+              {renderMainContent()}
+            </div>
+
+            {/* Authentic Pinterest-style Masonry Grid */}
+            <div className="columns-5 gap-3 space-y-3">
+              {filteredContent.map((item, index) => (
+                <div key={item.id} className="break-inside-avoid mb-3">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group" onClick={() => {
+                    const nextPost: Post = {
+                      id: item.id,
+                      username: item.username || 'guest',
+                      avatar: `https://picsum.photos/seed/avatar-${item.id}/64/64`,
+                      image: item.image,
+                      caption: item.title || '',
+                      likes: 0,
+                      comments: 0,
+                      shares: 0,
+                      time: 'Just now',
+                      type: (item as any).type,
+                      title: item.title,
+                      duration: (item as any).duration,
+                      source: 'Playlist',
+                      height: (item as any).height,
+                      aspectRatio: (item as any).aspectRatio,
+                      platform: (item as any).platform,
+                      videoId: (item as any).videoId,
+                    };
+                    setActivePost(nextPost);
+                  }}>
+                    <div 
+                      style={{ height: `${(item as any).height}px` }}
+                      className="relative overflow-hidden"
+                    >
                       <Image 
                         src={item.image} 
                         alt={item.title} 
                         fill 
-                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
+                      
+                      {/* Video Play Button - Centered */}
+                      {((item as any).type === 'video' || (item as any).type === 'short_video') && (
+                        <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-100">
+                          <div className="w-14 h-14 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                            <FiPlay className="w-6 h-6 text-gray-800 ml-1" />
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Unified Top-Left Type Badges */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-1">
+                        {((item as any).type === 'video') && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
+                            <FiVideo className="w-3 h-3" />
+                            {((item as any).duration) ?? `${Math.floor(Math.random() * 9) + 2}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`}
+                          </div>
+                        )}
+                        {((item as any).type === 'short_video') && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
+                            <FiPlay className="w-3 h-3" />
+                            {((item as any).duration) ?? `${Math.floor(Math.random() * 9) + 0}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`}
+                          </div>
+                        )}
+                        {((item as any).type === 'article') && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-semibold flex items-center gap-1">
+                            <FiFileText className="w-3 h-3" />
+                            <span>Article</span>
+                          </div>
+                        )}
+                        {((item as any).type === 'music') && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
+                            <FiMusic className="w-3 h-3" />
+                          </div>
+                        )}
+                        {((item as any).type === 'photos') && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
+                            <FiLayers className="w-3 h-3" />
+                            {`1/${(item as any).count ?? Math.floor(Math.random() * 4) + 2}`}
+                          </div>
+                        )}
+                        {((item as any).type === 'photo') && (
+                          <div className="bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded-md font-medium flex items-center gap-1">
+                            <FiImage className="w-3 h-3" />
+                          </div>
+                        )}
+                      </div>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      {/* Gradient Overlay for Better Text Visibility */}
+                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div className="p-3">
-                      <h4 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h4>
-                      <p className="text-gray-500 text-xs">@{item.username}</p>
-                    </div>
+                    
+                    
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Bottom Related Content */}
-        <div className="mt-12">
-          <h3 className="text-xl font-semibold mb-6">More like this</h3>
-          <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
-            {relatedContent.slice(10).map((item) => (
-              <div key={`bottom-${item.id}`} className="break-inside-avoid mb-4">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer">
-                  <div style={{ height: `${item.height}px` }} className="relative overflow-hidden">
-                    <Image 
-                      src={item.image} 
-                      alt={item.title} 
-                      fill 
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <h4 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h4>
-                    <p className="text-gray-500 text-xs">@{item.username}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

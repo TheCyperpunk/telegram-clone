@@ -743,13 +743,9 @@ export default function ExploreFeed({ activeFilter: externalFilter, onFilterChan
 
 // Pinterest Card Component
 function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, formatNumber: (num: number) => string, onPostClick?: (post: Post) => void }) {
-  const [isHovered, setIsHovered] = useState(false);
-  
   return (
     <div 
       className="pinterest-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer mb-4 break-inside-avoid"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onClick={() => onPostClick?.(post)}
     >
       {/* Image/Video Container */}
@@ -757,77 +753,54 @@ function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, format
         <div style={{ height: `${post.height}px` }} className="relative overflow-hidden">
           {/* Render actual video players for social media content */}
           {(post as any).platform === 'youtube' && (post.type === 'video' || post.type === 'short_video') ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${(post as any).videoId}?autoplay=0&rel=0&modestbranding=1`}
-              title="YouTube video player"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="w-full h-full"
-              style={{ border: 'none' }}
+            <Image
+              src={`https://i.ytimg.com/vi/${(post as any).videoId}/hqdefault.jpg`}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (post as any).platform === 'vimeo' && (post.type === 'video') ? (
-            <iframe
-              src={`https://player.vimeo.com/video/${(post as any).videoId}?autoplay=0&muted=0`}
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; fullscreen; picture-in-picture"
-              title="Vimeo Video"
-              className="w-full h-full"
-              style={{ border: 'none' }}
+            <Image
+              src={post.image}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (post as any).platform === 'dailymotion' && (post.type === 'video') ? (
-            <iframe
-              src={`https://www.dailymotion.com/embed/video/${(post as any).videoId}?autoplay=0&mute=1`}
-              frameBorder="0"
-              allowFullScreen
-              allow="fullscreen; picture-in-picture"
-              title="Dailymotion Video"
-              className="w-full h-full"
-              style={{ border: 'none' }}
+            <Image
+              src={post.image}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (post as any).platform === 'rutube' && (post.type === 'short_video') ? (
-            <iframe
-              src={`https://rutube.ru/play/embed/${(post as any).videoId}?autoplay=0`}
-              frameBorder="0"
-              allowFullScreen
-              allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              title="Rutube Short"
-              className="w-full h-full"
-              style={{ border: 'none' }}
+            <Image
+              src={post.image}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (post as any).platform === 'vk' && (post.type === 'video') ? (
-            <iframe
-              src={`https://vk.com/video_ext.php?oid=${(post as any).videoId.split('_')[0]}&id=${(post as any).videoId.split('_')[1]}&hd=2&autoplay=0`}
-              frameBorder="0"
-              allowFullScreen
-              allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              title="VK Video"
-              className="w-full h-full"
-              style={{ border: 'none' }}
+            <Image
+              src={post.image}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (post as any).platform === 'bilibili' && (post.type === 'video') ? (
-            <iframe
-              src={`https://player.bilibili.com/player.html?bvid=${(post as any).videoId}&autoplay=0&muted=1`}
-              scrolling="no"
-              frameBorder="0"
-              allowFullScreen
-              title="Bilibili Video"
-              className="w-full h-full"
-              style={{ border: 'none' }}
+            <Image
+              src={post.image}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (post as any).platform === 'instagram' && (post.type === 'short_video') ? (
-            <div 
-              className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
-              onClick={() => window.open(`https://www.instagram.com/reel/${(post as any).videoId}/`, '_blank')}
-            >
-              <div className="text-center text-white">
-                <svg className="w-12 h-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                <p className="text-sm font-semibold">Instagram Reel</p>
-                <p className="text-xs opacity-75">Click to view on Instagram</p>
-              </div>
-            </div>
+            <Image
+              src={post.image}
+              alt={post.caption}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
           ) : (
             // Default image for regular posts and fallback
             <>
@@ -849,55 +822,9 @@ function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, format
             </>
           )}
           
-          {/* Hover Overlay */}
-          <div className={`absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
-            {/* Top Actions - Three Dot Menu */}
-            <div className="absolute top-3 right-3 pointer-events-auto">
-              <button 
-                className="p-2 rounded-full bg-white bg-opacity-90 shadow-md hover:scale-110 transition-all duration-200 text-gray-700"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                <FiMoreVertical size={16} />
-              </button>
-            </div>
-          </div>
+          
 
-          {/* Type Indicator */}
-          {post.type !== 'photo' && (
-            <div className="absolute top-3 left-3 bg-black bg-opacity-75 text-white rounded-lg px-2 py-1 flex items-center text-xs">
-              {post.type === 'video' && (
-                <>
-                  <FiVideo size={12} className="mr-1" />
-                  <span>{post.duration}</span>
-                </>
-              )}
-              {post.type === 'short_video' && (
-                <>
-                  <FiPlay size={12} className="mr-1" />
-                  <span>{post.duration}</span>
-                </>
-              )}
-              {post.type === 'music' && (
-                <>
-                  <FiMusic size={12} />
-                </>
-              )}
-              {post.type === 'photos' && (
-                <>
-                  <FiCopy size={12} className="mr-1" />
-                  <span>1/{Math.floor(Math.random() * 5) + 2}</span>
-                </>
-              )}
-              {post.type === 'article' && (
-                <>
-                  <FiFileText size={12} className="mr-1" />
-                  <span>Article</span>
-                </>
-              )}
-            </div>
-          )}
+          
 
           {/* Platform Badge for Social Media Content */}
           {(post as any).platform && (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { 
+import {
   HiOutlineArrowLeft,
   HiOutlineMagnifyingGlass,
   HiOutlineEllipsisVertical,
@@ -1173,7 +1173,7 @@ export default function Comit({ onBack }: ComitProps) {
   // Flatten all apps for search functionality
   const allApps = Object.values(appCategories).flat();
 
-  const filteredApps = allApps.filter((app: App) => 
+  const filteredApps = allApps.filter((app: App) =>
     app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     app.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -1181,10 +1181,10 @@ export default function Comit({ onBack }: ComitProps) {
   // Filter categories based on search
   const getFilteredCategories = () => {
     if (!searchQuery) return appCategories;
-    
+
     const filtered: typeof appCategories = {} as typeof appCategories;
     Object.entries(appCategories).forEach(([key, apps]) => {
-      const filteredCategoryApps = apps.filter((app: App) => 
+      const filteredCategoryApps = apps.filter((app: App) =>
         app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         app.category.toLowerCase().includes(searchQuery.toLowerCase())
       );
@@ -1226,7 +1226,7 @@ export default function Comit({ onBack }: ComitProps) {
           className="w-full h-full"
           particleColor="#FFFFFF"
         />
-        
+
         {/* Additional floating sparkle elements with animation */}
         <div className="absolute inset-0 w-full h-full">
           {Array.from({ length: 15 }).map((_, i) => (
@@ -1292,22 +1292,21 @@ export default function Comit({ onBack }: ComitProps) {
           }
         }
       `}</style>
-      
+
       {/* Sparkles Header with Integrated Search */}
-      <div className={`relative z-10 transition-all duration-300 ${
-        isHeaderFixed ? 'fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md' : ''
-      }`}>
+      <div className={`relative z-10 transition-all duration-300 ${isHeaderFixed ? 'fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md' : ''
+        }`}>
         <div className={isHeaderFixed ? 'h-16' : ''}>
           {isHeaderFixed ? (
             // Compact fixed header
             <div className="flex items-center px-4 py-2 h-16">
-              <button 
+              <button
                 onClick={onBack}
                 className="p-2 hover:bg-white/10 rounded-full transition-colors mr-3"
               >
                 <HiOutlineArrowLeft size={20} className="text-white" />
               </button>
-              
+
               <div className="flex-1 max-w-2xl mx-auto flex items-center gap-3">
                 <div className="flex items-center bg-black border border-gray-600 rounded-full shadow-lg h-10 flex-1">
                   <div className="flex items-center flex-1 px-3 py-1">
@@ -1322,7 +1321,7 @@ export default function Comit({ onBack }: ComitProps) {
                     />
                   </div>
                   <div className="pr-1">
-                    <button 
+                    <button
                       onClick={handleSearch}
                       className="bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white px-5 py-1.5 font-medium hover:from-purple-600 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 rounded-full flex items-center justify-center h-8 text-sm"
                     >
@@ -1330,13 +1329,13 @@ export default function Comit({ onBack }: ComitProps) {
                     </button>
                   </div>
                 </div>
-                
+
                 {/* Profile Image - Outside search bar */}
-                <button 
+                <button
                   onClick={() => setShowVideo(true)}
                   className="w-10 h-10 rounded-full overflow-hidden border border-white flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
                 >
-                  <img 
+                  <img
                     src="https://raw.githubusercontent.com/TheCyperpunk/littilelilly-photos/main/Screenshot%202025-10-18%20174437.png"
                     alt="Profile"
                     className="w-full h-full object-cover"
@@ -1351,20 +1350,20 @@ export default function Comit({ onBack }: ComitProps) {
           ) : (
             // Full SparklesPreview header
             <>
-              <SparklesPreview 
+              <SparklesPreview
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
                 onSubmit={handleSearch}
                 onKeyPress={handleKeyPress}
               />
               {/* Back Button Overlay */}
-              <button 
+              <button
                 onClick={onBack}
                 className="absolute top-4 left-4 p-2 hover:bg-white/20 rounded-full transition-colors z-30"
               >
                 <HiOutlineArrowLeft size={20} className="text-white" />
               </button>
-              
+
               {/* Menu Button Overlay */}
               <button className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-colors z-30">
                 <HiOutlineEllipsisVertical size={20} className="text-white" />
@@ -1375,7 +1374,7 @@ export default function Comit({ onBack }: ComitProps) {
       </div>
 
       {/* Content */}
-      <div 
+      <div
         ref={scrollContainerRef}
         className="flex-1 overflow-auto px-4 py-4 relative z-10 scrollbar-hide"
         style={{ paddingTop: isHeaderFixed ? '64px' : '0' }}
@@ -1387,19 +1386,19 @@ export default function Comit({ onBack }: ComitProps) {
             {Array.from({ length: 4 }).map((_, sectionIndex) => {
               const startIndex = sectionIndex * 12;
               const sectionApps = allApps.slice(startIndex, startIndex + 12);
-              
+
               return sectionApps.length > 0 ? (
                 <div key={sectionIndex} className="group/section relative">
                   {/* Category Header */}
                   <h3 className="text-lg font-semibold text-white mb-4 px-2">
                     {sectionApps[0]?.category || ''}
                   </h3>
-                  
+
                   {/* Apps Row with Chevron */}
                   <div className="relative">
                     <div className="grid grid-cols-12 gap-4">
                       {sectionApps.map((app: App) => (
-                        <a 
+                        <a
                           key={app.id}
                           href={app.website}
                           target="_blank"
@@ -1407,8 +1406,8 @@ export default function Comit({ onBack }: ComitProps) {
                           className="flex flex-col items-center p-4 hover:bg-white/10 rounded-xl transition-all cursor-pointer group backdrop-blur-sm"
                         >
                           <div className="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-lg group-hover:shadow-xl transition-shadow ring-1 ring-white/20">
-                            <img 
-                              src={app.icon} 
+                            <img
+                              src={app.icon}
                               alt={app.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {
@@ -1423,7 +1422,7 @@ export default function Comit({ onBack }: ComitProps) {
                         </a>
                       ))}
                     </div>
-                    
+
                     {/* Chevron Button - Visible on hover */}
                     <button className="absolute -right-2 top-8 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover/section:opacity-100 transition-opacity z-10">
                       <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1443,253 +1442,253 @@ export default function Comit({ onBack }: ComitProps) {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-white">Top Apps</h2>
             </div>
-            
+
             <div className="flex items-center gap-2 relative">
               <div className="flex-1 space-y-6">
-              {/* Row 1 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Perplexity */}
-                <a 
-                  href="https://www.perplexity.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/7ynvVIRdhJNAngCg_GI7i8TtH8BqkJYmffeUHsG-mJOdzt1XLvGmbsKuc5Q1SInBjDKN=s128" 
-                        alt="Perplexity"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Perplexity - Ask Anything</h3>
-                      <p className="text-xs text-gray-400">Productivity</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.1</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                {/* Row 1 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Perplexity */}
+                  <a
+                    href="https://www.perplexity.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/7ynvVIRdhJNAngCg_GI7i8TtH8BqkJYmffeUHsG-mJOdzt1XLvGmbsKuc5Q1SInBjDKN=s128"
+                          alt="Perplexity"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Perplexity - Ask Anything</h3>
+                        <p className="text-xs text-gray-400">Productivity</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.1</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
-                {/* Meesho */}
-                <a 
-                  href="https://www.meesho.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/hmSutR7gJSEwYXaQvomDG6SqagGD-xl4qUzAWxVIu59PW9QLAfC8dFTTxnKZpfO7F3gP_FxLjHAtAcBsjEWIvw=s128" 
-                        alt="Meesho"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Meesho: Online Shopping App</h3>
-                      <p className="text-xs text-gray-400">Shopping</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.4</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                  {/* Meesho */}
+                  <a
+                    href="https://www.meesho.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/hmSutR7gJSEwYXaQvomDG6SqagGD-xl4qUzAWxVIu59PW9QLAfC8dFTTxnKZpfO7F3gP_FxLjHAtAcBsjEWIvw=s128"
+                          alt="Meesho"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Meesho: Online Shopping App</h3>
+                        <p className="text-xs text-gray-400">Shopping</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.4</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
-                {/* Flipkart */}
-                <a 
-                  href="https://www.flipkart.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/1BHCGbGs0agclOUPWcqPYvSBudOd_TbGITUReVMKYZswq_zjWW8-lc0QIUOt0PX3mg=s128" 
-                        alt="Flipkart"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Flipkart Online Shopping App</h3>
-                      <p className="text-xs text-gray-400">Shopping</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.3</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                  {/* Flipkart */}
+                  <a
+                    href="https://www.flipkart.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/1BHCGbGs0agclOUPWcqPYvSBudOd_TbGITUReVMKYZswq_zjWW8-lc0QIUOt0PX3mg=s128"
+                          alt="Flipkart"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Flipkart Online Shopping App</h3>
+                        <p className="text-xs text-gray-400">Shopping</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.3</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
+
+                {/* Row 2 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* ChatGPT */}
+                  <a
+                    href="https://chat.openai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/BU9zFJE8KWxqUg_xJoP9LysB7sxB5inY8CZPpCg6z-WEyAIRfgBsEtnsO-y88zPmqgk=s128"
+                          alt="ChatGPT"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">ChatGPT</h3>
+                        <p className="text-xs text-gray-400">Productivity</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.5</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Story TV */}
+                  <a
+                    href="https://www.storytv.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/HJdzprqlCwh_8YNyhMBU6rIaGBGwxHXflZuuqI3iR4US7Jb-bSYiJk_DKV2la9SoBM0K=s128"
+                          alt="Story TV"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Story TV - Watch Short Dramas</h3>
+                        <p className="text-xs text-gray-400">Entertainment</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.4</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Navi */}
+                  <a
+                    href="https://www.navi.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/BZSkyLJNJnqp91FtE1iSskcsalt9oJiepU_GEgr_bB5hVg5x8CUzHLoMmc2lNzm16Q=s128"
+                          alt="Navi"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Navi: UPI, Investments & Loans</h3>
+                        <p className="text-xs text-gray-400">Finance</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.5</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Row 3 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Google Gemini */}
+                  <a
+                    href="https://gemini.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/wpnNPYIrdHC3Q_bcFXGpwoMvFvvvQnZJHmFKzumq5ZTRZKIzfxURAUGOMqhPhVxnggY=s128"
+                          alt="Google Gemini"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Google Gemini</h3>
+                        <p className="text-xs text-gray-400">Productivity</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.3</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Kuku TV */}
+                  <a
+                    href="https://www.kukutv.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/XyRQ3Jjq4pSaAv0XtVnLcUPfkPDrRULoAhRUeOxR53xgxrGVR1Lde2UcnJgZvRFodyN4=s128"
+                          alt="Kuku TV"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Kuku TV: Reel Shows & Movies</h3>
+                        <p className="text-xs text-gray-400">Entertainment</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.2</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Seekho */}
+                  <a
+                    href="https://www.seekho.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/Fm5PDRimTL_KsWyIRcTv9h0JLrTkDOMwh18SE819OXjEZhlwMYBHJXxUZ8eOBudxCsHC=s128"
+                          alt="Seekho"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Seekho: Short Learning Videos</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.5</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
 
-              {/* Row 2 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* ChatGPT */}
-                <a 
-                  href="https://chat.openai.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/BU9zFJE8KWxqUg_xJoP9LysB7sxB5inY8CZPpCg6z-WEyAIRfgBsEtnsO-y88zPmqgk=s128" 
-                        alt="ChatGPT"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">ChatGPT</h3>
-                      <p className="text-xs text-gray-400">Productivity</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.5</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Story TV */}
-                <a 
-                  href="https://www.storytv.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/HJdzprqlCwh_8YNyhMBU6rIaGBGwxHXflZuuqI3iR4US7Jb-bSYiJk_DKV2la9SoBM0K=s128" 
-                        alt="Story TV"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Story TV - Watch Short Dramas</h3>
-                      <p className="text-xs text-gray-400">Entertainment</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.4</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Navi */}
-                <a 
-                  href="https://www.navi.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/BZSkyLJNJnqp91FtE1iSskcsalt9oJiepU_GEgr_bB5hVg5x8CUzHLoMmc2lNzm16Q=s128" 
-                        alt="Navi"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Navi: UPI, Investments & Loans</h3>
-                      <p className="text-xs text-gray-400">Finance</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.5</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Row 3 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Google Gemini */}
-                <a 
-                  href="https://gemini.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/wpnNPYIrdHC3Q_bcFXGpwoMvFvvvQnZJHmFKzumq5ZTRZKIzfxURAUGOMqhPhVxnggY=s128" 
-                        alt="Google Gemini"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Google Gemini</h3>
-                      <p className="text-xs text-gray-400">Productivity</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.3</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Kuku TV */}
-                <a 
-                  href="https://www.kukutv.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/XyRQ3Jjq4pSaAv0XtVnLcUPfkPDrRULoAhRUeOxR53xgxrGVR1Lde2UcnJgZvRFodyN4=s128" 
-                        alt="Kuku TV"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Kuku TV: Reel Shows & Movies</h3>
-                      <p className="text-xs text-gray-400">Entertainment</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.2</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Seekho */}
-                <a 
-                  href="https://www.seekho.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/Fm5PDRimTL_KsWyIRcTv9h0JLrTkDOMwh18SE819OXjEZhlwMYBHJXxUZ8eOBudxCsHC=s128" 
-                        alt="Seekho"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Seekho: Short Learning Videos</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.5</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-              
               {/* Chevron Button - Visible on hover */}
               <button className="absolute -right-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover/topsection:opacity-100 transition-opacity z-10">
                 <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1707,19 +1706,19 @@ export default function Comit({ onBack }: ComitProps) {
             {Array.from({ length: 5 }).map((_, sectionIndex) => {
               const startIndex = 48 + (sectionIndex * 12);
               const sectionApps = allApps.slice(startIndex, startIndex + 12);
-              
+
               return sectionApps.length > 0 ? (
                 <div key={sectionIndex} className="group/section relative">
                   {/* Category Header */}
                   <h3 className="text-lg font-semibold text-white mb-4 px-2">
                     {sectionApps[0]?.category || ''}
                   </h3>
-                  
+
                   {/* Apps Row with Chevron */}
                   <div className="relative">
                     <div className="grid grid-cols-12 gap-4">
                       {sectionApps.map((app: App) => (
-                        <a 
+                        <a
                           key={app.id}
                           href={app.website}
                           target="_blank"
@@ -1727,8 +1726,8 @@ export default function Comit({ onBack }: ComitProps) {
                           className="flex flex-col items-center p-4 hover:bg-white/10 rounded-xl transition-all cursor-pointer group backdrop-blur-sm"
                         >
                           <div className="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-lg group-hover:shadow-xl transition-shadow ring-1 ring-white/20">
-                            <img 
-                              src={app.icon} 
+                            <img
+                              src={app.icon}
                               alt={app.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {
@@ -1743,7 +1742,7 @@ export default function Comit({ onBack }: ComitProps) {
                         </a>
                       ))}
                     </div>
-                    
+
                     {/* Chevron Button - Visible on hover */}
                     <button className="absolute -right-2 top-8 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover/section:opacity-100 transition-opacity z-10">
                       <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1763,253 +1762,253 @@ export default function Comit({ onBack }: ComitProps) {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-white">Trending Apps</h2>
             </div>
-            
+
             <div className="flex items-center gap-2 relative">
               <div className="flex-1 space-y-6">
-              {/* Row 1 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Duolingo */}
-                <a 
-                  href="https://www.duolingo.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/VIohTA3wyJgKJ-SZzoJeYuykxyVFCbSmXFAjefIGQybY57FX44VCHyVa3CTOZROzWLbMc-VFwL4CEDj47LeRpM0=s128" 
-                        alt="Duolingo"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Duolingo: Language Lessons</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.6</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                {/* Row 1 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Duolingo */}
+                  <a
+                    href="https://www.duolingo.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/VIohTA3wyJgKJ-SZzoJeYuykxyVFCbSmXFAjefIGQybY57FX44VCHyVa3CTOZROzWLbMc-VFwL4CEDj47LeRpM0=s128"
+                          alt="Duolingo"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Duolingo: Language Lessons</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.6</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
-                {/* Babbel */}
-                <a 
-                  href="https://www.babbel.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/tw_coGKgk1K_zO-Ypf9zBKV1s-KT3dYN1MIUxIqtnbfmON5x_YmuoAr31gE4oSfJHNtA-aStTd-qe9R8S6NVyA=s128" 
-                        alt="Babbel"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Babbel: Learn Languages</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.5</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                  {/* Babbel */}
+                  <a
+                    href="https://www.babbel.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/tw_coGKgk1K_zO-Ypf9zBKV1s-KT3dYN1MIUxIqtnbfmON5x_YmuoAr31gE4oSfJHNtA-aStTd-qe9R8S6NVyA=s128"
+                          alt="Babbel"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Babbel: Learn Languages</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.5</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
-                {/* Busuu */}
-                <a 
-                  href="https://www.busuu.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/y41gjEtJou9NtXTqRjWzdJuhAYnv6tEemLxzz6M17aK_2t3rbbUDvcuA6F8ON_mYnSA=s128" 
-                        alt="Busuu"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Busuu: Language Learning</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.5</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                  {/* Busuu */}
+                  <a
+                    href="https://www.busuu.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/y41gjEtJou9NtXTqRjWzdJuhAYnv6tEemLxzz6M17aK_2t3rbbUDvcuA6F8ON_mYnSA=s128"
+                          alt="Busuu"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Busuu: Language Learning</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.5</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
+
+                {/* Row 2 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Memrise */}
+                  <a
+                    href="https://www.memrise.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/5lYhpcJj9qhv9SHkSxt8wSZUTHoEhSzHDxPYmJK9ys66l3u-2Dmg2jhOWjGgUDiiVaIX=s128"
+                          alt="Memrise"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Memrise: Learn Languages</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.4</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Rosetta Stone */}
+                  <a
+                    href="https://www.rosettastone.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/U8BnooNvAVuT1ggQB64-mldIbmDcE7en_n742R0ukvOwfDhGJgLsoh0LOQtBN6y-feFI=s128"
+                          alt="Rosetta Stone"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Rosetta Stone: Learn Languages</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.6</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Mondly */}
+                  <a
+                    href="https://www.mondly.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/XvJS0AkNz2BGpuWhTnNsO_PDUFXs_lUnKF6OIxyCz_PMAuUgb3A8ra_7IshTWAqYzws=s128"
+                          alt="Mondly"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Mondly: Learn Languages</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.5</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Row 3 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* HelloTalk */}
+                  <a
+                    href="https://www.hellotalk.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/kMTuBBwXZ-zjg_WB-QB4ZfzM4Tv84vJ4iKcrNeUvHDQqImle6XzdRkrQinfrpcBejHs=s128"
+                          alt="HelloTalk"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">HelloTalk: Language Learning</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.3</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Tandem */}
+                  <a
+                    href="https://www.tandem.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/kweybiMo_yZEBNmGCmh3fyRVXQQ5lIJQB4z_jaECV_tpqEW8GqhFjEFmxbtRL8TrFic=s128"
+                          alt="Tandem"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Tandem: Language Exchange</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.4</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Drops */}
+                  <a
+                    href="https://languagedrops.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/hlR8pZ9sR_t_37uhF2KZNhOp1goV2pGGu4Vg-d2gzOkv5e6pLSklryGLvKkLbvAITOU=s128"
+                          alt="Drops"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Drops: Learn Languages</h3>
+                        <p className="text-xs text-gray-400">Education</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.7</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
 
-              {/* Row 2 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Memrise */}
-                <a 
-                  href="https://www.memrise.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/5lYhpcJj9qhv9SHkSxt8wSZUTHoEhSzHDxPYmJK9ys66l3u-2Dmg2jhOWjGgUDiiVaIX=s128" 
-                        alt="Memrise"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Memrise: Learn Languages</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.4</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Rosetta Stone */}
-                <a 
-                  href="https://www.rosettastone.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/U8BnooNvAVuT1ggQB64-mldIbmDcE7en_n742R0ukvOwfDhGJgLsoh0LOQtBN6y-feFI=s128" 
-                        alt="Rosetta Stone"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Rosetta Stone: Learn Languages</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.6</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Mondly */}
-                <a 
-                  href="https://www.mondly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/XvJS0AkNz2BGpuWhTnNsO_PDUFXs_lUnKF6OIxyCz_PMAuUgb3A8ra_7IshTWAqYzws=s128" 
-                        alt="Mondly"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Mondly: Learn Languages</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.5</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Row 3 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* HelloTalk */}
-                <a 
-                  href="https://www.hellotalk.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/kMTuBBwXZ-zjg_WB-QB4ZfzM4Tv84vJ4iKcrNeUvHDQqImle6XzdRkrQinfrpcBejHs=s128" 
-                        alt="HelloTalk"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">HelloTalk: Language Learning</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.3</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Tandem */}
-                <a 
-                  href="https://www.tandem.net"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/kweybiMo_yZEBNmGCmh3fyRVXQQ5lIJQB4z_jaECV_tpqEW8GqhFjEFmxbtRL8TrFic=s128" 
-                        alt="Tandem"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Tandem: Language Exchange</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.4</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Drops */}
-                <a 
-                  href="https://languagedrops.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/hlR8pZ9sR_t_37uhF2KZNhOp1goV2pGGu4Vg-d2gzOkv5e6pLSklryGLvKkLbvAITOU=s128" 
-                        alt="Drops"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Drops: Learn Languages</h3>
-                      <p className="text-xs text-gray-400">Education</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.7</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-              
               {/* Chevron Button - Visible on hover */}
               <button className="absolute -right-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover/trending:opacity-100 transition-opacity z-10">
                 <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2028,19 +2027,19 @@ export default function Comit({ onBack }: ComitProps) {
               const startIndex = 108 + (sectionIndex * 12);
               const endIndex = Math.min(108 + ((sectionIndex + 1) * 12), allApps.length);
               const sectionApps = allApps.slice(startIndex, endIndex);
-              
+
               return sectionApps.length > 0 ? (
                 <div key={sectionIndex} className="group/section relative">
                   {/* Category Header */}
                   <h3 className="text-lg font-semibold text-white mb-4 px-2">
                     {sectionApps[0]?.category || ''}
                   </h3>
-                  
+
                   {/* Apps Row with Chevron */}
                   <div className="relative">
                     <div className="grid grid-cols-12 gap-4">
                       {sectionApps.map((app: App) => (
-                        <a 
+                        <a
                           key={app.id}
                           href={app.website}
                           target="_blank"
@@ -2048,8 +2047,8 @@ export default function Comit({ onBack }: ComitProps) {
                           className="flex flex-col items-center p-4 hover:bg-white/10 rounded-xl transition-all cursor-pointer group backdrop-blur-sm"
                         >
                           <div className="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-lg group-hover:shadow-xl transition-shadow ring-1 ring-white/20">
-                            <img 
-                              src={app.icon} 
+                            <img
+                              src={app.icon}
                               alt={app.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {
@@ -2064,7 +2063,7 @@ export default function Comit({ onBack }: ComitProps) {
                         </a>
                       ))}
                     </div>
-                    
+
                     {/* Chevron Button - Visible on hover */}
                     <button className="absolute -right-2 top-8 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover/section:opacity-100 transition-opacity z-10">
                       <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2084,253 +2083,253 @@ export default function Comit({ onBack }: ComitProps) {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-white">Featured Apps</h2>
             </div>
-            
+
             <div className="flex items-center gap-2 relative">
               <div className="flex-1 space-y-6">
-              {/* Row 1 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Truecaller */}
-                <a 
-                  href="https://www.truecaller.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/8V1fwYBnseZxjoyPtG1Xk8pUH_L6e6IWQqBuvW9DIoG72rackUixnuSNdXRYbC2zSg=s512" 
-                        alt="Truecaller"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Truecaller: Caller ID & Block</h3>
-                      <p className="text-xs text-gray-400">Communication</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.4</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                {/* Row 1 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Truecaller */}
+                  <a
+                    href="https://www.truecaller.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/8V1fwYBnseZxjoyPtG1Xk8pUH_L6e6IWQqBuvW9DIoG72rackUixnuSNdXRYbC2zSg=s512"
+                          alt="Truecaller"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Truecaller: Caller ID & Block</h3>
+                        <p className="text-xs text-gray-400">Communication</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.4</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
-                {/* PhonePe */}
-                <a 
-                  href="https://www.phonepe.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/zjeY6g7sVb33qgw5DhdiTK7PDpEP2bml8EG78E3seqAOpqGtHd-QCxiXIi1UaapFahzi=s512" 
-                        alt="PhonePe"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">PhonePe: UPI, Recharge & Bills</h3>
-                      <p className="text-xs text-gray-400">Finance</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.3</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                  {/* PhonePe */}
+                  <a
+                    href="https://www.phonepe.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/zjeY6g7sVb33qgw5DhdiTK7PDpEP2bml8EG78E3seqAOpqGtHd-QCxiXIi1UaapFahzi=s512"
+                          alt="PhonePe"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">PhonePe: UPI, Recharge & Bills</h3>
+                        <p className="text-xs text-gray-400">Finance</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.3</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
-                {/* Google Pay */}
-                <a 
-                  href="https://pay.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/oaiVWSRYgpBXe71Y6YKpn2dDiuAddqQVsaWG47ocOp70e2r6YxHVmPnTAFFvI3O524E=s512" 
-                        alt="Google Pay"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Google Pay: Save, Pay, Manage</h3>
-                      <p className="text-xs text-gray-400">Finance</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.2</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                  {/* Google Pay */}
+                  <a
+                    href="https://pay.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/oaiVWSRYgpBXe71Y6YKpn2dDiuAddqQVsaWG47ocOp70e2r6YxHVmPnTAFFvI3O524E=s512"
+                          alt="Google Pay"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Google Pay: Save, Pay, Manage</h3>
+                        <p className="text-xs text-gray-400">Finance</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.2</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
+
+                {/* Row 2 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Paytm */}
+                  <a
+                    href="https://paytm.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/YNxwUNwBOkzhtbJ0-UiMfSaLAFT9fDVYL7L2JQDCosBnb50Z9g2AFuOffBLwnYs_Gdw=s512"
+                          alt="Paytm"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Paytm: Secure UPI Payments</h3>
+                        <p className="text-xs text-gray-400">Finance</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.1</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Amazon */}
+                  <a
+                    href="https://www.amazon.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/et2mBcPlX10BHjyvlUCf90wAPbdIuaB_o1JhI4q3wHXcEq8MwKfsOYwpRW7aG2iXr_K05LVq6_LqUsNUWUt9BhM=s512"
+                          alt="Amazon"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Amazon Shopping: Online Shop</h3>
+                        <p className="text-xs text-gray-400">Shopping</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.3</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Flipkart */}
+                  <a
+                    href="https://www.flipkart.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/WyYlaMAxFNM39qOTX-rz0W2PzixHDzbZqQ2I_YXSF2U3mUOOVyZMjSyon4pHNVdlGIQ=s512"
+                          alt="Flipkart"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Flipkart Online Shopping App</h3>
+                        <p className="text-xs text-gray-400">Shopping</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.4</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Row 3 */}
+                <div className="grid grid-cols-3 gap-20">
+                  {/* Swiggy */}
+                  <a
+                    href="https://www.swiggy.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/dVQlfnQ_Fp-wNfKv2eI9XxbLymV6oGW_0ywIw3pxhYyKhjC0Lk8y6Ru_-sUc1fq2akADzAN7QWn8nPvcw6Ck=s512"
+                          alt="Swiggy"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Swiggy: Food Delivery & Dining</h3>
+                        <p className="text-xs text-gray-400">Food & Drink</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.3</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Zomato */}
+                  <a
+                    href="https://www.zomato.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/_kVKkT2tpzYd1cCD6uOndMrOU6hKRG-Cg_JVoq81xySw6Z-qwmEjXX8djamC8sf5ILf32ij6zqOksx62HOND=s512"
+                          alt="Zomato"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Zomato: Food Delivery & Dining</h3>
+                        <p className="text-xs text-gray-400">Food & Drink</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.2</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Uber */}
+                  <a
+                    href="https://www.uber.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                        <img
+                          src="https://play-lh.googleusercontent.com/RKTQ5wMcBGFsggPYhbi1mNnQ-wOn_7eY1qznj-TEve72FrTCf5u0_80Yr7U_tznYpIU=s512"
+                          alt="Uber"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Uber: Request a Ride</h3>
+                        <p className="text-xs text-gray-400">Travel & Local</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <span className="text-xs text-white">4.1</span>
+                          <HiOutlineStar className="w-3 h-3 text-white fill-current" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
 
-              {/* Row 2 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Paytm */}
-                <a 
-                  href="https://paytm.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/YNxwUNwBOkzhtbJ0-UiMfSaLAFT9fDVYL7L2JQDCosBnb50Z9g2AFuOffBLwnYs_Gdw=s512" 
-                        alt="Paytm"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Paytm: Secure UPI Payments</h3>
-                      <p className="text-xs text-gray-400">Finance</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.1</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Amazon */}
-                <a 
-                  href="https://www.amazon.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/et2mBcPlX10BHjyvlUCf90wAPbdIuaB_o1JhI4q3wHXcEq8MwKfsOYwpRW7aG2iXr_K05LVq6_LqUsNUWUt9BhM=s512" 
-                        alt="Amazon"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Amazon Shopping: Online Shop</h3>
-                      <p className="text-xs text-gray-400">Shopping</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.3</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Flipkart */}
-                <a 
-                  href="https://www.flipkart.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/WyYlaMAxFNM39qOTX-rz0W2PzixHDzbZqQ2I_YXSF2U3mUOOVyZMjSyon4pHNVdlGIQ=s512" 
-                        alt="Flipkart"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Flipkart Online Shopping App</h3>
-                      <p className="text-xs text-gray-400">Shopping</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.4</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Row 3 */}
-              <div className="grid grid-cols-3 gap-20">
-                {/* Swiggy */}
-                <a 
-                  href="https://www.swiggy.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/dVQlfnQ_Fp-wNfKv2eI9XxbLymV6oGW_0ywIw3pxhYyKhjC0Lk8y6Ru_-sUc1fq2akADzAN7QWn8nPvcw6Ck=s512" 
-                        alt="Swiggy"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Swiggy: Food Delivery & Dining</h3>
-                      <p className="text-xs text-gray-400">Food & Drink</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.3</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Zomato */}
-                <a 
-                  href="https://www.zomato.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/_kVKkT2tpzYd1cCD6uOndMrOU6hKRG-Cg_JVoq81xySw6Z-qwmEjXX8djamC8sf5ILf32ij6zqOksx62HOND=s512" 
-                        alt="Zomato"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Zomato: Food Delivery & Dining</h3>
-                      <p className="text-xs text-gray-400">Food & Drink</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.2</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Uber */}
-                <a 
-                  href="https://www.uber.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
-                      <img 
-                        src="https://play-lh.googleusercontent.com/RKTQ5wMcBGFsggPYhbi1mNnQ-wOn_7eY1qznj-TEve72FrTCf5u0_80Yr7U_tznYpIU=s512" 
-                        alt="Uber"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm group-hover:text-blue-400">Uber: Request a Ride</h3>
-                      <p className="text-xs text-gray-400">Travel & Local</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <span className="text-xs text-white">4.1</span>
-                        <HiOutlineStar className="w-3 h-3 text-white fill-current" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-              
               {/* Chevron Button - Visible on hover */}
               <button className="absolute -right-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover/featured:opacity-100 transition-opacity z-10">
                 <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2344,49 +2343,49 @@ export default function Comit({ onBack }: ComitProps) {
         {/* Search Results Grid */}
         {searchQuery && (
           <div className="grid grid-cols-20 gap-4 auto-rows-max">
-            {allApps.filter((app: App) => 
+            {allApps.filter((app: App) =>
               app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
               app.category.toLowerCase().includes(searchQuery.toLowerCase())
             ).map((app: App) => (
-            <a 
-              key={app.id} 
-              href={app.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center p-4 hover:bg-white/10 rounded-xl transition-all cursor-pointer group w-24 backdrop-blur-sm"
-            >
-              <div className="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-lg group-hover:shadow-xl transition-shadow ring-1 ring-white/20">
-                <img 
-                  src={app.icon} 
-                  alt={app.name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(app.name)}&background=random&size=128`;
-                  }}
-                />
-              </div>
-              <h3 className="font-medium text-white text-sm text-center line-clamp-2 leading-tight group-hover:text-blue-400 transition-colors">
-                {app.name}
-              </h3>
-            </a>
+              <a
+                key={app.id}
+                href={app.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-4 hover:bg-white/10 rounded-xl transition-all cursor-pointer group w-24 backdrop-blur-sm"
+              >
+                <div className="w-20 h-20 rounded-2xl overflow-hidden mb-3 shadow-lg group-hover:shadow-xl transition-shadow ring-1 ring-white/20">
+                  <img
+                    src={app.icon}
+                    alt={app.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(app.name)}&background=random&size=128`;
+                    }}
+                  />
+                </div>
+                <h3 className="font-medium text-white text-sm text-center line-clamp-2 leading-tight group-hover:text-blue-400 transition-colors">
+                  {app.name}
+                </h3>
+              </a>
             ))}
           </div>
         )}
 
         {/* No Results */}
-        {searchQuery && allApps.filter((app: App) => 
+        {searchQuery && allApps.filter((app: App) =>
           app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           app.category.toLowerCase().includes(searchQuery.toLowerCase())
         ).length === 0 && (
-          <div className="text-center py-12 relative z-10">
-            <div className="text-gray-400 mb-4">
-              <HiOutlineMagnifyingGlass size={48} className="mx-auto" />
+            <div className="text-center py-12 relative z-10">
+              <div className="text-gray-400 mb-4">
+                <HiOutlineMagnifyingGlass size={48} className="mx-auto" />
+              </div>
+              <h3 className="text-lg font-medium text-white mb-2">No apps found</h3>
+              <p className="text-gray-400">Try searching for something else</p>
             </div>
-            <h3 className="text-lg font-medium text-white mb-2">No apps found</h3>
-            <p className="text-gray-400">Try searching for something else</p>
-          </div>
-        )}
+          )}
       </div>
 
       {/* Video Modal */}

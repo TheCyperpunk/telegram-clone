@@ -270,7 +270,7 @@ function ConversationItem({
                   <img
                     src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ=s96"
                     alt="Discord"
-                    className="w-3 h-3 mr-1 rounded-full"
+                    className="w-4 h-4 mr-1 rounded-full"
                   />
                   Discord
                 </span>
@@ -280,7 +280,7 @@ function ConversationItem({
                   <img
                     src="https://play-lh.googleusercontent.com/mzJpTCsTW_FuR6YqOPaLHrSEVCSJuXzCljdxnCKhVZMcu6EESZBQTCHxMh8slVtnKqo=w480-h960"
                     alt="Slack"
-                    className="w-3 h-3 mr-1 rounded-full"
+                    className="w-4 h-4 mr-1 rounded-full"
                   />
                   Slack
                 </span>

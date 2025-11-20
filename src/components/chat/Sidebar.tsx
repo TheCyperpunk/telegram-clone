@@ -168,58 +168,34 @@ function ConversationItem({
                 <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-blue-600 text-white">CHANNEL</span>
               )}
               {conversation.type === 'group' && (
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-green-600 text-white">GROUP</span>
-              )}
-              {conversation.type === 'discord' && (
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-indigo-600 text-white">
-                  <img
-                    src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ=s96"
-                    alt="Discord"
-                    className="w-3 h-3 mr-1 rounded-full"
-                  />
-                  DISCORD
-                </span>
-              )}
-              {conversation.type === 'slack' && (
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-purple-600 text-white">
-                  <img
-                    src="https://play-lh.googleusercontent.com/mzJpTCsTW_FuR6YqOPaLHrSEVCSJuXzCljdxnCKhVZMcu6EESZBQTCHxMh8slVtnKqo=w480-h960"
-                    alt="Slack"
-                    className="w-3 h-3 mr-1 rounded-full"
-                  />
-                  SLACK
-                </span>
-              )}
-            </div>
-            <small className="text-gray-500 ml-1">{conversation.time}</small>
           </div>
-          <div className="flex justify-between items-center">
-            <p className="text-gray-500 text-sm mb-0 truncate">
-              {conversation.lastMessage}
-            </p>
-            <div className="flex items-center flex-shrink-0">
-              {conversation.isPinned && (
-                <FiMapPin size={14} className="text-gray-500 mr-1" />
-              )}
-              {conversation.isMuted && (
-                <FiBell size={14} className="text-gray-500 mr-1" />
-              )}
-              {conversation.unread && (
-                <span className="conversation-badge ml-2">
-                  {conversation.unread}
-                </span>
-              )}
+            <div className="flex justify-between items-center">
+              <p className="text-gray-500 text-sm mb-0 truncate">
+                {conversation.lastMessage}
+              </p>
+              <div className="flex items-center flex-shrink-0">
+                {conversation.isPinned && (
+                  <FiMapPin size={14} className="text-gray-500 mr-1" />
+                )}
+                {conversation.isMuted && (
+                  <FiBell size={14} className="text-gray-500 mr-1" />
+                )}
+                {conversation.unread && (
+                  <span className="conversation-badge ml-2">
+                    {conversation.unread}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
-        </div>
       )}
 
-      {/* When collapsed, just show the badge */}
-      {isCollapsed && conversation.unread && (
-        <span className="conversation-badge absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
-          {conversation.unread}
-        </span>
-      )}
-    </button>
-  );
+          {/* When collapsed, just show the badge */}
+          {isCollapsed && conversation.unread && (
+            <span className="conversation-badge absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+              {conversation.unread}
+            </span>
+          )}
+        </button>
+      );
 }

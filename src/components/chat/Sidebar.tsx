@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FiSearch, FiMenu, FiMessageSquare, FiSettings, FiChevronLeft, FiBell, FiPin } from 'react-icons/fi';
+import { FiSearch, FiMenu, FiMessageSquare, FiSettings, FiChevronLeft, FiBell, FiMapPin } from 'react-icons/fi';
 import FilterTabs from './FilterTabs';
 
 interface Conversation {
@@ -14,7 +14,7 @@ interface Conversation {
   isOnline?: boolean;
   isPinned?: boolean;
   isMuted?: boolean;
-  type?: 'private' | 'group' | 'channel';
+  type?: 'private' | 'group' | 'channel' | 'discord' | 'slack';
 }
 
 interface SidebarProps {
@@ -30,21 +30,21 @@ export default function Sidebar({ conversations, currentConversation, onSelectCo
 
   const filteredConversations = conversations.filter(conv => {
     const matchesSearch = conv.name.toLowerCase().includes(searchQuery.toLowerCase());
-    
+
     // Filter based on type if specified
     if (conv.type && activeFilter !== 'all') {
       switch (activeFilter) {
         case 'channels':
           return matchesSearch && conv.type === 'channel';
         case 'groups':
-          return matchesSearch && conv.type === 'group';
+          return matchesSearch && (conv.type === 'group' || conv.type === 'discord' || conv.type === 'slack');
         case 'private':
           return matchesSearch && conv.type === 'private';
         default:
           return matchesSearch;
       }
     }
-    
+
     return matchesSearch;
   });
 
@@ -75,13 +75,13 @@ export default function Sidebar({ conversations, currentConversation, onSelectCo
             </div>
           </div>
         )}
-        <button 
+        <button
           className="btn-icon ml-2"
           onClick={() => setIsCollapsed(!isCollapsed)}
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          <FiChevronLeft 
-            size={20} 
+          <FiChevronLeft
+            size={20}
             className={`transition-transform ${isCollapsed ? 'rotate-180' : ''}`}
           />
         </button>
@@ -99,7 +99,7 @@ export default function Sidebar({ conversations, currentConversation, onSelectCo
             <div className="text-gray-500 text-sm">Your recent conversations</div>
           </div>
         )}
-        
+
         {filteredConversations.map((conv) => (
           <ConversationItem
             key={conv._id}
@@ -132,12 +132,12 @@ export default function Sidebar({ conversations, currentConversation, onSelectCo
 }
 
 // Conversation Item Component
-function ConversationItem({ 
-  conversation, 
-  isActive, 
+function ConversationItem({
+  conversation,
+  isActive,
   onClick,
   isCollapsed
-}: { 
+}: {
   conversation: Conversation;
   isActive: boolean;
   onClick: () => void;
@@ -150,11 +150,15 @@ function ConversationItem({
     >
       <div className="relative">
         <div className="conversation-avatar">
-          {conversation.avatar || conversation.name[0].toUpperCase()}
+          {conversation.avatar ? (
+            <img src={conversation.avatar} alt={conversation.name} className="w-full h-full object-cover rounded-full" />
+          ) : (
+            conversation.name[0].toUpperCase()
+          )}
         </div>
         {conversation.isOnline && <div className="online-indicator" />}
       </div>
-      
+
       {!isCollapsed && (
         <div className="ml-3 flex-grow overflow-hidden">
           <div className="flex justify-between items-center mb-1">
@@ -166,6 +170,26 @@ function ConversationItem({
               {conversation.type === 'group' && (
                 <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-green-600 text-white">GROUP</span>
               )}
+              {conversation.type === 'discord' && (
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-indigo-600 text-white">
+                  <img
+                    src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ=s96"
+                    alt="Discord"
+                    className="w-3 h-3 mr-1 rounded-full"
+                  />
+                  DISCORD
+                </span>
+              )}
+              {conversation.type === 'slack' && (
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-purple-600 text-white">
+                  <img
+                    src="https://play-lh.googleusercontent.com/mzJpTCsTW_FuR6YqOPaLHrSEVCSJuXzCljdxnCKhVZMcu6EESZBQTCHxMh8slVtnKqo=w480-h960"
+                    alt="Slack"
+                    className="w-3 h-3 mr-1 rounded-full"
+                  />
+                  SLACK
+                </span>
+              )}
             </div>
             <small className="text-gray-500 ml-1">{conversation.time}</small>
           </div>
@@ -175,7 +199,7 @@ function ConversationItem({
             </p>
             <div className="flex items-center flex-shrink-0">
               {conversation.isPinned && (
-                <FiPin size={14} className="text-gray-500 mr-1" />
+                <FiMapPin size={14} className="text-gray-500 mr-1" />
               )}
               {conversation.isMuted && (
                 <FiBell size={14} className="text-gray-500 mr-1" />
@@ -189,7 +213,7 @@ function ConversationItem({
           </div>
         </div>
       )}
-      
+
       {/* When collapsed, just show the badge */}
       {isCollapsed && conversation.unread && (
         <span className="conversation-badge absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">

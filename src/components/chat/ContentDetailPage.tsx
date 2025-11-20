@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FiArrowLeft, FiShare2, FiMoreVertical, FiPlay, FiDownload } from 'react-icons/fi';
+import { FiArrowLeft, FiShare2, FiMoreVertical, FiPlay, FiDownload, FiSkipBack, FiSkipForward, FiVolume2, FiRepeat, FiVideo, FiImage, FiFileText, FiMusic } from 'react-icons/fi';
 
 interface Post {
   id: string;
@@ -2412,7 +2412,7 @@ const generateRelatedContent = (currentPost: Post) => {
     id: `related-${i}`,
     ...item,
   }));
-  
+
   return relatedPosts;
 };
 
@@ -2426,28 +2426,28 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
   };
 
   // Filter content based on active filter
-  const filteredContent = activeFilter === 'all' 
-    ? relatedContent 
+  const filteredContent = activeFilter === 'all'
+    ? relatedContent
     : relatedContent.filter(item => {
-        switch (activeFilter) {
-          case 'photo':
-            return !item.title?.toLowerCase().includes('video') && 
-                   !item.title?.toLowerCase().includes('film') &&
-                   !item.title?.toLowerCase().includes('music');
-          case 'video':
-          case 'short_video':
-            return item.title?.toLowerCase().includes('video') || 
-                   item.title?.toLowerCase().includes('film');
-          case 'article':
-            return item.title?.toLowerCase().includes('article') || 
-                   item.title?.toLowerCase().includes('blog');
-          case 'music':
-            return item.title?.toLowerCase().includes('music') || 
-                   item.title?.toLowerCase().includes('song');
-          default:
-            return true;
-        }
-      });
+      switch (activeFilter) {
+        case 'photo':
+          return !item.title?.toLowerCase().includes('video') &&
+            !item.title?.toLowerCase().includes('film') &&
+            !item.title?.toLowerCase().includes('music');
+        case 'video':
+        case 'short_video':
+          return item.title?.toLowerCase().includes('video') ||
+            item.title?.toLowerCase().includes('film');
+        case 'article':
+          return item.title?.toLowerCase().includes('article') ||
+            item.title?.toLowerCase().includes('blog');
+        case 'music':
+          return item.title?.toLowerCase().includes('music') ||
+            item.title?.toLowerCase().includes('song');
+        default:
+          return true;
+      }
+    });
 
   const formatNumber = (num: number): string => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
@@ -2558,9 +2558,60 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     return { height, colSpan, rowSpan };
   };
 
+  const getContentTypeInfo = (item: any, index: number) => {
+    // Use index-based pattern to create a diverse mix of content types
+    // This ensures we have videos, articles, music, and photos distributed throughout
+    const pattern = index % 8;
+
+    if (pattern === 0 || pattern === 4) {
+      // Videos - 25% of content
+      const minutes = Math.floor(Math.random() * 10);
+      const seconds = Math.floor(Math.random() * 60);
+      return {
+        type: 'video',
+        icon: FiPlay,
+        badge: null,
+        duration: `${minutes}:${seconds.toString().padStart(2, '0')}`
+      };
+    } else if (pattern === 1) {
+      // Audio/Music - 12.5% of content
+      return {
+        type: 'audio',
+        icon: FiMusic,
+        badge: null,
+        duration: null
+      };
+    } else if (pattern === 2) {
+      // Articles - 12.5% of content
+      return {
+        type: 'article',
+        icon: FiFileText,
+        badge: 'Article',
+        duration: null
+      };
+    } else if (pattern === 3 || pattern === 5) {
+      // Photo collections - 25% of content
+      const total = Math.floor(Math.random() * 4) + 2; // 2-5 photos
+      return {
+        type: 'photos',
+        icon: FiImage,
+        badge: `1/${total}`,
+        duration: null
+      };
+    } else {
+      // Regular single photos - 25% of content
+      return {
+        type: 'photo',
+        icon: null,
+        badge: null,
+        duration: null
+      };
+    }
+  };
+
   const renderMainContent = () => {
     const contentHeight = getMainContentHeight();
-    
+
     // Video content with embedded players
     if (post.platform === 'youtube' && (post.type === 'video' || post.type === 'short_video')) {
       return (
@@ -2660,13 +2711,13 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     // Instagram Reel
     if (post.platform === 'instagram' && post.type === 'short_video') {
       return (
-        <div 
+        <div
           className={`w-full ${contentHeight} bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-all duration-300`}
           onClick={() => window.open(`https://www.instagram.com/reel/${post.videoId}/`, '_blank')}
         >
           <div className="text-center text-white">
             <svg className="w-20 h-20 mx-auto mb-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z" />
             </svg>
             <p className="text-xl font-bold mb-2">Instagram Reel</p>
             <p className="text-sm opacity-75">Click to view on Instagram</p>
@@ -2680,10 +2731,10 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     if (post.type === 'photo' || post.type === 'photos') {
       return (
         <div className={`w-full ${contentHeight} relative rounded-2xl overflow-hidden bg-gray-100`}>
-          <Image 
-            src={post.image} 
-            alt={post.caption} 
-            fill 
+          <Image
+            src={post.image}
+            alt={post.caption}
+            fill
             className="object-cover"
           />
         </div>
@@ -2696,10 +2747,10 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
         <div className={`w-full ${contentHeight} bg-white rounded-2xl border border-gray-200 overflow-hidden`}>
           {/* Article Image */}
           <div className="w-full h-48 relative bg-gray-100">
-            <Image 
-              src={post.image} 
-              alt={post.title || post.caption} 
-              fill 
+            <Image
+              src={post.image}
+              alt={post.title || post.caption}
+              fill
               className="object-cover"
             />
           </div>
@@ -2728,14 +2779,53 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     // Music content
     if (post.type === 'music') {
       return (
-        <div className={`w-full ${contentHeight} bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center text-white`}>
-          <div className="text-center">
-            <div className="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-              <FiPlay size={48} className="ml-2" />
+        <div className={`w-full ${contentHeight} bg-gradient-to-r from-[#1b2d4f] via-[#164064] to-[#0b5c7d] rounded-2xl p-6 flex items-center text-white`}>
+          <div className="flex items-center w-full space-x-8">
+            <div className="relative">
+              <div className="w-32 h-32 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-white/40">
+                  <Image
+                    src={post.image || FALLBACK_IMAGE}
+                    alt={post.title || post.caption}
+                    width={112}
+                    height={112}
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="absolute inset-0 rounded-full border border-white/10" />
             </div>
-            <h3 className="text-2xl font-bold mb-2">{post.title}</h3>
-            <p className="text-lg opacity-75">@{post.username}</p>
-            {post.duration && <p className="text-sm opacity-50 mt-2">{post.duration}</p>}
+
+            <div className="flex-1">
+              <h3 className="text-2xl font-semibold">{post.title || 'Unknown Track'}</h3>
+              <p className="text-sm text-blue-100 mt-1">
+                {post.caption || `@${post.username}`}
+              </p>
+
+              <div className="mt-4">
+                <div className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
+                  <div className="h-full w-1/3 bg-gradient-to-r from-sky-400 to-indigo-400" />
+                </div>
+                <div className="flex justify-between text-xs text-blue-100 mt-2">
+                  <span>1:23</span>
+                  <span>{post.duration || '5:47'}</span>
+                </div>
+              </div>
+
+              <div className="mt-5 flex items-center justify-between text-blue-100">
+                <div className="flex items-center space-x-4 text-xl">
+                  <FiSkipBack />
+                  <FiRepeat />
+                </div>
+                <button className="w-14 h-14 rounded-full bg-gradient-to-br from-sky-400 to-indigo-500 flex items-center justify-center shadow-lg shadow-sky-500/40">
+                  <FiPlay size={26} className="ml-0.5" />
+                </button>
+                <div className="flex items-center space-x-4 text-xl">
+                  <FiSkipForward />
+                  <FiVolume2 />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       );
@@ -2744,10 +2834,10 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     // Default video content with play overlay
     return (
       <div className={`w-full ${contentHeight} relative rounded-2xl overflow-hidden bg-gray-100`}>
-        <Image 
-          src={post.image} 
-          alt={post.caption} 
-          fill 
+        <Image
+          src={post.image}
+          alt={post.caption}
+          fill
           className="object-cover"
         />
         {(post.type === 'video' || post.type === 'short_video') && (
@@ -2772,18 +2862,18 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
       <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center">
-            <button 
+            <button
               onClick={onBack}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors mr-3"
             >
               <FiArrowLeft size={20} />
             </button>
             <div className="flex items-center">
-              <Image 
-                src={post.avatar} 
-                alt={post.username} 
-                width={32} 
-                height={32} 
+              <Image
+                src={post.avatar}
+                alt={post.username}
+                width={32}
+                height={32}
                 className="rounded-full"
               />
               <div className="ml-3">
@@ -2794,7 +2884,7 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
               </div>
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
               <FiDownload size={20} />
@@ -2818,11 +2908,10 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
               <button
                 key={type}
                 onClick={() => setActiveFilter(type)}
-                className={`px-4 py-2 rounded-full border transition-colors text-sm font-medium ${
-                  activeFilter === type
-                    ? 'bg-blue-500 text-white border-blue-500'
-                    : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900'
-                }`}
+                className={`px-4 py-2 rounded-full border transition-colors text-sm font-medium ${activeFilter === type
+                  ? 'bg-blue-500 text-white border-blue-500'
+                  : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
               >
                 {type === 'short_video' ? 'Shorts' : type.charAt(0).toUpperCase() + type.slice(1)}
               </button>
@@ -2834,37 +2923,62 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
             {/* Main Content Card - Pinterest Style */}
             <div className="bg-white rounded-2xl p-6 shadow-sm mb-8 max-w-2xl mx-auto">
               {renderMainContent()}
-              
+
               {/* Content Info Below Main Content */}
               <div className="mt-6">
                 <h1 className="text-2xl font-bold text-gray-900">{post.title || post.caption}</h1>
               </div>
             </div>
-            
+
             {/* Masonry Grid using CSS columns to avoid empty gaps */}
             <div className="columns-5 gap-3 space-y-3">
               {filteredContent.map((item, index) => {
                 const { height } = getContentDimensions(item, index);
+                const contentInfo = getContentTypeInfo(item, index);
                 // Derive a unique placeholder image per card using picsum + item id
                 const src = `https://picsum.photos/seed/${item.id}/600/900`;
 
                 return (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     className="mb-3 break-inside-avoid bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group"
                   >
-                    <div 
-                      style={{ 
+                    <div
+                      style={{
                         height: `${height}px`
-                      }} 
+                      }}
                       className="relative overflow-hidden bg-gray-100"
                     >
-                      <img 
+                      <img
                         src={src}
                         alt={item.title}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
+
+                      {/* Content Type Badge - Top Left */}
+                      {(contentInfo.icon || contentInfo.badge) && (
+                        <div className="absolute top-2 left-2 bg-black/80 text-white px-2 py-1.5 rounded-md flex items-center gap-1.5 text-xs font-medium">
+                          {contentInfo.icon && <contentInfo.icon size={12} />}
+                          {contentInfo.badge && <span>{contentInfo.badge}</span>}
+                        </div>
+                      )}
+
+                      {/* Duration Badge - Top Right (for videos) */}
+                      {contentInfo.duration && (
+                        <div className="absolute top-2 right-2 bg-black/80 text-white px-2 py-1.5 rounded-md text-xs font-medium">
+                          {contentInfo.duration}
+                        </div>
+                      )}
+
+                      {/* Play Button Overlay - Center (for videos) */}
+                      {contentInfo.type === 'video' && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-16 bg-black/60 rounded-full flex items-center justify-center hover:bg-black/80 transition-all">
+                            <FiPlay size={24} className="text-white ml-1" />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );

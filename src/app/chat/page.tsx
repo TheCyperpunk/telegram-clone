@@ -19,6 +19,8 @@ import SavedMessages from '@/components/chat/SavedMessages';
 import Comit from '@/components/chat/Comit';
 import SubgroupsSidebar from '@/components/chat/SubgroupsSidebar';
 import MediaGallery from '@/components/chat/MediaGallery';
+import DiscordChat from '@/components/chat/DiscordChat';
+import SlackChat from '@/components/chat/SlackChat';
 
 interface Message {
   _id: string;
@@ -675,6 +677,54 @@ export default function ChatPage() {
         senderId: 'tech-bot',
         createdAt: new Date(Date.now() - 1740000),
         isRead: false
+      }
+    ],
+    // Samurai Group Messages
+    '101': [
+      {
+        _id: 'sam1',
+        content: 'Welcome to the samurai group! 🗡️',
+        senderId: 'admin-user',
+        createdAt: new Date(Date.now() - 300000),
+        isRead: true
+      },
+      {
+        _id: 'sam2',
+        content: 'This is a place for warriors and strategists to discuss tactics and philosophy.',
+        senderId: 'admin-user',
+        createdAt: new Date(Date.now() - 240000),
+        isRead: true
+      },
+      {
+        _id: 'sam3',
+        content: 'Looking forward to great discussions here!',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 180000),
+        isRead: true
+      }
+    ],
+    // Takashi Group Messages
+    '102': [
+      {
+        _id: 'tak1',
+        content: 'Welcome to the takashi group! 🎌',
+        senderId: 'admin-user',
+        createdAt: new Date(Date.now() - 300000),
+        isRead: true
+      },
+      {
+        _id: 'tak2',
+        content: 'A community for sharing knowledge and experiences.',
+        senderId: 'admin-user',
+        createdAt: new Date(Date.now() - 240000),
+        isRead: true
+      },
+      {
+        _id: 'tak3',
+        content: 'Excited to be part of this group!',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 180000),
+        isRead: true
       }
     ],
     // Tech News Channel (ID: 3)
@@ -7718,7 +7768,7 @@ Weather-resistant materials guide and seasonal tips:`,
       isMuted: true,
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60'
     },
-    
+
     // Groups
     {
       _id: '2',
@@ -7849,6 +7899,22 @@ Weather-resistant materials guide and seasonal tips:`,
       avatar: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=150&auto=format&fit=crop&q=60'
     },
     {
+      _id: '101',
+      name: 'samurai',
+      lastMessage: 'Welcome to the samurai group!',
+      time: 'Just now',
+      type: 'discord',
+      avatar: 'https://images.unsplash.com/photo-1555952517-2e8e729e0b44?w=150&auto=format&fit=crop&q=60'
+    },
+    {
+      _id: '102',
+      name: 'takashi',
+      lastMessage: 'Welcome to the takashi group!',
+      time: 'Just now',
+      type: 'slack',
+      avatar: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=150&auto=format&fit=crop&q=60'
+    },
+    {
       _id: '27',
       name: 'Coffee Addicts',
       lastMessage: 'Anna: Found a new coffee shop!',
@@ -7902,7 +7968,7 @@ Weather-resistant materials guide and seasonal tips:`,
       type: 'group',
       avatar: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=150&auto=format&fit=crop&q=60'
     },
-    
+
     // Channels
     {
       _id: '3',
@@ -8115,7 +8181,7 @@ Weather-resistant materials guide and seasonal tips:`,
       unread: 6,
       avatar: 'https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=150&auto=format&fit=crop&q=60'
     },
-    
+
     // Bots
     {
       _id: '13',
@@ -8377,9 +8443,9 @@ Weather-resistant materials guide and seasonal tips:`,
 
   // Filter conversations based on active section
   useEffect(() => {
-    switch(activeSection) {
+    switch (activeSection) {
       case 'groups':
-        setFilteredConversations(conversations.filter(conv => conv.type === 'group'));
+        setFilteredConversations(conversations.filter(conv => ['group', 'discord', 'slack'].includes(conv.type)));
         break;
       case 'pages':
         setFilteredConversations(conversations.filter(conv => conv.type === 'channel'));
@@ -8426,7 +8492,7 @@ Weather-resistant materials guide and seasonal tips:`,
 
   const handleSendMessage = (content: string) => {
     if (!content.trim()) return;
-    
+
     const newMessage: Message = {
       _id: Date.now().toString(),
       content,
@@ -8434,11 +8500,11 @@ Weather-resistant materials guide and seasonal tips:`,
       createdAt: new Date(),
       isRead: false
     };
-    
+
     // Send to subgroup if one is selected, otherwise to the main chat
     const targetChat = selectedSubgroup || currentChat;
     if (!targetChat) return;
-    
+
     setMessages(prev => ({
       ...prev,
       [targetChat]: [...(prev[targetChat] || []), newMessage]
@@ -8529,7 +8595,7 @@ Weather-resistant materials guide and seasonal tips:`,
       ) : (
         <>
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="btn-light md:hidden fixed top-0 left-0 m-2 z-30"
             onClick={toggleSidebar}
           >
@@ -8537,7 +8603,7 @@ Weather-resistant materials guide and seasonal tips:`,
           </button>
 
           {/* Sidebar */}
-          <div 
+          <div
             className={`${showSidebar ? 'flex' : 'hidden'} md:flex flex-col border-r border-gray-200 bg-white`}
             style={{ width: '350px', minWidth: '350px' }}
           >
@@ -8554,8 +8620,8 @@ Weather-resistant materials guide and seasonal tips:`,
             )}
           </div>
 
-          {/* Subgroups Sidebar - Shows when a group is selected */}
-          {showSubgroups && currentChat && (
+          {/* Subgroups Sidebar - Shows when a group is selected (but not for Discord/Slack chat) */}
+          {showSubgroups && currentChat && currentChat !== '101' && currentChat !== '102' && (
             <SubgroupsSidebar
               groupName={conversations.find(c => c._id === currentChat)?.name || ''}
               groupAvatar={conversations.find(c => c._id === currentChat)?.avatar || ''}
@@ -8568,195 +8634,207 @@ Weather-resistant materials guide and seasonal tips:`,
           {/* Chat Area */}
           <div className="flex-grow flex flex-col">
             {/* Navigation Tabs */}
-            <NavigationTabs 
-              onTabChange={handleTabChange} 
+            <NavigationTabs
+              onTabChange={handleTabChange}
               onComitClick={() => setShowComit(true)}
             />
-            
+
             {currentChat ? (
-          <>
-            {activeSection === 'saved' ? (
-              <SavedMessages />
-            ) : activeSection === 'explore' ? (
-              <div className="h-full flex flex-col">
-                <ExploreFilterTabs 
-                  onFilterChange={(filterId: string) => {
-                    setExploreFilter(filterId);
-                    setCurrentChat(null);
-                  }} 
-                  activeFilter="" 
-                />
-                <ChatHeader
-                  name={conversations.find(c => c._id === currentChat)?.name || ''}
-                  status="Online"
-                  isOnline={true}
-                  isTyping={false}
-                  avatar={conversations.find(c => c._id === currentChat)?.avatar}
-                  memberCount={conversations.find(c => c._id === currentChat)?.type === 'group' ? 156 : undefined}
-                  lastSeen="recently"
-                  onMenuClick={toggleSidebar}
-                  onProfileClick={toggleProfileSidebar}
-                  onStarClick={() => setShowMediaGallery(!showMediaGallery)}
-                  showMediaGallery={showMediaGallery}
-                  conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
-                />
-                <div className="message-list-container flex-grow overflow-auto">
-                  {showMediaGallery ? (
-                    <MediaGallery
-                      channelName={conversations.find(c => c._id === currentChat)?.name || 'Channel'}
-                      onClose={() => setShowMediaGallery(false)}
-                    />
-                  ) : (
-                    <MessageList
-                      messages={messages[currentChat] || []}
-                      currentUserId={user._id}
-                      conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
-                    />
-                  )}
-                </div>
-                {!showMediaGallery && (
-                  conversations.find(c => c._id === currentChat)?.type === 'channel' ? (
-                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
-                      <button
-                        onClick={handleLeaveChannel}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                      >
-                        Leave Channel
-                      </button>
-                    </div>
-                  ) : conversations.find(c => c._id === currentChat)?.type === 'bot' ? (
-                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
-                      <button
-                        onClick={handleStartBot}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                      >
-                        Start
-                      </button>
-                    </div>
-                  ) : (
-                    <MessageInput onSendMessage={handleSendMessage} />
-                  )
-                )}
-              </div>
-            ) : (
               <>
-                <ChatHeader
-                  name={selectedSubgroup 
-                    ? (selectedSubgroup.charAt(0).toUpperCase() + selectedSubgroup.slice(1)).replace(/-/g, ' ')
-                    : conversations.find(c => c._id === currentChat)?.name || ''}
-                  status="Online"
-                  isOnline={true}
-                  isTyping={false}
-                  avatar={conversations.find(c => c._id === currentChat)?.avatar}
-                  memberCount={conversations.find(c => c._id === currentChat)?.type === 'group' ? 156 : undefined}
-                  lastSeen="recently"
-                  onMenuClick={toggleSidebar}
-                  onProfileClick={toggleProfileSidebar}
-                  onStarClick={() => setShowMediaGallery(!showMediaGallery)}
-                  showMediaGallery={showMediaGallery}
-                  conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
-                />
-                <div className="message-list-container flex-grow overflow-auto">
-                  {showMediaGallery ? (
-                    <MediaGallery
-                      channelName={selectedSubgroup 
-                        ? (selectedSubgroup.charAt(0).toUpperCase() + selectedSubgroup.slice(1)).replace(/-/g, ' ')
-                        : conversations.find(c => c._id === currentChat)?.name || 'Channel'}
-                      onClose={() => setShowMediaGallery(false)}
+                {/* Discord-style interface for samurai group */}
+                {currentChat === '101' ? (
+                  <DiscordChat
+                    groupName="samurai"
+                    onBack={() => setCurrentChat(null)}
+                  />
+                ) : currentChat === '102' ? (
+                  /* Slack-style interface for takashi group */
+                  <SlackChat
+                    groupName="takashi"
+                    onBack={() => setCurrentChat(null)}
+                  />
+                ) : activeSection === 'saved' ? (
+                  <SavedMessages />
+                ) : activeSection === 'explore' ? (
+                  <div className="h-full flex flex-col">
+                    <ExploreFilterTabs
+                      onFilterChange={(filterId: string) => {
+                        setExploreFilter(filterId);
+                        setCurrentChat(null);
+                      }}
+                      activeFilter=""
                     />
-                  ) : (
-                    <MessageList
-                      messages={selectedSubgroup ? (messages[selectedSubgroup] || []) : (messages[currentChat] || [])}
-                      currentUserId={user._id}
+                    <ChatHeader
+                      name={conversations.find(c => c._id === currentChat)?.name || ''}
+                      status="Online"
+                      isOnline={true}
+                      isTyping={false}
+                      avatar={conversations.find(c => c._id === currentChat)?.avatar}
+                      memberCount={conversations.find(c => c._id === currentChat)?.type === 'group' ? 156 : undefined}
+                      lastSeen="recently"
+                      onMenuClick={toggleSidebar}
+                      onProfileClick={toggleProfileSidebar}
+                      onStarClick={() => setShowMediaGallery(!showMediaGallery)}
+                      showMediaGallery={showMediaGallery}
                       conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
                     />
-                  )}
-                </div>
-                {!showMediaGallery && (
-                  conversations.find(c => c._id === currentChat)?.type === 'channel' ? (
-                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
-                      <button
-                        onClick={handleLeaveChannel}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                      >
-                        Leave Channel
-                      </button>
+                    <div className="message-list-container flex-grow overflow-auto">
+                      {showMediaGallery ? (
+                        <MediaGallery
+                          channelName={conversations.find(c => c._id === currentChat)?.name || 'Channel'}
+                          onClose={() => setShowMediaGallery(false)}
+                        />
+                      ) : (
+                        <MessageList
+                          messages={messages[currentChat] || []}
+                          currentUserId={user._id}
+                          conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
+                        />
+                      )}
                     </div>
-                  ) : conversations.find(c => c._id === currentChat)?.type === 'bot' ? (
-                    <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
-                      <button
-                        onClick={handleStartBot}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                      >
-                        Start
-                      </button>
+                    {!showMediaGallery && (
+                      conversations.find(c => c._id === currentChat)?.type === 'channel' ? (
+                        <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                          <button
+                            onClick={handleLeaveChannel}
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                          >
+                            Leave Channel
+                          </button>
+                        </div>
+                      ) : conversations.find(c => c._id === currentChat)?.type === 'bot' ? (
+                        <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                          <button
+                            onClick={handleStartBot}
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                          >
+                            Start
+                          </button>
+                        </div>
+                      ) : (
+                        <MessageInput onSendMessage={handleSendMessage} />
+                      )
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <ChatHeader
+                      name={selectedSubgroup
+                        ? (selectedSubgroup.charAt(0).toUpperCase() + selectedSubgroup.slice(1)).replace(/-/g, ' ')
+                        : conversations.find(c => c._id === currentChat)?.name || ''}
+                      status="Online"
+                      isOnline={true}
+                      isTyping={false}
+                      avatar={conversations.find(c => c._id === currentChat)?.avatar}
+                      memberCount={conversations.find(c => c._id === currentChat)?.type === 'group' ? 156 : undefined}
+                      lastSeen="recently"
+                      onMenuClick={toggleSidebar}
+                      onProfileClick={toggleProfileSidebar}
+                      onStarClick={() => setShowMediaGallery(!showMediaGallery)}
+                      showMediaGallery={showMediaGallery}
+                      conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
+                    />
+                    <div className="message-list-container flex-grow overflow-auto">
+                      {showMediaGallery ? (
+                        <MediaGallery
+                          channelName={selectedSubgroup
+                            ? (selectedSubgroup.charAt(0).toUpperCase() + selectedSubgroup.slice(1)).replace(/-/g, ' ')
+                            : conversations.find(c => c._id === currentChat)?.name || 'Channel'}
+                          onClose={() => setShowMediaGallery(false)}
+                        />
+                      ) : (
+                        <MessageList
+                          messages={selectedSubgroup ? (messages[selectedSubgroup] || []) : (messages[currentChat] || [])}
+                          currentUserId={user._id}
+                          conversationType={conversations.find(c => c._id === currentChat)?.type as 'private' | 'group' | 'channel' | 'bot' || 'private'}
+                        />
+                      )}
                     </div>
-                  ) : (
-                    <MessageInput onSendMessage={handleSendMessage} />
-                  )
+                    {!showMediaGallery && (
+                      conversations.find(c => c._id === currentChat)?.type === 'channel' ? (
+                        <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                          <button
+                            onClick={handleLeaveChannel}
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                          >
+                            Leave Channel
+                          </button>
+                        </div>
+                      ) : conversations.find(c => c._id === currentChat)?.type === 'bot' ? (
+                        <div className="bg-gray-100 border-t border-gray-300 shadow-lg px-4 py-3 flex justify-center">
+                          <button
+                            onClick={handleStartBot}
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                          >
+                            Start
+                          </button>
+                        </div>
+                      ) : (
+                        <MessageInput onSendMessage={handleSendMessage} />
+                      )
+                    )}
+                  </>
                 )}
               </>
-            )}
-          </>
-        ) : (
-          <div className="h-full flex flex-col">
-            {activeSection === 'chats' && (
-              <div className="text-gray-500 p-20 text-center">
-                <h5>Select a conversation</h5>
-                <p>Choose a chat from the sidebar to start messaging</p>
-              </div>
-            )}
-            {activeSection === 'stories' && <Stories />}
-            {activeSection === 'explore' && (
-              <ExploreFeed 
-                activeFilter={exploreFilter}
-                onFilterChange={(filterId: string) => setExploreFilter(filterId)}
-              />
-            )}
-            {activeSection === 'groups' && (
-              <div className="text-gray-500 p-20 text-center">
-                <h5>Join or create groups</h5>
-                <p>Connect with people who share your interests</p>
-              </div>
-            )}
-            {activeSection === 'calls' && (
-              <div className="h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-                <div className="text-center max-w-md mx-auto p-8">
-                  <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-full flex items-center justify-center">
-                    <svg className="w-16 h-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
+            ) : (
+              <div className="h-full flex flex-col">
+                {activeSection === 'chats' && (
+                  <div className="text-gray-500 p-20 text-center">
+                    <h5>Select a conversation</h5>
+                    <p>Choose a chat from the sidebar to start messaging</p>
                   </div>
-                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">xmo</h3>
-                  <p className="text-gray-600 mb-4">
-                    Send and receive messages without keeping your phone online.
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Use xmo on up to 4 linked devices and 1 phone at the same time.
-                  </p>
-                </div>
+                )}
+                {activeSection === 'stories' && <Stories />}
+                {activeSection === 'explore' && (
+                  <ExploreFeed
+                    activeFilter={exploreFilter}
+                    onFilterChange={(filterId: string) => setExploreFilter(filterId)}
+                  />
+                )}
+                {activeSection === 'groups' && (
+                  <div className="text-gray-500 p-20 text-center">
+                    <h5>Join or create groups</h5>
+                    <p>Connect with people who share your interests</p>
+                  </div>
+                )}
+                {activeSection === 'calls' && (
+                  <div className="h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+                    <div className="text-center max-w-md mx-auto p-8">
+                      <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-full flex items-center justify-center">
+                        <svg className="w-16 h-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-800 mb-4">xmo</h3>
+                      <p className="text-gray-600 mb-4">
+                        Send and receive messages without keeping your phone online.
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        Use xmo on up to 4 linked devices and 1 phone at the same time.
+                      </p>
+                    </div>
+                  </div>
+                )}
+                {activeSection === 'pages' && (
+                  <div className="text-gray-500 p-20 text-center">
+                    <h5>Discover interesting pages</h5>
+                    <p>Follow pages to stay updated</p>
+                  </div>
+                )}
+                {activeSection === 'bots' && (
+                  <div className="text-gray-500 p-20 text-center">
+                    <h5>Find useful bots and commands</h5>
+                    <p>Enhance your chat experience</p>
+                  </div>
+                )}
+                {activeSection === 'saved' && (
+                  <div className="text-gray-500 p-20 text-center">
+                    <h5>View your saved messages</h5>
+                    <p>Access important information anytime</p>
+                  </div>
+                )}
               </div>
             )}
-            {activeSection === 'pages' && (
-              <div className="text-gray-500 p-20 text-center">
-                <h5>Discover interesting pages</h5>
-                <p>Follow pages to stay updated</p>
-              </div>
-            )}
-            {activeSection === 'bots' && (
-              <div className="text-gray-500 p-20 text-center">
-                <h5>Find useful bots and commands</h5>
-                <p>Enhance your chat experience</p>
-              </div>
-            )}
-            {activeSection === 'saved' && (
-              <div className="text-gray-500 p-20 text-center">
-                <h5>View your saved messages</h5>
-                <p>Access important information anytime</p>
-              </div>
-            )}
-          </div>
-        )}
           </div>
         </>
       )}

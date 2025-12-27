@@ -2974,7 +2974,7 @@ export default function ChatPage() {
       }
     ],
     // Emma Wilson Messages
-    '7': [
+    '106': [
       {
         _id: 'emma1',
         content: 'Hi! Thanks for your help with the project yesterday. You\'re a lifesaver! 🙌',

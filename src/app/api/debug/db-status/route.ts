@@ -8,12 +8,13 @@ export async function GET() {
     // Check MongoDB connection
     await connectDB();
     const dbState = mongoose.connection.readyState;
-    const dbStatus = {
+    const dbStatusMap: Record<number, string> = {
       0: "disconnected",
       1: "connected",
       2: "connecting",
       3: "disconnecting"
-    }[dbState];
+    };
+    const dbStatus = dbStatusMap[dbState] || "unknown";
 
     // Get all users (excluding passwords)
     const users = await User.find({}, { password: 0 });
@@ -31,4 +32,4 @@ export async function GET() {
       details: error instanceof Error ? error.message : String(error)
     }, { status: 500 });
   }
-} 
+}

@@ -88,13 +88,13 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
   const isImageAttachment = (attachment: any) => attachment.type.startsWith('image/');
   const isVideoAttachment = (attachment: any) => attachment.type.startsWith('video/');
   const isAudioAttachment = (attachment: any) => attachment.type.startsWith('audio/');
-  const isDocumentAttachment = (attachment: any) => 
+  const isDocumentAttachment = (attachment: any) =>
     attachment.type.startsWith('application/') || attachment.type.startsWith('text/');
 
   const getSenderColor = (senderId: string) => {
     const colors = [
       'from-red-400 to-pink-400',
-      'from-blue-400 to-indigo-400', 
+      'from-blue-400 to-indigo-400',
       'from-green-400 to-emerald-400',
       'from-yellow-400 to-orange-400',
       'from-purple-400 to-violet-400',
@@ -109,8 +109,8 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
       <div className="max-w-4xl mx-auto px-4 py-6 space-y-4">
         {messages.map((message, index) => {
           const isConsecutive = index > 0 && messages[index - 1].senderId === message.senderId;
-          const isOwn = message.senderId === currentUserId;
-          
+          const isOwn = message.senderId === currentUserId || message.senderId === 'current-user';
+
           return (
             <div
               key={message._id}
@@ -133,50 +133,49 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                     {getSenderDisplayName(message.senderId)[0]?.toUpperCase() || 'U'}
                   </div>
                 )}
-                
+
                 <div
                   className={`relative ${
                     // Wider container for document attachments in channels
-                    conversationType === 'channel' && message.attachments?.some(isDocumentAttachment) 
-                      ? 'max-w-lg' 
+                    conversationType === 'channel' && message.attachments?.some(isDocumentAttachment)
+                      ? 'max-w-lg'
                       : 'max-w-md'
-                  } overflow-hidden ${
+                    } overflow-hidden ${
                     // Voice messages have their own styling, no background needed
                     message.voiceMessage && !message.content
                       ? ''
                       : conversationType === 'channel' && !isOwn
                         ? 'bg-white text-gray-800 shadow-md rounded-xl border border-gray-200'
-                        : isOwn 
-                          ? 'bg-blue-500 text-white' 
+                        : isOwn
+                          ? 'bg-blue-500 text-white'
                           : 'bg-white text-gray-800 border border-gray-200'
-                  } ${
+                    } ${
                     // Add padding for text content and document attachments
-                    message.content && !message.attachments?.some(a => isImageAttachment(a) || isVideoAttachment(a)) 
-                      ? 'px-4 py-3' 
-                      : message.audioMessage 
+                    message.content && !message.attachments?.some(a => isImageAttachment(a) || isVideoAttachment(a))
+                      ? 'px-4 py-3'
+                      : message.audioMessage
                         ? 'px-4 py-3'
-                        : message.voiceMessage 
-                          ? 'p-0' 
+                        : message.voiceMessage
+                          ? 'p-0'
                           : message.attachments?.some(a => isImageAttachment(a) || isVideoAttachment(a))
                             ? 'p-0'
                             : message.attachments?.some(isDocumentAttachment)
                               ? 'px-4 py-3'
                               : 'p-0'
-                  } ${
-                    message.voiceMessage && !message.content
+                    } ${message.voiceMessage && !message.content
                       ? ''
                       : conversationType === 'channel' && !isOwn
                         ? 'rounded-xl'
-                        : isOwn 
-                          ? isConsecutive 
-                            ? 'rounded-2xl rounded-br-md' 
+                        : isOwn
+                          ? isConsecutive
+                            ? 'rounded-2xl rounded-br-md'
                             : 'rounded-2xl rounded-br-sm'
-                          : isConsecutive 
-                            ? 'rounded-2xl rounded-bl-md' 
+                          : isConsecutive
+                            ? 'rounded-2xl rounded-bl-md'
                             : 'rounded-2xl rounded-bl-sm'
-                  } ${message.voiceMessage && !message.content ? '' : 'shadow-sm'}`}
+                    } ${message.voiceMessage && !message.content ? '' : 'shadow-sm'}`}
                 >
-                  
+
                   {/* Sender name for group chats and channels */}
                   {!isOwn && !isConsecutive && (conversationType === 'group' || conversationType === 'channel') && (
                     <div className={`text-xs font-semibold text-blue-600 mb-1 ${conversationType === 'channel' ? 'text-left pl-4' : ''}`}>
@@ -188,27 +187,25 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                       🤖 {getSenderDisplayName(message.senderId)}
                     </div>
                   )}
-                  
+
                   {/* Link Preview */}
                   {message.linkPreview && (
                     <LinkPreview preview={message.linkPreview} />
                   )}
-                  
+
                   {/* Images - Grid layout for multiple images */}
                   {message.attachments && message.attachments.filter(isImageAttachment).length > 0 && (
                     <div className={conversationType === 'channel' ? 'rounded-b-xl overflow-hidden' : ''}>
-                      <div className={`${
-                        message.attachments.filter(isImageAttachment).length === 1 ? '' : 
+                      <div className={`${message.attachments.filter(isImageAttachment).length === 1 ? '' :
                         message.attachments.filter(isImageAttachment).length === 2 ? 'grid grid-cols-2 gap-1' :
-                        message.attachments.filter(isImageAttachment).length === 3 ? 'grid grid-cols-2 gap-1' :
-                        'grid grid-cols-2 gap-1'
-                      }`}>
+                          message.attachments.filter(isImageAttachment).length === 3 ? 'grid grid-cols-2 gap-1' :
+                            'grid grid-cols-2 gap-1'
+                        }`}>
                         {message.attachments.filter(isImageAttachment).map((attachment, idx) => (
-                          <div key={attachment.id} className={`relative ${
-                            message.attachments!.filter(isImageAttachment).length === 3 && idx === 0 ? 'col-span-2' : ''
-                          }`}>
-                            <img 
-                              src={attachment.url} 
+                          <div key={attachment.id} className={`relative ${message.attachments!.filter(isImageAttachment).length === 3 && idx === 0 ? 'col-span-2' : ''
+                            }`}>
+                            <img
+                              src={attachment.url}
                               alt={attachment.name}
                               className="w-full h-auto max-h-96 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                             />
@@ -244,29 +241,29 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                           {message.views !== undefined && (
                             <div className="flex items-center gap-1 text-xs text-gray-500">
                               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                               </svg>
                               <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
                             </div>
                           )}
                           {message.createdAt && (
                             <div className="text-xs text-gray-500">
-                              {new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                              {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             </div>
                           )}
                         </div>
                       )}
                     </div>
                   )}
-                  
+
                   {/* Videos */}
                   {message.attachments && message.attachments.filter(isVideoAttachment).length > 0 && (
                     <div className="space-y-2">
                       {message.attachments.filter(isVideoAttachment).map((attachment, idx) => (
                         <div key={attachment.id} className={conversationType === 'channel' ? 'rounded-xl overflow-hidden' : ''}>
                           <div className="relative bg-black">
-                            <video 
+                            <video
                               src={attachment.url}
                               controls
                               className="w-full max-h-96"
@@ -305,15 +302,15 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                               {message.views !== undefined && (
                                 <div className="flex items-center gap-1 text-xs text-gray-500">
                                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                                   </svg>
                                   <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
                                 </div>
                               )}
                               {message.createdAt && (
                                 <div className="text-xs text-gray-500">
-                                  {new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                                  {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </div>
                               )}
                             </div>
@@ -322,54 +319,54 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                       ))}
                     </div>
                   )}
-                  
+
                   {/* Message content - show only if no images/videos (otherwise it's inside the container) */}
-                  {message.content && !message.voiceMessage && 
-                   !(message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a) || isDocumentAttachment(a)).length > 0) && (
-                    <>
-                      <p className={`text-sm leading-none whitespace-pre-wrap ${conversationType === 'channel' ? 'text-gray-900' : isOwn ? 'text-white' : 'text-gray-900'}`}>
-                        {message.content.split(/(\bhttps?:\/\/[^\s]+)/g).map((part, index) => {
-                          if (part.match(/^https?:\/\//)) {
-                            return (
-                              <a
-                                key={index}
-                                href={part}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`underline hover:no-underline ${conversationType === 'channel' ? 'text-blue-500' : isOwn ? 'text-blue-200' : 'text-blue-500'}`}
-                              >
-                                {part}
-                              </a>
-                            );
-                          }
-                          return part;
-                        })}
-                      </p>
-                      {/* Views and timestamp inside text/link container for channels */}
-                      {conversationType === 'channel' && (message.views !== undefined || message.createdAt) && (
-                        <div className="flex items-center justify-end gap-2 mt-2">
-                          {message.views !== undefined && (
-                            <div className="flex items-center gap-1 text-xs text-gray-500">
-                              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-                              </svg>
-                              <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
-                            </div>
-                          )}
-                          {message.createdAt && (
-                            <div className="text-xs text-gray-500">
-                              {new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </>
-                  )}
-                  
+                  {message.content && !message.voiceMessage &&
+                    !(message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a) || isDocumentAttachment(a)).length > 0) && (
+                      <>
+                        <p className={`text-sm leading-none whitespace-pre-wrap ${conversationType === 'channel' ? 'text-gray-900' : isOwn ? 'text-white' : 'text-gray-900'}`}>
+                          {message.content.split(/(\bhttps?:\/\/[^\s]+)/g).map((part, index) => {
+                            if (part.match(/^https?:\/\//)) {
+                              return (
+                                <a
+                                  key={index}
+                                  href={part}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={`underline hover:no-underline ${conversationType === 'channel' ? 'text-blue-500' : isOwn ? 'text-blue-200' : 'text-blue-500'}`}
+                                >
+                                  {part}
+                                </a>
+                              );
+                            }
+                            return part;
+                          })}
+                        </p>
+                        {/* Views and timestamp inside text/link container for channels */}
+                        {conversationType === 'channel' && (message.views !== undefined || message.createdAt) && (
+                          <div className="flex items-center justify-end gap-2 mt-2">
+                            {message.views !== undefined && (
+                              <div className="flex items-center gap-1 text-xs text-gray-500">
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                                </svg>
+                                <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
+                              </div>
+                            )}
+                            {message.createdAt && (
+                              <div className="text-xs text-gray-500">
+                                {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </>
+                    )}
+
                   {/* Voice message - no title, just player */}
                   {message.voiceMessage && (
-                    <VoiceMessage 
+                    <VoiceMessage
                       voiceMessage={message.voiceMessage}
                       isOwn={isOwn}
                       views={message.views}
@@ -377,7 +374,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                       conversationType={conversationType}
                     />
                   )}
-                  
+
                   {/* Audio files - Podcast/Music player style */}
                   {message.audioMessage && (
                     <div className={`${message.content ? 'mt-2' : ''} bg-gray-100 rounded-lg p-4`}>
@@ -385,22 +382,22 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                       {message.content && (
                         <div className="flex items-center gap-2 mb-3">
                           <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
                           </svg>
                           <span className="text-sm font-medium text-gray-700 line-clamp-1">
                             {message.content}
                           </span>
                         </div>
                       )}
-                      
+
                       {/* Audio player */}
-                      <audio 
-                        src={message.audioMessage.url} 
-                        controls 
+                      <audio
+                        src={message.audioMessage.url}
+                        controls
                         className="w-full"
                         style={{ height: '40px' }}
                       />
-                      
+
                       {/* Duration */}
                       <div className="text-xs text-gray-500 mt-2">
                         Duration: {Math.floor(message.audioMessage.duration / 60)}:
@@ -408,70 +405,67 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
                       </div>
                     </div>
                   )}
-                  
+
                   {/* Document attachments (PDFs, etc) - no outer container, no text */}
                   {message.attachments && message.attachments.filter(isDocumentAttachment).length > 0 && (
                     <div className="space-y-2">
                       {message.attachments.filter(isDocumentAttachment).map(attachment => (
-                        <FileAttachment 
-                          key={attachment.id} 
+                        <FileAttachment
+                          key={attachment.id}
                           file={attachment}
-                          timestamp={conversationType === 'channel' ? new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : undefined}
+                          timestamp={conversationType === 'channel' ? new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : undefined}
                           views={conversationType === 'channel' ? message.views : undefined}
                         />
                       ))}
                     </div>
                   )}
-                  
+
                   {/* Message footer - hide for document attachments, voice messages, images, videos, and text/link messages in channels as they have their own footer */}
-                  {!message.attachments?.some(isDocumentAttachment) && !message.voiceMessage && 
-                   !(message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0) &&
-                   !(conversationType === 'channel' && message.content && !message.audioMessage) && (
-                  <div className={`flex items-center justify-end gap-2 ${
-                    message.content || message.audioMessage 
-                      ? 'mt-2' 
-                      : 'absolute bottom-2 right-2 bg-black bg-opacity-50 px-2 py-1 rounded'
-                  }`}>
-                    {/* View count for channels */}
-                    {conversationType === 'channel' && message.views && (
-                      <div className={`flex items-center gap-1 text-xs ${
-                        message.content || message.audioMessage || (message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0)
-                          ? (isOwn ? 'text-white opacity-80' : 'text-gray-500') 
+                  {!message.attachments?.some(isDocumentAttachment) && !message.voiceMessage &&
+                    !(message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0) &&
+                    !(conversationType === 'channel' && message.content && !message.audioMessage) && (
+                      <div className={`flex items-center justify-end gap-2 ${message.content || message.audioMessage
+                        ? 'mt-2'
+                        : 'absolute bottom-2 right-2 bg-black bg-opacity-50 px-2 py-1 rounded'
+                        }`}>
+                        {/* View count for channels */}
+                        {conversationType === 'channel' && message.views && (
+                          <div className={`flex items-center gap-1 text-xs ${message.content || message.audioMessage || (message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0)
+                            ? (isOwn ? 'text-white opacity-80' : 'text-gray-500')
+                            : 'text-white'
+                            }`}>
+                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                            </svg>
+                            <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
+                          </div>
+                        )}
+
+                        <div className={`text-xs ${message.content || message.audioMessage || (message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0)
+                          ? (isOwn ? 'text-white opacity-80' : 'text-gray-500')
                           : 'text-white'
-                      }`}>
-                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                          <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-                        </svg>
-                        <span>{message.views >= 1000 ? `${(message.views / 1000).toFixed(1)}K` : message.views}</span>
-                      </div>
-                    )}
-                    
-                    <div className={`text-xs ${
-                      message.content || message.audioMessage || (message.attachments && message.attachments.filter(a => isImageAttachment(a) || isVideoAttachment(a)).length > 0)
-                        ? (isOwn ? 'text-white opacity-80' : 'text-gray-500')
-                        : 'text-white'
-                    }`}>
-                      {new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                    </div>
-                    
-                    {/* Read receipts - only show for outgoing messages */}
-                    {isOwn && (
-                      <div className="flex items-center">
-                        {message.isRead ? (
-                          <FiCheckCircle size={12} className={message.content || message.audioMessage ? 'text-white opacity-80' : 'text-white'} />
-                        ) : (
-                          <FiCheck size={12} className={message.content || message.audioMessage ? 'text-white opacity-80' : 'text-white'} />
+                          }`}>
+                          {new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </div>
+
+                        {/* Read receipts - only show for outgoing messages */}
+                        {isOwn && (
+                          <div className="flex items-center">
+                            {message.isRead ? (
+                              <FiCheckCircle size={12} className={message.content || message.audioMessage ? 'text-white opacity-80' : 'text-white'} />
+                            ) : (
+                              <FiCheck size={12} className={message.content || message.audioMessage ? 'text-white opacity-80' : 'text-white'} />
+                            )}
+                          </div>
                         )}
                       </div>
                     )}
-                  </div>
-                  )}
-                  
+
                   {/* Message reactions */}
                   {message.reactions && message.reactions.length > 0 && (
                     <div className="mt-2">
-                      <MessageReaction 
+                      <MessageReaction
                         reactions={message.reactions}
                         messageId={message._id}
                         currentUserId={currentUserId}
@@ -484,7 +478,7 @@ export default function MessageList({ messages, currentUserId, typingUsers = [],
             </div>
           );
         })}
-        
+
         {/* Typing indicators */}
         {typingUsers.length > 0 && (
           <div className="flex justify-start mt-4">

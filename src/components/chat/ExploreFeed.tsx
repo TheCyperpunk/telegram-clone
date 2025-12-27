@@ -9,202 +9,56 @@ import FeedsContent from './FeedsContent';
 import PagesContent from './PagesContent';
 
 // Unsplash photo URLs for posts with different dimensions and orientations
+// Unsplash photo URLs - Curated list of reliable high-quality images
 const unsplashPhotos = [
-  // Landscape/Wide Images
-  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=400&auto=format&fit=crop&q=60', // Mountain landscape
-  'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&h=350&auto=format&fit=crop&q=60', // Nature wide
-  'https://images.unsplash.com/photo-1682687220923-c7a7cf9ece67?w=700&h=300&auto=format&fit=crop&q=60', // Beach sunset wide
-  'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=650&h=400&auto=format&fit=crop&q=60', // Sunset field
+  // Nature & Landscapes
+  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&auto=format&fit=crop&q=60',
 
-  // Portrait/Tall Images
-  'https://images.unsplash.com/photo-1520962880247-cfaf541c8724?w=400&h=600&auto=format&fit=crop&q=60', // Travel portrait
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=350&h=550&auto=format&fit=crop&q=60', // Mountain portrait
-  'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=400&h=650&auto=format&fit=crop&q=60', // Forest tall
-  'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=350&h=600&auto=format&fit=crop&q=60', // Waterfall tall
+  // Architecture & Urban
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&auto=format&fit=crop&q=60',
 
-  // Square Images
-  'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&h=500&auto=format&fit=crop&q=60', // Sunset square
-  'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=450&h=450&auto=format&fit=crop&q=60', // Beach square
-  'https://images.unsplash.com/photo-1682687220208-22d7a2543e88?w=500&h=500&auto=format&fit=crop&q=60', // Food square
-  'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?w=480&h=480&auto=format&fit=crop&q=60', // Coffee square
+  // Technology & Work
+  'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1504384308090-c54be3852f33?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&q=60',
 
-  // Design/UI Images
-  'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&auto=format&fit=crop&q=60', // Design work
-  'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=500&h=400&auto=format&fit=crop&q=60', // Tech/coding
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=450&h=350&auto=format&fit=crop&q=60', // Workspace
-  'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=600&auto=format&fit=crop&q=60', // Mobile design
+  // Lifestyle & People
+  'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&auto=format&fit=crop&q=60',
 
-  // Architecture/Modern
-  'https://images.unsplash.com/photo-1682686581854-5e71f58e7e3f?w=350&h=500&auto=format&fit=crop&q=60', // Modern architecture
-  'https://images.unsplash.com/photo-1682687982167-d7fb3ed8541d?w=600&h=400&auto=format&fit=crop&q=60', // City street
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=550&auto=format&fit=crop&q=60', // Building tall
-  'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&auto=format&fit=crop&q=60', // Architecture wide
+  // Food & Drink
+  'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1499028344343-cd17bfa55a08?w=800&auto=format&fit=crop&q=60',
 
-  // Creative/Art
-  'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=500&auto=format&fit=crop&q=60', // Abstract art
-  'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=350&h=600&auto=format&fit=crop&q=60', // Creative portrait
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=350&auto=format&fit=crop&q=60', // Art/design
-  'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=450&h=450&auto=format&fit=crop&q=60', // Creative square
+  // Arts & Abstract
+  'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=60',
 
-  // Fashion/Lifestyle
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=350&h=550&auto=format&fit=crop&q=60', // Fashion portrait
-  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=600&auto=format&fit=crop&q=60', // Lifestyle tall
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&h=400&auto=format&fit=crop&q=60', // Fashion wide
-  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=480&h=480&auto=format&fit=crop&q=60', // Lifestyle square
-
-  // Food/Products
-  'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=500&auto=format&fit=crop&q=60', // Food portrait
-  'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=350&auto=format&fit=crop&q=60', // Food wide
-  'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=450&h=450&auto=format&fit=crop&q=60', // Product square
-  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=350&h=550&auto=format&fit=crop&q=60', // Product tall
-
-  // Cars/Automotive
-  'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&auto=format&fit=crop&q=60', // Sports car wide
-  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=600&auto=format&fit=crop&q=60', // Classic car portrait
-  'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=500&auto=format&fit=crop&q=60', // Luxury car square
-  'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=350&h=550&auto=format&fit=crop&q=60', // Vintage car tall
-  'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=650&h=350&auto=format&fit=crop&q=60', // Race car wide
-  'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=500&auto=format&fit=crop&q=60', // Modern car portrait
-
-  // Festivals/Events
-  'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=500&h=400&auto=format&fit=crop&q=60', // Music festival wide
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=600&auto=format&fit=crop&q=60', // Concert tall
-  'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=450&h=450&auto=format&fit=crop&q=60', // Festival crowd square
-  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=350&h=550&auto=format&fit=crop&q=60', // Stage lights tall
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&h=350&auto=format&fit=crop&q=60', // Festival stage wide
-
-  // Cats/Pets
-  'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=500&auto=format&fit=crop&q=60', // Cat portrait
-  'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=450&h=450&auto=format&fit=crop&q=60', // Cat square
-  'https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=350&h=550&auto=format&fit=crop&q=60', // Kitten tall
-  'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=500&h=350&auto=format&fit=crop&q=60', // Cat wide
-  'https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400&h=600&auto=format&fit=crop&q=60', // Cat eyes portrait
-  'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=480&h=480&auto=format&fit=crop&q=60', // Cute cat square
-
-  // Houses/Architecture
-  'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=400&auto=format&fit=crop&q=60', // Modern house wide
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=600&auto=format&fit=crop&q=60', // House exterior tall
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=450&h=450&auto=format&fit=crop&q=60', // Cozy house square
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=350&h=550&auto=format&fit=crop&q=60', // Villa tall
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=350&auto=format&fit=crop&q=60', // House landscape wide
-  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&h=500&auto=format&fit=crop&q=60',  // Dream house portrait
-
-  // More Nature/Landscapes
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&auto=format&fit=crop&q=60', // Mountain sunset
-  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=600&auto=format&fit=crop&q=60', // Forest path
-  'https://images.unsplash.com/photo-1418065460487-3956c3043632?w=600&h=350&auto=format&fit=crop&q=60', // Lake reflection
-  'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=450&h=450&auto=format&fit=crop&q=60', // Autumn leaves
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=350&h=550&auto=format&fit=crop&q=60', // Mountain peak
-
-  // Urban/City
-  'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400&h=500&auto=format&fit=crop&q=60', // City skyline
-  'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=400&auto=format&fit=crop&q=60', // City lights
-  'https://images.unsplash.com/photo-1514565131-fce0801e5785?w=350&h=600&auto=format&fit=crop&q=60', // Neon signs
-  'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&auto=format&fit=crop&q=60', // Modern building
-  'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=450&h=450&auto=format&fit=crop&q=60', // Urban street
-
-  // Abstract/Art
-  'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=500&auto=format&fit=crop&q=60', // Abstract colors
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=350&auto=format&fit=crop&q=60', // Geometric art
-  'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=450&h=450&auto=format&fit=crop&q=60', // Color splash
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=350&h=550&auto=format&fit=crop&q=60', // Abstract pattern
-
-  // Technology/Modern
-  'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=400&auto=format&fit=crop&q=60', // Tech setup
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=600&auto=format&fit=crop&q=60', // Data visualization
-  'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=450&h=450&auto=format&fit=crop&q=60', // Digital interface
-  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=350&h=550&auto=format&fit=crop&q=60', // Security tech
-
-  // Ocean/Water
-  'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=400&auto=format&fit=crop&q=60', // Ocean waves
-  'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&h=500&auto=format&fit=crop&q=60', // Underwater
-  'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=450&h=450&auto=format&fit=crop&q=60', // Beach aerial
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=350&h=550&auto=format&fit=crop&q=60', // Tropical water
-
-  // Space/Sky
-  'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=500&h=400&auto=format&fit=crop&q=60', // Starry night
-  'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=400&h=600&auto=format&fit=crop&q=60', // Galaxy
-  'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=450&h=450&auto=format&fit=crop&q=60', // Clouds
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=350&h=550&auto=format&fit=crop&q=60', // Aurora
-
-  // Flowers/Plants
-  'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=500&auto=format&fit=crop&q=60', // Sunflower
-  'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=350&auto=format&fit=crop&q=60', // Rose garden
-  'https://images.unsplash.com/photo-1464822759844-d150baec0494?w=450&h=450&auto=format&fit=crop&q=60', // Tropical plants
-  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=350&h=550&auto=format&fit=crop&q=60', // Forest canopy
-
-  // Minimalist/Clean
-  'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=600&auto=format&fit=crop&q=60', // Clean design
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=400&auto=format&fit=crop&q=60', // Minimal workspace
-  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=450&h=450&auto=format&fit=crop&q=60', // Simple objects
-  'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=350&h=550&auto=format&fit=crop&q=60', // Clean lines
-
-  // Sports/Fitness
-  'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&auto=format&fit=crop&q=60', // Gym workout
-  'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=600&auto=format&fit=crop&q=60', // Running
-  'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=450&h=450&auto=format&fit=crop&q=60', // Yoga
-  'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=350&h=550&auto=format&fit=crop&q=60', // Cycling
-  'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&h=350&auto=format&fit=crop&q=60', // Basketball
-
-  // Coffee/Cafe
-  'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=500&auto=format&fit=crop&q=60', // Coffee cup
-  'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=350&auto=format&fit=crop&q=60', // Cafe interior
-  'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=450&h=450&auto=format&fit=crop&q=60', // Latte art
-  'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=350&h=550&auto=format&fit=crop&q=60', // Coffee beans
-
-  // Books/Reading
-  'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&auto=format&fit=crop&q=60', // Book stack
-  'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&h=400&auto=format&fit=crop&q=60', // Library
-  'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=450&h=450&auto=format&fit=crop&q=60', // Open book
-  'https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=350&h=550&auto=format&fit=crop&q=60', // Reading corner
-
-  // Travel/Adventure
-  'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&auto=format&fit=crop&q=60', // Travel map
-  'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=600&auto=format&fit=crop&q=60', // Airplane wing
-  'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=450&h=450&auto=format&fit=crop&q=60', // Passport
-  'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=350&h=550&auto=format&fit=crop&q=60', // Backpack
-
-  // Watches/Accessories
-  'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=500&auto=format&fit=crop&q=60', // Watch close-up
-  'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=500&h=350&auto=format&fit=crop&q=60', // Sunglasses
-  'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=450&h=450&auto=format&fit=crop&q=60', // Jewelry
-  'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=350&h=550&auto=format&fit=crop&q=60', // Accessories
-
-  // Gaming/Entertainment
-  'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&auto=format&fit=crop&q=60', // Gaming setup
-  'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=600&auto=format&fit=crop&q=60', // Controller
-  'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=450&h=450&auto=format&fit=crop&q=60', // Gaming room
-  'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=350&h=550&auto=format&fit=crop&q=60', // Headphones
-
-  // Workspace/Office
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=400&auto=format&fit=crop&q=60', // Office desk
-  'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=600&auto=format&fit=crop&q=60', // Modern office
-  'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=450&h=450&auto=format&fit=crop&q=60', // Laptop work
-  'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=350&h=550&auto=format&fit=crop&q=60', // Team meeting
-
-  // Drinks/Beverages
-  'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=500&auto=format&fit=crop&q=60', // Cocktail
-  'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=350&auto=format&fit=crop&q=60', // Smoothie
-  'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=450&h=450&auto=format&fit=crop&q=60', // Tea time
-  'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=350&h=550&auto=format&fit=crop&q=60', // Wine glass
-
-  // Desserts/Sweets
-  'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=600&auto=format&fit=crop&q=60', // Cake
-  'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&h=400&auto=format&fit=crop&q=60', // Donuts
-  'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=450&h=450&auto=format&fit=crop&q=60', // Ice cream
-  'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=350&h=550&auto=format&fit=crop&q=60', // Cupcakes
-
-  // Vintage/Retro
-  'https://images.unsplash.com/photo-1485579149621-3123dd979885?w=600&h=400&auto=format&fit=crop&q=60', // Vintage camera
-  'https://images.unsplash.com/photo-1493612276216-ee3925520721?w=400&h=600&auto=format&fit=crop&q=60', // Record player
-  'https://images.unsplash.com/photo-1519558260268-cde7e03a0152?w=450&h=450&auto=format&fit=crop&q=60', // Vintage radio
-  'https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=350&h=550&auto=format&fit=crop&q=60', // Retro items
-
-  // Mountains/Hiking
-  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&h=400&auto=format&fit=crop&q=60', // Mountain peak
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&auto=format&fit=crop&q=60', // Hiking trail
-  'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=450&h=450&auto=format&fit=crop&q=60', // Mountain lake
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=350&h=550&auto=format&fit=crop&q=60'  // Alpine view
+  // Animals
+  'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800&auto=format&fit=crop&q=60'
 ];
 
 // Unsplash profile photos for avatars
@@ -586,7 +440,498 @@ const socialMediaContent = [
     type: 'photo' as PostType,
     height: 380,
     aspectRatio: 'tall' as const
+  },
+
+  // OK.ru Videos
+  {
+    id: 'ok-1',
+    username: 'OKContent',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 Viral OK Content',
+    likes: 45678,
+    comments: 892,
+    shares: 1234,
+    time: '2 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '3:45',
+    videoId: '9284627729025',
+    platform: 'ok'
+  },
+  {
+    id: 'ok-2',
+    username: 'OKTrending',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1492619875027-88519f0782b9?w=800&auto=format&fit=crop&q=60',
+    caption: '🔥 Amazing Moments',
+    likes: 67890,
+    comments: 1456,
+    shares: 2345,
+    time: '1 day ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '4:20',
+    videoId: '10680389208622',
+    platform: 'ok'
+  },
+  {
+    id: 'ok-3',
+    username: 'OKViral',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=60',
+    caption: '📹 Must Watch!',
+    likes: 34567,
+    comments: 678,
+    shares: 890,
+    time: '3 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '2:30',
+    videoId: '7475662490142',
+    platform: 'ok'
+  },
+  {
+    id: 'ok-4',
+    username: 'OKHits',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1492724441997-cd780d836b39?w=800&auto=format&fit=crop&q=60',
+    caption: '🎥 Trending Now',
+    likes: 56789,
+    comments: 1234,
+    shares: 1678,
+    time: '4 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '5:15',
+    videoId: '8251410876978',
+    platform: 'ok'
+  },
+  {
+    id: 'ok-5',
+    username: 'OKBest',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=60',
+    caption: '✨ Epic Content',
+    likes: 78901,
+    comments: 2345,
+    shares: 3456,
+    time: '5 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '3:00',
+    videoId: '8251402357298',
+    platform: 'ok'
+  },
+
+  // Twitter/X Posts
+  {
+    id: 'twitter-1',
+    username: 'harbour_ind_cap',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60', // Data analytics dashboard
+    caption: '📊 Industry Insights',
+    likes: 12345,
+    comments: 234,
+    shares: 456,
+    time: '6 hours ago',
+    type: 'photo' as PostType,
+    height: 250,
+    aspectRatio: 'square' as const,
+    platform: 'twitter'
+  },
+  {
+    id: 'twitter-2',
+    username: 'TechUpdates',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=60', // Tech workspace
+    caption: '🚀 Breaking Tech News',
+    likes: 23456,
+    comments: 567,
+    shares: 890,
+    time: '12 hours ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '1:45',
+    videoId: '1987991875811528876',
+    platform: 'twitter'
+  },
+  {
+    id: 'twitter-3',
+    username: 'DOTmeetups',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60', // Conference/meetup
+    caption: '🎯 Community Event',
+    likes: 34567,
+    comments: 678,
+    shares: 901,
+    time: '1 day ago',
+    type: 'photo' as PostType,
+    height: 250,
+    aspectRatio: 'square' as const,
+    platform: 'twitter'
+  },
+  {
+    id: 'twitter-4',
+    username: 'WTFxZo',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=60', // Digital/futuristic
+    caption: '😱 Mind Blown!',
+    likes: 45678,
+    comments: 890,
+    shares: 1234,
+    time: '2 days ago',
+    type: 'photo' as PostType,
+    height: 250,
+    aspectRatio: 'square' as const,
+    platform: 'twitter'
+  },
+  {
+    id: 'twitter-5',
+    username: 'TrendingNow',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&auto=format&fit=crop&q=60', // Social media concept
+    caption: '🔥 Viral Tweet',
+    likes: 56789,
+    comments: 1234,
+    shares: 2345,
+    time: '3 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '0:45',
+    videoId: '1987931778825551978',
+    platform: 'twitter'
+  },
+  {
+    id: 'twitter-6',
+    username: 'NewsBreaker',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=60', // News/journalism
+    caption: '📰 Latest Updates',
+    likes: 67890,
+    comments: 1456,
+    shares: 2678,
+    time: '4 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '1:20',
+    videoId: '1987765669069541866',
+    platform: 'twitter'
+  },
+
+  // Bilibili Video
+  {
+    id: 'bilibili-new-1',
+    username: 'BilibiliCreator',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 Epic Bilibili Content',
+    likes: 89012,
+    comments: 2345,
+    shares: 3456,
+    time: '1 day ago',
+    type: 'video' as PostType,
+    height: 180,
+    aspectRatio: 'wide' as const,
+    duration: '8:45',
+    videoId: 'BV1Cj2ABwEkr',
+    platform: 'bilibili'
+  },
+
+  // Reddit Post
+  {
+    id: 'reddit-1',
+    username: 'NothingTech',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=60',
+    caption: '📱 Nothing 2a - 1 Year Experience',
+    likes: 12345,
+    comments: 456,
+    shares: 789,
+    time: '8 hours ago',
+    type: 'article' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    title: 'Nothing 2a Review',
+    source: 'reddit.com'
+  },
+
+  // Instagram Reels
+  {
+    id: 'instagram-new-1',
+    username: 'InstaCreator',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1492619875027-88519f0782b9?w=800&auto=format&fit=crop&q=60',
+    caption: '✨ Amazing Reel',
+    likes: 78901,
+    comments: 1567,
+    shares: 2345,
+    time: '10 hours ago',
+    type: 'short_video' as PostType,
+    height: 400,
+    aspectRatio: 'portrait' as const,
+    duration: '0:28',
+    videoId: 'DP0WfWtgXCI',
+    platform: 'instagram'
+  },
+  {
+    id: 'instagram-new-2',
+    username: 'ReelMaster',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=60',
+    caption: '🎥 Trending Reel',
+    likes: 90123,
+    comments: 2345,
+    shares: 3456,
+    time: '14 hours ago',
+    type: 'short_video' as PostType,
+    height: 400,
+    aspectRatio: 'portrait' as const,
+    duration: '0:35',
+    videoId: 'CwuwoWUyzip',
+    platform: 'instagram'
+  },
+  {
+    id: 'instagram-new-3',
+    username: 'ViralReels',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1492724441997-cd780d836b39?w=800&auto=format&fit=crop&q=60',
+    caption: '🔥 Must Watch Reel',
+    likes: 101234,
+    comments: 3456,
+    shares: 4567,
+    time: '18 hours ago',
+    type: 'short_video' as PostType,
+    height: 400,
+    aspectRatio: 'portrait' as const,
+    duration: '0:42',
+    videoId: 'DKwulmHSfco',
+    platform: 'instagram'
+  },
+
+  // Pinterest Pins
+  {
+    id: 'pinterest-1',
+    username: 'PinInspiration',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=60',
+    caption: '📌 Beautiful Design',
+    likes: 23456,
+    comments: 345,
+    shares: 567,
+    time: '1 day ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '912190099547923690',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-2',
+    username: 'CreativeIdeas',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&auto=format&fit=crop&q=60',
+    caption: '🎨 Artistic Vision',
+    likes: 34567,
+    comments: 456,
+    shares: 678,
+    time: '2 days ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '5066618329889076',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-3',
+    username: 'DesignLovers',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=60',
+    caption: '✨ Stunning Pin',
+    likes: 45678,
+    comments: 567,
+    shares: 789,
+    time: '3 days ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '2111131073162433',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-4',
+    username: 'PinPerfect',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&auto=format&fit=crop&q=60',
+    caption: '🌟 Inspiration Board',
+    likes: 56789,
+    comments: 678,
+    shares: 890,
+    time: '4 days ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '912190099546073047',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-5',
+    username: 'TrendyPins',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&auto=format&fit=crop&q=60',
+    caption: '💡 Creative Ideas',
+    likes: 67890,
+    comments: 789,
+    shares: 901,
+    time: '5 days ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '912190099546441807',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-6',
+    username: 'PinStyle',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=60',
+    caption: '🏛️ Architecture Pin',
+    likes: 78901,
+    comments: 890,
+    shares: 1012,
+    time: '6 days ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '912190099547886508',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-7',
+    username: 'PinCollection',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&auto=format&fit=crop&q=60',
+    caption: '🌆 Urban Beauty',
+    likes: 89012,
+    comments: 901,
+    shares: 1123,
+    time: '1 week ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '912190099547916785',
+    platform: 'pinterest'
+  },
+  {
+    id: 'pinterest-8',
+    username: 'PinArt',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop&q=60',
+    caption: '🎭 Creative Expression',
+    likes: 90123,
+    comments: 1012,
+    shares: 1234,
+    time: '1 week ago',
+    type: 'photo' as PostType,
+    height: 380,
+    aspectRatio: 'tall' as const,
+    videoId: '3166662232566124',
+    platform: 'pinterest'
+  },
+
+  // VK Videos
+  {
+    id: 'vk-new-1',
+    username: 'VKCreative',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1574267432644-f610f5b7e4d1?w=800&auto=format&fit=crop&q=60',
+    caption: '🎬 VK Exclusive',
+    likes: 45678,
+    comments: 789,
+    shares: 1012,
+    time: '1 day ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '5:30',
+    videoId: '-139315008_456253741',
+    platform: 'vk'
+  },
+  {
+    id: 'vk-new-2',
+    username: 'VKTrends',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&auto=format&fit=crop&q=60',
+    caption: '🔥 Trending VK',
+    likes: 56789,
+    comments: 890,
+    shares: 1234,
+    time: '2 days ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '4:15',
+    videoId: '-49388814_456317476',
+    platform: 'vk'
+  },
+
+  // Rutube Video
+  {
+    id: 'rutube-new-1',
+    username: 'RutubeHits',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=60',
+    image: 'https://pic.rutubelist.ru/video/6c/9b/6c9ba68fed4cd8cfdbc077d99f5e1a65.jpg',
+    caption: '🎥 Rutube Featured',
+    likes: 67890,
+    comments: 1234,
+    shares: 2345,
+    time: '1 day ago',
+    type: 'video' as PostType,
+    height: 200,
+    aspectRatio: 'landscape' as const,
+    duration: '6:20',
+    videoId: '6c9ba68fed4cd8cfdbc077d99f5e1a65',
+    platform: 'rutube'
   }
+];
+
+// YouTube Movie Trailers provided by user
+const youtubeTrailers = [
+  { id: 'YoHD9XEInc0', title: 'Inception - Official Trailer' },
+  { id: 'zSWdZVtXT7E', title: 'Interstellar - Official Trailer' },
+  { id: 'EXeTwQWrcwY', title: 'The Dark Knight - Trailer' },
+  { id: '5PSNL1qE6VY', title: 'Avatar - Official Trailer' },
+  { id: 'TcMBFSGVi1c', title: 'Avengers: Endgame - Official Trailer' },
+  { id: '6ZfuNTqbHE8', title: 'Avengers: Infinity War - Trailer' },
+  { id: 'L3pk_TBkihU', title: 'Spider-Man: No Way Home - Trailer' },
+  { id: 'OiTiKOy59o4', title: 'Joker - Final Trailer' },
+  { id: 'n9xhJrPXop4', title: 'Dune - Official Trailer' },
+  { id: 'hEJnMQG9ev8', title: 'Mad Max: Fury Road - Trailer' },
+  { id: 'RFinNxS5KN4', title: 'Jurassic Park - Trailer' },
+  { id: '9ix7TUGVYIo', title: 'The Matrix - Trailer' },
+  { id: '2AUmvWm5ZDQ', title: 'Gladiator - Trailer' },
+  { id: 'wb49-oV0F78', title: 'Mission: Impossible - Fallout' },
+  { id: 'mqqft2x_Aa4', title: 'The Batman - Main Trailer' },
+  { id: 'dxWvtMOGAhw', title: 'Oppenheimer - New Trailer' },
+  { id: 'Lt-U_t2pUHI', title: 'Blade Runner 2049 - Trailer' },
+  { id: 'NbFAl6u6Q_c', title: 'Cyberpunk 2077 - Cinematic Trailer' },
+  { id: 'sGbxmsDFVnE', title: 'Stranger Things 4 - Trailer' },
+  { id: 'LoebZZ8K5N0', title: 'The Witcher - Main Trailer' }
+];
+
+// Dailymotion Videos provided by user
+const dailymotionVideos = [
+  'x8q0g1a', 'x8p2f3m', 'x8h2p7l', 'x8l9z8v', 'x8m6t8k',
+  'x8o1mcz', 'x8k8xsu', 'x8gyr4n', 'x8r6f0o', 'x8mjqsa',
+  'x8o7n28'
 ];
 
 // Generate posts with mixed social media content
@@ -594,7 +939,7 @@ const generatePosts = (): Post[] => {
   const postTypes: PostType[] = ['photo', 'photos', 'video', 'short_video', 'music', 'article'];
   const timeAgo = ['Just now', '5m ago', '10m ago', '15m ago', '30m ago', '1h ago', '2h ago', '3h ago', 'Yesterday', '2d ago'];
 
-  const regularPosts = Array.from({ length: 80 }, (_, i) => {
+  const regularPosts = Array.from({ length: 120 }, (_, i) => {
     const type = postTypes[i % 6];
     const randomUsername = usernames[Math.floor(Math.random() * usernames.length)];
     const randomCaption = captions[Math.floor(Math.random() * captions.length)];
@@ -645,8 +990,46 @@ const generatePosts = (): Post[] => {
     return post;
   });
 
+  // Convert YouTube trailers to Posts
+  const trailerPosts: Post[] = youtubeTrailers.map((trailer, index) => ({
+    id: `trailer-${index}`,
+    username: 'MovieTrailers',
+    avatar: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=150&auto=format&fit=crop&q=60', // Cinema icon/image
+    image: `https://img.youtube.com/vi/${trailer.id}/maxresdefault.jpg`,
+    caption: trailer.title,
+    likes: Math.floor(Math.random() * 100000) + 5000,
+    comments: Math.floor(Math.random() * 5000) + 100,
+    shares: Math.floor(Math.random() * 10000) + 500,
+    time: `${Math.floor(Math.random() * 12) + 1} months ago`,
+    type: 'video',
+    height: 180,
+    aspectRatio: 'wide',
+    duration: '2:30', // Approx duration
+    videoId: trailer.id,
+    platform: 'youtube'
+  }));
+
+  // Convert Dailymotion videos to Posts
+  const dailymotionPosts: Post[] = dailymotionVideos.map((id, index) => ({
+    id: `dm-${index}`,
+    username: 'DailymotionHits',
+    avatar: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=150&auto=format&fit=crop&q=60', // Video icon/image
+    image: `https://www.dailymotion.com/thumbnail/video/${id}`,
+    caption: `Featured Video #${index + 1}`,
+    likes: Math.floor(Math.random() * 50000) + 1000,
+    comments: Math.floor(Math.random() * 2000) + 50,
+    shares: Math.floor(Math.random() * 5000) + 100,
+    time: `${Math.floor(Math.random() * 30) + 1} days ago`,
+    type: 'video',
+    height: 180,
+    aspectRatio: 'wide',
+    duration: '5:00', // Approx duration
+    videoId: id,
+    platform: 'dailymotion'
+  }));
+
   // Mix social media content with regular posts randomly
-  const allPosts = [...regularPosts, ...socialMediaContent];
+  const allPosts = [...regularPosts, ...socialMediaContent, ...trailerPosts, ...dailymotionPosts];
 
   // Shuffle the array to mix content randomly
   for (let i = allPosts.length - 1; i > 0; i--) {
@@ -707,7 +1090,7 @@ export default function ExploreFeed({ activeFilter: externalFilter, onFilterChan
           <div className="posts-container overflow-auto flex-1 bg-gray-50">
             <div className="w-full py-4">
               <div className="max-w-7xl mx-auto px-4">
-                <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
+                <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4">
                   {posts.map((post) => (
                     <PinterestCard key={post.id} post={post} formatNumber={formatNumber} onPostClick={handlePostClick} />
                   ))}
@@ -741,9 +1124,30 @@ export default function ExploreFeed({ activeFilter: externalFilter, onFilterChan
   );
 }
 
-// Pinterest Card Component
+// Fallback images for broken thumbnails
+const fallbackImages = [
+  'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=60', // Tech
+  'https://images.unsplash.com/photo-1492619875027-88519f0782b9?w=800&auto=format&fit=crop&q=60', // Music
+  'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=60', // Camera
+  'https://images.unsplash.com/photo-1492724441997-cd780d836b39?w=800&auto=format&fit=crop&q=60', // Abstract
+  'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=60', // Gaming
+  'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&auto=format&fit=crop&q=60', // Anime
+];
+
+// PinterestCard Component with robust image handling
 function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, formatNumber: (num: number) => string, onPostClick?: (post: Post) => void }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imgSrc, setImgSrc] = useState(post.image);
+
+  useEffect(() => {
+    setImgSrc(post.image);
+  }, [post.image]);
+
+  const handleImageError = () => {
+    // Pick a fallback based on post ID hash to be consistent but varied
+    const hash = post.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    setImgSrc(fallbackImages[hash % fallbackImages.length]);
+  };
 
   return (
     <div
@@ -758,24 +1162,14 @@ function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, format
           {/* Show thumbnails for all videos - click navigates to detail page */}
           {(post as any).platform && (post.type === 'video' || post.type === 'short_video') ? (
             <>
-              <Image
-                src={post.image}
+              <img
+                src={imgSrc}
                 alt={post.caption}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                onError={handleImageError}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
 
-              {/* Platform Badge - Top Left */}
-              <div className="absolute top-2 left-2 bg-black/80 text-white px-2 py-1.5 rounded-md text-xs font-medium uppercase">
-                {(post as any).platform}
-              </div>
 
-              {/* Duration Badge - Top Right */}
-              {post.duration && (
-                <div className="absolute top-2 right-2 bg-black/80 text-white px-2 py-1.5 rounded-md text-xs font-medium">
-                  {post.duration}
-                </div>
-              )}
 
               {/* Play Button Overlay - Center */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -787,11 +1181,11 @@ function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, format
           ) : (
             // Default image for regular posts
             <>
-              <Image
-                src={post.image}
+              <img
+                src={imgSrc}
                 alt={post.caption}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                onError={handleImageError}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
 
               {/* Play button overlay for videos without platform */}
@@ -864,7 +1258,10 @@ function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, format
                     (post as any).platform === 'vk' ? 'bg-blue-500 text-white' :
                       (post as any).platform === 'bilibili' ? 'bg-gradient-to-r from-blue-300 via-blue-500 to-blue-700 text-white' :
                         (post as any).platform === 'instagram' ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' :
-                          'bg-gray-600 text-white'
+                          (post as any).platform === 'ok' ? 'bg-orange-500 text-white' :
+                            (post as any).platform === 'twitter' ? 'bg-black text-white' :
+                              (post as any).platform === 'pinterest' ? 'bg-red-600 text-white' :
+                                'bg-gray-600 text-white'
               }`}>
               {(post as any).platform === 'youtube' && (
                 <>
@@ -922,6 +1319,30 @@ function PinterestCard({ post, formatNumber, onPostClick }: { post: Post, format
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                   <span>IG</span>
+                </>
+              )}
+              {(post as any).platform === 'ok' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 3.6c2.324 0 4.2 1.876 4.2 4.2 0 2.324-1.876 4.2-4.2 4.2-2.324 0-4.2-1.876-4.2-4.2 0-2.324 1.876-4.2 4.2-4.2zm0 16.8c-1.907 0-3.637-.656-5.013-1.751l2.362-2.362c.656.328 1.395.513 2.176.513.781 0 1.52-.185 2.176-.513l2.362 2.362C15.637 19.744 13.907 20.4 12 20.4z" />
+                  </svg>
+                  <span>OK</span>
+                </>
+              )}
+              {(post as any).platform === 'twitter' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  <span>X</span>
+                </>
+              )}
+              {(post as any).platform === 'pinterest' && (
+                <>
+                  <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+                  </svg>
+                  <span>PIN</span>
                 </>
               )}
             </div>

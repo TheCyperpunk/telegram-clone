@@ -21,6 +21,7 @@ import SubgroupsSidebar from '@/components/chat/SubgroupsSidebar';
 import MediaGallery from '@/components/chat/MediaGallery';
 import DiscordChat from '@/components/chat/DiscordChat';
 import SlackChat from '@/components/chat/SlackChat';
+import TeamsChat from '@/components/chat/TeamsChat';
 
 interface Message {
   _id: string;
@@ -677,6 +678,2479 @@ export default function ChatPage() {
         senderId: 'tech-bot',
         createdAt: new Date(Date.now() - 1740000),
         isRead: false
+      }
+    ],
+    // Calendar Bot Messages
+    '36': [
+      {
+        _id: 'cal1',
+        content: '📅 Welcome to Calendar Bot!\n\nI can help you manage your schedule:\n• View upcoming events\n• Set reminders\n• Schedule meetings\n• Get daily summaries\n\nType /today to see today\'s schedule.',
+        senderId: 'calendar-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'cal2',
+        content: '🔔 Reminder: Team standup meeting in 15 minutes\n\n📍 Location: Conference Room A\n⏰ Time: 10:00 AM\n👥 Attendees: 8 people',
+        senderId: 'calendar-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'cal3',
+        content: '/today',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'cal4',
+        content: '📋 Today\'s Schedule - November 22, 2025\n\n9:00 AM - Coffee with Sarah\n10:30 AM - Project review meeting\n2:00 PM - Client presentation\n4:30 PM - Team retrospective\n\nYou have 4 events scheduled today.',
+        senderId: 'calendar-bot',
+        createdAt: new Date(Date.now() - 14340000),
+        isRead: true
+      },
+      {
+        _id: 'cal5',
+        content: '✨ New event added: "Lunch with Alex"\n\n📅 Date: Tomorrow, November 23\n⏰ Time: 12:30 PM\n📍 Location: Downtown Cafe\n\nWould you like to set a reminder?',
+        senderId: 'calendar-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: true
+      },
+      {
+        _id: 'cal6',
+        content: '🎯 Upcoming This Week:\n\nMonday: 3 meetings\nTuesday: 2 meetings\nWednesday: 4 meetings\nThursday: 1 meeting\nFriday: Team happy hour 🎉\n\nStay organized!',
+        senderId: 'calendar-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'cal7',
+        content: '⚠️ Meeting conflict detected!\n\n"Client Call" and "Design Review" are both scheduled for 3:00 PM tomorrow.\n\nWould you like to reschedule one of them?',
+        senderId: 'calendar-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // File Bot Messages
+    '74': [
+      {
+        _id: 'file1',
+        content: '📁 Welcome to File Bot!\n\nI can help you manage your files:\n• Upload and download files\n• Share files with others\n• Organize your storage\n• Convert file formats\n• Compress large files\n\nType /storage to check your usage.',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'file2',
+        content: '✅ File uploaded successfully!\n\n📄 Name: Project_Proposal.docx\n📊 Size: 2.4 MB\n📅 Date: Nov 19, 2025\n🔗 Share link: files.app/abc123\n\nThe file is now available in your cloud storage.',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'file3',
+        content: '📤 Upload: Report.pdf\n\n⏳ Uploading... 45%\n📊 Size: 5.8 MB\n⚡ Speed: 1.2 MB/s\n⏱️ Time remaining: 4 seconds',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 172740000),
+        isRead: true
+      },
+      {
+        _id: 'file4',
+        content: '✨ Upload complete!\n\n📄 Report.pdf uploaded successfully\n📊 Size: 5.8 MB\n🔗 Link: files.app/report-2025',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 172680000),
+        isRead: true
+      },
+      {
+        _id: 'file5',
+        content: '/storage',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'file6',
+        content: '💾 Storage Usage Report\n\n📊 Used: 8.5 GB / 15 GB (57%)\n📁 Files: 247 items\n📷 Images: 3.2 GB\n📄 Documents: 2.8 GB\n🎵 Media: 1.9 GB\n📦 Other: 0.6 GB\n\n✨ 6.5 GB available',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 86340000),
+        isRead: true
+      },
+      {
+        _id: 'file7',
+        content: '🔄 File conversion started\n\n📄 Converting: presentation.pptx → presentation.pdf\n⏳ Processing...\n\nYou\'ll be notified when it\'s ready.',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'file8',
+        content: '✅ Conversion complete!\n\n📄 presentation.pdf is ready\n📊 Size: 3.1 MB (reduced from 4.7 MB)\n🔗 Download: files.app/presentation-pdf',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true
+      },
+      {
+        _id: 'file9',
+        content: '🗜️ File compression complete!\n\n📦 Original: images_backup.zip (125 MB)\n📦 Compressed: images_backup_compressed.zip (87 MB)\n💡 Saved: 38 MB (30% reduction)\n\nDownload the compressed version?',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'file10',
+        content: '🔗 File shared successfully!\n\n📄 Budget_2025.xlsx\n👥 Shared with: team@company.com\n🔐 Permission: View only\n⏰ Expires: 7 days\n\nRecipients have been notified.',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'file11',
+        content: '⚠️ Storage Alert!\n\nYou\'re using 85% of your storage (12.8 GB / 15 GB)\n\n💡 Suggestions:\n• Delete old files\n• Compress large files\n• Upgrade to 50 GB plan\n\nManage storage now?',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'file12',
+        content: '🔍 Duplicate files found!\n\n📄 vacation_photo.jpg (3 copies)\n📄 meeting_notes.docx (2 copies)\n💾 Total wasted space: 15.3 MB\n\nWould you like to remove duplicates?',
+        senderId: 'file-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Stock Bot Messages
+    '35': [
+      {
+        _id: 'stock1',
+        content: '📈 Welcome to Stock Bot!\n\nI provide real-time stock market updates:\n• Live stock prices\n• Market indices\n• Portfolio tracking\n• Price alerts\n• Market news\n\nType /watchlist to see your stocks.',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'stock2',
+        content: '📊 Market Open Update\n\n🔔 US Markets opened strong today!\n\nDow Jones: +0.8% ↗️\nS&P 500: +1.2% ↗️\nNASDAQ: +1.5% ↗️\n\nTech stocks leading the rally.',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'stock3',
+        content: '🎯 Price Alert!\n\n📈 AAPL (Apple Inc.)\nPrice: $175.43 (+$2.15)\nChange: +1.24% ↗️\n\nYour target price of $175 has been reached!',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'stock4',
+        content: '/watchlist',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'stock5',
+        content: '📋 Your Watchlist\n\n📈 AAPL: $175.43 (+1.24%)\n📉 TSLA: $242.18 (-0.85%)\n📈 MSFT: $378.91 (+2.10%)\n📈 GOOGL: $141.52 (+0.95%)\n📉 AMZN: $151.23 (-0.42%)\n\nPortfolio Value: $45,230\nToday\'s Change: +$892 (+2.01%)',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true
+      },
+      {
+        _id: 'stock6',
+        content: '⚠️ Volatility Alert!\n\n📊 TSLA (Tesla Inc.)\nCurrent: $242.18\nVolatility: High ⚡\n\nStock has moved 5% in the last hour. Consider reviewing your position.',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'stock7',
+        content: '💰 Dividend Announcement\n\n🏢 MSFT (Microsoft)\nDividend: $0.68 per share\nEx-Date: Nov 25, 2025\nPayment Date: Dec 12, 2025\n\nYour estimated payout: $136',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'stock8',
+        content: '📉 Market Close Summary\n\nDow Jones: 35,421 (+0.65%)\nS&P 500: 4,582 (+0.92%)\nNASDAQ: 14,258 (+1.18%)\n\n🌟 Top Gainers:\n• NVDA: +5.2%\n• AMD: +4.8%\n• META: +3.1%\n\n📉 Top Losers:\n• NFLX: -2.4%\n• PYPL: -1.9%',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'stock9',
+        content: '🔔 Earnings Alert!\n\n📊 AAPL Earnings Report\nDate: Tomorrow, 4:30 PM EST\nExpected EPS: $1.39\nConsensus: Beat expected\n\nAnalysts predict strong iPhone sales. Set a reminder?',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'stock10',
+        content: '📈 Analyst Upgrade\n\n🏢 GOOGL (Alphabet Inc.)\nRating: Buy → Strong Buy\nPrice Target: $165 (+16%)\nAnalyst: Goldman Sachs\n\nCitation: "AI initiatives showing strong momentum"',
+        senderId: 'stock-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // News Bot Messages
+    '33': [
+      {
+        _id: 'news1',
+        content: '📰 Welcome to News Bot!\n\nStay updated with breaking news:\n• World news\n• Technology\n• Business\n• Sports\n• Entertainment\n\nType /topics to customize your feed.',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'news2',
+        content: '🚨 BREAKING NEWS\n\nTech stocks surge 5% today as AI sector shows strong growth\n\n📊 Major tech companies report record earnings driven by artificial intelligence investments.\n\n🔗 Read more: techcrunch.com/ai-boom-2025',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'news3',
+        content: '🌍 World News\n\nClimate summit reaches historic agreement\n\n150+ nations commit to carbon neutrality by 2040. Renewable energy investments to triple.\n\n📍 Location: Geneva, Switzerland\n⏰ Updated: 2 hours ago',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'news4',
+        content: '💻 Tech News\n\nOpenAI announces GPT-5 with breakthrough capabilities\n\n🤖 Key Features:\n• 10x faster processing\n• Multimodal understanding\n• 99% accuracy improvement\n• Real-time learning\n\nPublic beta starts next month.',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'news5',
+        content: '⚽ Sports Update\n\n🏆 Champions League Final\n\nReal Madrid 2 - 1 Manchester City\n\n⚽ Goals:\n• Benzema 23\'\n• Haaland 67\'\n• Vinicius Jr. 89\'\n\nReal Madrid wins their 15th European title!',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'news6',
+        content: '💼 Business News\n\nAmazon acquires major robotics company for $8.5B\n\n🤖 Deal includes:\n• Advanced warehouse automation\n• AI-powered logistics\n• 2,000+ patents\n\nExpected to revolutionize delivery systems.',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'news7',
+        content: '/topics',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 10800000), // 3 hours ago
+        isRead: true
+      },
+      {
+        _id: 'news8',
+        content: '⚙️ Your News Topics\n\nCurrently following:\n✅ Technology\n✅ Business\n✅ Science\n✅ Sports\n\nAvailable topics:\n• Politics\n• Entertainment\n• Health\n• Environment\n\nReply with topic name to add/remove.',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 10740000),
+        isRead: true
+      },
+      {
+        _id: 'news9',
+        content: '🎬 Entertainment\n\nNew Marvel movie breaks box office records\n\n"Avengers: Secret Wars" earns $350M opening weekend\n\n🎥 Records broken:\n• Biggest opening ever\n• Highest Thursday previews\n• Best international debut\n\nCritics rating: 94% 🍅',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'news10',
+        content: '🔬 Science Breakthrough\n\nScientists discover potential cure for Alzheimer\'s\n\n🧬 Clinical trials show:\n• 85% improvement rate\n• Minimal side effects\n• Reverses early symptoms\n\nFDA fast-track approval expected.\n\n📖 Published in: Nature Medicine',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'news11',
+        content: '🚨 BREAKING: Major tech outage resolved\n\nGlobal internet services restored after 2-hour disruption\n\n📊 Impact:\n• 40M users affected\n• Services: Social media, cloud\n• Cause: Network infrastructure\n\nAll systems now operational.',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'news12',
+        content: '🌟 Trending Now\n\n1️⃣ AI Revolution in Healthcare\n2️⃣ Electric Vehicle Sales Soar\n3️⃣ Space Tourism Opens to Public\n4️⃣ Quantum Computing Milestone\n5️⃣ Renewable Energy Breakthrough\n\nTap any headline for full story.',
+        senderId: 'news-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // Analytics Bot Messages
+    '71': [
+      {
+        _id: 'analytics1',
+        content: '📊 Welcome to Analytics Bot!\n\nI provide insights on your data:\n• Website traffic\n• User engagement\n• Conversion rates\n• Performance metrics\n• Custom reports\n\nType /dashboard to see your stats.',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'analytics2',
+        content: '📈 Weekly Report - Nov 15-22\n\n👥 Total Visitors: 45,230 (+15%)\n📄 Page Views: 128,450 (+22%)\n⏱️ Avg. Session: 4m 32s (+8%)\n🎯 Bounce Rate: 32% (-5%)\n\n🌟 Best performing page:\n/products (+45% traffic)',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'analytics3',
+        content: '🚀 Traffic Spike Alert!\n\n📊 Current visitors: 1,247\n⚡ 340% above average\n\nTop sources:\n• Social Media: 45%\n• Direct: 28%\n• Search: 18%\n• Referral: 9%\n\nYour content is trending!',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'analytics4',
+        content: '/dashboard',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'analytics5',
+        content: '📊 Real-Time Dashboard\n\n🟢 Active Users: 342\n📍 Top Countries:\n• USA: 45%\n• UK: 18%\n• Canada: 12%\n• India: 10%\n• Others: 15%\n\n💻 Devices:\n• Mobile: 58%\n• Desktop: 35%\n• Tablet: 7%',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true
+      },
+      {
+        _id: 'analytics6',
+        content: '🎯 Conversion Funnel Update\n\n📈 This Week\'s Performance:\n\n1️⃣ Landing Page: 10,000 visitors\n2️⃣ Product View: 6,500 (65%)\n3️⃣ Add to Cart: 2,600 (40%)\n4️⃣ Checkout: 1,820 (70%)\n5️⃣ Purchase: 1,456 (80%)\n\n💰 Conversion Rate: 14.56% (+2.3%)',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'analytics7',
+        content: '⚠️ Performance Alert\n\n🐌 Page load time increased\n\nAverage: 3.2s (was 2.1s)\nAffected pages: /checkout, /cart\n\n💡 Recommendation:\n• Optimize images\n• Enable caching\n• Minify CSS/JS\n\nImpact: -12% conversion',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'analytics8',
+        content: '🎉 Milestone Achieved!\n\n🏆 100,000 Total Users\n\nGrowth Timeline:\n• 50K: 6 months ago\n• 75K: 3 months ago\n• 100K: Today!\n\n📈 Growth Rate: 67% increase\n\nCongratulations on this achievement!',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'analytics9',
+        content: '📱 Mobile App Analytics\n\n📊 This Month:\n• Downloads: 12,450 (+28%)\n• Active Users: 8,920 (+15%)\n• Avg. Session: 8m 45s\n• Retention (Day 7): 42%\n• Rating: 4.6 ⭐ (2,340 reviews)\n\n🔥 Most used features:\n1. Dashboard\n2. Notifications\n3. Search',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'analytics10',
+        content: '💡 AI Insights\n\n🤖 Predicted trends for next week:\n\n📈 Expected traffic: +18%\n🎯 Best posting time: 2-4 PM\n💰 Revenue forecast: $45,200\n\n⚡ Recommendations:\n• Increase ad spend by 15%\n• Focus on mobile optimization\n• Launch email campaign on Tuesday',
+        senderId: 'analytics-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // Image Bot Messages
+    '76': [
+      {
+        _id: 'image1',
+        content: '🖼️ Welcome to Image Bot!\n\nI can help you with images:\n• Compress images\n• Resize & crop\n• Format conversion\n• Apply filters\n• Remove backgrounds\n\nSend me an image to get started!',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'image2',
+        content: '✅ Image compressed successfully!\n\n📸 vacation_photo.jpg\n\n📊 Results:\n• Original: 4.2 MB\n• Compressed: 850 KB\n• Savings: 80% reduction\n• Quality: 95% maintained\n\n🔗 Download: images.app/compressed-abc123',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'image3',
+        content: '🎨 Filter Applied: Vintage\n\n📸 portrait_2025.jpg\n\n✨ Adjustments made:\n• Sepia tone: +40%\n• Contrast: +15%\n• Vignette: Medium\n• Grain: Light\n\nLove it? Save or try another filter!',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'image4',
+        content: '🔄 Batch Processing Started\n\n📁 Processing 24 images...\n\n⏳ Progress: 12/24 (50%)\n⚡ Speed: 2.5 images/sec\n⏱️ Time remaining: ~5 seconds\n\nOperation: Resize to 1920x1080',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'image5',
+        content: '✨ Batch Processing Complete!\n\n📊 Summary:\n• Total images: 24\n• Successfully processed: 24\n• Failed: 0\n• Total time: 9.6 seconds\n• Space saved: 18.5 MB\n\n📦 Download ZIP: images.app/batch-xyz789',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true
+      },
+      {
+        _id: 'image6',
+        content: '🎭 Background Removed!\n\n📸 product_shot.png\n\n✅ Results:\n• Background: Transparent\n• Format: PNG with alpha\n• Resolution: 2400x2400\n• File size: 1.2 MB\n\nPerfect for e-commerce! 🛍️',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'image7',
+        content: '📐 Image Resized\n\n📸 banner_image.jpg\n\nOriginal: 4000x3000\nNew size: 1920x1080\n\n✅ Optimizations:\n• Aspect ratio: Maintained\n• Quality: High (90%)\n• Format: JPEG\n• Size: 2.1 MB → 450 KB',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'image8',
+        content: '🔄 Format Conversion Complete\n\n📸 logo_design.psd\n\nConverted to:\n✅ PNG (transparent)\n✅ JPG (web optimized)\n✅ SVG (vector)\n✅ WebP (modern format)\n\n📦 All formats ready for download!',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'image9',
+        content: '🎨 AI Enhancement Applied\n\n📸 old_photo_1985.jpg\n\n✨ Improvements:\n• Upscaled: 2x resolution\n• Noise reduction: Applied\n• Color restoration: Enhanced\n• Sharpness: +25%\n\nYour photo looks brand new! 🌟',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'image10',
+        content: '📊 Monthly Usage Report\n\n🖼️ November 2025:\n\n• Images processed: 1,247\n• Total saved: 2.8 GB\n• Most used: Compression (45%)\n• Avg. processing: 1.2s\n\n🎉 You\'re in top 10% of users!\n\nPremium features available.',
+        senderId: 'image-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // GitHub Bot Messages
+    '13': [
+      {
+        _id: 'github1',
+        content: '🐙 Welcome to GitHub Bot!\n\nStay updated with your repositories:\n• Pull requests\n• Issues & bugs\n• Code reviews\n• Commits\n• Releases\n\nType /repos to see your projects.',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'github2',
+        content: '🔔 New Pull Request\n\n📦 Repository: telegram-clone\n👤 Author: @sarah-dev\n🏷️ #142: Feature/user-auth\n\n📝 Changes:\n• 12 files changed\n• +456 -123 lines\n• 3 commits\n\n✅ All checks passed\n🔗 Review: github.com/pr/142',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'github3',
+        content: '⭐ Your repo is trending!\n\n📦 awesome-react-components\n\n🌟 Stars: 1,247 (+89 today)\n🍴 Forks: 234 (+12)\n👀 Watchers: 456 (+23)\n\n🔥 Trending #3 in JavaScript\n\nCongratulations! 🎉',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'github4',
+        content: '🐛 New Issue Opened\n\n📦 Repository: web-dashboard\n👤 Reporter: @john_doe\n🏷️ #89: Login button not working\n\n🔴 Priority: High\n🏷️ Labels: bug, authentication\n\n💬 "Users unable to login on mobile devices"\n\n🔗 View: github.com/issues/89',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'github5',
+        content: '/repos',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'github6',
+        content: '📚 Your Repositories\n\n1️⃣ telegram-clone\n   ⭐ 234 | 🍴 45 | 🔄 3 open PRs\n\n2️⃣ awesome-react-components\n   ⭐ 1,247 | 🍴 234 | 🐛 5 issues\n\n3️⃣ web-dashboard\n   ⭐ 89 | 🍴 12 | ✅ All clear\n\n4️⃣ api-server\n   ⭐ 156 | 🍴 28 | 🔄 1 open PR',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'github7',
+        content: '✅ Pull Request Merged!\n\n📦 telegram-clone\n🏷️ #142: Feature/user-auth\n👤 Merged by: @team-lead\n\n🎉 Changes deployed to main branch\n\n📊 Stats:\n• Files: 12\n• Additions: +456\n• Deletions: -123\n• Commits: 3',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'github8',
+        content: '🚀 New Release Published\n\n📦 web-dashboard v2.5.0\n\n✨ What\'s New:\n• Dark mode support\n• Performance improvements\n• Bug fixes (12 issues)\n• New analytics dashboard\n\n📥 Downloads: 234\n🔗 Release notes: github.com/releases/v2.5.0',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'github9',
+        content: '⚠️ Security Alert\n\n📦 Repository: api-server\n🔒 Vulnerability detected\n\nPackage: lodash@4.17.15\nSeverity: Moderate\nCVE: CVE-2021-23337\n\n💡 Fix available: Update to 4.17.21\n\n🔧 Run: npm update lodash',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'github10',
+        content: '💬 Code Review Requested\n\n📦 telegram-clone\n🏷️ #145: Fix/message-rendering\n👤 Author: @alex-dev\n\n📝 Comment from @code-reviewer:\n"LGTM! Just one minor suggestion on line 42. Consider using useMemo for better performance."\n\n🔗 Review: github.com/pr/145',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'github11',
+        content: '🔥 GitHub Actions: Build Failed\n\n📦 Repository: web-dashboard\n🌿 Branch: feature/new-ui\n⚙️ Workflow: CI/CD Pipeline\n\n❌ Failed step: Run tests\nError: 3 tests failing\n\n📝 Logs available\n🔗 View: github.com/actions/run/12345',
+        senderId: 'github-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // Security Bot Messages
+    '72': [
+      {
+        _id: 'security1',
+        content: '🔐 Welcome to Security Bot!\n\nI help protect your account:\n• Login alerts\n• Security scans\n• Password strength\n• 2FA management\n• Suspicious activity\n\nType /security to check your status.',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'security2',
+        content: '✅ Security Scan Complete\n\n🛡️ Your Account Status:\n\n✅ Password: Strong\n✅ 2FA: Enabled\n✅ Recovery Email: Verified\n✅ Login History: Normal\n⚠️ Last Password Change: 45 days ago\n\n💡 Recommendation: Update password every 60 days',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'security3',
+        content: '🚨 New Login Detected!\n\n📱 Device: Chrome on Windows\n📍 Location: New York, USA\n🕐 Time: Nov 21, 2025 at 2:45 PM\n🌐 IP: 192.168.1.105\n\n✅ Was this you?\n\nIf not, secure your account immediately!',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'security4',
+        content: '⚠️ Suspicious Activity Alert\n\n🔍 Detected:\n• 5 failed login attempts\n• Location: Unknown (VPN detected)\n• Time: Today at 3:20 AM\n\n🔒 Action taken:\n• Account temporarily locked\n• Verification email sent\n\nPlease verify your identity.',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'security5',
+        content: '/security',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'security6',
+        content: '🔐 Security Dashboard\n\n🛡️ Protection Level: High\n\n✅ Active Sessions: 3\n• Chrome (Windows) - Current\n• Safari (iPhone) - 2 hours ago\n• Firefox (Mac) - Yesterday\n\n🔑 Recent Activity:\n• Password changed: 45 days ago\n• 2FA verified: Today\n• Email updated: 3 months ago',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'security7',
+        content: '🔔 2FA Code Request\n\nVerification code: 847392\n\n⏰ Valid for: 5 minutes\n📱 Requested from: iPhone 14 Pro\n📍 Location: San Francisco, CA\n\nDon\'t share this code with anyone!',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'security8',
+        content: '⚡ Security Update Available\n\n🆕 New Features:\n• Biometric authentication\n• Enhanced encryption\n• Real-time threat detection\n• Secure backup codes\n\n📥 Update now for better protection!',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'security9',
+        content: '🎉 Security Milestone!\n\n🏆 Account Age: 1 Year\n\n📊 Your Security Stats:\n• Zero breaches: ✅\n• 2FA uptime: 100%\n• Password strength: Excellent\n• Avg. response time: 2 minutes\n\nKeep up the great security habits!',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'security10',
+        content: '⚠️ Data Breach Alert\n\n🔍 Your email found in recent breach:\nWebsite: oldservice.com\nDate: Nov 2025\nData exposed: Email, Username\n\n✅ Your password is safe (different)\n\n💡 Recommendation:\n• Change password on oldservice.com\n• Enable 2FA if available',
+        senderId: 'security-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Travel Bot Messages
+    '42': [
+      {
+        _id: 'travel1',
+        content: '✈️ Welcome to Travel Bot!\n\nFind amazing travel deals:\n• Flight bookings\n• Hotel reservations\n• Travel packages\n• Destination guides\n• Price alerts\n\nType /destinations to explore!',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'travel2',
+        content: '🔥 Flash Deal Alert!\n\n✈️ New York to Paris\n\n💰 Price: $299 (Save $450!)\n📅 Dates: Dec 15-22, 2025\n🎫 Seats: 12 remaining\n⏰ Expires: 6 hours\n\n🏨 Hotel included:\n• 4-star near Eiffel Tower\n• Breakfast included\n\nBook now!',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'travel3',
+        content: '🌴 Top Destinations This Month\n\n1️⃣ Bali, Indonesia 🏝️\n   From $450 | 5★ Resorts\n\n2️⃣ Tokyo, Japan 🗼\n   From $680 | Cultural Tours\n\n3️⃣ Barcelona, Spain 🏖️\n   From $520 | Beach & City\n\n4️⃣ Dubai, UAE 🏙️\n   From $590 | Luxury Stays\n\nTap to see details!',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'travel4',
+        content: '📍 Destination Spotlight: Maldives\n\n🏝️ Paradise Awaits!\n\n🌟 Highlights:\n• Crystal clear waters\n• Overwater bungalows\n• World-class diving\n• Romantic getaways\n\n💰 Packages from $1,299\n📅 Best time: Nov-Apr\n⭐ Rating: 4.9/5 (12,450 reviews)',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'travel5',
+        content: '🎫 Your Booking Confirmed!\n\n✈️ Flight Details:\nRoute: LAX → LHR\nDate: Dec 10, 2025\nTime: 6:45 PM\nFlight: BA 269\nSeat: 12A (Window)\n\n🏨 Hotel: The Savoy London\nCheck-in: Dec 10\nCheck-out: Dec 15\nRoom: Deluxe King\n\n📧 Confirmation sent to email',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'travel6',
+        content: '⏰ Price Drop Alert!\n\n🎯 Your Saved Search:\nLos Angeles → Tokyo\n\nWas: $850\nNow: $620 💰\nSavings: $230 (27% off)\n\n📅 Available dates:\n• Jan 15-22\n• Feb 5-12\n• Mar 10-17\n\nPrices may increase soon!',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'travel7',
+        content: '🗺️ Travel Itinerary: Europe Tour\n\nDay 1-3: Paris 🇫🇷\n• Eiffel Tower\n• Louvre Museum\n• Seine River Cruise\n\nDay 4-6: Rome 🇮🇹\n• Colosseum\n• Vatican City\n• Trevi Fountain\n\nDay 7-9: Barcelona 🇪🇸\n• Sagrada Familia\n• Park Güell\n• Beach time\n\n💰 Total: $2,450 per person',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'travel8',
+        content: '✅ Check-in Reminder\n\n✈️ Flight Tomorrow!\n\nFlight: BA 269 to London\nDeparture: 6:45 PM\nTerminal: 4\nGate: Opens 3 hours before\n\n📱 Mobile boarding pass ready\n🎒 Baggage allowance: 2 bags\n\n💡 Arrive 3 hours early for international flights',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'travel9',
+        content: '🌟 Travel Rewards Update\n\n🎁 Your Points: 15,420\n\n🏆 Tier: Gold Member\n\nBenefits unlocked:\n✅ Priority boarding\n✅ Free seat selection\n✅ 2x points on bookings\n✅ Lounge access\n\n💰 Points value: $308\nNext tier: Platinum (20,000 pts)',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'travel10',
+        content: '📸 Travel Inspiration\n\n🌅 Santorini, Greece\n\n"Sunset views that take your breath away"\n\n⭐ Must-do:\n• Watch sunset in Oia\n• Wine tasting tours\n• Blue dome churches\n• Volcanic beach\n\n💰 From $890 | 5 nights\n📅 Best: Apr-Oct\n\n🔖 Save for later?',
+        senderId: 'travel-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // Link Bot Messages
+    '77': [
+      {
+        _id: 'link1',
+        content: '🔗 Welcome to Link Bot!\n\nI generate link previews:\n• Website previews\n• Social media posts\n• Video thumbnails\n• Article summaries\n• QR codes\n\nSend me a link to get started!',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'link2',
+        content: '📰 Link Preview Generated\n\n🔗 techcrunch.com/ai-breakthrough\n\n📌 Title:\n"AI Achieves Human-Level Performance in Complex Tasks"\n\n📝 Description:\nResearchers announce major breakthrough in artificial intelligence, demonstrating human-level performance across multiple domains...\n\n📸 Thumbnail: ✅\n⏱️ Read time: 5 min',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'link3',
+        content: '🎥 YouTube Video Preview\n\n🔗 youtube.com/watch?v=abc123\n\n📺 Title:\n"How to Build a React App in 2025"\n\n👤 Channel: Code Academy\n⏱️ Duration: 24:35\n👁️ Views: 1.2M\n👍 Likes: 45K\n📅 Published: 2 days ago\n\n🎬 Click to watch',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'link4',
+        content: '📱 QR Code Generated\n\n🔗 For: https://mywebsite.com\n\n✅ QR Code Features:\n• High resolution\n• Error correction: Medium\n• Format: PNG\n• Size: 512x512px\n\n📥 Download: qr.app/abc123\n\n💡 Perfect for business cards!',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'link5',
+        content: '🛍️ Product Link Preview\n\n🔗 amazon.com/product/xyz\n\n📦 Product:\niPhone 15 Pro Max - 256GB\n\n💰 Price: $999.99\n⭐ Rating: 4.8/5 (12,340 reviews)\n📦 In Stock: Yes\n🚚 Shipping: Free 2-day\n\n🎯 Deal: Save $200 today!',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'link6',
+        content: '📊 GitHub Repository Preview\n\n🔗 github.com/user/awesome-project\n\n📚 Repository:\nawesome-react-components\n\n⭐ Stars: 12.5K\n🍴 Forks: 2.3K\n📝 Description:\nA curated list of awesome React components and libraries\n\n💻 Language: JavaScript\n📅 Updated: 2 hours ago',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'link7',
+        content: '🎵 Spotify Track Preview\n\n🔗 spotify.com/track/xyz123\n\n🎵 Song:\n"Bohemian Rhapsody"\n\n🎤 Artist: Queen\n💿 Album: A Night at the Opera\n⏱️ Duration: 5:55\n🔥 Popularity: 98/100\n\n🎧 Listen now on Spotify',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'link8',
+        content: '🌐 Website Analytics\n\n🔗 Link: mywebsite.com/blog\n\n📊 Performance:\n• Load time: 1.2s ⚡\n• Mobile friendly: ✅\n• SSL secure: ✅\n• SEO score: 95/100\n\n📈 Estimated traffic:\n• Monthly visits: 45K\n• Bounce rate: 32%\n• Avg. session: 4m 20s',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'link9',
+        content: '📸 Instagram Post Preview\n\n🔗 instagram.com/p/abc123\n\n👤 User: @travel_explorer\n❤️ Likes: 12.5K\n💬 Comments: 234\n📅 Posted: 3 hours ago\n\n📝 Caption:\n"Sunset vibes in Santorini 🌅✨"\n\n🏷️ Tags: #travel #greece #sunset',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      },
+      {
+        _id: 'link10',
+        content: '🔐 Short Link Created\n\n🔗 Original:\nhttps://verylongwebsiteurl.com/article/2025/...\n\n✂️ Shortened:\nshort.link/abc123\n\n📊 Features:\n• Custom alias available\n• Click tracking: Enabled\n• Expiry: Never\n• Password: Optional\n\n📈 Track clicks in real-time!',
+        senderId: 'link-bot',
+        createdAt: new Date(Date.now() - 900000), // 15 minutes ago
+        isRead: false
+      }
+    ],
+    // Password Bot Messages
+    '47': [
+      {
+        _id: 'password1',
+        content: '🔑 Welcome to Password Bot!\n\nI help manage your passwords:\n• Generate secure passwords\n• Password strength checker\n• Breach monitoring\n• Password vault\n• Auto-fill support\n\nType /generate for a new password!',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'password2',
+        content: '🔐 Secure Password Generated\n\nPassword: K9#mX2$pL8@v4Tn\n\n✅ Strength: Very Strong\n\n📊 Analysis:\n• Length: 16 characters\n• Uppercase: ✅\n• Lowercase: ✅\n• Numbers: ✅\n• Symbols: ✅\n• Entropy: 95 bits\n\n⏱️ Time to crack: 2 billion years\n\n💾 Save to vault?',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'password3',
+        content: '⚠️ Weak Password Detected\n\nWebsite: myaccount.com\nPassword: password123\n\n🔴 Strength: Very Weak\n\n❌ Issues:\n• Too common\n• No symbols\n• Dictionary word\n• Easily guessable\n\n💡 Generate a stronger password?\n\n⏱️ Time to crack: 2 seconds',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'password4',
+        content: '/generate',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'password5',
+        content: '🎲 Custom Password Options\n\nChoose your preferences:\n\n📏 Length:\n• 12 characters (Recommended)\n• 16 characters (Very Strong)\n• 20 characters (Maximum)\n\n🔤 Include:\n✅ Uppercase (A-Z)\n✅ Lowercase (a-z)\n✅ Numbers (0-9)\n✅ Symbols (!@#$%)\n\n🚫 Exclude:\n• Ambiguous (0,O,l,1)\n\nGenerate now?',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true
+      },
+      {
+        _id: 'password6',
+        content: '💾 Password Vault Summary\n\n🔐 Stored Passwords: 47\n\n📊 Security Status:\n✅ Strong: 32 (68%)\n⚠️ Medium: 12 (26%)\n🔴 Weak: 3 (6%)\n\n🔄 Reused passwords: 5\n⏰ Old passwords (>90 days): 8\n\n💡 Action needed:\n• Update 3 weak passwords\n• Change 5 reused passwords',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'password7',
+        content: '🚨 Data Breach Alert!\n\n⚠️ Password compromised:\nWebsite: oldsite.com\nUsername: user@email.com\n\n🔍 Found in breach:\nDate: Nov 2025\nRecords: 2.5M accounts\n\n✅ Action taken:\n• Password flagged\n• Notification sent\n\n🔑 Change password immediately!\nNew password generated: Ready',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'password8',
+        content: '🔄 Password Updated Successfully\n\nWebsite: banking.com\nOld password: ••••••••\nNew password: ••••••••••••••••\n\n✅ Strength: Very Strong\n📅 Last changed: Just now\n🔔 Next reminder: 60 days\n\n💾 Saved to vault\n🔐 Encrypted with AES-256',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'password9',
+        content: '🎯 Password Health Report\n\n📊 Overall Score: 85/100 (Good)\n\n✅ Strengths:\n• Most passwords are strong\n• Regular updates\n• 2FA enabled on 80% accounts\n\n⚠️ Improvements:\n• 5 reused passwords\n• 3 weak passwords\n• 8 passwords >90 days old\n\n📈 Last month: 78/100 (+7)',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'password10',
+        content: '🔐 Passphrase Generated\n\nPassphrase:\n"Correct-Horse-Battery-Staple-2025"\n\n✅ Strength: Very Strong\n\n📊 Details:\n• Words: 5\n• Separator: Hyphen\n• Number: Included\n• Length: 37 characters\n• Memorable: ✅\n• Entropy: 89 bits\n\n💡 Easy to remember, hard to crack!',
+        senderId: 'password-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Shopping Bot Messages
+    '43': [
+      {
+        _id: 'shopping1',
+        content: '🛍️ Welcome to Shopping Bot!\n\nFind the best deals:\n• Product search\n• Price tracking\n• Deal alerts\n• Wishlist management\n• Order tracking\n\nType /deals to see today\'s offers!',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'shopping2',
+        content: '🔥 Daily Deals - Black Friday Preview!\n\n1️⃣ iPhone 15 Pro: $999 (20% off)\n   Was: $1,249 | Save: $250\n\n2️⃣ AirPods Pro: $179 (28% off)\n   Was: $249 | Save: $70\n\n3️⃣ MacBook Air M2: $899 (25% off)\n   Was: $1,199 | Save: $300\n\n⏰ Ends in 6 hours!\n🚚 Free shipping on all items',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'shopping3',
+        content: '📦 Order Shipped!\n\nOrder #12345\n\n📱 iPhone 15 Pro - 256GB\nColor: Titanium Blue\nPrice: $999.00\n\n🚚 Shipping Details:\nCarrier: FedEx\nTracking: FDX123456789\nEstimated Delivery: Nov 24, 2025\n\n📍 Track your package in real-time!',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'shopping4',
+        content: '💰 Price Drop Alert!\n\n🎯 Your Wishlist Item:\nSony WH-1000XM5 Headphones\n\nWas: $399.99\nNow: $299.99 💸\nSavings: $100 (25% off)\n\n⭐ Rating: 4.8/5 (8,450 reviews)\n📦 In Stock: Yes\n🚚 Free Shipping\n\nBuy now before price increases!',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'shopping5',
+        content: '/deals',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'shopping6',
+        content: '🎁 Today\'s Top Deals\n\n💻 Electronics:\n• iPad Air: $499 (17% off)\n• Samsung TV 55": $599 (33% off)\n• PS5 Console: $449 (10% off)\n\n👕 Fashion:\n• Nike Sneakers: $79 (35% off)\n• Levi\'s Jeans: $39 (50% off)\n\n🏠 Home:\n• Dyson Vacuum: $299 (40% off)\n• Instant Pot: $79 (45% off)\n\nTap any item for details!',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'shopping7',
+        content: '⭐ Product Recommendation\n\nBased on your browsing:\n\n📱 Samsung Galaxy S24 Ultra\n\n💰 Price: $1,099 (15% off)\n⭐ Rating: 4.7/5 (5,230 reviews)\n\n✨ Features:\n• 200MP Camera\n• S Pen included\n• 5000mAh battery\n• 1TB storage option\n\n🎯 Why you\'ll love it:\nSimilar to iPhone 15 Pro but with S Pen!',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'shopping8',
+        content: '🎉 Cashback Earned!\n\n💰 Your Rewards:\n\nRecent Purchase:\niPhone 15 Pro - $999\n\nCashback: $49.95 (5%)\nBonus Points: 999 pts\n\n🏆 Total Rewards Balance:\n• Cash: $127.50\n• Points: 12,450 pts\n\nRedeem anytime for discounts!',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'shopping9',
+        content: '📦 Delivery Update\n\n✅ Package Delivered!\n\nOrder #12345\niPhone 15 Pro - 256GB\n\n📍 Delivered to: Front Door\n📸 Photo proof available\n⏰ Time: Today at 2:30 PM\n\nEnjoy your new device! 🎉\n\nRate your delivery experience?',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'shopping10',
+        content: '🛒 Cart Reminder\n\n⚠️ Items in your cart:\n\n1. AirPods Pro - $179\n2. iPhone Case - $29\n3. Screen Protector - $15\n\nTotal: $223\nSavings: $76 (25% off)\n\n⏰ Deals expire in 3 hours!\n\n💳 Complete checkout now?',
+        senderId: 'shopping-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Learning Bot Messages
+    '44': [
+      {
+        _id: 'learning1',
+        content: '📚 Welcome to Learning Bot!\n\nExpand your knowledge:\n• Online courses\n• Skill tracking\n• Certifications\n• Study reminders\n• Progress reports\n\nType /courses to explore!',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'learning2',
+        content: '🎓 Course Completed!\n\n✅ JavaScript: Async/Await\n\n📊 Your Results:\n• Final Score: 95%\n• Time: 4 hours 30 mins\n• Exercises: 24/25 correct\n• Rank: Top 5%\n\n🏆 Certificate earned!\n📥 Download: learn.app/cert/js-async\n\nReady for the next lesson?',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'learning3',
+        content: '🔔 Daily Learning Reminder\n\n📖 Today\'s Lesson:\nReact Hooks - useEffect\n\n⏱️ Duration: 45 minutes\n📊 Progress: 60% complete\n\n🎯 Learning Streak: 12 days 🔥\n\nDon\'t break your streak!\nStart lesson now?',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'learning4',
+        content: '🌟 Recommended Courses\n\nBased on your interests:\n\n1️⃣ Advanced React Patterns\n   ⭐ 4.9/5 | 12 hours | $49\n\n2️⃣ Node.js Masterclass\n   ⭐ 4.8/5 | 20 hours | $59\n\n3️⃣ TypeScript Deep Dive\n   ⭐ 4.9/5 | 15 hours | $54\n\n🎁 Bundle discount: Save 30%\nEnroll in all 3 for $119!',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'learning5',
+        content: '/courses',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'learning6',
+        content: '📚 Your Active Courses\n\n1️⃣ React Advanced (60% complete)\n   Next: Custom Hooks\n   Due: 3 days\n\n2️⃣ Python for Data Science (35%)\n   Next: Pandas Basics\n   Due: 1 week\n\n3️⃣ AWS Cloud Practitioner (80%)\n   Next: Final Exam\n   Due: 2 days\n\n🎯 Overall Progress: 58%\n⏰ Study time this week: 8h 45m',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'learning7',
+        content: '🎯 Quiz Time!\n\nReact Hooks - Quick Quiz\n\nQuestion 1/5:\nWhat does useEffect do?\n\nA) Manages state\nB) Handles side effects\nC) Creates refs\nD) Memoizes values\n\n⏰ Time limit: 30 seconds\n💡 Hint: Think lifecycle methods\n\nReply with A, B, C, or D',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'learning8',
+        content: '✅ Correct Answer!\n\nB) Handles side effects ✓\n\n📊 Quiz Progress: 4/5\nScore: 100% so far\n\nFinal Question:\nWhen does useEffect cleanup run?\n\nA) Before component mounts\nB) After every render\nC) Before component unmounts\nD) Only on first render\n\n⏰ 30 seconds remaining...',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 14340000),
+        isRead: true
+      },
+      {
+        _id: 'learning9',
+        content: '🏆 Achievement Unlocked!\n\n🎖️ "Speed Learner"\nComplete 5 lessons in one day\n\n📊 Your Stats:\n• Courses completed: 12\n• Certificates earned: 8\n• Study hours: 145\n• Current streak: 12 days\n\n🌟 Level: Intermediate → Advanced\n\nKeep up the great work!',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'learning10',
+        content: '📈 Weekly Progress Report\n\nWeek of Nov 15-22, 2025\n\n⏰ Study Time: 12h 30m (+2h)\n✅ Lessons Completed: 8\n🎯 Quizzes Passed: 6/6 (100%)\n📚 Courses Active: 3\n\n🔥 Streak: 12 days\n🏆 Rank: Top 10% globally\n\n💡 Next Goal:\nComplete React course by Nov 25\n\nYou\'re doing amazing! 🌟',
+        senderId: 'learning-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      }
+    ],
+    // Task Bot Messages
+    '37': [
+      {
+        _id: 'task1',
+        content: '✅ Welcome to Task Bot!\n\nStay organized and productive:\n• Create tasks\n• Set reminders\n• Track progress\n• Manage deadlines\n• Team collaboration\n\nType /tasks to see your list!',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'task2',
+        content: '🔔 Task Reminder\n\n📋 Task: "Review code"\n\n⏰ Due: Today at 5:00 PM\n🏷️ Priority: High\n📁 Project: Web Dashboard\n\n⚠️ Due in 2 hours!\n\n✅ Mark as complete?\n⏰ Snooze for 30 mins?',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'task3',
+        content: '✅ Task Completed!\n\n📋 "Review code" marked as done\n\n⏱️ Completed: On time\n📊 Time spent: 1h 30m\n🎯 Quality: Excellent\n\n🏆 Productivity Streak: 5 days\n\nGreat job! 🎉\n\nNext task: "Update documentation"',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'task4',
+        content: '📊 Daily Summary\n\nToday\'s Tasks:\n\n✅ Completed: 5\n⏰ Pending: 3\n🔴 Overdue: 1\n\n🎯 Completion Rate: 83%\n⏱️ Total Time: 6h 45m\n\n🔥 Most Productive:\n2:00 PM - 4:00 PM\n\nTomorrow\'s tasks: 4 scheduled',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'task5',
+        content: '/tasks',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'task6',
+        content: '📋 Your Task List\n\n🔴 High Priority:\n• Fix login bug (Due: Today)\n• Client presentation (Due: Tomorrow)\n\n🟡 Medium Priority:\n• Update documentation (Due: Nov 25)\n• Code review PR #142 (Due: Nov 24)\n\n🟢 Low Priority:\n• Refactor old code (Due: Nov 30)\n• Update dependencies (Due: Dec 1)\n\n📊 Total: 6 tasks\n⏰ 2 due today',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'task7',
+        content: '⚠️ Overdue Task Alert!\n\n📋 Task: "Submit expense report"\n\n🔴 Status: 2 days overdue\n📅 Original Due: Nov 20, 2025\n🏷️ Priority: Medium\n\n💡 Action needed:\nPlease complete or reschedule\n\n⏰ Reschedule?\n✅ Mark as complete?',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'task8',
+        content: '🎯 New Task Assigned\n\n📋 Task: "Prepare Q4 report"\n\n👤 Assigned by: @manager\n📅 Due: Nov 28, 2025\n🏷️ Priority: High\n📁 Project: Finance\n\n📝 Description:\nCompile Q4 financial data and create presentation for board meeting.\n\n✅ Accept task?',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'task9',
+        content: '🏆 Productivity Milestone!\n\n🎉 100 Tasks Completed!\n\n📊 Your Stats:\n• Total tasks: 100\n• On-time: 92 (92%)\n• Average time: 2h 15m\n• Longest streak: 15 days\n\n🌟 Achievements:\n✅ Early Bird (10 tasks before 9 AM)\n✅ Night Owl (5 tasks after 8 PM)\n✅ Speed Demon (20 tasks in 1 day)\n\nKeep crushing it! 💪',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'task10',
+        content: '📅 Weekly Planning\n\nUpcoming Week (Nov 23-30):\n\nMonday:\n• Team standup (9:00 AM)\n• Fix login bug (High)\n\nTuesday:\n• Client presentation (2:00 PM)\n• Code review (Low)\n\nWednesday:\n• Update docs (Medium)\n\nThursday-Friday:\n• Q4 report prep (High)\n\n💡 Tip: Block 2 hours daily for deep work',
+        senderId: 'task-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Poll Bot Messages
+    '49': [
+      {
+        _id: 'poll1',
+        content: '📊 Welcome to Poll Bot!\n\nCreate and manage polls:\n• Quick polls\n• Multiple choice\n• Anonymous voting\n• Real-time results\n• Export data\n\nType /create to make a poll!',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'poll2',
+        content: '📊 Poll Results: Remote Work Preference\n\n❓ Question: "Do you prefer remote work?"\n\n✅ Yes: 65% (1,247 votes)\n❌ No: 20% (384 votes)\n🤔 Maybe: 15% (288 votes)\n\n👥 Total Votes: 1,919\n⏰ Poll Duration: 24 hours\n📅 Ended: Nov 20, 2025\n\nMajority prefers remote work! 🏠',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'poll3',
+        content: '🗳️ New Poll Created!\n\n📋 Title: "Best Programming Language 2025"\n\n🔘 Options:\nA) JavaScript\nB) Python\nC) TypeScript\nD) Rust\nE) Go\n\n⏰ Duration: 48 hours\n👥 Anonymous: Yes\n🔗 Share: poll.app/prog-2025\n\nVote now! 🚀',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'poll4',
+        content: '📊 Live Poll Update\n\n"Best Programming Language 2025"\n\n🥇 Python: 42% (845 votes)\n🥈 JavaScript: 28% (563 votes)\n🥉 TypeScript: 18% (362 votes)\n4️⃣ Rust: 8% (161 votes)\n5️⃣ Go: 4% (80 votes)\n\n👥 Total: 2,011 votes\n⏰ 24 hours remaining\n\nPython leading! 🐍',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'poll5',
+        content: '/create',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'poll6',
+        content: '✨ Create Your Poll\n\nStep 1: Enter your question\n\nExample:\n"What\'s your favorite framework?"\n\n💡 Tips:\n• Keep it clear and concise\n• Avoid bias in wording\n• Make it relevant to audience\n\nType your question below:',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'poll7',
+        content: '📊 Poll Settings\n\nQuestion: "What\'s your favorite framework?"\n\n⚙️ Configure:\n\n⏰ Duration:\n• 1 hour\n• 6 hours\n• 24 hours ✓\n• 48 hours\n• 1 week\n\n👤 Voting:\n• Public\n• Anonymous ✓\n\n🔄 Allow changes: Yes ✓\n\nReady to publish?',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'poll8',
+        content: '🎉 Poll Published!\n\n📋 "What\'s your favorite framework?"\n\nOptions:\n• React\n• Vue\n• Angular\n• Svelte\n\n🔗 Share link: poll.app/framework-2025\n👥 Votes so far: 0\n⏰ Ends: Nov 23, 2:00 PM\n\nShare with your network! 📢',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'poll9',
+        content: '🔔 Poll Milestone!\n\n"What\'s your favorite framework?"\n\n🎯 100 votes reached!\n\nCurrent Results:\n🥇 React: 58% (58 votes)\n🥈 Vue: 24% (24 votes)\n🥉 Svelte: 12% (12 votes)\n4️⃣ Angular: 6% (6 votes)\n\n⏰ 22 hours remaining\nKeep voting! 🚀',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'poll10',
+        content: '📈 Poll Analytics\n\nYour Polls This Month:\n\n📊 Total Created: 12\n👥 Total Votes: 8,450\n⭐ Avg. Participation: 704 votes\n🏆 Most Popular:\n"Remote Work Preference" (1,919 votes)\n\n📍 Top Locations:\n• USA: 45%\n• UK: 18%\n• India: 15%\n\n🎯 Engagement Rate: 87%',
+        senderId: 'poll-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Email Bot Messages
+    '73': [
+      {
+        _id: 'email1',
+        content: '📧 Welcome to Email Bot!\n\nManage your inbox efficiently:\n• Email summaries\n• Smart filters\n• Quick replies\n• Unsubscribe helper\n• Priority inbox\n\nType /inbox to check emails!',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'email2',
+        content: '📬 You have 12 unread emails\n\n🔴 High Priority (3):\n• Client proposal deadline\n• Team meeting reschedule\n• Security alert\n\n🟡 Medium Priority (5):\n• Newsletter: Tech Weekly\n• Invoice #12345\n• Project update\n\n🟢 Low Priority (4):\n• Promotional offers\n• Social notifications\n\nView inbox?',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'email3',
+        content: '🚨 Important Email Alert\n\nFrom: client@company.com\nSubject: Urgent: Proposal Deadline\n\n📝 Summary:\nClient requesting final proposal by EOD tomorrow. Needs pricing details and timeline confirmation.\n\n⏰ Action Required: 24 hours\n🏷️ Category: Work\n\n💬 Quick Replies:\n• Confirm receipt\n• Request extension\n• Send proposal',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'email4',
+        content: '✅ Email Sent Successfully\n\nTo: client@company.com\nSubject: Re: Proposal Deadline\n\n📧 Message:\n"Thank you for your email. I\'ll send the complete proposal by 5 PM tomorrow with all requested details."\n\n⏰ Sent: Nov 21, 3:45 PM\n📎 Attachments: 0\n✓ Read receipt: Enabled\n\nTracking delivery...',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'email5',
+        content: '/inbox',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'email6',
+        content: '📥 Inbox Overview\n\n📊 Today\'s Stats:\n• Received: 24 emails\n• Sent: 8 emails\n• Unread: 12\n• Starred: 3\n\n📁 By Category:\n• Work: 15\n• Personal: 5\n• Newsletters: 3\n• Promotions: 1\n\n⏰ Response Time: 2h 15m avg\n✅ Inbox Zero: 50% this week',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'email7',
+        content: '🗑️ Cleanup Suggestions\n\n💡 Found 45 emails to clean:\n\n📰 Newsletters (never opened): 23\n🛍️ Promotions (expired): 12\n📧 Old threads (>30 days): 10\n\n💾 Space to save: 125 MB\n\n🔘 Actions:\n• Unsubscribe from 5 lists\n• Archive old threads\n• Delete promotions\n\nClean up now?',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'email8',
+        content: '✨ Smart Filter Created\n\n🎯 Filter Name: "Client Emails"\n\nRules:\n• From: *@client.com\n• Auto-label: Important\n• Notify: Immediately\n• Star: Yes\n\n📊 Applied to:\n• 15 existing emails\n• All future emails\n\nFilter active! ✅',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'email9',
+        content: '📧 Email Digest - Morning\n\n🌅 Good morning!\n\nOvernight Activity:\n• 8 new emails\n• 2 require response\n• 1 meeting invite\n\n🔥 Top Priority:\n"Q4 Budget Review" from CFO\n\n📅 Today\'s Meetings:\n• 10:00 AM - Team Standup\n• 2:00 PM - Client Call\n\nHave a productive day! ☕',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'email10',
+        content: '🎉 Inbox Achievement!\n\n🏆 Inbox Zero Reached!\n\nYou\'ve cleared all emails! 🎊\n\n📊 Stats:\n• Emails processed: 24\n• Time taken: 45 minutes\n• Avg. response: 1m 30s\n\n🌟 Streak: 3 days\n\n💡 Tip: Set aside 30 mins daily for email management.\n\nKeep it up! 💪',
+        senderId: 'email-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Hashtag Bot Messages
+    '78': [
+      {
+        _id: 'hashtag1',
+        content: '🏷️ Welcome to Hashtag Bot!\n\nDiscover trending topics:\n• Trending hashtags\n• Topic analysis\n• Hashtag suggestions\n• Performance tracking\n• Viral content\n\nType /trending to explore!',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'hashtag2',
+        content: '🔥 Trending Now - Global\n\n1️⃣ #TechNews (2.5M posts)\n   📈 +340% in 24h\n\n2️⃣ #AI (1.8M posts)\n   📈 +215% in 24h\n\n3️⃣ #WebDev (950K posts)\n   📈 +180% in 24h\n\n4️⃣ #Crypto (720K posts)\n   📈 +125% in 24h\n\n5️⃣ #Startup (580K posts)\n   📈 +95% in 24h\n\n⏰ Updated: 5 mins ago',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'hashtag3',
+        content: '📊 Hashtag Analysis: #TechNews\n\n📈 Performance:\n• Total Posts: 2.5M\n• Growth: +340% (24h)\n• Engagement: 15.2M interactions\n• Reach: 45M users\n\n🌍 Top Locations:\n• USA: 35%\n• India: 18%\n• UK: 12%\n\n⏰ Peak Times:\n• 9 AM - 11 AM EST\n• 2 PM - 4 PM EST\n\n💡 Related: #AI #Innovation #Tech',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'hashtag4',
+        content: '💡 Hashtag Suggestions\n\nFor your post about "React Tutorial":\n\n🎯 Recommended:\n#React #JavaScript #WebDev\n#Frontend #Coding #Programming\n\n📊 Performance Estimate:\n• Reach: 50K-100K\n• Engagement: 2K-5K\n• Best time: 2 PM EST\n\n🔥 Trending Related:\n#ReactJS #TypeScript #NextJS\n\nUse 5-10 hashtags for best results!',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'hashtag5',
+        content: '/trending',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'hashtag6',
+        content: '🌟 Trending by Category\n\n💻 Technology:\n#AI #ChatGPT #TechNews #Coding\n\n💼 Business:\n#Startup #Entrepreneur #Marketing\n\n🎨 Design:\n#UIUXDesign #GraphicDesign #Figma\n\n🏋️ Fitness:\n#Workout #HealthyLiving #Fitness\n\n🎮 Gaming:\n#Gaming #Esports #PlayStation\n\nTap category for details!',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'hashtag7',
+        content: '🚀 Viral Alert!\n\n🔥 #AIRevolution is going viral!\n\n📊 Stats (Last hour):\n• Posts: +15K\n• Growth: +890%\n• Engagement: 2.5M\n• Impressions: 12M\n\n💬 Top Post:\n"AI just changed everything..."\n❤️ 125K likes | 🔄 45K shares\n\n⏰ Jump on this trend now!\n\n💡 Suggested: Create content about AI innovations',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'hashtag8',
+        content: '📈 Your Hashtag Performance\n\nLast 7 Days:\n\n🏆 Best Performing:\n#JavaScript (250K reach)\n#WebDev (180K reach)\n#React (145K reach)\n\n📊 Total Stats:\n• Posts: 24\n• Avg. Reach: 95K\n• Engagement Rate: 8.5%\n• New Followers: +450\n\n🎯 Improvement: +35% vs last week\n\nKeep using trending tags! 🚀',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'hashtag9',
+        content: '🎨 Hashtag Strategy Tips\n\n💡 Best Practices:\n\n1️⃣ Mix popular & niche tags\n   • 3-4 trending (1M+ posts)\n   • 3-4 medium (100K-1M)\n   • 2-3 niche (10K-100K)\n\n2️⃣ Research competitors\n   • See what works for them\n\n3️⃣ Post at peak times\n   • Check analytics\n\n4️⃣ Create branded hashtags\n   • Build community\n\n5️⃣ Track performance\n   • Adjust strategy',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'hashtag10',
+        content: '🔮 Predicted Trends - Tomorrow\n\nBased on AI analysis:\n\n📈 Rising Fast:\n#BlackFriday (Expected: +500%)\n#CyberMonday (Expected: +420%)\n#HolidayShopping (Expected: +380%)\n\n💻 Tech Trends:\n#GPT5 (Expected: +250%)\n#QuantumComputing (Expected: +180%)\n\n💡 Get ahead: Create content now!\n\n⏰ Best posting time: 8 AM EST',
+        senderId: 'hashtag-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Backup Bot Messages
+    '50': [
+      {
+        _id: 'backup1',
+        content: '💾 Welcome to Backup Bot!\n\nProtect your data:\n• Automatic backups\n• Cloud storage\n• Version history\n• Quick restore\n• Encryption\n\nType /status to check backups!',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'backup2',
+        content: '✅ Daily Backup Completed\n\n📅 Date: Nov 20, 2025\n⏰ Time: 2:00 AM\n\n📊 Backup Details:\n• Files: 12,450\n• Size: 8.5 GB\n• Duration: 12 minutes\n• Status: Success ✓\n\n☁️ Stored in: Cloud Storage\n🔐 Encryption: AES-256\n\n📍 Location: us-east-1\n🔄 Next backup: Tonight at 2:00 AM',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'backup3',
+        content: '🔄 Backup in Progress\n\n⏳ Current Status:\n\n📁 Files backed up: 8,234/12,450\n📊 Progress: 66%\n💾 Size: 5.6 GB / 8.5 GB\n⚡ Speed: 45 MB/s\n⏱️ Time remaining: ~4 minutes\n\n📂 Current folder:\n/Documents/Projects/2025\n\nPlease don\'t turn off your device...',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'backup4',
+        content: '⚠️ Backup Warning\n\n🔴 Issue Detected:\nLow storage space on backup drive\n\n💾 Current Status:\n• Used: 95 GB / 100 GB\n• Available: 5 GB\n• Next backup size: ~8.5 GB\n\n💡 Actions needed:\n• Delete old backups\n• Upgrade storage\n• Change backup location\n\nResolve before next backup!',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'backup5',
+        content: '/status',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'backup6',
+        content: '📊 Backup Status Report\n\n🟢 System Status: Healthy\n\n📅 Last Backup:\n• Date: Nov 21, 2025 at 2:00 AM\n• Status: Success ✓\n• Size: 8.5 GB\n\n📈 Backup History (7 days):\n✅ Mon: Success\n✅ Tue: Success\n✅ Wed: Success\n✅ Thu: Success\n✅ Fri: Success\n✅ Sat: Success\n✅ Sun: Success\n\n🎯 Success Rate: 100%\n💾 Total Storage: 59.5 GB',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'backup7',
+        content: '🔄 Restore Available\n\n📁 File Versions Found:\n\nproject_report.docx\n\n📅 Version History:\n• Nov 22, 10:00 AM (Current)\n• Nov 22, 8:00 AM\n• Nov 21, 5:00 PM\n• Nov 21, 2:00 PM\n• Nov 20, 11:00 AM\n\n💾 Size: 2.4 MB\n📍 Location: /Documents/Work\n\nSelect version to restore?',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'backup8',
+        content: '✅ File Restored Successfully\n\nproject_report.docx\n\n📅 Restored Version:\nNov 21, 5:00 PM\n\n📍 Restored to:\n/Documents/Work/Restored/\n\n💾 Size: 2.4 MB\n⏰ Time: 3 seconds\n\n✨ Original file preserved\n🔐 Integrity verified\n\nFile ready to use! 📄',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'backup9',
+        content: '🎉 Backup Milestone!\n\n🏆 1 Year of Backups!\n\n📊 Your Stats:\n• Total Backups: 365\n• Success Rate: 99.7%\n• Data Protected: 3.1 TB\n• Files Backed Up: 4.5M\n• Restores: 12\n\n🌟 Achievements:\n✅ Perfect Month (30/30)\n✅ Zero Data Loss\n✅ Quick Restore (<5 min)\n\nYour data is safe! 🛡️',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'backup10',
+        content: '⚙️ Backup Settings Updated\n\n✅ Changes Applied:\n\n📅 Schedule:\n• Frequency: Daily → Hourly\n• Time: 2:00 AM → Every hour\n\n📁 Included Folders:\n• Documents ✓\n• Pictures ✓\n• Videos ✓\n• Desktop ✓ (New)\n\n☁️ Storage:\n• Upgraded: 100 GB → 500 GB\n\n🔐 Encryption: AES-256 ✓\n\nNext backup: In 45 minutes',
+        senderId: 'backup-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Joke Bot Messages
+    '46': [
+      {
+        _id: 'joke1',
+        content: '😂 Welcome to Joke Bot!\n\nBrighten your day with humor:\n• Daily jokes\n• Programming jokes\n• Dad jokes\n• Puns\n• Random humor\n\nType /joke for a laugh!',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'joke2',
+        content: '🤣 Joke of the Day\n\nWhy don\'t scientists trust atoms?\n\nBecause they make up everything! 🔬\n\n⭐ Rating: 4.5/5\n😂 Laughs: 12,450\n🔄 Shares: 3,240\n\nLike this joke? 👍',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'joke3',
+        content: '💻 Programming Joke\n\nWhy do programmers prefer dark mode?\n\nBecause light attracts bugs! 🐛\n\n😄 Category: Tech Humor\n⭐ Rating: 4.8/5\n\n💡 Fun fact: 87% of developers agree!\n\nWant another? Type /joke',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'joke4',
+        content: '👨 Dad Joke Alert!\n\nI\'m reading a book about anti-gravity.\n\nIt\'s impossible to put down! 📚\n\n😆 Groan Level: Maximum\n👨‍👧‍👦 Dad Approved: ✓\n⭐ Rating: 4.2/5\n\n🎯 Perfect for: Family dinners\n\nShare with your dad! 👍',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'joke5',
+        content: '/joke',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'joke6',
+        content: '🎭 Random Joke\n\nWhat do you call a bear with no teeth?\n\nA gummy bear! 🐻\n\n😂 Category: Animal Jokes\n⭐ Rating: 4.6/5\n👶 Kid-Friendly: Yes\n\n💬 "This made my day!" - User123\n\nRate this joke:\n⭐⭐⭐⭐⭐',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'joke7',
+        content: '🎯 Pun Time!\n\nI used to hate facial hair...\n\nBut then it grew on me! 🧔\n\n😄 Pun Level: Expert\n⭐ Rating: 4.3/5\n🎪 Groan Factor: High\n\n💡 Did you know?\nPuns are the highest form of humor!\n\nWant more puns? 🤔',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'joke8',
+        content: '🤓 Nerd Joke\n\nThere are 10 types of people in the world:\n\nThose who understand binary, and those who don\'t! 💾\n\n😂 Category: Math/CS\n⭐ Rating: 4.9/5\n🎓 Nerd Approved: ✓\n\n01001000 01000001 01001000 01000001',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'joke9',
+        content: '🎉 Joke Stats - This Week\n\n📊 Your Activity:\n• Jokes viewed: 45\n• Favorites: 12\n• Shared: 8\n• Avg. rating given: 4.5⭐\n\n🏆 Most Popular:\n"Why do programmers prefer dark mode?"\n\n😂 Total laughs: 156K\n🔥 Trending: Tech jokes\n\nKeep laughing! 😄',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'joke10',
+        content: '🌟 Premium Joke Collection\n\n🎭 Unlock exclusive content:\n\n✨ Features:\n• 1000+ premium jokes\n• No ads\n• Custom categories\n• Daily fresh jokes\n• Early access\n\n💰 Price: $2.99/month\n\n🎁 Special offer:\n7-day free trial!\n\nUpgrade now? 🚀',
+        senderId: 'joke-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Fitness Bot Messages
+    '40': [
+      {
+        _id: 'fitness1',
+        content: '💪 Welcome to Fitness Bot!\n\nYour personal fitness companion:\n• Workout tracking\n• Calorie counter\n• Exercise plans\n• Progress reports\n• Motivation\n\nType /workout to start!',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'fitness2',
+        content: '🎯 Daily Goal Progress\n\n📊 Today\'s Stats:\n\n🚶 Steps: 8,234 / 10,000\n   Progress: 82% (1,766 to go)\n\n🔥 Calories Burned: 420 / 500\n   Progress: 84% (80 to go)\n\n⏱️ Active Minutes: 45 / 60\n   Progress: 75% (15 to go)\n\n💧 Water: 6 / 8 glasses\n\nKeep pushing! 💪',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'fitness3',
+        content: '🏋️ Workout Completed!\n\n✅ Upper Body Strength\n\n📊 Session Summary:\n• Duration: 45 minutes\n• Calories: 320 burned\n• Exercises: 8\n• Sets completed: 24\n\n💪 Exercises:\n• Push-ups: 3x15\n• Bench press: 3x10\n• Bicep curls: 3x12\n• Tricep dips: 3x10\n\nGreat job! 🎉',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'fitness4',
+        content: '🔔 Workout Reminder\n\n⏰ Time for your workout!\n\n📋 Today\'s Plan:\nLeg Day - Lower Body\n\n🎯 Exercises:\n• Squats: 3x12\n• Lunges: 3x10 each\n• Leg press: 3x15\n• Calf raises: 3x20\n\n⏱️ Estimated: 40 minutes\n💪 Difficulty: Moderate\n\nReady to start? 🚀',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'fitness5',
+        content: '/workout',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'fitness6',
+        content: '📚 Workout Library\n\nChoose your focus:\n\n💪 Strength Training\n• Upper Body\n• Lower Body\n• Full Body\n• Core\n\n🏃 Cardio\n• HIIT\n• Running\n• Cycling\n\n🧘 Flexibility\n• Yoga\n• Stretching\n• Mobility\n\n⏱️ Duration: 15-60 mins\n🎯 All fitness levels',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'fitness7',
+        content: '🍎 Nutrition Tip\n\n💡 Today\'s Advice:\n\nProtein intake is crucial for muscle recovery!\n\n🎯 Recommended:\n• 0.8-1g per lb of body weight\n• Spread throughout the day\n• Within 2 hours post-workout\n\n🥗 Good sources:\n• Chicken breast\n• Greek yogurt\n• Eggs\n• Protein shakes\n\nTrack your macros! 📊',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'fitness8',
+        content: '🏆 Achievement Unlocked!\n\n🎉 "Week Warrior"\nCompleted 7 workouts in 7 days!\n\n📊 Your Stats:\n• Total workouts: 7\n• Calories burned: 2,450\n• Active time: 5h 15m\n• Avg. heart rate: 142 bpm\n\n🔥 Streak: 7 days\n⭐ Level: Intermediate → Advanced\n\nKeep it up! 💪',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'fitness9',
+        content: '📈 Weekly Progress Report\n\nWeek of Nov 15-22, 2025\n\n🎯 Goals Met:\n✅ Workouts: 7/5 (140%)\n✅ Steps: 72,450/70,000\n✅ Calories: 3,200/3,000\n\n📊 Improvements:\n• Weight: -2.5 lbs\n• Body fat: -1.2%\n• Muscle mass: +0.8 lbs\n\n🏆 Rank: Top 15% globally\n\nAmazing progress! 🌟',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'fitness10',
+        content: '💧 Hydration Check\n\n⚠️ You\'re behind on water!\n\n💦 Today\'s Intake:\n• Current: 4 glasses\n• Goal: 8 glasses\n• Remaining: 4 glasses\n\n⏰ Time: 3:00 PM\n\n💡 Tip:\nDrink 1 glass every hour until bedtime!\n\n🎯 Benefits:\n• Better performance\n• Faster recovery\n• More energy\n\nStay hydrated! 💙',
+        senderId: 'fitness-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Music Bot Messages
+    '38': [
+      {
+        _id: 'music1',
+        content: '🎵 Welcome to Music Bot!\n\nYour personal DJ:\n• Song recommendations\n• Playlist creation\n• Now playing\n• Music discovery\n• Lyrics search\n\nType /play to start listening!',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'music2',
+        content: '🎧 Now Playing\n\n🎵 "Bohemian Rhapsody"\n🎤 Artist: Queen\n💿 Album: A Night at the Opera\n⏱️ Duration: 5:55\n📅 Released: 1975\n\n🔊 Volume: 75%\n🔁 Repeat: Off\n🔀 Shuffle: On\n\n❤️ 2.5M likes\n⭐ Rating: 4.9/5\n\n⏮️ ⏯️ ⏭️',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'music3',
+        content: '🎼 Playlist Created!\n\n📝 "Workout Motivation"\n\n🎵 Tracks Added: 25\n⏱️ Duration: 1h 42m\n🎯 Genre: Rock, Hip-Hop, EDM\n\n🔥 Top Tracks:\n1. Eye of the Tiger - Survivor\n2. Lose Yourself - Eminem\n3. Thunderstruck - AC/DC\n4. Till I Collapse - Eminem\n5. We Will Rock You - Queen\n\n🔗 Share playlist? 📢',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'music4',
+        content: '🌟 Recommended For You\n\nBased on your listening:\n\n🎵 Similar Artists:\n• Pink Floyd\n• Led Zeppelin\n• The Beatles\n• The Rolling Stones\n\n🎼 Playlists:\n• Classic Rock Essentials\n• 70s Rock Anthems\n• Guitar Legends\n\n💿 New Releases:\n• Arctic Monkeys - New Album\n\nExplore now! 🎧',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'music5',
+        content: '/play',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'music6',
+        content: '🎵 What would you like to hear?\n\n🎯 Quick Options:\n\n🔥 Trending Now\n• Top 50 Global\n• Viral Hits\n• New Releases\n\n🎭 By Mood:\n• Chill & Relax\n• Party Time\n• Focus & Study\n• Workout Energy\n\n🎸 By Genre:\n• Rock\n• Pop\n• Hip-Hop\n• Electronic\n• Jazz\n\nTap to play! 🎧',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'music7',
+        content: '📊 Your Music Stats\n\nThis Month:\n\n⏱️ Listening Time: 45h 30m\n🎵 Songs Played: 890\n🎤 Top Artist: Queen (12h)\n💿 Top Album: Greatest Hits\n🎼 Top Genre: Rock (65%)\n\n🔥 Most Played:\n"Bohemian Rhapsody" (47 plays)\n\n🌍 You\'re in top 5% of Queen fans!\n\nKeep rocking! 🎸',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'music8',
+        content: '🎤 Lyrics\n\n🎵 "Bohemian Rhapsody" - Queen\n\n🎼 Current verse:\n\n"Is this the real life?\nIs this just fantasy?\nCaught in a landslide,\nNo escape from reality..."\n\n📝 View full lyrics?\n🎯 Sing along mode: On\n⏱️ Synced: Yes\n\n🎤 Karaoke mode available! 🎉',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'music9',
+        content: '🎁 Discover Weekly\n\n🌟 Your personalized playlist!\n\n🎵 30 new songs just for you\n⏱️ Updated every Monday\n🎯 Based on your taste\n\n🔥 This week\'s picks:\n1. "Stairway to Heaven" - Led Zeppelin\n2. "Hotel California" - Eagles\n3. "Dream On" - Aerosmith\n\n💡 95% match with your taste\n\nStart listening! 🎧',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'music10',
+        content: '🎉 Concert Alert!\n\n🎸 Queen + Adam Lambert\n\n📍 Location: Madison Square Garden, NYC\n📅 Date: Dec 15, 2025\n⏰ Time: 8:00 PM\n\n🎫 Tickets:\n• General: $89\n• VIP: $299\n• Meet & Greet: $599\n\n🔥 Selling fast!\n⏰ 234 tickets left\n\n🎟️ Get tickets now?\n\nDon\'t miss out! 🌟',
+        senderId: 'music-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Quiz Bot Messages
+    '48': [
+      {
+        _id: 'quiz1',
+        content: '🎯 Welcome to Quiz Bot!\n\nTest your knowledge:\n• Trivia quizzes\n• Subject tests\n• Daily challenges\n• Leaderboards\n• Achievements\n\nType /quiz to start playing!',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'quiz2',
+        content: '🧠 Daily Quiz Challenge\n\n📚 Category: General Knowledge\n⏱️ Time: 60 seconds\n❓ Questions: 10\n\nQuestion 1/10:\nWhat is the capital of France?\n\nA) London\nB) Berlin\nC) Paris\nD) Madrid\n\n⏰ Time remaining: 60s\n\nReply with A, B, C, or D',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'quiz3',
+        content: '✅ Correct!\n\nC) Paris is correct! 🎉\n\n📊 Progress: 1/10\n⭐ Score: 100 points\n🔥 Streak: 1\n\nQuestion 2/10:\nWho painted the Mona Lisa?\n\nA) Vincent van Gogh\nB) Leonardo da Vinci\nC) Pablo Picasso\nD) Michelangelo\n\n⏰ Time: 55s remaining',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'quiz4',
+        content: '🎊 Quiz Completed!\n\n📊 Final Results:\n\n✅ Correct: 8/10\n❌ Wrong: 2/10\n⭐ Score: 800 points\n⏱️ Time: 4m 23s\n🎯 Accuracy: 80%\n\n🏆 Rank: #234 globally\n🔥 Streak: 5 days\n\n💡 You beat 78% of players!\n\nPlay again? 🎮',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'quiz5',
+        content: '/quiz',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'quiz6',
+        content: '🎮 Choose Your Quiz\n\n📚 Categories:\n\n🌍 General Knowledge\n💻 Technology & Science\n🎬 Movies & Entertainment\n⚽ Sports\n📖 History\n🎨 Art & Literature\n🔢 Math & Logic\n🌟 Pop Culture\n\n🏆 Difficulty:\n• Easy (100 pts/question)\n• Medium (200 pts/question)\n• Hard (300 pts/question)\n\nSelect category to begin!',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'quiz7',
+        content: '🏆 Leaderboard - This Week\n\n👑 Top Players:\n\n1️⃣ QuizMaster99 - 15,420 pts\n2️⃣ BrainiacPro - 14,850 pts\n3️⃣ YOU - 12,340 pts 🎉\n4️⃣ SmartCookie - 11,920 pts\n5️⃣ TriviaKing - 10,450 pts\n\n📊 Your Stats:\n• Quizzes: 24\n• Win Rate: 83%\n• Avg. Score: 850 pts\n\nClimb to #1! 🚀',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'quiz8',
+        content: '🎯 Achievement Unlocked!\n\n🏅 "Perfect Score"\nGet 10/10 on a quiz\n\n🎊 Rewards:\n• +500 bonus points\n• Exclusive badge\n• Unlock Hard mode\n\n📊 Your Achievements:\n✅ First Quiz (Complete 1 quiz)\n✅ Quiz Novice (10 quizzes)\n✅ Perfect Score (10/10)\n🔒 Quiz Master (100 quizzes)\n🔒 Legendary (1000 quizzes)\n\nKeep playing! 🌟',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'quiz9',
+        content: '📈 Weekly Report\n\nWeek of Nov 15-22, 2025\n\n📊 Performance:\n• Quizzes Played: 24\n• Total Points: 18,450\n• Avg. Score: 768 pts\n• Best Category: Technology (92%)\n• Improvement: +15% vs last week\n\n🏆 Highlights:\n• 3 perfect scores\n• 5-day streak\n• Reached top 3\n\n🎯 Next Goal: Reach #1!\n\nYou\'re doing amazing! 🌟',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'quiz10',
+        content: '🎁 Special Event!\n\n🌟 Weekend Quiz Marathon\n\nNov 23-24, 2025\n\n🏆 Prizes:\n• 1st Place: $100 gift card\n• 2nd Place: $50 gift card\n• 3rd Place: $25 gift card\n• Top 10: Premium badge\n\n📋 Rules:\n• Unlimited quizzes\n• Best 10 scores count\n• All categories\n\n⏰ Starts in 2 days!\n\nRegister now? 🎮',
+        senderId: 'quiz-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // QR Code Bot Messages
+    '75': [
+      {
+        _id: 'qr1',
+        content: '📱 Welcome to QR Code Bot!\n\nGenerate & scan QR codes:\n• Create QR codes\n• Scan codes\n• Custom designs\n• Bulk generation\n• Analytics\n\nType /generate to create a QR!',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'qr2',
+        content: '✅ QR Code Generated!\n\n🔗 Content: https://mywebsite.com\n\n📊 Details:\n• Type: URL\n• Size: 512x512px\n• Format: PNG\n• Error Correction: High (30%)\n• Color: Black & White\n\n📥 Download: qr.app/abc123\n\n📊 Scans: 0\n⏰ Created: Just now\n\nShare your QR code! 📢',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'qr3',
+        content: '🎨 Custom QR Code Created\n\n✨ Design Options Applied:\n\n🎨 Style: Rounded\n🌈 Colors:\n• Foreground: #FF6B6B\n• Background: #FFFFFF\n📸 Logo: Uploaded ✓\n🖼️ Frame: Modern\n\n📊 Specifications:\n• Resolution: 1024x1024\n• Format: SVG (scalable)\n• File size: 45 KB\n\nPerfect for branding! 🎯',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'qr4',
+        content: '📊 QR Code Analytics\n\nCode: mywebsite.com\n\n📈 Performance (7 days):\n• Total Scans: 1,247\n• Unique Users: 892\n• Avg. Daily: 178 scans\n\n🌍 Top Locations:\n• USA: 45%\n• UK: 18%\n• Canada: 12%\n• India: 10%\n\n📱 Devices:\n• Mobile: 78%\n• Desktop: 22%\n\n⏰ Peak time: 2-4 PM EST',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'qr5',
+        content: '/generate',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'qr6',
+        content: '🎯 What type of QR code?\n\n📋 Choose content type:\n\n🔗 URL/Website\n📧 Email\n📱 Phone Number\n📝 Text Message\n📍 Location\n📇 vCard (Contact)\n📶 WiFi Network\n💳 Payment\n📱 App Store Link\n\n💡 Most popular: URL (65%)\n\nSelect type to continue...',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'qr7',
+        content: '📶 WiFi QR Code Generated\n\n🔐 Network Details:\n• SSID: MyHomeWiFi\n• Password: ••••••••\n• Security: WPA2\n\n✅ Features:\n• Auto-connect enabled\n• Hidden SSID support\n• Guest network ready\n\n📱 Usage:\nScan to connect instantly!\n\n💡 Perfect for:\n• Home guests\n• Office visitors\n• Cafes & restaurants',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'qr8',
+        content: '📦 Bulk QR Generation Complete\n\n✅ Generated: 100 codes\n\n📊 Summary:\n• Type: Product URLs\n• Format: PNG\n• Size: 512x512 each\n• Total size: 4.2 MB\n\n📥 Download Options:\n• ZIP archive\n• Individual files\n• CSV with URLs\n\n💼 Use case:\n• Product labels\n• Inventory tracking\n• Marketing campaign\n\nDownload now? 📥',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'qr9',
+        content: '🔍 QR Code Scanned!\n\n📱 Scan Result:\n\nType: URL\nContent: https://promo.app/sale\n\n✅ Safe: Verified\n🔐 HTTPS: Secure\n⚠️ Shortened: No\n\n🎯 Action Options:\n• Open in browser\n• Copy link\n• Share\n• Save for later\n\n💡 Scan history saved\n\nWhat would you like to do?',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'qr10',
+        content: '📈 Monthly Report\n\nNovember 2025\n\n📊 Your Activity:\n• QR Codes Created: 45\n• Total Scans: 12,450\n• Unique Users: 8,920\n• Avg. Scans/Code: 277\n\n🏆 Best Performing:\n"Product Launch" - 3,240 scans\n\n🌟 Achievement:\nTop 10% of users!\n\n💎 Upgrade to Premium:\n• Unlimited codes\n• Advanced analytics\n• Custom branding\n\nTry free for 7 days! 🚀',
+        senderId: 'qr-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Voice Bot Messages
+    '41': [
+      {
+        _id: 'voice1',
+        content: '🎤 Welcome to Voice Bot!\n\nVoice-powered features:\n• Voice messages\n• Speech-to-text\n• Text-to-speech\n• Voice commands\n• Language support\n\nSend a voice message to start!',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'voice2',
+        content: '🎙️ Voice Message Received\n\n⏱️ Duration: 0:45\n📊 Size: 1.2 MB\n🔊 Quality: High\n\n📝 Transcription:\n"Hey, can you help me schedule a meeting for tomorrow at 2 PM with the team?"\n\n✅ Transcription Accuracy: 98%\n🌍 Language: English (US)\n\n💬 Reply with voice or text?',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'voice3',
+        content: '🔊 Text-to-Speech Generated\n\n📝 Text:\n"Your meeting has been scheduled for tomorrow at 2 PM."\n\n🎤 Voice Settings:\n• Voice: Female (Sarah)\n• Language: English (US)\n• Speed: Normal\n• Pitch: Medium\n\n⏱️ Duration: 0:04\n📥 Download audio\n▶️ Play now\n\nVoice sounds natural! 🌟',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'voice4',
+        content: '🎯 Voice Command Detected\n\n🎤 You said:\n"Set a reminder for 5 PM"\n\n✅ Command Recognized:\n• Action: Set Reminder\n• Time: 5:00 PM today\n• Confidence: 95%\n\n⏰ Reminder created!\n\n💡 Try these commands:\n• "Call [name]"\n• "Send message to [name]"\n• "What\'s the weather?"\n• "Play music"',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'voice5',
+        content: '🎤 [Voice Message]',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'voice6',
+        content: '📝 Transcription Complete\n\nYour voice message:\n\n"Can you translate this to Spanish: Hello, how are you today?"\n\n✅ Transcribed successfully\n⏱️ Processing time: 2 seconds\n🎯 Accuracy: 99%\n\n🌍 Translation requested:\nEnglish → Spanish\n\n💬 Result:\n"Hola, ¿cómo estás hoy?"\n\n🔊 Play Spanish audio?',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'voice7',
+        content: '🌍 Language Support\n\nAvailable languages:\n\n🗣️ Speech Recognition:\n• English (US, UK, AU)\n• Spanish\n• French\n• German\n• Chinese (Mandarin)\n• Japanese\n• Hindi\n• Arabic\n• +50 more\n\n🔊 Text-to-Speech:\n• 40+ languages\n• 100+ voices\n• Male & Female options\n\nChange language in settings! ⚙️',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'voice8',
+        content: '🎙️ Voice Quality Enhanced\n\n✨ AI Enhancement Applied:\n\n🔧 Improvements:\n• Noise reduction: ✅\n• Echo cancellation: ✅\n• Volume normalization: ✅\n• Clarity boost: ✅\n\n📊 Before/After:\n• Clarity: 65% → 95%\n• Background noise: -40dB\n• Quality score: 8.5/10\n\n🎧 Listen to enhanced version?\n\nPerfect for podcasts! 🎙️',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'voice9',
+        content: '📊 Voice Usage Stats\n\nThis Month:\n\n🎤 Voice Messages:\n• Sent: 145\n• Received: 203\n• Total duration: 2h 34m\n• Avg. length: 0:42\n\n📝 Transcriptions: 89\n🔊 Text-to-Speech: 56\n🎯 Voice Commands: 234\n\n🌟 Most used:\n"Set reminder" (45 times)\n\n⚡ You\'re a power user! 🚀',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'voice10',
+        content: '🎁 Premium Voice Features\n\n✨ Unlock advanced features:\n\n🌟 Benefits:\n• Unlimited voice messages\n• 100+ premium voices\n• Real-time translation\n• Voice cloning (beta)\n• Priority processing\n• No ads\n\n💰 Pricing:\n• Monthly: $4.99\n• Yearly: $49.99 (save 17%)\n\n🎁 Special offer:\n50% off first month!\n\nUpgrade now? 🚀',
+        senderId: 'voice-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Meditation Bot Messages
+    '39': [
+      {
+        _id: 'meditation1',
+        content: '🧘 Welcome to Meditation Bot!\n\nFind your inner peace:\n• Guided meditations\n• Breathing exercises\n• Sleep sounds\n• Mindfulness tips\n• Progress tracking\n\nType /meditate to begin!',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'meditation2',
+        content: '🌅 Good Morning Meditation\n\n☀️ Start your day mindfully\n\n⏱️ Duration: 10 minutes\n🎯 Focus: Energy & Positivity\n🎵 Background: Gentle piano\n\n📋 Session includes:\n• Body scan (2 min)\n• Breathing exercise (3 min)\n• Positive affirmations (3 min)\n• Gentle stretch (2 min)\n\n🧘 Ready to begin?\n\nFind a quiet space... 🌿',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'meditation3',
+        content: '✅ Session Complete!\n\n🧘 Morning Meditation\n\n📊 Session Summary:\n• Duration: 10:00\n• Completed: 100%\n• Focus: Excellent\n• Heart rate: 62 bpm (calm)\n\n🌟 Benefits achieved:\n✓ Reduced stress\n✓ Increased focus\n✓ Better mood\n\n🔥 Streak: 7 days\n⭐ Total sessions: 45\n\nGreat job! 🎉',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'meditation4',
+        content: '🌬️ Breathing Exercise\n\n💨 4-7-8 Technique\n\nPerfect for:\n• Reducing anxiety\n• Better sleep\n• Quick relaxation\n\n📋 Instructions:\n1. Inhale through nose (4 sec)\n2. Hold breath (7 sec)\n3. Exhale through mouth (8 sec)\n4. Repeat 4 times\n\n⏱️ Duration: 2 minutes\n\n🎯 Ready? Let\'s breathe...\n\nInhale... 1... 2... 3... 4...',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'meditation5',
+        content: '/meditate',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'meditation6',
+        content: '🎯 Choose Your Session\n\n🌅 By Time of Day:\n• Morning Energy (10 min)\n• Midday Reset (5 min)\n• Evening Wind Down (15 min)\n• Sleep Meditation (20 min)\n\n🎯 By Goal:\n• Stress Relief\n• Focus & Productivity\n• Anxiety Management\n• Better Sleep\n• Self-Love\n\n⏱️ Duration:\n• Quick (5 min)\n• Standard (10-15 min)\n• Deep (20-30 min)\n\nWhat do you need today? 🌿',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'meditation7',
+        content: '🌙 Sleep Sounds\n\n😴 Fall asleep peacefully\n\n🎵 Available sounds:\n• Rain & Thunder ☔\n• Ocean Waves 🌊\n• Forest Ambience 🌲\n• White Noise 📻\n• Campfire 🔥\n• Piano Lullaby 🎹\n\n⏱️ Timer options:\n• 15 minutes\n• 30 minutes\n• 1 hour\n• Until morning\n\n🔊 Volume: Adjustable\n\nSelect your sound... 💤',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'meditation8',
+        content: '🏆 Milestone Achieved!\n\n🎉 7-Day Streak!\n\nYou\'ve meditated every day this week!\n\n📊 Your Progress:\n• Total sessions: 52\n• Total time: 8h 40m\n• Avg. session: 10 min\n• Favorite: Morning Energy\n\n🌟 Benefits noticed:\n• 85% better sleep\n• 70% less stress\n• 90% improved focus\n\n🎁 Reward unlocked:\nPremium session access!\n\nKeep going! 💪',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'meditation9',
+        content: '💡 Mindfulness Tip\n\n🌿 Daily Practice:\n\n"Take 3 conscious breaths"\n\nWhenever you feel stressed:\n1. Pause what you\'re doing\n2. Close your eyes\n3. Take 3 deep breaths\n4. Notice how you feel\n\n⏱️ Takes only 30 seconds\n✨ Instant calm\n\n🎯 Try it now:\nBreathe in... Hold... Breathe out...\n\n💚 Small moments, big impact\n\nSet daily reminder? 🔔',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'meditation10',
+        content: '📈 Weekly Wellness Report\n\nWeek of Nov 15-22, 2025\n\n🧘 Meditation Stats:\n• Sessions: 7/7 days ✓\n• Total time: 1h 10m\n• Avg. heart rate: 65 bpm\n• Stress reduction: 68%\n\n😴 Sleep Quality:\n• Avg. sleep: 7h 45m\n• Quality score: 8.5/10\n• Improvement: +15%\n\n🎯 Goals:\n✅ Daily meditation\n✅ Better sleep\n⏳ 30-day streak (23 days)\n\nYou\'re thriving! 🌟',
+        senderId: 'meditation-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Crypto Bot Messages
+    '45': [
+      {
+        _id: 'crypto1',
+        content: '₿ Welcome to Crypto Bot!\n\nYour crypto companion:\n• Live prices\n• Portfolio tracking\n• Price alerts\n• Market news\n• Trading signals\n\nType /prices to see markets!',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'crypto2',
+        content: '📊 Crypto Market Update\n\n🔥 Top Cryptocurrencies:\n\n₿ Bitcoin (BTC)\n$42,350 (+5.2%) 📈\n24h High: $42,890\n24h Low: $40,120\nVolume: $28.5B\n\n⟠ Ethereum (ETH)\n$2,245 (+3.8%) 📈\n24h High: $2,280\n24h Low: $2,150\nVolume: $12.3B\n\n🌟 Market Cap: $1.85T\n😊 Fear & Greed: 68 (Greed)',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'crypto3',
+        content: '🚨 Price Alert!\n\n₿ Bitcoin (BTC)\n\nPrice: $42,350\nChange: +5.2% (24h)\n\n🎯 Your Alert: $42,000\n✅ Target Reached!\n\nCurrent Status:\n• Above resistance: $42,000\n• Next target: $45,000\n• Support level: $40,000\n\n💡 Suggestion:\nConsider taking profits or setting stop-loss\n\nView chart? 📈',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'crypto4',
+        content: '💼 Your Portfolio\n\n📊 Total Value: $15,420\n📈 24h Change: +$892 (+6.1%)\n\n🪙 Holdings:\n\n₿ BTC: 0.25 ($10,587)\n• +5.2% today\n• Cost basis: $38,000\n• Profit: +11.4%\n\n⟠ ETH: 2.0 ($4,490)\n• +3.8% today\n• Cost basis: $2,100\n• Profit: +6.9%\n\n🔷 SOL: 15 ($343)\n• +8.2% today\n\nBest performer: SOL 🚀',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'crypto5',
+        content: '/prices',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'crypto6',
+        content: '💰 Live Crypto Prices\n\n🔝 Top 10 by Market Cap:\n\n1. ₿ BTC: $42,350 (+5.2%)\n2. ⟠ ETH: $2,245 (+3.8%)\n3. 💵 USDT: $1.00 (0.0%)\n4. 🔷 BNB: $312 (+2.1%)\n5. 🔷 SOL: $98.50 (+8.2%)\n6. 🔷 XRP: $0.62 (+4.5%)\n7. 🔷 ADA: $0.48 (+6.1%)\n8. 🔷 DOGE: $0.085 (+12.3%)\n9. 💵 USDC: $1.00 (0.0%)\n10. 🔷 AVAX: $38.20 (+7.8%)\n\n⏰ Updated: Just now\n🔄 Refresh every 30s',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true
+      },
+      {
+        _id: 'crypto7',
+        content: '📰 Crypto News Flash\n\n🔥 Breaking:\n\n"Bitcoin ETF sees record $2.5B inflow"\n\n📊 Impact:\n• BTC price surges 5%\n• Institutional interest rising\n• Market sentiment: Bullish\n\n💡 Analysis:\nHistorically, large ETF inflows precede price rallies. Watch for $45K resistance.\n\n🔗 Read more: cryptonews.com/btc-etf\n\n⏰ 2 hours ago',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'crypto8',
+        content: '🎯 Trading Signal\n\n⟠ Ethereum (ETH/USD)\n\n📊 Technical Analysis:\n• Trend: Bullish 📈\n• RSI: 68 (Overbought soon)\n• MACD: Bullish crossover\n• Support: $2,150\n• Resistance: $2,300\n\n💡 Signal: BUY\nEntry: $2,240 - $2,260\nTarget 1: $2,350 (+4.5%)\nTarget 2: $2,500 (+11%)\nStop Loss: $2,100 (-6%)\n\n⚠️ Risk: Medium\n🎯 Confidence: 75%\n\nNot financial advice! DYOR',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'crypto9',
+        content: '🔔 Market Alert!\n\n🚀 Altcoin Season Detected\n\n📊 Indicators:\n• Altcoin Market Cap: +12%\n• BTC Dominance: 48% (↓2%)\n• Top 100 Avg: +8.5%\n\n🔥 Trending Coins:\n• SOL: +8.2%\n• DOGE: +12.3%\n• AVAX: +7.8%\n• LINK: +9.1%\n\n💡 Strategy:\nAltcoins typically outperform BTC during this phase. Diversify wisely!\n\n⏰ Duration: 2-4 weeks (estimated)',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'crypto10',
+        content: '📈 Weekly Performance Report\n\nWeek of Nov 15-22, 2025\n\n💼 Portfolio:\n• Starting: $14,200\n• Current: $15,420\n• Profit: +$1,220 (+8.6%)\n\n🏆 Best Trades:\n• SOL: +15.2%\n• ETH: +6.9%\n• BTC: +5.2%\n\n📊 Market Stats:\n• Total trades: 8\n• Win rate: 75%\n• Avg. gain: 6.2%\n\n🎯 vs Market:\nYou beat BTC by +3.4%!\n\nKeep it up! 🚀',
+        senderId: 'crypto-bot',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false
+      }
+    ],
+    // Sarah Johnson Messages
+    '4': [
+      {
+        _id: 'sarah1',
+        content: 'Hey! Are you free to discuss the new mobile app design? 📱',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'sarah2',
+        content: 'Sure! I have some time now. What\'s on your mind?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 258000000),
+        isRead: true
+      },
+      {
+        _id: 'sarah3',
+        content: 'I\'ve been working on the profile screen and wanted your feedback on these two options.',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'sarah4',
+        content: '',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 172740000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'sarah-img-1',
+            name: 'profile-option-a.jpg',
+            type: 'image/jpeg',
+            size: 1456789,
+            url: 'https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'sarah-img-2',
+            name: 'profile-option-b.jpg',
+            type: 'image/jpeg',
+            size: 1567890,
+            url: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'sarah5',
+        content: 'I really like Option A! The layout feels cleaner. Maybe we can adjust the accent color slightly?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 172680000),
+        isRead: true
+      },
+      {
+        _id: 'sarah6',
+        content: 'Good point! I\'ll try a softer blue. Also, here are the updated requirements for the settings page.',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'sarah7',
+        content: '',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 86340000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'sarah-doc-1',
+            name: 'Settings-Page-Requirements-v2.pdf',
+            type: 'application/pdf',
+            size: 4567890,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          }
+        ]
+      },
+      {
+        _id: 'sarah8',
+        content: 'Thanks! I\'ll take a look. Do we have a deadline for this?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 86280000),
+        isRead: true
+      },
+      {
+        _id: 'sarah9',
+        content: 'Ideally by Friday. I recorded a quick explanation of the complex privacy settings.',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'sarah10',
+        content: '',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+          duration: 95,
+          waveform: [0.3, 0.6, 0.4, 0.8, 0.5, 0.7, 0.4, 0.9, 0.6, 0.3, 0.5, 0.8, 0.4, 0.7, 0.5, 0.9, 0.3, 0.6, 0.4, 0.8]
+        }
+      },
+      {
+        _id: 'sarah11',
+        content: 'Got it. The explanation helps a lot. I\'ll start working on the implementation tomorrow.',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 43080000),
+        isRead: true
+      },
+      {
+        _id: 'sarah12',
+        content: 'Awesome! Let me know if you need anything else. Oh, check out this cool animation library I found.',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'sarah13',
+        content: 'https://framer.com/motion',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 14340000),
+        isRead: true,
+        linkPreview: {
+          url: 'https://framer.com/motion',
+          title: 'Framer Motion',
+          description: 'A production-ready motion library for React.',
+          image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60',
+          siteName: 'Framer'
+        }
+      },
+      {
+        _id: 'sarah14',
+        content: 'This looks perfect for the transitions! I\'ll play around with it.',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 14280000),
+        isRead: true
+      },
+      {
+        _id: 'sarah15',
+        content: 'Great! See you at the standup meeting.',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'sarah16',
+        content: '',
+        senderId: 'sarah-johnson',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+          duration: 45,
+          waveform: [0.5, 0.3, 0.7, 0.4, 0.8, 0.6, 0.9, 0.5, 0.7, 0.4, 0.8, 0.6, 0.9, 0.5, 0.7, 0.4, 0.8, 0.6, 0.9, 0.5]
+        }
+      }
+    ],
+    // Michael Chen Messages
+    '5': [
+      {
+        _id: 'michael1',
+        content: 'Hey! How have you been? Long time no see! 👋',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 259200000), // 3 days ago
+        isRead: true
+      },
+      {
+        _id: 'michael2',
+        content: 'I\'ve been great! Just wrapped up a big project at work. How about you?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 258000000),
+        isRead: true
+      },
+      {
+        _id: 'michael3',
+        content: 'That\'s awesome! I\'m doing well too. Actually, I wanted to share some photos from my recent trip to Japan 🇯🇵',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'michael4',
+        content: '',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 172740000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'michael-img-1',
+            name: 'tokyo-skyline.jpg',
+            type: 'image/jpeg',
+            size: 3456789,
+            url: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'michael-img-2',
+            name: 'mount-fuji.jpg',
+            type: 'image/jpeg',
+            size: 4123456,
+            url: 'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'michael-img-3',
+            name: 'kyoto-temple.jpg',
+            type: 'image/jpeg',
+            size: 3789012,
+            url: 'https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'michael5',
+        content: 'Wow! These are stunning! 😍 The view of Mount Fuji is incredible!',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 172680000),
+        isRead: true
+      },
+      {
+        _id: 'michael6',
+        content: 'Thanks! It was an amazing experience. I also put together a travel guide document with all the places I visited, restaurants, and tips. Let me send it to you!',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'michael7',
+        content: '',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 86340000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'michael-doc-1',
+            name: 'Japan-Travel-Guide-2025.pdf',
+            type: 'application/pdf',
+            size: 5678901,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'michael-doc-2',
+            name: 'Tokyo-Restaurant-List.docx',
+            type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            size: 234567,
+            url: '#'
+          }
+        ]
+      },
+      {
+        _id: 'michael8',
+        content: 'This is perfect! I\'ve been planning a trip to Japan next year. This will be super helpful! 🙏',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 86280000),
+        isRead: true
+      },
+      {
+        _id: 'michael9',
+        content: 'Glad I could help! Oh, and I recorded a voice message about the best time to visit and some insider tips that aren\'t in the document.',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'michael10',
+        content: '',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+          duration: 180,
+          waveform: [0.2, 0.4, 0.6, 0.8, 0.5, 0.7, 0.3, 0.9, 0.4, 0.6, 0.8, 0.5, 0.7, 0.3, 0.6, 0.8, 0.4, 0.7, 0.5, 0.9]
+        }
+      },
+      {
+        _id: 'michael11',
+        content: 'Thanks for the voice message! Really appreciate all the tips. The cherry blossom season sounds perfect! 🌸',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 43080000),
+        isRead: true
+      },
+      {
+        _id: 'michael12',
+        content: 'You\'re welcome! Also, I have some presentation slides from a photography workshop I attended in Kyoto. Might be useful if you\'re into photography!',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'michael13',
+        content: '',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'michael-ppt-1',
+            name: 'Photography-Workshop-Kyoto.pptx',
+            type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+            size: 8901234,
+            url: '#'
+          },
+          {
+            id: 'michael-img-4',
+            name: 'workshop-certificate.jpg',
+            type: 'image/jpeg',
+            size: 1234567,
+            url: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'michael14',
+        content: 'Awesome! I\'d love to check that out. Your photos are always so professional! 📸',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28680000),
+        isRead: true
+      },
+      {
+        _id: 'michael15',
+        content: 'Haha, thanks! I\'ve been practicing a lot. By the way, are you free this weekend? We should catch up over coffee!',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'michael16',
+        content: 'That sounds great! Saturday afternoon works for me. The usual place?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 14340000),
+        isRead: true
+      },
+      {
+        _id: 'michael17',
+        content: 'Perfect! Saturday at 2 PM at Brew & Bean. See you then! ☕',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: true
+      },
+      {
+        _id: 'michael18',
+        content: 'Looking forward to it! 😊',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 7140000),
+        isRead: true
+      },
+      {
+        _id: 'michael19',
+        content: '',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+          duration: 45,
+          waveform: [0.3, 0.5, 0.7, 0.4, 0.6, 0.8, 0.5, 0.7, 0.3, 0.6, 0.4, 0.8, 0.5, 0.7, 0.6, 0.4, 0.8, 0.5, 0.7, 0.3]
+        }
+      },
+      {
+        _id: 'michael20',
+        content: 'Oh, and I almost forgot! Here are a few more photos from the trip - the food was incredible! 🍜🍱',
+        senderId: 'michael-chen',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false,
+        attachments: [
+          {
+            id: 'michael-img-5',
+            name: 'ramen-tokyo.jpg',
+            type: 'image/jpeg',
+            size: 2345678,
+            url: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'michael-img-6',
+            name: 'sushi-platter.jpg',
+            type: 'image/jpeg',
+            size: 2789012,
+            url: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      }
+    ],
+    // Emma Wilson Messages
+    '6': [
+      {
+        _id: 'emma1',
+        content: 'Hi! Thanks for your help with the project yesterday. You\'re a lifesaver! 🙌',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 172800000), // 2 days ago
+        isRead: true
+      },
+      {
+        _id: 'emma2',
+        content: 'No problem at all, Emma! Happy to help. How is the design coming along?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 172740000),
+        isRead: true
+      },
+      {
+        _id: 'emma3',
+        content: 'It\'s going great! I just finished the new dashboard mockups. Want to take a look?',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 86400000), // 1 day ago
+        isRead: true
+      },
+      {
+        _id: 'emma4',
+        content: '',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 86340000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'emma-img-1',
+            name: 'dashboard-dark-mode.jpg',
+            type: 'image/jpeg',
+            size: 2456789,
+            url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
+          },
+          {
+            id: 'emma-img-2',
+            name: 'mobile-app-ui.jpg',
+            type: 'image/jpeg',
+            size: 1890123,
+            url: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'emma5',
+        content: 'These look amazing! 🎨 The dark mode contrast is perfect. I really like the chart visualizations.',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 86280000),
+        isRead: true
+      },
+      {
+        _id: 'emma6',
+        content: 'Thanks! I was worried about the color palette, but I think it works. Here are the full specs and assets if you want to dig deeper.',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 43200000), // 12 hours ago
+        isRead: true
+      },
+      {
+        _id: 'emma7',
+        content: '',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 43140000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'emma-doc-1',
+            name: 'Project-Phoenix-Design-System.pdf',
+            type: 'application/pdf',
+            size: 8901234,
+            url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+          },
+          {
+            id: 'emma-zip-1',
+            name: 'icons-and-assets.zip',
+            type: 'application/zip',
+            size: 15678901,
+            url: '#'
+          }
+        ]
+      },
+      {
+        _id: 'emma8',
+        content: 'Got them! I\'ll review the design system document tonight. By the way, did you get a chance to look at the user flow?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 43080000),
+        isRead: true
+      },
+      {
+        _id: 'emma9',
+        content: 'Yes! I actually have some thoughts on the onboarding flow. Easier to explain via voice.',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 28800000), // 8 hours ago
+        isRead: true
+      },
+      {
+        _id: 'emma10',
+        content: '',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 28740000),
+        isRead: true,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+          duration: 125,
+          waveform: [0.2, 0.5, 0.8, 0.4, 0.6, 0.9, 0.3, 0.7, 0.5, 0.8, 0.4, 0.6, 0.9, 0.3, 0.7, 0.5, 0.8, 0.4, 0.6, 0.2]
+        }
+      },
+      {
+        _id: 'emma11',
+        content: 'That makes total sense. Simplifying the sign-up steps will definitely improve conversion. I\'ll update the flow diagram.',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 28680000),
+        isRead: true
+      },
+      {
+        _id: 'emma12',
+        content: 'Great! Also, check out this inspiration board I found. Might be useful for the landing page.',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 14400000), // 4 hours ago
+        isRead: true
+      },
+      {
+        _id: 'emma13',
+        content: '',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 14340000),
+        isRead: true,
+        attachments: [
+          {
+            id: 'emma-img-3',
+            name: 'landing-page-inspo.jpg',
+            type: 'image/jpeg',
+            size: 3456789,
+            url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60'
+          }
+        ]
+      },
+      {
+        _id: 'emma14',
+        content: 'Love the typography here! We should definitely try something similar.',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 14280000),
+        isRead: true
+      },
+      {
+        _id: 'emma15',
+        content: 'Right? It\'s so clean. Anyway, are we still on for the team lunch tomorrow?',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+        isRead: false
+      },
+      {
+        _id: 'emma16',
+        content: 'Absolutely! 12:30 at the Italian place?',
+        senderId: user?._id || 'current-user',
+        createdAt: new Date(Date.now() - 7140000),
+        isRead: true
+      },
+      {
+        _id: 'emma17',
+        content: 'Perfect! See you then. 🍕🍝',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+        isRead: false
+      },
+      {
+        _id: 'emma18',
+        content: '',
+        senderId: 'emma-wilson',
+        createdAt: new Date(Date.now() - 1800000), // 30 minutes ago
+        isRead: false,
+        voiceMessage: {
+          url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+          duration: 30,
+          waveform: [0.4, 0.6, 0.3, 0.7, 0.5, 0.8, 0.4, 0.6, 0.3, 0.7, 0.5, 0.8, 0.4, 0.6, 0.3, 0.7, 0.5, 0.8, 0.4, 0.6]
+        }
       }
     ],
     // Samurai Group Messages
@@ -7725,8 +10199,19 @@ Weather-resistant materials guide and seasonal tips:`,
   const [filteredConversations, setFilteredConversations] = useState<any[]>([]);
   const [exploreFilter, setExploreFilter] = useState('explore');
 
+
+  // Shuffle utility function
+  const shuffleArray = (array: any[]) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   // Mock conversations data (replace with API call later)
-  const conversations = [
+  const conversationsData = [
     // Private messages
     {
       _id: '1',
@@ -7894,7 +10379,7 @@ Weather-resistant materials guide and seasonal tips:`,
       name: 'Tech Meetup',
       lastMessage: 'Kevin: Next meetup location confirmed',
       time: '3 days ago',
-      type: 'group',
+      type: 'teams',
       unread: 2,
       avatar: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=150&auto=format&fit=crop&q=60'
     },
@@ -8441,11 +10926,14 @@ Weather-resistant materials guide and seasonal tips:`,
     }
   ];
 
+  // Shuffle the conversations array to randomize order
+  const conversations = shuffleArray(conversationsData);
+
   // Filter conversations based on active section
   useEffect(() => {
     switch (activeSection) {
       case 'groups':
-        setFilteredConversations(conversations.filter(conv => ['group', 'discord', 'slack'].includes(conv.type)));
+        setFilteredConversations(conversations.filter(conv => ['group', 'discord', 'slack', 'teams'].includes(conv.type)));
         break;
       case 'pages':
         setFilteredConversations(conversations.filter(conv => conv.type === 'channel'));
@@ -8621,7 +11109,7 @@ Weather-resistant materials guide and seasonal tips:`,
           </div>
 
           {/* Subgroups Sidebar - Shows when a group is selected (but not for Discord/Slack chat) */}
-          {showSubgroups && currentChat && currentChat !== '101' && currentChat !== '102' && (
+          {showSubgroups && currentChat && currentChat !== '101' && currentChat !== '102' && currentChat !== '26' && (
             <SubgroupsSidebar
               groupName={conversations.find(c => c._id === currentChat)?.name || ''}
               groupAvatar={conversations.find(c => c._id === currentChat)?.avatar || ''}
@@ -8651,6 +11139,12 @@ Weather-resistant materials guide and seasonal tips:`,
                   /* Slack-style interface for takashi group */
                   <SlackChat
                     groupName="takashi"
+                    onBack={() => setCurrentChat(null)}
+                  />
+                ) : currentChat === '26' ? (
+                  /* Microsoft Teams-style interface for Tech Meetup group */
+                  <TeamsChat
+                    groupName="Tech Meetup"
                     onBack={() => setCurrentChat(null)}
                   />
                 ) : activeSection === 'saved' ? (

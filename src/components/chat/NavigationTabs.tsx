@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { 
+import {
   HiOutlineChatBubbleLeftRight,
   HiOutlineUserGroup,
   HiOutlinePhone,
@@ -51,17 +51,15 @@ export default function NavigationTabs({ onTabChange, onComitClick }: Navigation
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              className={`inline-flex items-center px-3 py-2 border-none bg-transparent text-sm font-medium transition-all duration-200 relative whitespace-nowrap group ${
-                activeTab === tab.id ? 'text-blue-600' : 'text-gray-600 hover:text-gray-800'
-              }`}
+              className={`inline-flex items-center px-3 py-2 border-none bg-transparent text-sm font-medium transition-all duration-200 relative whitespace-nowrap group ${activeTab === tab.id ? 'text-blue-600' : 'text-gray-600 hover:text-gray-800'
+                }`}
               onClick={() => handleTabClick(tab.id)}
             >
               <div className="flex items-center">
-                <tab.icon 
-                  size={16} 
-                  className={`mr-1.5 transition-colors duration-200 ${
-                    activeTab === tab.id ? 'text-blue-600' : 'text-gray-500 group-hover:text-gray-700'
-                  }`} 
+                <tab.icon
+                  size={16}
+                  className={`mr-1.5 transition-colors duration-200 ${activeTab === tab.id ? 'text-blue-600' : 'text-gray-500 group-hover:text-gray-700'
+                    }`}
                 />
                 <span className="font-medium text-xs">{tab.label}</span>
                 {tab.badge && (
@@ -76,10 +74,10 @@ export default function NavigationTabs({ onTabChange, onComitClick }: Navigation
             </button>
           ))}
         </div>
-        
+
         {/* Animated Circle Button on the right */}
         <div className="flex items-center ml-2">
-          <button 
+          <button
             className="relative p-1 group"
             onClick={onComitClick}
           >
@@ -87,14 +85,14 @@ export default function NavigationTabs({ onTabChange, onComitClick }: Navigation
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 animate-spin opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
             {/* Animated Shadow Layer */}
             <div className="absolute inset-0 rounded-full shadow-md shadow-purple-500/60 animate-spin"></div>
-            <div className="absolute inset-0 rounded-full shadow-sm shadow-blue-500/40 animate-spin" style={{animationDelay: '0.5s'}}></div>
-            <div className="absolute inset-0 rounded-full shadow-sm shadow-green-500/40 animate-spin" style={{animationDelay: '1s'}}></div>
+            <div className="absolute inset-0 rounded-full shadow-sm shadow-blue-500/40 animate-spin" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute inset-0 rounded-full shadow-sm shadow-green-500/40 animate-spin" style={{ animationDelay: '1s' }}></div>
             <div className="absolute inset-0.5 rounded-full bg-white"></div>
-            
+
             {/* Inner Circle with Image (no red background) */}
             <div className="relative w-8 h-8 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-              <img 
-                src="https://www.clipartmax.com/png/middle/151-1512977_circle-red-paint-circle-png.png"
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdp9rP2FklrcABioYIBKXVNmcyRF9b2kCPbyMW_ITIk0Tg1Lj3EZWcpu9ZE5PhI6qwT4&usqp=CAU"
                 alt="Red Circle"
                 className="w-7 h-7 rounded-full object-cover"
               />

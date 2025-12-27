@@ -14,7 +14,7 @@ interface Conversation {
   isOnline?: boolean;
   isPinned?: boolean;
   isMuted?: boolean;
-  type?: 'private' | 'group' | 'channel' | 'discord' | 'slack';
+  type?: 'private' | 'group' | 'channel' | 'discord' | 'slack' | 'teams';
 }
 
 interface SidebarProps {
@@ -37,7 +37,7 @@ export default function Sidebar({ conversations, currentConversation, onSelectCo
         case 'channels':
           return matchesSearch && conv.type === 'channel';
         case 'groups':
-          return matchesSearch && (conv.type === 'group' || conv.type === 'discord' || conv.type === 'slack');
+          return matchesSearch && (conv.type === 'group' || conv.type === 'discord' || conv.type === 'slack' || conv.type === 'teams');
         case 'private':
           return matchesSearch && conv.type === 'private';
         default:
@@ -188,6 +188,16 @@ function ConversationItem({
                     className="w-4 h-4 mr-1 rounded-full"
                   />
                   SLACK
+                </span>
+              )}
+              {conversation.type === 'teams' && (
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-medium bg-blue-600 text-white">
+                  <img
+                    src="https://play-lh.googleusercontent.com/jKU64njy8urP89V1O63eJxMtvWjDGETPlHVIhDv9WZAYzsSxRWyWZkUlBJZj_HbkHA=w480-h960"
+                    alt="Teams"
+                    className="w-4 h-4 mr-1"
+                  />
+                  TEAMS
                 </span>
               )}
             </div>

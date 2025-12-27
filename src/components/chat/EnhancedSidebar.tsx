@@ -30,7 +30,7 @@ interface Conversation {
   isOnline?: boolean;
   isPinned?: boolean;
   isMuted?: boolean;
-  type: 'private' | 'group' | 'channel' | 'bot' | 'discord' | 'slack';
+  type: 'private' | 'group' | 'channel' | 'bot' | 'discord' | 'slack' | 'teams';
 }
 
 interface EnhancedSidebarProps {
@@ -283,6 +283,16 @@ function ConversationItem({
                     className="w-4 h-4 mr-1 rounded-full"
                   />
                   Slack
+                </span>
+              )}
+              {conversation.type === 'teams' && (
+                <span className="ml-2 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full font-medium flex items-center">
+                  <img
+                    src="https://play-lh.googleusercontent.com/jKU64njy8urP89V1O63eJxMtvWjDGETPlHVIhDv9WZAYzsSxRWyWZkUlBJZj_HbkHA=w480-h960"
+                    alt="Teams"
+                    className="w-4 h-4 mr-1"
+                  />
+                  Teams
                 </span>
               )}
               {conversation.type === 'group' && (

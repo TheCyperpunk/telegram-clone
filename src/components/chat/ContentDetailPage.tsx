@@ -2425,6 +2425,53 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
     setFailedImages(prev => ({ ...prev, [id]: true }));
   };
 
+  // Load Twitter and Pinterest widget scripts for embedded content
+  useEffect(() => {
+    // Load Twitter widget script
+    if (post.platform === 'twitter') {
+      // Load Twitter widget script if not already loaded
+      if (!(window as any).twttr) {
+        const script = document.createElement('script');
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        script.charset = 'utf-8';
+        document.body.appendChild(script);
+
+        script.onload = () => {
+          if ((window as any).twttr && (window as any).twttr.widgets) {
+            (window as any).twttr.widgets.load();
+          }
+        };
+      } else {
+        // If script already loaded, just reload widgets
+        if ((window as any).twttr && (window as any).twttr.widgets) {
+          (window as any).twttr.widgets.load();
+        }
+      }
+    }
+
+    // Load Pinterest widget script
+    if (post.platform === 'pinterest') {
+      if (!(window as any).PinUtils) {
+        const script = document.createElement('script');
+        script.src = 'https://assets.pinterest.com/js/pinit.js';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        script.onload = () => {
+          if ((window as any).PinUtils && (window as any).PinUtils.build) {
+            (window as any).PinUtils.build();
+          }
+        };
+      } else {
+        if ((window as any).PinUtils && (window as any).PinUtils.build) {
+          (window as any).PinUtils.build();
+        }
+      }
+    }
+  }, [post.platform, post.videoId]);
+
   // Filter content based on active filter
   const filteredContent = activeFilter === 'all'
     ? relatedContent
@@ -2704,6 +2751,57 @@ export default function ContentDetailPage({ post, onBack, onUserClick }: Content
             className="w-full h-full"
             style={{ border: 'none' }}
           />
+        </div>
+      );
+    }
+
+    // OK.ru Video
+    if (post.platform === 'ok' && post.type === 'video') {
+      return (
+        <div className={`w-full ${contentHeight} bg-black rounded-2xl overflow-hidden`}>
+          <iframe
+            src={`https://ok.ru/videoembed/${post.videoId}`}
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; fullscreen; picture-in-picture"
+            title="OK.ru Video"
+            className="w-full h-full"
+            style={{ border: 'none' }}
+          />
+        </div>
+      );
+    }
+
+    // Twitter/X Embedded Tweet
+    if (post.platform === 'twitter' && (post.type === 'video' || post.type === 'photo')) {
+      return (
+        <div className={`w-full ${contentHeight} bg-gray-100 rounded-2xl overflow-auto`}>
+          <div className="w-full h-full flex items-center justify-center p-4">
+            <div className="max-w-xl w-full">
+              <blockquote className="twitter-tweet" data-theme="light" data-dnt="true">
+                <a href={`https://twitter.com/i/status/${post.videoId}`}>Loading tweet...</a>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Pinterest Pin Embed
+    if (post.platform === 'pinterest' && post.type === 'photo') {
+      return (
+        <div className={`w-full ${contentHeight} bg-white rounded-2xl overflow-auto`}>
+          <div className="w-full h-full flex items-center justify-center p-4">
+            <div className="max-w-md w-full">
+              <a
+                data-pin-do="embedPin"
+                data-pin-width="medium"
+                href={`https://www.pinterest.com/pin/${post.videoId}/`}
+              >
+                Loading Pinterest Pin...
+              </a>
+            </div>
+          </div>
         </div>
       );
     }

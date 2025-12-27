@@ -41,7 +41,7 @@ export default function VoiceMessage({
   const [currentTime, setCurrentTime] = useState(0);
   const [recordingTime, setRecordingTime] = useState(0);
   const [recordingPermission, setRecordingPermission] = useState(false);
-  
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -58,36 +58,36 @@ export default function VoiceMessage({
   useEffect(() => {
     if (audioRef.current) {
       const audio = audioRef.current;
-      
+
       const handleTimeUpdate = () => {
         setCurrentTime(audio.currentTime);
       };
-      
+
       const handleEnded = () => {
         setIsPlaying(false);
         setCurrentTime(0);
       };
-      
+
       const handleLoadedMetadata = () => {
         // Reset current time when new audio loads
         setCurrentTime(0);
         setIsPlaying(false);
       };
-      
+
       const handlePlay = () => {
         setIsPlaying(true);
       };
-      
+
       const handlePause = () => {
         setIsPlaying(false);
       };
-      
+
       audio.addEventListener('timeupdate', handleTimeUpdate);
       audio.addEventListener('ended', handleEnded);
       audio.addEventListener('loadedmetadata', handleLoadedMetadata);
       audio.addEventListener('play', handlePlay);
       audio.addEventListener('pause', handlePause);
-      
+
       return () => {
         audio.removeEventListener('timeupdate', handleTimeUpdate);
         audio.removeEventListener('ended', handleEnded);
@@ -108,7 +108,7 @@ export default function VoiceMessage({
     } else if (timerRef.current) {
       clearInterval(timerRef.current);
     }
-    
+
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -132,26 +132,26 @@ export default function VoiceMessage({
   const startRecording = async () => {
     const stream = await requestMicrophonePermission();
     if (!stream) return;
-    
+
     chunksRef.current = [];
     const mediaRecorder = new MediaRecorder(stream);
-    
+
     mediaRecorder.ondataavailable = (e) => {
       if (e.data.size > 0) {
         chunksRef.current.push(e.data);
       }
     };
-    
+
     mediaRecorder.onstop = () => {
       const audioBlob = new Blob(chunksRef.current, { type: 'audio/webm' });
       if (onStopRecording) {
         onStopRecording(audioBlob);
       }
     };
-    
+
     mediaRecorderRef.current = mediaRecorder;
     mediaRecorder.start();
-    
+
     if (onStartRecording) {
       onStartRecording();
     }
@@ -171,7 +171,7 @@ export default function VoiceMessage({
       mediaRecorderRef.current.stop();
       mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
     }
-    
+
     if (onCancelRecording) {
       onCancelRecording();
     }
@@ -180,7 +180,7 @@ export default function VoiceMessage({
   // Toggle play/pause
   const togglePlayPause = async () => {
     if (!audioRef.current) return;
-    
+
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
@@ -210,77 +210,77 @@ export default function VoiceMessage({
   return (
     <div className="voice-message w-full">
       {effectiveAudioUrl ? (
-        // Playback UI - Telegram style with curved border and white background
-        <div className={`rounded-3xl border bg-white ${
-          isOwn ? 'border-white border-opacity-30' : 'border-gray-200'
-        }`}>
+        // Playback UI - Telegram style with curved border
+        <div className={`rounded-3xl border p-1 ${isOwn ? 'bg-blue-500 border-blue-500' : 'bg-white border-gray-200'
+          }`} >
           <audio ref={audioRef} src={effectiveAudioUrl} preload="metadata" />
-          
+
           {/* Top section: Play button and waveform */}
-          <div className="flex items-center gap-3 px-3 pt-4 pb-0.5">
+          <div className="flex items-center gap-3 px-2 pt-2 pb-1">
             {/* Play/Pause Button */}
-            <button 
-              className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-md ${
-                isOwn ? 'bg-white text-blue-500 hover:bg-blue-50' : 'bg-blue-500 text-white hover:bg-blue-600'
-              }`}
+            <button
+              className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-sm ${isOwn ? 'bg-white text-blue-500 hover:bg-blue-50' : 'bg-blue-500 text-white hover:bg-blue-600'
+                }`}
               onClick={togglePlayPause}
             >
               {isPlaying ? <FiPause size={16} /> : <FiPlay size={16} className="ml-0.5" />}
             </button>
-            
+
             {/* Waveform and Time */}
-            <div className="flex-1 flex flex-col gap-0.5 min-w-0">
+            <div className="flex-1 flex flex-col gap-1 min-w-0">
               {/* Waveform visualization */}
-              <div className="flex items-center gap-[3px] h-4">
+              <div className="flex items-center gap-[3px] h-6">
                 {waveform.map((height, idx) => {
                   const progress = (currentTime / effectiveDuration) * 100;
                   const barProgress = (idx / waveform.length) * 100;
                   const isActive = barProgress <= progress;
-                  
+
+                  // Normalize height: if value > 1, assume it's 0-100, otherwise 0-1
+                  const normalizedHeight = height > 1 ? height : height * 100;
+
                   return (
-                    <div 
+                    <div
                       key={idx}
-                      className={`w-[2px] rounded-full transition-all ${
-                        isOwn 
-                          ? isActive ? 'bg-white' : 'bg-white opacity-40'
+                      className={`w-[3px] rounded-full transition-all duration-100 ${isOwn
+                          ? isActive ? 'bg-blue-200' : 'bg-blue-400'
                           : isActive ? 'bg-blue-500' : 'bg-gray-300'
-                      }`}
-                      style={{ 
-                        height: `${height}%`,
-                        maxHeight: '16px'
+                        }`}
+                      style={{
+                        height: `${Math.max(15, normalizedHeight)}%`,
+                        maxHeight: '24px'
                       }}
                     />
                   );
                 })}
               </div>
-              
+
               {/* Time display */}
               <div className="flex items-center justify-between px-1">
-                <span className={`text-[11px] font-medium ${isOwn ? 'text-white opacity-90' : 'text-gray-600'}`}>
+                <span className={`text-[11px] font-medium ${isOwn ? 'text-blue-100' : 'text-gray-600'}`}>
                   {formatTime(currentTime)}
                 </span>
-                <span className={`text-[11px] ${isOwn ? 'text-white opacity-70' : 'text-gray-500'}`}>
+                <span className={`text-[11px] ${isOwn ? 'text-blue-200' : 'text-gray-500'}`}>
                   {formatTime(effectiveDuration)}
                 </span>
               </div>
             </div>
           </div>
-          
+
           {/* Bottom section: Views and timestamp - only show if provided */}
           {(views !== undefined || timestamp) && (
-            <div className="flex items-center justify-end gap-2 px-3 pb-2 pt-1">
+            <div className="flex items-center justify-end gap-2 px-3 pb-1">
               {conversationType === 'channel' && views !== undefined && (
-                <div className="flex items-center gap-1 text-xs text-gray-500">
+                <div className={`flex items-center gap-1 text-xs ${isOwn ? 'text-blue-200' : 'text-gray-500'}`}>
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                   </svg>
                   <span>{views >= 1000 ? `${(views / 1000).toFixed(1)}K` : views}</span>
                 </div>
               )}
               {timestamp && (
-                <div className="text-xs text-gray-500">
-                  {new Date(timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                <div className={`text-xs ${isOwn ? 'text-blue-200' : 'text-gray-500'}`}>
+                  {new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </div>
               )}
             </div>
@@ -293,20 +293,20 @@ export default function VoiceMessage({
             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse mr-2"></div>
             <FiMic size={16} className="text-red-500" />
           </div>
-          
+
           <div className="flex-1 text-sm text-gray-700 font-medium">
             Recording... {formatTime(recordingTime)}
           </div>
-          
+
           <div className="flex items-center gap-2">
-            <button 
+            <button
               className="w-7 h-7 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-all duration-200 transform hover:scale-110"
               onClick={stopRecording}
             >
               <FiStopCircle size={14} />
             </button>
-            
-            <button 
+
+            <button
               className="px-3 py-1 text-xs font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-all duration-200"
               onClick={cancelRecording}
             >
@@ -316,14 +316,15 @@ export default function VoiceMessage({
         </div>
       ) : (
         // Record button
-        <button 
+        <button
           className="w-7 h-7 hover:bg-gray-100 text-gray-500 hover:text-red-500 rounded-full flex items-center justify-center transition-all duration-200 transform hover:scale-110"
           onClick={startRecording}
           disabled={!recordingPermission && navigator.mediaDevices === undefined}
         >
           <FiMic size={16} />
         </button>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }

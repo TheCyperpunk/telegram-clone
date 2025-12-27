@@ -14,11 +14,12 @@ if (!process.env.MONGODB_URI) {
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+// Initialize global mongoose cache if it doesn't exist
+if (!global.mongoose) {
+  global.mongoose = { conn: null, promise: null };
 }
+
+const cached = global.mongoose;
 
 async function connectDB() {
   if (cached.conn) {
@@ -31,7 +32,7 @@ async function connectDB() {
     };
 
     try {
-      cached.promise = mongoose.connect(MONGODB_URI);
+      cached.promise = mongoose.connect(MONGODB_URI, opts);
       cached.conn = await cached.promise;
       console.log('Connected to MongoDB');
       return cached.conn;
@@ -52,4 +53,4 @@ async function connectDB() {
   return cached.conn;
 }
 
-export default connectDB; 
+export default connectDB;

@@ -342,7 +342,7 @@ export default function MediaGallery({ channelName, onClose }: MediaGalleryProps
                       )}
 
                       {/* Platform Badge */}
-                      {media.platform && (
+                      {'platform' in media && media.platform && (
                         <div className={`absolute bottom-2 right-2 px-2 py-1 rounded-full flex items-center text-xs font-bold shadow-lg ${media.platform === 'youtube' ? 'bg-red-600 text-white' :
                           media.platform === 'vimeo' ? 'bg-blue-500 text-white' :
                             media.platform === 'dailymotion' ? 'bg-white text-black' :

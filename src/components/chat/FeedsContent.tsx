@@ -2847,7 +2847,7 @@ function PostCard({
               <div
                 key={index}
                 className="relative aspect-square bg-gray-100 overflow-hidden group cursor-pointer"
-                onClick={() => onImageClick(img, index)}
+                onClick={onImageClick}
               >
                 <Image
                   src={img}
@@ -3699,11 +3699,11 @@ function PostCard({
 
         {post.content.type === 'file' && (
           <div className={`relative rounded-3xl overflow-hidden p-8 cursor-pointer group transition-all duration-500 ${post.content.fileIcon === 'pdf' ? 'bg-gradient-to-br from-red-50 via-orange-50 to-red-100' :
-              post.content.fileIcon === 'excel' ? 'bg-gradient-to-br from-green-50 via-emerald-50 to-teal-100' :
-                post.content.fileIcon === 'word' ? 'bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100' :
-                  post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100' :
-                    post.content.fileIcon === 'zip' ? 'bg-gradient-to-br from-purple-50 via-violet-50 to-purple-100' :
-                      'bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100'
+            post.content.fileIcon === 'excel' ? 'bg-gradient-to-br from-green-50 via-emerald-50 to-teal-100' :
+              post.content.fileIcon === 'word' ? 'bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100' :
+                post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100' :
+                  post.content.fileIcon === 'zip' ? 'bg-gradient-to-br from-purple-50 via-violet-50 to-purple-100' :
+                    'bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100'
             }`}>
             {/* Animated background pattern */}
             <div className="absolute inset-0 opacity-5">
@@ -3712,11 +3712,11 @@ function PostCard({
 
             {/* Glow effect */}
             <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity ${post.content.fileIcon === 'pdf' ? 'bg-red-400' :
-                post.content.fileIcon === 'excel' ? 'bg-green-400' :
-                  post.content.fileIcon === 'word' ? 'bg-blue-400' :
-                    post.content.fileIcon === 'powerpoint' ? 'bg-orange-400' :
-                      post.content.fileIcon === 'zip' ? 'bg-purple-400' :
-                        'bg-gray-400'
+              post.content.fileIcon === 'excel' ? 'bg-green-400' :
+                post.content.fileIcon === 'word' ? 'bg-blue-400' :
+                  post.content.fileIcon === 'powerpoint' ? 'bg-orange-400' :
+                    post.content.fileIcon === 'zip' ? 'bg-purple-400' :
+                      'bg-gray-400'
               }`}></div>
 
             <div className="relative flex items-start space-x-6">
@@ -3724,20 +3724,20 @@ function PostCard({
               <div className="relative group/icon flex-shrink-0">
                 {/* Glow behind icon */}
                 <div className={`absolute inset-0 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity ${post.content.fileIcon === 'pdf' ? 'bg-gradient-to-br from-red-400 to-orange-500' :
-                    post.content.fileIcon === 'excel' ? 'bg-gradient-to-br from-green-400 to-emerald-500' :
-                      post.content.fileIcon === 'word' ? 'bg-gradient-to-br from-blue-400 to-indigo-500' :
-                        post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-br from-orange-400 to-amber-500' :
-                          post.content.fileIcon === 'zip' ? 'bg-gradient-to-br from-purple-400 to-violet-500' :
-                            'bg-gradient-to-br from-gray-400 to-slate-500'
+                  post.content.fileIcon === 'excel' ? 'bg-gradient-to-br from-green-400 to-emerald-500' :
+                    post.content.fileIcon === 'word' ? 'bg-gradient-to-br from-blue-400 to-indigo-500' :
+                      post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-br from-orange-400 to-amber-500' :
+                        post.content.fileIcon === 'zip' ? 'bg-gradient-to-br from-purple-400 to-violet-500' :
+                          'bg-gradient-to-br from-gray-400 to-slate-500'
                   }`}></div>
 
                 {/* Main icon container */}
                 <div className={`relative w-28 h-32 rounded-3xl shadow-2xl transform group-hover:scale-105 group-hover:-rotate-3 transition-all duration-500 overflow-hidden ${post.content.fileIcon === 'pdf' ? 'bg-gradient-to-br from-red-500 via-red-600 to-orange-600' :
-                    post.content.fileIcon === 'excel' ? 'bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600' :
-                      post.content.fileIcon === 'word' ? 'bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700' :
-                        post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-br from-orange-500 via-amber-600 to-orange-700' :
-                          post.content.fileIcon === 'zip' ? 'bg-gradient-to-br from-purple-500 via-violet-600 to-purple-700' :
-                            'bg-gradient-to-br from-gray-500 via-slate-600 to-gray-700'
+                  post.content.fileIcon === 'excel' ? 'bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600' :
+                    post.content.fileIcon === 'word' ? 'bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700' :
+                      post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-br from-orange-500 via-amber-600 to-orange-700' :
+                        post.content.fileIcon === 'zip' ? 'bg-gradient-to-br from-purple-500 via-violet-600 to-purple-700' :
+                          'bg-gradient-to-br from-gray-500 via-slate-600 to-gray-700'
                   }`}>
                   {/* Top fold effect */}
                   <div className="absolute top-0 right-0 w-8 h-8 bg-black/20 transform rotate-45 translate-x-4 -translate-y-4"></div>
@@ -3768,20 +3768,20 @@ function PostCard({
                 {/* File name and type */}
                 <div>
                   <h3 className={`font-bold text-xl mb-2 line-clamp-2 transition-colors ${post.content.fileIcon === 'pdf' ? 'text-red-900 group-hover:text-red-600' :
-                      post.content.fileIcon === 'excel' ? 'text-green-900 group-hover:text-green-600' :
-                        post.content.fileIcon === 'word' ? 'text-blue-900 group-hover:text-blue-600' :
-                          post.content.fileIcon === 'powerpoint' ? 'text-orange-900 group-hover:text-orange-600' :
-                            post.content.fileIcon === 'zip' ? 'text-purple-900 group-hover:text-purple-600' :
-                              'text-gray-900 group-hover:text-gray-600'
+                    post.content.fileIcon === 'excel' ? 'text-green-900 group-hover:text-green-600' :
+                      post.content.fileIcon === 'word' ? 'text-blue-900 group-hover:text-blue-600' :
+                        post.content.fileIcon === 'powerpoint' ? 'text-orange-900 group-hover:text-orange-600' :
+                          post.content.fileIcon === 'zip' ? 'text-purple-900 group-hover:text-purple-600' :
+                            'text-gray-900 group-hover:text-gray-600'
                     }`}>{post.content.fileName}</h3>
 
                   <div className="flex items-center space-x-3 text-sm">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${post.content.fileIcon === 'pdf' ? 'bg-red-200 text-red-800' :
-                        post.content.fileIcon === 'excel' ? 'bg-green-200 text-green-800' :
-                          post.content.fileIcon === 'word' ? 'bg-blue-200 text-blue-800' :
-                            post.content.fileIcon === 'powerpoint' ? 'bg-orange-200 text-orange-800' :
-                              post.content.fileIcon === 'zip' ? 'bg-purple-200 text-purple-800' :
-                                'bg-gray-200 text-gray-800'
+                      post.content.fileIcon === 'excel' ? 'bg-green-200 text-green-800' :
+                        post.content.fileIcon === 'word' ? 'bg-blue-200 text-blue-800' :
+                          post.content.fileIcon === 'powerpoint' ? 'bg-orange-200 text-orange-800' :
+                            post.content.fileIcon === 'zip' ? 'bg-purple-200 text-purple-800' :
+                              'bg-gray-200 text-gray-800'
                       }`}>{post.content.fileType}</span>
                     <span className="text-gray-500 font-semibold">{post.content.fileSize}</span>
                   </div>
@@ -3791,11 +3791,11 @@ function PostCard({
                 <div className="flex items-center space-x-6 text-sm">
                   <div className="flex items-center space-x-2">
                     <div className={`w-2 h-2 rounded-full ${post.content.fileIcon === 'pdf' ? 'bg-red-500' :
-                        post.content.fileIcon === 'excel' ? 'bg-green-500' :
-                          post.content.fileIcon === 'word' ? 'bg-blue-500' :
-                            post.content.fileIcon === 'powerpoint' ? 'bg-orange-500' :
-                              post.content.fileIcon === 'zip' ? 'bg-purple-500' :
-                                'bg-gray-500'
+                      post.content.fileIcon === 'excel' ? 'bg-green-500' :
+                        post.content.fileIcon === 'word' ? 'bg-blue-500' :
+                          post.content.fileIcon === 'powerpoint' ? 'bg-orange-500' :
+                            post.content.fileIcon === 'zip' ? 'bg-purple-500' :
+                              'bg-gray-500'
                       } animate-pulse`}></div>
                     <span className="text-gray-600 font-medium">Ready to download</span>
                   </div>
@@ -3809,11 +3809,11 @@ function PostCard({
                   </div>
                   <div className="h-2 bg-white/50 rounded-full overflow-hidden backdrop-blur-sm">
                     <div className={`h-full w-full rounded-full shadow-lg transition-all duration-1000 ${post.content.fileIcon === 'pdf' ? 'bg-gradient-to-r from-red-400 via-orange-400 to-red-500 shadow-red-500/50' :
-                        post.content.fileIcon === 'excel' ? 'bg-gradient-to-r from-green-400 via-emerald-400 to-teal-500 shadow-green-500/50' :
-                          post.content.fileIcon === 'word' ? 'bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 shadow-blue-500/50' :
-                            post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500 shadow-orange-500/50' :
-                              post.content.fileIcon === 'zip' ? 'bg-gradient-to-r from-purple-400 via-violet-400 to-purple-500 shadow-purple-500/50' :
-                                'bg-gradient-to-r from-gray-400 via-slate-400 to-gray-500 shadow-gray-500/50'
+                      post.content.fileIcon === 'excel' ? 'bg-gradient-to-r from-green-400 via-emerald-400 to-teal-500 shadow-green-500/50' :
+                        post.content.fileIcon === 'word' ? 'bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 shadow-blue-500/50' :
+                          post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500 shadow-orange-500/50' :
+                            post.content.fileIcon === 'zip' ? 'bg-gradient-to-r from-purple-400 via-violet-400 to-purple-500 shadow-purple-500/50' :
+                              'bg-gradient-to-r from-gray-400 via-slate-400 to-gray-500 shadow-gray-500/50'
                       }`}></div>
                   </div>
                 </div>
@@ -3821,22 +3821,22 @@ function PostCard({
                 {/* Action buttons */}
                 <div className="flex items-center space-x-3">
                   <button className={`flex-1 py-3 rounded-xl font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 ${post.content.fileIcon === 'pdf' ? 'bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700' :
-                      post.content.fileIcon === 'excel' ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700' :
-                        post.content.fileIcon === 'word' ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700' :
-                          post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700' :
-                            post.content.fileIcon === 'zip' ? 'bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700' :
-                              'bg-gradient-to-r from-gray-500 to-slate-600 hover:from-gray-600 hover:to-slate-700'
+                    post.content.fileIcon === 'excel' ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700' :
+                      post.content.fileIcon === 'word' ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700' :
+                        post.content.fileIcon === 'powerpoint' ? 'bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700' :
+                          post.content.fileIcon === 'zip' ? 'bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700' :
+                            'bg-gradient-to-r from-gray-500 to-slate-600 hover:from-gray-600 hover:to-slate-700'
                     }`}>
                     <FiDownload size={18} />
                     <span>Download File</span>
                   </button>
 
                   <button className={`p-3 rounded-xl border-2 hover:scale-110 transition-all duration-300 ${post.content.fileIcon === 'pdf' ? 'border-red-300 text-red-600 hover:bg-red-50' :
-                      post.content.fileIcon === 'excel' ? 'border-green-300 text-green-600 hover:bg-green-50' :
-                        post.content.fileIcon === 'word' ? 'border-blue-300 text-blue-600 hover:bg-blue-50' :
-                          post.content.fileIcon === 'powerpoint' ? 'border-orange-300 text-orange-600 hover:bg-orange-50' :
-                            post.content.fileIcon === 'zip' ? 'border-purple-300 text-purple-600 hover:bg-purple-50' :
-                              'border-gray-300 text-gray-600 hover:bg-gray-50'
+                    post.content.fileIcon === 'excel' ? 'border-green-300 text-green-600 hover:bg-green-50' :
+                      post.content.fileIcon === 'word' ? 'border-blue-300 text-blue-600 hover:bg-blue-50' :
+                        post.content.fileIcon === 'powerpoint' ? 'border-orange-300 text-orange-600 hover:bg-orange-50' :
+                          post.content.fileIcon === 'zip' ? 'border-purple-300 text-purple-600 hover:bg-purple-50' :
+                            'border-gray-300 text-gray-600 hover:bg-gray-50'
                     }`}>
                     <FiShare2 size={18} />
                   </button>
@@ -3964,8 +3964,8 @@ function PostCard({
               <FiHeart
                 size={22}
                 className={`transition-all duration-200 ${post.liked
-                    ? 'text-red-500 fill-current scale-110'
-                    : 'text-gray-700 group-hover:text-red-500 group-hover:scale-110'
+                  ? 'text-red-500 fill-current scale-110'
+                  : 'text-gray-700 group-hover:text-red-500 group-hover:scale-110'
                   }`}
               />
             </button>
@@ -3989,8 +3989,8 @@ function PostCard({
             <FiBookmark
               size={22}
               className={`transition-all duration-200 ${post.bookmarked
-                  ? 'text-yellow-500 fill-current scale-110'
-                  : 'text-gray-700 group-hover:text-yellow-500 group-hover:scale-110'
+                ? 'text-yellow-500 fill-current scale-110'
+                : 'text-gray-700 group-hover:text-yellow-500 group-hover:scale-110'
                 }`}
             />
           </button>
